@@ -1,2 +1,2 @@
-Erp::Core::Engine.routes.draw do
+Erp::Contacts::Engine.routes.draw do
 end
