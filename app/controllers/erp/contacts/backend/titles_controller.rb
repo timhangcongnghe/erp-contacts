@@ -4,15 +4,11 @@ module Erp
   module Contacts
     module Backend
       class TitlesController < Erp::Backend::BackendController
-        before_action :set_title, only: [:show, :edit, :update, :destroy]
+        before_action :set_title, only: [:edit, :update, :destroy]
     
         # GET /titles
         def index
           @titles = Title.all
-        end
-    
-        # GET /titles/1
-        def show
         end
     
         # GET /titles/new

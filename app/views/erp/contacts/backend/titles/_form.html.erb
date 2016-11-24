@@ -1,0 +1,27 @@
+<%= form_for([erp_contacts, :backend, title], html: {class: "form-horizontal"}) do |f| %>
+    <div class="form-body">
+        <div class="form-group form-md-line-input">
+            <label class="col-md-2 control-label" for="title_title">Title</label>
+            <div class="col-md-10">
+                <%= f.text_field :title, class: "form-control", placeholder: "Enter title....." %>
+                <div class="form-control-focus"> </div>
+                <span class="help-block">Title is required.....</span>
+            </div>
+        </div>
+        <div class="form-group form-md-line-input">
+            <label class="col-md-2 control-label" for="title_abbreviation">Abbreviation</label>
+            <div class="col-md-10">
+                <%= f.text_area :abbreviation, rows: "3", class: "form-control", placeholder: "Enter abbreviation....." %>
+                <div class="form-control-focus"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+                <%= button_tag "#{t(:save)} <i class=\"fa fa-save\"></i>".html_safe, class: "btn sbold blue"%>
+                <%= link_to '<i class="fa fa-times"></i> Cancel'.html_safe, erp_contacts.backend_titles_path, class: "btn sbold red" %>
+            </div>
+        </div>
+    </div>
+<% end %>
