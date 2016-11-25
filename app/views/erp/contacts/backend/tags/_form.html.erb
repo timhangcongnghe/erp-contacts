@@ -20,9 +20,9 @@
         <div class="form-group form-md-line-input">
             <label class="col-md-2 control-label" for="form_control_1"><%= t(:name) %></label>
             <div class="col-md-10">
-                <%= f.text_field :name, class: "form-control", placeholder: "Enter tag name..." %>
+                <%= f.text_field :name, class: "form-control", placeholder: "#{t(:placeholder_enter_name)}" %>
                 <div class="form-control-focus"> </div>
-                <span class="help-block">Tag name is required...</span>
+                <span class="help-block"><%= t(:textfield_required) %></span>
             </div>
         </div>
     </div>
