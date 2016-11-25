@@ -18,9 +18,9 @@
     
     <div class="form-body">
         <div class="form-group form-md-line-input">
-            <label class="col-md-2 control-label" for="form_control_1">Name</label>
+            <label class="col-md-2 control-label" for="form_control_1"><%= t(:name) %></label>
             <div class="col-md-10">
-                <input type="text" class="form-control" id="form_control_1" placeholder="Enter tag name...">
+                <%= f.text_field :name, class: "form-control", placeholder: "Enter tag name..." %>
                 <div class="form-control-focus"> </div>
                 <span class="help-block">Tag name is required...</span>
             </div>
@@ -29,8 +29,8 @@
     <div class="form-actions">
         <div class="row">
             <div class="col-md-offset-2 col-md-10">
-                <button type="button" class="btn sbold blue">Save <i class="fa fa-save"></i></button>
-                <button type="button" class="btn sbold red"><i class="fa fa-times"></i> Discard</button>
+                <button type="submit" class="btn sbold blue"><%= t(:save) %> <i class="fa fa-save"></i></button>
+                <button type="button" class="btn sbold red"><i class="fa fa-times"></i> <%= t(:discard) %></button>
             </div>
         </div>
     </div>
