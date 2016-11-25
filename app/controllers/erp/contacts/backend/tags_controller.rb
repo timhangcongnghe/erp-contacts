@@ -8,7 +8,7 @@ module Erp
     
         # GET /tags
         def index
-          @tags = Tag.all
+          @tags = Tag.all.paginate(:page => params[:page], :per_page => 1)
         end
     
         # GET /tags/1
@@ -30,7 +30,7 @@ module Erp
           @tag.user = current_user
     
           if @tag.save
-            redirect_to erp_contacts.backend_tag_path(@tag), notice: 'Tag was successfully created.'
+            redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: 'Tag was successfully created.'
           else
             render :new
           end
@@ -39,7 +39,7 @@ module Erp
         # PATCH/PUT /tags/1
         def update
           if @tag.update(tag_params)
-            redirect_to erp_contacts.backend_tag_path(@tag), notice: 'Tag was successfully updated.'
+            redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: 'Tag was successfully updated.'
           else
             render :edit
           end
