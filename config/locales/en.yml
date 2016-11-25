@@ -1,6 +1,13 @@
 en:
   contacts:
     contacts: "Contacts"
+    titles: "Titles"
+    tags: "Tags"
+    
+    contact:
+      
+    title:
+      
     tag:
       tags: "Tags"
       name: "Name"
