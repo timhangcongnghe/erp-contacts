@@ -49,7 +49,7 @@
                                 <span></span>
                             </label>
                         </td>
-                        <td> <%= tag.name %> </td>
+                        <td> <%= link_to tag.name, erp_contacts.edit_backend_tag_path(tag) %> </td>
                         <td>
                             <span class="label label-sm label-success"> Approved </span>
                         </td>
@@ -61,11 +61,10 @@
                                     <i class="fa fa-angle-down"></i>
                                 </button>
                                 <ul class="dropdown-menu pull-left" role="menu">
-                                    <li><a href="javascript:;"><i class="icon-docs"></i> New Post</a></li>
-                                    <li><a href="javascript:;"><i class="icon-tag"></i> New Comment</a></li>
-                                    <li><a href="javascript:;"><i class="icon-user"></i> New User</a></li>
+                                    <li><%= link_to "<i class=\"fa fa-edit\"></i> #{t(:edit)}".html_safe, erp_contacts.edit_backend_tag_path(tag) %></li>
+                                    <li><%= link_to "<i class=\"fa fa-check\"></i> #{t(:active)}".html_safe, "" %></li>
                                     <li class="divider"></li>
-                                    <li><a href="javascript:;"><i class="icon-flag"></i> Comments<span class="badge badge-success">4</span></a></li>
+                                    <li><%= link_to "<i class=\"fa fa-remove\"></i> #{t(:delete)}".html_safe, erp_contacts.backend_tag_path(tag), method: :delete, data: {confirm: 'Are you sure?'} %></li>
                                 </ul>
                             </div>
                         </td>
@@ -74,7 +73,16 @@
                 </tbody>
             </table>
         </div>
-        
+        <div class="row">
+            <div class="col-md-5 col-sm-5">
+                <div><%= page_entries_info @tags %></div>
+            </div>
+            <div class="col-md-7 col-sm-7">
+                <div class="pagination-style">
+                    <%= will_paginate @tags, previous_label: '<i class="fa fa-angle-left"></i>'.html_safe, next_label: '<i class="fa fa-angle-right"></i>'.html_safe, renderer: BootstrapPagination::Rails %>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- END EXAMPLE TABLE PORTLET-->
