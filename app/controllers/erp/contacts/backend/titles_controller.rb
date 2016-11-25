@@ -8,7 +8,7 @@ module Erp
     
         # GET /titles
         def index
-          @titles = Title.all
+          @titles = Title.backend_datatable(params).paginate(:page => params[:page], :per_page => 3)
         end
     
         # GET /titles/new

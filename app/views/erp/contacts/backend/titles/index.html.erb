@@ -22,12 +22,12 @@
                 </div>
             </div>
         </div>
-        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+        <table class="table table-striped table-bordered table-hover table-checkable order-column">
             <thead>
                 <tr>
                     <th>
                         <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                            <input type="checkbox" class="group-checkable"/>
                             <span></span>
                         </label>
                     </th>
@@ -39,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% (0..10).each do |title| %>
+                <% @titles.each do |title| %>
                 <tr class="odd gradeX">
                     <td>
                         <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
@@ -47,23 +47,24 @@
                             <span></span>
                         </label>
                     </td>
-                    <td><%= link_to "Sản phẩm mới", "" %></td>
-                    <td>new</td>
+                    <td><%= link_to title.title, erp_contacts.edit_backend_title_path(title) %></td>
+                    <td><%= title.abbreviation %></td>
                     <td>
                         <span class="label label-sm label-success">Archived</span>
                     </td>
-                    <td class="center">08/11/1994</td>
+                    <td class="center"><%= title.created_at.strftime("%d/%m/%Y") %></td>
                     <td>
                         <div class="btn-group">
                             <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
                                 <i class="fa fa-angle-down"></i>
                             </button>
                             <ul class="dropdown-menu pull-left" role="menu">
-                                <li><a href="javascript:;"><i class="icon-docs"></i> New Post</a></li>
-                                <li><a href="javascript:;"><i class="icon-tag"></i> New Comment</a></li>
-                                <li><a href="javascript:;"><i class="icon-user"></i> New User</a></li>
+                                <li><%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, erp_contacts.edit_backend_title_path(title) %></li>
+                                <li><%= link_to '<i class="fa fa-check"></i> Archived'.html_safe, "" %></li>
+                                <li><%= link_to '<i class="fa fa-exclamation"></i> Unarchive'.html_safe, "" %></li>
+                                <li><%= link_to '<i class="fa fa-copy"></i> Duplicate'.html_safe, "" %></li>
                                 <li class="divider"></li>
-                                <li><a href="javascript:;"><i class="icon-flag"></i> Comments<span class="badge badge-success">4</span></a></li>
+                                <li><%= link_to '<i class="fa fa-close"></i> Delete'.html_safe, erp_contacts.backend_title_path(title), method: :delete, data: {confirm: 'Are you sure?'} %></li>
                             </ul>
                         </div>
                     </td>
@@ -71,6 +72,16 @@
                 <% end %>
             </tbody>
         </table>
+        <div class="row">
+            <div class="col-md-5 col-sm-5">
+                <div><%= page_entries_info @titles %></div>
+            </div>
+            <div class="col-md-7 col-sm-7">
+                <div class="pagination-style">
+                    <%= will_paginate @slides, previous_label: '<i class="fa fa-angle-left"></i>'.html_safe, next_label: '<i class="fa fa-angle-right"></i>'.html_safe, renderer: BootstrapPagination::Rails %>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- END EXAMPLE TABLE PORTLET-->
