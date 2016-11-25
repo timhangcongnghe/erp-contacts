@@ -1,10 +1,14 @@
-require_dependency "erp/application_controller"
-
 module Erp
   module Contacts
     module Backend
       class TitlesController < Erp::Backend::BackendController
         before_action :set_title, only: [:edit, :update, :destroy]
+        before_action :default_breadcrumb
+        
+        # add default breadcrumb
+        def default_breadcrumb
+          add_breadcrumb t(:Titles), erp_contacts.backend_titles_path
+        end
     
         # GET /titles
         def index
@@ -13,6 +17,8 @@ module Erp
     
         # GET /titles/new
         def new
+          add_breadcrumb t(:Create)
+          
           @title = Title.new
         end
     

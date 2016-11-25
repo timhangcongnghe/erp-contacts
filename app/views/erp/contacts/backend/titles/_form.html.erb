@@ -1,20 +1,19 @@
 <%= form_for([erp_contacts, :backend, title], html: {class: "form-horizontal"}) do |f| %>
     <div class="form-body">
-        <div class="form-group form-md-line-input">
-            <label class="col-md-2 control-label" for="title_title">Title</label>
-            <div class="col-md-10">
-                <%= f.text_field :title, class: "form-control", placeholder: "Enter title....." %>
-                <div class="form-control-focus"> </div>
-                <span class="help-block">Title is required.....</span>
-            </div>
-        </div>
-        <div class="form-group form-md-line-input">
-            <label class="col-md-2 control-label" for="title_abbreviation">Abbreviation</label>
-            <div class="col-md-10">
-                <%= f.text_field :abbreviation, class: "form-control", placeholder: "Enter abbreviation....." %>
-                <div class="form-control-focus"> </div>
-            </div>
-        </div>
+        <%= erp_text_field name: 'title[title]',
+            value: title.title,                   
+            label: t(:title),
+            help: 'Title is required.....',
+            placeholder: "Enter title....."
+        %>
+        
+        <%= erp_text_field name: 'title[abbreviation]',
+            value: title.abbreviation,                   
+            label: t(:abbreviation),
+            help: 'Abbreviation is required.....',
+            placeholder: "Enter abbreviation....."
+        %>
+
     </div>
     <div class="form-actions">
         <div class="row">
