@@ -22,55 +22,59 @@
                 </div>
             </div>
         </div>
-        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="">
-            <thead>
-                <tr>
-                    <th>
-                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
-                            <span></span>
-                        </label>
-                    </th>
-                    <th><%= t(:tag_name) %></th>
-                    <th><%= t(:creator) %></th>
-                    <th><%= t(:archive) %></th>
-                    <th><%= t(:created_at) %></th>
-                    <th><%= t(:actions) %></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% (1..5).each do |tag| %>
-                <tr class="odd gradeX">
-                    <td>
-                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                            <input type="checkbox" class="checkboxes" value="1" />
-                            <span></span>
-                        </label>
-                    </td>
-                    <td><%= link_to "Tag", "" %></td>
-                    <td>Hung Nguyen</td>
-                    <td>
-                        <span class="label label-sm label-success">Archived</span>
-                    </td>
-                    <td class="center">24/11/2016</td>
-                    <td>
-                        <div class="btn-group">
-                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                <i class="fa fa-angle-down"></i>
-                            </button>
-                            <ul class="dropdown-menu pull-left" role="menu">
-                                <li><a href="javascript:;"><i class="icon-docs"></i> New Post</a></li>
-                                <li><a href="javascript:;"><i class="icon-tag"></i> New Comment</a></li>
-                                <li><a href="javascript:;"><i class="icon-user"></i> New User</a></li>
-                                <li class="divider"></li>
-                                <li><a href="javascript:;"><i class="icon-flag"></i> Comments<span class="badge badge-success">4</span></a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
+        
+        <div class="table-scrollable scrollable-2">
+            <table class="table table-hover table-light table-checkable">
+                <thead>
+                    <tr class="uppercase">
+                        <th class="center">
+                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
+                                <span></span>
+                            </label>
+                        </th>
+                        <th> <%= t(:tag_name) %> </th>
+                        <th> <%= t(:status) %> </th>
+                        <th> <%= t(:creator) %> </th>
+                        <th> <%= t(:created_at) %> </th>
+                        <th> <%= t(:actions) %> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @tags.each do |tag| %>
+                    <tr>
+                        <td>
+                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                <input type="checkbox" class="checkboxes" value="1" />
+                                <span></span>
+                            </label>
+                        </td>
+                        <td> <%= tag.name %> </td>
+                        <td>
+                            <span class="label label-sm label-success"> Approved </span>
+                        </td>
+                        <td> Brain </td>
+                        <td> <%= tag.created_at.strftime("%d/%m/%Y")%> </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-left" role="menu">
+                                    <li><a href="javascript:;"><i class="icon-docs"></i> New Post</a></li>
+                                    <li><a href="javascript:;"><i class="icon-tag"></i> New Comment</a></li>
+                                    <li><a href="javascript:;"><i class="icon-user"></i> New User</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:;"><i class="icon-flag"></i> Comments<span class="badge badge-success">4</span></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        
     </div>
 </div>
 <!-- END EXAMPLE TABLE PORTLET-->
