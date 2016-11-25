@@ -3,11 +3,11 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-pencil-square-o font-green"></i>
-            <span class="caption-subject bold font-green uppercase"><%= t(:edit) %> tag</span>
+            <span class="caption-subject bold font-green uppercase"><%= t('contacts.tag.edit') %></span>
         </div>
         <div class="actions">
-            <%= link_to "<i class=\"fa fa-list-ul\"></i> #{t(:listing_tags)}".html_safe, erp_contacts.backend_tags_path, class: "btn btn-circle btn-outline green" %>
-            <%= link_to "<i class=\"fa fa-plus\"></i> #{t(:add_new_tag)}".html_safe, erp_contacts.new_backend_tag_path, class: "btn btn-circle blue-steel btn-outline" %>
+            <%= link_to "<i class=\"fa fa-list-ul\"></i> #{t('contacts.tag.listing_tags')}".html_safe, erp_contacts.backend_tags_path, class: "btn btn-circle btn-outline green" %>
+            <%= link_to "<i class=\"fa fa-plus\"></i> #{t('contacts.tag.add_new_tag')}".html_safe, erp_contacts.new_backend_tag_path, class: "btn btn-circle blue-steel btn-outline" %>
             <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"> </a>
         </div>
     </div>
