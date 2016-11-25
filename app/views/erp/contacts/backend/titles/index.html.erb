@@ -109,16 +109,18 @@
                         <%= erp_row_actions_button(
                             [
                                 {
-                                    text: '<i class="fa fa-check"></i> Archive', url: 'javascript:;'
+                                    text: '<i class="fa fa-check"></i> Archive', href: 'javascript:;'
                                 },
                                 {
-                                    text: '<i class="fa fa-exclamation"></i> Unarchive', url: 'javascript:;'
+                                    text: '<i class="fa fa-exclamation"></i> Unarchive', href: 'javascript:;'
                                 },
                                 {
                                     divider: true
                                 },
                                 {
-                                    text: '<i class="fa fa-trash"></i> Delete', url: 'javascript:;'
+                                    text: '<i class="fa fa-trash"></i> Delete',
+                                    href: erp_contacts.backend_title_path(title),
+                                    'data-method' => 'delete'
                                 }
                             ]
                         ) %>
