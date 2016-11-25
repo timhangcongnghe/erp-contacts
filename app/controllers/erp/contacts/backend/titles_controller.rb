@@ -50,7 +50,7 @@ module Erp
         # DELETE /titles/1
         def destroy
           @title.destroy
-          redirect_to erp_contacts.backend_titles_url, notice: 'Title was successfully destroyed.'
+          redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully destroyed.'
         end
     
         private

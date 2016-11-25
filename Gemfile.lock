@@ -4,6 +4,8 @@ PATH
     erp_core (0.1.0)
       devise (~> 4.2.0)
       rails (~> 5.0.0, >= 5.0.0.1)
+      will_paginate
+      will_paginate-bootstrap
 
 PATH
   remote: .
@@ -133,6 +135,9 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    will_paginate (3.1.5)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
