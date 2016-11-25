@@ -1,6 +1,6 @@
 <% content_for :page_toolbar do %>
     <div class="btn-group">
-        <%= link_to 'Create title <i class="fa fa-plus"></i>'.html_safe, erp_contacts.new_backend_title_path, class: "btn btn-sm sbold green" %>
+        <%= link_to '<i class="fa fa-plus"></i> Create title'.html_safe, erp_contacts.new_backend_title_path, class: "btn btn-sm sbold btn-primary" %>
     </div>
 <% end %>
 
@@ -8,35 +8,72 @@
 <div class="portlet light bordered">
     <div class="portlet-title">
         <div class="caption font-green-haze">
-            <i class="icon-pin font-green-haze"></i>
-            <span class="caption-subject bold uppercase"> List of all titles</span>
+            <%= erp_list_actions_button(
+                [
+                    {
+                        text: '<i class="fa fa-check"></i> Archive', url: 'javascript:;'
+                    },
+                    {
+                        text: '<i class="fa fa-exclamation"></i> Unarchive', url: 'javascript:;'
+                    },
+                    {
+                        divider: true
+                    },
+                    {
+                        text: '<i class="fa fa-trash"></i> Delete', url: 'javascript:;'
+                    }
+                ]
+            ) %>
+            <%= erp_filters_button(
+                [
+                    {
+                        text: 'Persons', url: 'javascript:;'
+                    },
+                    {
+                        text: 'Companies', url: 'javascript:;', checked: true
+                    },
+                    {
+                        divider: true
+                    },
+                    {
+                        text: 'Customers', url: 'javascript:;'
+                    },
+                    {
+                        text: 'Vendors', url: 'javascript:;'
+                    },
+                    {
+                        divider: true
+                    },
+                    {
+                        text: 'Archived', url: 'javascript:;'
+                    }
+                ]
+            ) %>            
+            <%= erp_columns_button(
+                [
+                    {
+                        text: 'Name', url: 'javascript:;', checked: true
+                    },
+                    {
+                        text: 'Abbreviation', url: 'javascript:;', checked: true
+                    },
+                    {
+                        text: 'Created at', url: 'javascript:;', checked: true
+                    },
+                    {
+                        text: 'Updated at', url: 'javascript:;'
+                    },
+                    {
+                        text: 'Creator', url: 'javascript:;'
+                    }
+                ]
+            ) %>
         </div>
         <div class="actions">
-            <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
+            <a class="btn btn-circle btn-icon-only btn-default fullscreen pl-10" href="javascript:;" data-original-title="" title=""> </a>            
         </div>
     </div>
     <div class="portlet-body">
-        <!--<div class="table-toolbar">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="btn-group">
-                        <%= link_to '<i class="fa fa-plus"></i> New Title'.html_safe, erp_contacts.new_backend_title_path, class: "btn sbold green" %>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="btn-group pull-right">
-                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">
-                          Tools <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:;"><i class="fa fa-print"></i> Print</a></li>
-                            <li><a href="javascript:;"><i class="fa fa-file-pdf-o"></i> Save as PDF</a></li>
-                            <li><a href="javascript:;"><i class="fa fa-file-excel-o"></i> Export to Excel</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>-->
         <table class="table table-hover table-striped table-checkable order-column" id="">
             <thead>
                 <tr>
@@ -69,19 +106,22 @@
                     </td>
                     <td class="center"><%= title.created_at.strftime("%d/%m/%Y") %></td>
                     <td>
-                        <div class="btn-group">
-                            <button class="btn btn-xs white dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                <i class="fa fa-angle-down"></i>
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu">
-                                <li><%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, erp_contacts.edit_backend_title_path(title) %></li>
-                                <li><%= link_to '<i class="fa fa-check"></i> Archived'.html_safe, "" %></li>
-                                <li><%= link_to '<i class="fa fa-exclamation"></i> Unarchive'.html_safe, "" %></li>
-                                <li><%= link_to '<i class="fa fa-copy"></i> Duplicate'.html_safe, "" %></li>
-                                <li class="divider"></li>
-                                <li><%= link_to '<i class="fa fa-close"></i> Delete'.html_safe, erp_contacts.backend_title_path(title), method: :delete, data: {confirm: 'Are you sure?'} %></li>
-                            </ul>
-                        </div>
+                        <%= erp_row_actions_button(
+                            [
+                                {
+                                    text: '<i class="fa fa-check"></i> Archive', url: 'javascript:;'
+                                },
+                                {
+                                    text: '<i class="fa fa-exclamation"></i> Unarchive', url: 'javascript:;'
+                                },
+                                {
+                                    divider: true
+                                },
+                                {
+                                    text: '<i class="fa fa-trash"></i> Delete', url: 'javascript:;'
+                                }
+                            ]
+                        ) %>
                     </td>
                 </tr>
                 <% end %>
