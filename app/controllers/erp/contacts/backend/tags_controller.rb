@@ -5,6 +5,12 @@ module Erp
     module Backend
       class TagsController < Erp::Backend::BackendController
         before_action :set_tag, only: [:show, :edit, :update, :destroy]
+        before_action :default_breadcrumb
+        
+        # add default breadcrumb
+        def default_breadcrumb
+          add_breadcrumb t('contacts.tag.tags'), erp_contacts.backend_tags_path
+        end
     
         # GET /tags
         def index
@@ -17,11 +23,13 @@ module Erp
     
         # GET /tags/new
         def new
+          add_breadcrumb t('contacts.tag.create')
           @tag = Tag.new
         end
     
         # GET /tags/1/edit
         def edit
+          add_breadcrumb t('contacts.tag.edit')
         end
     
         # POST /tags
