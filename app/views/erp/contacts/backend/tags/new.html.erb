@@ -3,13 +3,10 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-pencil-square-o font-green"></i>
-            <span class="caption-subject bold font-green uppercase">Create tag</span>
+            <span class="caption-subject bold font-green uppercase"><%= t(:create)%> tag</span>
         </div>
         <div class="actions">
-            <a href="javascript:;" class="btn btn-circle btn-outline green">
-                <i class="fa fa-pencil"></i> Edit </a>
-            <a href="javascript:;" class="btn btn-circle blue-steel btn-outline">
-                <i class="fa fa-plus"></i> Create </a>
+            <%= link_to "<i class=\"fa fa-list-ul\"></i> #{t(:listing_tags)}".html_safe, erp_contacts.backend_tags_path, class: "btn btn-circle btn-outline green" %>
             <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;"> </a>
         </div>
     </div>
