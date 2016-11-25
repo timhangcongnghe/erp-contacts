@@ -1,36 +1,17 @@
 <%= form_for([erp_contacts, :backend, tag], html: {class: "form-horizontal"}) do |f| %>
-    <% if tag.errors.any? %>
-        <div class="alert alert-warning">
-            <h4>
-            <i class="fa fa-warning"></i> Warning!
-            </h4>
-            <div id="error_explanation">
-                <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
-          
-                <ul>
-                    <% tag.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
-    <% end %>
-    
     <div class="form-body">
-        <div class="form-group form-md-line-input">
-            <label class="col-md-2 control-label" for="form_control_1"><%= t(:name) %></label>
-            <div class="col-md-10">
-                <%= f.text_field :name, class: "form-control", placeholder: "#{t(:placeholder_enter_name)}" %>
-                <div class="form-control-focus"> </div>
-                <span class="help-block"><%= t(:textfield_required) %></span>
-            </div>
-        </div>
+        <%= erp_text_field name: 'tag[name]',
+            value: tag.name,                   
+            label: t('contacts.tag.name'),
+            help: t('contacts.tag.textfield_required'),
+            placeholder: t('contacts.tag.placeholder_enter_name')
+        %>
     </div>
     <div class="form-actions">
         <div class="row">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn sbold blue"><%= t(:save) %> <i class="fa fa-save"></i></button>
-                <button type="button" class="btn sbold red"><i class="fa fa-times"></i> <%= t(:discard) %></button>
+                <button type="submit" class="btn sbold blue"><%= t('contacts.tag.save') %> <i class="fa fa-save"></i></button>
+                <%= link_to "<i class=\"fa fa-times\"></i>  #{t('contacts.tag.discard')}".html_safe, erp_contacts.backend_tags_path, class: "btn sbold red" %>
             </div>
         </div>
     </div>
