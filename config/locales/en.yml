@@ -1,2 +1,26 @@
 en:
-  Contacts: "Contacts"
+  contacts:
+    contacts: "Contacts"
+    tag:
+      tags: "Tags"
+      name: "Name"
+      status: "Status"
+      creator: "Creator"
+      created_at: "Created At"
+      actions: "Actions"
+      create: "Create tag"
+      
+      add_new_tag: "Add New Tag"
+      new: "New"
+      edit: "Edit tag"
+      detete: "Delete"
+      active: "Active"
+      inactive: "Inactive"
+      
+      save: "Save"
+      cancel: "Cancel"
+      discard: "Discard"
+      listing_tags: "Listing Tags"
+      
+      placeholder_enter_name: "Enter name..."
+      textfield_required: "This field is required..."
