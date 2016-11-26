@@ -1,0 +1,55 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+    <thead>
+        <tr>
+            <th>
+                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                    <input type="checkbox" class="group-checkable"/>
+                    <span></span>
+                </label>
+            </th>
+            <th><%= t(:title) %></th>
+            <th><%= t(:abbreviation) %></th>
+            <th><%= t(:archive) %></th>
+            <th><%= t(:created_at) %></th>
+            <th width="1%"><%= t(:actions) %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.each do |title| %>
+        <tr class="odd gradeX">
+            <td width='1%'>
+                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                    <input type="checkbox" class="checkboxes" value="1" />
+                    <span></span>
+                </label>
+            </td>
+            <td><%= link_to title.title, erp_contacts.edit_backend_title_path(title) %></td>
+            <td><%= title.abbreviation %></td>
+            <td>
+                <span class="label label-sm label-success">Archived</span>
+            </td>
+            <td class="center"><%= title.created_at.strftime("%d/%m/%Y") %></td>
+            <td>
+                <%= erp_row_actions_button(
+                    [
+                        {
+                            text: '<i class="fa fa-check"></i> Archive', href: 'javascript:;'
+                        },
+                        {
+                            text: '<i class="fa fa-exclamation"></i> Unarchive', href: 'javascript:;'
+                        },
+                        {
+                            divider: true
+                        },
+                        {
+                            text: '<i class="fa fa-trash"></i> Delete',
+                            href: erp_contacts.backend_title_path(title),
+                            'data-method' => 'delete'
+                        }
+                    ]
+                ) %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
