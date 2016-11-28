@@ -12,7 +12,13 @@ module Erp
     
         # GET /titles
         def index
+        end
+        
+        # POST /titles/list
+        def list
           @titles = Title.backend_datatable(params).paginate(:page => params[:page], :per_page => 3)
+          
+          render layout: nil
         end
     
         # GET /titles/new

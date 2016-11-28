@@ -1,12 +1,15 @@
+<% content_for :title do %>
+    Titles
+<% end %>
+
 <% content_for :page_toolbar do %>
     <div class="btn-group">
         <%= link_to '<i class="fa fa-plus"></i> Create title'.html_safe, erp_contacts.new_backend_title_path, class: "btn btn-sm sbold btn-primary" %>
     </div>
 <% end %>
 
-<%= erp_list_container(
-    view: "backend/titles/list",
-    data: @titles,
+<%= erp_datalist(
+    url: erp_contacts.list_backend_titles_path,
     actions: [
         {
             text: '<i class="fa fa-check"></i> Archive', url: 'javascript:;'
@@ -23,42 +26,101 @@
     ],
     filters: [
         {
-            text: 'Persons', url: 'javascript:;'
+            text: 'Persons', name: 'is_person', value: true, checked: true
         },
         {
-            text: 'Companies', url: 'javascript:;', checked: true
-        },
-        {
-            divider: true
-        },
-        {
-            text: 'Customers', url: 'javascript:;'
-        },
-        {
-            text: 'Vendors', url: 'javascript:;'
+            text: 'Companies', name: 'is_company', value: true, checked: true
         },
         {
             divider: true
         },
         {
-            text: 'Archived', url: 'javascript:;'
+            text: 'Customers', name: 'is_customer', value: true
+        },
+        {
+            text: 'Vendors', name: 'is_vendor', value: true, checked: true
+        },
+        {
+            divider: true
+        },
+        {
+            text: 'Archived', name: 'is_archived', value: true, checked: true
         }
     ],
     columns: [
         {
-            text: 'Name', url: 'javascript:;', checked: true
+            text: 'Name', name: 'name', value: true, checked: true
         },
         {
-            text: 'Abbreviation', url: 'javascript:;', checked: true
+            text: 'Abbreviation', name: 'abbreviation', value: true, checked: true
         },
         {
-            text: 'Created at', url: 'javascript:;', checked: true
+            text: 'Created at', name: 'created_at', value: true, checked: true
         },
         {
-            text: 'Updated at', url: 'javascript:;'
+            text: 'Updated at', name: 'updated_at', value: true, checked: true
         },
         {
-            text: 'Creator', url: 'javascript:;'
+            text: 'Creator', name: 'creator', value: true, checked: true
+        }
+    ]    
+) %>
+    
+    
+<%= erp_datalist(
+    url: erp_contacts.list_backend_titles_path,
+    actions: [
+        {
+            text: '<i class="fa fa-check"></i> Archive', url: 'javascript:;'
+        },
+        {
+            text: '<i class="fa fa-exclamation"></i> Unarchive', url: 'javascript:;'
+        },
+        {
+            divider: true
+        },
+        {
+            text: '<i class="fa fa-trash"></i> Delete', url: 'javascript:;'
+        }
+    ],
+    filters: [
+        {
+            text: 'Persons', name: 'is_person', value: true, checked: true
+        },
+        {
+            text: 'Companies', name: 'is_company', value: true, checked: true
+        },
+        {
+            divider: true
+        },
+        {
+            text: 'Customers', name: 'is_customer', value: true
+        },
+        {
+            text: 'Vendors', name: 'is_vendor', value: true, checked: true
+        },
+        {
+            divider: true
+        },
+        {
+            text: 'Archived', name: 'is_archived', value: true, checked: true
+        }
+    ],
+    columns: [
+        {
+            text: 'Name', name: 'name', value: true, checked: true
+        },
+        {
+            text: 'Abbreviation', name: 'abbreviation', value: true, checked: true
+        },
+        {
+            text: 'Created at', name: 'created_at', value: true, checked: true
+        },
+        {
+            text: 'Updated at', name: 'updated_at', value: true, checked: true
+        },
+        {
+            text: 'Creator', name: 'creator', value: true, checked: true
         }
     ]    
 ) %>
