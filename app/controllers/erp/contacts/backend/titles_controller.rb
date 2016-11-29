@@ -3,22 +3,20 @@ module Erp
     module Backend
       class TitlesController < Erp::Backend::BackendController
         before_action :set_title, only: [:edit, :update, :destroy]
-        before_action :default_breadcrumb
-        
-        # add default breadcrumb
-        def default_breadcrumb
-          add_breadcrumb t(:Titles), erp_contacts.backend_titles_path
-        end
     
         # GET /titles
         def index
+        end
+        
+        # POST /titles/list
+        def list
           @titles = Title.backend_datatable(params).paginate(:page => params[:page], :per_page => 3)
+          
+          render layout: nil
         end
     
         # GET /titles/new
         def new
-          add_breadcrumb t(:Create)
-          
           @title = Title.new
         end
     
