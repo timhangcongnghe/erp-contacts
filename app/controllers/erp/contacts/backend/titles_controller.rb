@@ -17,8 +17,6 @@ module Erp
     
         # GET /titles/new
         def new
-          add_breadcrumb t(:Create)
-          
           @title = Title.new
         end
     
