@@ -9,6 +9,7 @@ Erp::Contacts::Engine.routes.draw do
 		resources :contacts do
 			collection do
 			  post 'list'
+			  delete 'delete_all'
 			end
 		end
 	end

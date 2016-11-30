@@ -51,10 +51,25 @@ module Erp
           @contact.destroy
           
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_contacts_path, notice: 'Contact was successfully destroyed.' }
             format.json {
               render json: {
                 'message': 'Contact was successfully destroyed.',
+                'type': 'success'
+              }
+            }
+          end          
+        end
+        
+        # DELETE /contacts/delete_all
+        def delete_all
+          @contacts = Contact.where(id: params[:ids])          
+          
+          @contacts.destroy_all
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': 'Contacts were successfully destroyed.',
                 'type': 'success'
               }
             }

@@ -25,7 +25,7 @@
     ],
     actions: [
         {
-            text: '<i class="fa fa-check"></i> Archive', url: 'javascript:;'
+            text: '<i class="fa fa-check"></i> Archive', url: 'aaa'
         },
         {
             text: '<i class="fa fa-exclamation"></i> Unarchive', url: 'javascript:;'
@@ -34,7 +34,10 @@
             divider: true
         },
         {
-            text: '<i class="fa fa-trash"></i> Delete', url: 'javascript:;'
+            text: '<i class="fa fa-trash"></i> Delete',
+            url: erp_contacts.delete_all_backend_contacts_path,
+            data_method: 'DELETE',
+            data_confirm: 'Are you sure?'
         }
     ],
     filters: [
