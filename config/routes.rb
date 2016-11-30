@@ -6,6 +6,10 @@ Erp::Contacts::Engine.routes.draw do
 			end
 		end
 		resources :tags
-		resources :contacts
+		resources :contacts do
+			collection do
+			  post 'list'
+			end
+		end
 	end
 end

@@ -48,7 +48,16 @@ module Erp
         # DELETE /titles/1
         def destroy
           @title.destroy
-          redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully destroyed.'
+
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully destroyed.' }
+            format.json {
+              render json: {
+                'message': 'Title was successfully destroyed.',
+                'type': 'success'
+              }
+            }
+          end
         end
     
         private

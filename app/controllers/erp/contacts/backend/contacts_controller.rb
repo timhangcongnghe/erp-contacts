@@ -8,7 +8,13 @@ module Erp
     
         # GET /contacts
         def index
+        end
+        
+        # POST /contacts/list
+        def list
           @contacts = Contact.all.paginate(:page => params[:page], :per_page => 3)
+          
+          render layout: nil
         end
     
         # GET /contacts/new
@@ -43,7 +49,16 @@ module Erp
         # DELETE /contacts/1
         def destroy
           @contact.destroy
-          redirect_to erp_contacts.backend_titles_path, notice: 'Contact was successfully destroyed.'
+          
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_contacts_path, notice: 'Contact was successfully destroyed.' }
+            format.json {
+              render json: {
+                'message': 'Contact was successfully destroyed.',
+                'type': 'success'
+              }
+            }
+          end          
         end
     
         private
