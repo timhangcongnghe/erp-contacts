@@ -1,8 +1,8 @@
-<%= form_for([erp_contacts, :backend, tag]) do |f| %>
+<%= form_for([erp_contacts, :backend, tag], html: {class: ""}) do |f| %>
     <div class="form-body">
         <div class="row">
             <div class="col-md-6">
-                <%= erp_form_control("password", {
+                <%= erp_form_control("checkbox", {
                     name: 'tag[name]',
                     id: 'tag_name',
                     label: t('contacts.tag.name'),
@@ -11,14 +11,7 @@
                 }) %>
             </div>
             <div class="col-md-6">
-                <%= erp_form_control("select", {
-                    name: 'tag[name]',
-                    id: 'tag_name',
-                    label: t('contacts.tag.name'),
-                    data: [
-                        {  }
-                    ]
-                }) %>
+                
             </div>
         </div>
     </div>
