@@ -1,7 +1,5 @@
 <% content_for :page_toolbar do %>
-    <div class="btn-group">
-        <%= link_to (t('contacts.tag.create') + ' <i class="fa fa-plus"></i>').html_safe, erp_contacts.new_backend_tag_path, class: "btn btn-sm sbold green" %>
-    </div>
+<%= erp_form_control("create", { name: t("contacts.tag.create"), href: erp_contacts.new_backend_tag_path }) %>
 <% end %>
 
 <!-- BEGIN EXAMPLE TABLE PORTLET-->
