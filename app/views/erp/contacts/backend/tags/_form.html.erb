@@ -4,10 +4,9 @@
             <div class="col-md-6">
                 <%= erp_form_control("checkbox", {
                     name: 'tag[name]',
-                    id: 'tag_name',
+                    id: "tag_name",
                     label: t('contacts.tag.name'),
-                    help: t('contacts.tag.textfield_required'),
-                    placeholder: t('contacts.tag.placeholder_enter_name')
+                    options: [{value: "1", text: "Checkbox 1"}, {value: "2", text: "Checkbox 2"}]
                 }) %>
             </div>
             <div class="col-md-6">
