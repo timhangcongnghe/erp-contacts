@@ -1,32 +1,16 @@
-<%= form_for([erp_contacts, :backend, contact], html: {class: "form-horizontal"}) do |f| %>
+<%= form_for([erp_contacts, :backend, contact]) do |f| %>
     <div class="form-body">
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group form-md-radios">
-                    <label class="col-md-2 control-label" for="title_title">Type</label>
-                    <div class="col-md-10">
-                        <div class="md-radio-inline">
-                            <div class="md-radio">
-                                <input type="radio" id="radio6" name="radio2" class="md-radiobtn">
-                                <label for="radio6">
-                                    <span></span>
-                                    <span class="check"></span>
-                                    <span class="box"></span> Person </label>
-                            </div>
-                            <div class="md-radio">
-                                <input type="radio" id="radio7" name="radio2" class="md-radiobtn" checked>
-                                <label for="radio7">
-                                    <span></span>
-                                    <span class="check"></span>
-                                    <span class="box"></span> Company </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%= erp_form_control("radio", {
+                    label: t('type'),
+                    radios: [['Individual','person'],['Company','company']]
+                })
+                %>
                 
                 <%= erp_form_control("text", {
-                    name: 'name',
-                    value: '',                   
+                    name: 'contact[name]',
+                    value: contact.name,                   
                     label: 'Name',
                     help: 'This field is required...',
                     placeholder: 'Enter full name...'
@@ -34,216 +18,181 @@
             </div>
             
             <div class="col-md-6">
+                <%= erp_form_control("image", {
+                    image_url: '',
+                    name: ''
+                })
+                %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label col-md-2"></label>
-                    <div class="col-md-10">
-                        <div class="portlet-body">
-                            <div class="mt-element-overlay">
-                                <div class="mt-overlay-custom mt-overlay-4 mt-overlay-4-icons fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-new thumbnail" style="width: 150px; height: 110px;">
-                                        <img src="/backend/assets/global/img/text-no-image.png" alt="" /> </div>
-                                    <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput" style="width: 150px; height: 110px;"> </div>
-                                    <ul class="mt-info">
-                                        <li>
-                                            <span class="btn-outline btn-file">
-                                            <span class="btn default green fileinput-new"> <i class="icon-link"></i></span>
-                                            <span class="btn default green fileinput-exists"> <i class="fa fa-pencil-square-o"></i> </span>
-                                            <input type="file" name="...">
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span class="btn-outline btn-file">
-                                            <span class="btn default green fileinput-exists" data-dismiss="fileinput"> <i class="fa fa-remove"></i> </span>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <label class="control-label">Company</label>
+                    <select class="form-control select2" id="form_control_1">
+                        <option></option>
+                        <optgroup label="Pacific Time Zone">
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <%= erp_form_control("time", {
+                    label: t('birthday'),
+                    name: 'contact[bithday]',
+                    value: contact.bithday
+                }) %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <%= erp_form_control("text", {
+                    name: '',
+                    value: '',                   
+                    label: t(:address),
+                    help: 'This field is required...',
+                    placeholder: "Enter address 1..."
+                }) %>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Title</label>
+                    <select class="form-control select2" id="form_control_1">
+                        <option value=""></option>
+                        <option value="1">Mr</option>
+                        <option value="2">Ms</option>
+                        <option value="3">Mrs</option>
+                        <option value="4">Sir</option>
+                    </select>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="form_control_1">Company</label>
-                    <div class="col-md-10">
-                        <select class="form-control" id="form_control_1">
-                            <option></option>
-                            <optgroup label="Pacific Time Zone">
-                                <option value="CA">California</option>
-                                <option value="NV">Nevada</option>
-                                <option value="OR">Oregon</option>
-                                <option value="WA">Washington</option>
-                            </optgroup>
-                        </select>
-                        <div class="form-control-focus"> </div>
-                    </div>
-                </div>
+                <%= erp_form_control("text", {
+                    name: '',
+                    value: '',                   
+                    label: t(:address_2),
+                    help: 'This field is required...',
+                    placeholder: "Enter address 2..."
+                }) %>
             </div>
             <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="control-label col-md-2">Birthday</label>
-                    <div class="col-md-10">
-                        <input class="form-control form-control-inline date-picker" size="16" type="text" value="" />
-                        <span class="help-block"> Select date </span>
-                    </div>
-                </div>
+                <%= erp_form_control("text", {
+                    name: '',
+                    value: '',                   
+                    label: t(:job_position),
+                    help: 'This field is required...',
+                    placeholder: "E.g. Sales Director"
+                }) %>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Address</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Enter address 1...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Title</label>
-                    <div class="col-md-10">
-                        <select class="form-control" id="form_control_1">
-                            <option value=""></option>
-                            <option value="">Mr</option>
-                            <option value="">Ms</option>
-                            <option value="">Mrs</option>
-                            <option value="">Sir</option>
-                        </select>
-                        <div class="form-control-focus"> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title"></label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Enter address 2...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Job Position</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="E.g. Sales Director">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title"></label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Enter city...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
+            <div class="col-md-6 padding-clear">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <%= erp_form_control("text", {
+                            name: '',
+                            value: '',                   
+                            label: 'City',
+                            placeholder: "Enter city..."
+                        }) %>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control" id="form_control_1">
+                        <div class="form-group">
+                            <label class="control-label">Title</label>
+                            <select class="form-control select2" id="form_control_1">
+                                <option value=""></option>
+                                <option value="1">California</option>
+                                <option value="2">...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <%= erp_form_control("text", {
+                            name: '',
+                            value: '',                   
+                            label: t('zip_code'),
+                            help: 'This field is required...',
+                            placeholder: "Enter ZIP Code..."
+                        }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <%= erp_form_control("text", {
+                    name: '',
+                    value: '',                   
+                    label: t(:phone),
+                    help: 'This field is required...',
+                    placeholder: "Enter phone number..."
+                }) %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label class="control-label">Country</label>
+                        <select class="form-control select2" id="form_control_1">
                             <option value=""></option>
-                            <option value="">California</option>
+                            <option value="1">Vietnam</option>
+                            <option value="2">USA</option>
+                            <option value="1">England</option>
+                            <option value="2">Australia</option>
                         </select>
-                        <div class="form-control-focus"> </div>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Zip code...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Phone</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Enter phone number...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
+                <%= erp_form_control("text", {
+                    name: '',
+                    value: '',                   
+                    label: t(:mobile),
+                    help: 'This field is required...',
+                    placeholder: "Enter mobile number..."
+                }) %>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title"></label>
-                    <div class="col-md-10">
-                        <select class="form-control" id="form_control_1">
-                            <option value=""></option>
-                            <option value="">Vietnam</option>
-                            <option value="">Thailand</option>
-                            <option value="">Laos</option>
-                            <option value="">Cambodia</option>
-                        </select>
-                        <div class="form-control-focus"> </div>
-                    </div>
-                </div>
+                <%= erp_form_control("text", {
+                    name: '',
+                    value: '',                   
+                    label: t(:website),
+                    help: 'This field is required...',
+                    placeholder: "E.g. https://www.globalnaturesoft.com"
+                }) %>
             </div>
             <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Mobile</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Enter mobile number...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
+                <%= erp_form_control("text", {
+                    name: '',
+                    value: '',                   
+                    label: t(:fax),
+                    help: 'This field is required...',
+                    placeholder: "Enter fax..."
+                }) %>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Website</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Ex: https://www.globalnaturesoft.com">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
+                <div class="form-group">
+                    <label class="control-label">Tags</label>
+                    <input type="text" class="form-control" value="" data-role="tagsinput" />
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Fax</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Enter fax...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="control-label col-md-2">Tags</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" value="" data-role="tagsinput">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group form-md-line-input">
-                    <label class="col-md-2 control-label" for="title_title">Email</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" id="contact[name]" name="contact[name]" value="" placeholder="Enter email...">
-                        <div class="form-control-focus"> </div>
-                        <span class="help-block">This field is required...</span>
-                    </div>
-                </div>
+                <%= erp_form_control("email", {
+                    name: '',
+                    value: '',                   
+                    label: t(:email_address),
+                    help: "user@domain.com",
+                    placeholder: "Enter your email..."
+                }) %>
             </div>
         </div>
         
@@ -267,10 +216,14 @@
                              <a href="javascript:;" class="btn btn-xs blue"> Create <i class="icon-plus"> </i></a>
                         </div>
                         <div class="tab-pane" id="tab_1">
-                            <div class="form-group form-md-line-input has-success">
+                            <div class="row">
                                 <div class="col-md-12">
-                                    <textarea class="form-control" rows="2" placeholder="Enter more text"></textarea>
-                                    <div class="form-control-focus"> </div>
+                                    <%= erp_form_control("textarea", {
+                                        name: '',
+                                        value: '',                   
+                                        label: '',
+                                        placeholder: "Internal note..."
+                                    }) %>
                                 </div>
                             </div>
                         </div>
@@ -359,4 +312,5 @@
         </div>
 
     </div>
+    <button type="submit" class="btn btn-sm sbold blue"><%= t('save') %> <i class="fa fa-save"></i></button>
 <% end %>
