@@ -3,14 +3,11 @@
         <div class="row">
             <div class="col-md-6">
                 <%= erp_form_control("radio", {
-                    label: t('type'),
                     radios: [['Individual','person'],['Company','company']]
-                })
-                %>
-                
+                }) %>                
                 <%= erp_form_control("text", {
                     name: 'contact[name]',
-                    value: contact.name,                   
+                    value: contact.name,
                     label: 'Name',
                     help: 'This field is required...',
                     placeholder: 'Enter full name...'
@@ -21,12 +18,11 @@
                 <%= erp_form_control("image", {
                     image_url: '',
                     name: ''
-                })
-                %>
+                }) %>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label class="control-label">Company</label>
                     <select class="form-control select2" id="form_control_1">
@@ -40,7 +36,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("time", {
                     label: t('birthday'),
                     name: 'contact[birthday]',
@@ -49,7 +45,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("text", {
                     name: '',
                     value: '',                   
@@ -58,21 +54,17 @@
                     placeholder: "Enter address 1..."
                 }) %>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">Title</label>
-                    <select class="form-control select2" id="form_control_1">
-                        <option value=""></option>
-                        <option value="1">Mr</option>
-                        <option value="2">Ms</option>
-                        <option value="3">Mrs</option>
-                        <option value="4">Sir</option>
-                    </select>
-                </div>
+            <div class="col-md-12">
+                <%= erp_form_control("dataselect", {
+                    name: '',
+                    value: '',
+                    label: t(:title),
+                    url: '////'
+                }) %>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("text", {
                     name: '',
                     value: '',                   
@@ -81,7 +73,7 @@
                     placeholder: "Enter address 2..."
                 }) %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("text", {
                     name: '',
                     value: '',                   
@@ -92,7 +84,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 padding-clear">
+            <div class="col-md-12 padding-clear">
                 <div class="form-group">
                     <div class="col-md-4">
                         <%= erp_form_control("text", {
@@ -123,7 +115,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("text", {
                     name: '',
                     value: '',                   
@@ -134,7 +126,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-group">
                     <div class="form-group">
                         <label class="control-label">Country</label>
@@ -148,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("text", {
                     name: '',
                     value: '',                   
@@ -159,7 +151,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("text", {
                     name: '',
                     value: '',                   
@@ -168,7 +160,7 @@
                     placeholder: "E.g. https://www.globalnaturesoft.com"
                 }) %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("text", {
                     name: '',
                     value: '',                   
@@ -179,13 +171,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label class="control-label">Tags</label>
                     <input type="text" class="form-control" value="" data-role="tagsinput" />
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <%= erp_form_control("email", {
                     name: '',
                     value: '',                   
@@ -195,125 +187,5 @@
                 }) %>
             </div>
         </div>
-        
-        <!-- TAB -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="tabbable-line boxless tabbable-reversed">
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#tab_0" data-toggle="tab"> Contacts & Addresses </a>
-                        </li>
-                        <li>
-                            <a href="#tab_1" data-toggle="tab"> Internal Note </a>
-                        </li>
-                        <li>
-                            <a href="#tab_2" data-toggle="tab"> Sales & Purchases </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_0">
-                             <a href="javascript:;" class="btn btn-xs blue"> Create <i class="icon-plus"> </i></a>
-                        </div>
-                        <div class="tab-pane" id="tab_1">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <%= erp_form_control("textarea", {
-                                        name: '',
-                                        value: '',                   
-                                        label: '',
-                                        placeholder: "Internal note..."
-                                    }) %>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab_2">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="caption font-sunglo">
-                                        <i class="fa fa-line-chart font-sunglo"></i>
-                                        <span class="caption-subject bold uppercase"> Sale</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="caption font-sunglo">
-                                        <i class="fa fa-opencart font-sunglo"></i>
-                                        <span class="caption-subject bold uppercase"> Purchase</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-3 control-label">Is a Customer</label>
-                                        <div class="col-md-9 md-checkbox-inline">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" id="checkbox6" class="md-check">
-                                                <label for="checkbox6">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-3 control-label">Is a Vendor</label>
-                                        <div class="col-md-9 md-checkbox-inline">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" id="checkbox7" class="md-check">
-                                                <label for="checkbox7">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-3 control-label" for="form_control_1">Salesperson</label>
-                                        <div class="col-md-9">
-                                            <select class="form-control" id="form_control_1">
-                                                <option value=""></option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
-                                                <option value="">Option 3</option>
-                                                <option value="">Option 4</option>
-                                            </select>
-                                            <div class="form-control-focus"> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="caption font-sunglo">
-                                        <span class="caption-subject bold uppercase"> Misc</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group form-md-line-input">
-                                        <label class="col-md-3 control-label">Internal Reference</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
-    <%= erp_component('button/save', {
-        text: t('contacts.title.submit'),
-        class: ''
-    }) %>
 <% end %>
