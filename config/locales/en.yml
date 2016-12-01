@@ -6,6 +6,8 @@ en:
     
     contact:
       create: "Create contact"
+      individual: "Individual"
+      company: "Company"
     title:
       create: "Create title"
       
