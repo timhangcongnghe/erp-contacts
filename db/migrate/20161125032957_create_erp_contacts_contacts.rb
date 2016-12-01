@@ -3,7 +3,7 @@ class CreateErpContactsContacts < ActiveRecord::Migration[5.0]
     create_table :erp_contacts_contacts do |t|
       t.string :name
       t.string :image_url
-      t.string :type
+      t.string :contact_type
       t.string :address_1
       t.string :address_2
       t.string :city
