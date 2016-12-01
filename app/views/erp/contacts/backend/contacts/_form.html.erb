@@ -312,5 +312,8 @@
         </div>
 
     </div>
-    <button type="submit" class="btn btn-sm sbold blue"><%= t('save') %> <i class="fa fa-save"></i></button>
+    <%= erp_component('button/save', {
+        text: t('contacts.title.submit'),
+        class: ''
+    }) %>
 <% end %>

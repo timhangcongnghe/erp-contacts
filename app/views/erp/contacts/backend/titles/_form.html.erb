@@ -20,8 +20,15 @@
     <div class="form-actions">
         <div class="row">
             <div class="col-md-offset-2 col-md-10">
-                <%= button_tag "<i class=\"fa fa-save\"></i> #{t(:submit)}".html_safe, class: "btn sbold blue"%>
-                <%= link_to "<i class=\"fa fa-times\"></i> #{t(:cancel)}".html_safe, erp_contacts.backend_titles_path, class: "btn sbold red" %>
+                <%= erp_component('button/save', {
+                    text: t('contacts.title.submit'),
+                    class: ''
+                }) %>
+                <%= erp_component('button/cancel', {
+                    text: t('contacts.title.cancel'),
+                    href: erp_contacts.backend_titles_path,
+                    class: ''
+                }) %>
             </div>
         </div>
     </div>

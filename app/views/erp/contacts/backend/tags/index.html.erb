@@ -1,5 +1,9 @@
 <% content_for :page_toolbar do %>
-<%= erp_form_control("create", { name: t("contacts.tag.create"), href: erp_contacts.new_backend_tag_path }) %>
+<%= erp_component('button/create', {
+    text: t('contacts.tag.create'),
+    href: erp_contacts.new_backend_tag_path,
+    class: 'btn-sm'
+}) %>
 <% end %>
 
 <!-- BEGIN EXAMPLE TABLE PORTLET-->

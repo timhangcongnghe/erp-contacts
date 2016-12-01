@@ -7,6 +7,7 @@ en:
     contact:
       create: "Create contact"
     title:
+      create: "Create title"
       
     tag:
       tags: "Tags"

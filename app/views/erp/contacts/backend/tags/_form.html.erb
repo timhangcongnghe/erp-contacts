@@ -2,23 +2,23 @@
     <div class="form-body">
         <div class="row">
             <div class="col-md-6">
-                <%= erp_form_control("checkbox", {
-                    name: 'tag[name]',
-                    id: "tag_name",
-                    label: t('contacts.tag.name'),
-                    options: [{value: "1", text: "Checkbox 1"}, {value: "2", text: "Checkbox 2"}]
-                }) %>
             </div>
             <div class="col-md-6">
-                
             </div>
         </div>
     </div>
     <div class="form-actions">
         <div class="row">
             <div class="col-md-offset-2 col-md-10">
-                <%= erp_form_control("submit", { name: t("contacts.tag.submit") }) %>
-                <%= erp_form_control("cancel", { name: t("contacts.tag.cancel"), href: erp_contacts.backend_tags_path }) %>
+                <%= erp_component('button/save', {
+                    text: t('contacts.tag.submit'),
+                    class: ''
+                }) %>
+                <%= erp_component('button/cancel', {
+                    text: t('contacts.tag.cancel'),
+                    href: erp_contacts.backend_tags_path,
+                    class: ''
+                }) %>
             </div>
         </div>
     </div>
