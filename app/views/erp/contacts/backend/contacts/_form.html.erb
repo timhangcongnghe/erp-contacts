@@ -57,14 +57,16 @@
                     placeholder: "Enter address 1..."
                 }) %>
             </div>
-            <!--<div class="col-md-12">
-                 erp_form_control("dataselect", {
-                    name: '',
-                    value: '',
+            <div class="col-md-12">
+                <%= erp_form_control("dataselect", {
+                    name: 'title_id',
+                    value: '1',
+                    text: 'Mr',
+                    placeholder: '',
                     label: t(:title),
-                    url: '////'
+                    url: erp_contacts.dataselect_backend_titles_path(format: 'json')
                 }) %>
-            </div>-->
+            </div>
             <div class="col-md-6">
                 <%= erp_form_control("text", {
                     name: 'contact[address_2]',

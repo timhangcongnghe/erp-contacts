@@ -3,6 +3,7 @@ Erp::Contacts::Engine.routes.draw do
 		resources :titles do
 			collection do
 			  post 'list'
+			  get 'dataselect'
 			end
 		end
 		resources :tags
