@@ -10,5 +10,10 @@ module Erp::Contacts
         {text: I18n.t('contacts.contact.company'),value: self::TYPE_COMPANY}
       ]
     end
+    
+    def self.search(params)
+      self.all
+    end
+    
   end
 end
