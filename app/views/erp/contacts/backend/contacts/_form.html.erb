@@ -26,18 +26,17 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <label class="control-label">Company</label>
-                    <select class="form-control select2" id="form_control_1">
-                        <option></option>
-                        <optgroup label="Pacific Time Zone">
-                            <option value="CA">California</option>
-                            <option value="NV">Nevada</option>
-                            <option value="OR">Oregon</option>
-                            <option value="WA">Washington</option>
-                        </optgroup>
-                    </select>
-                </div>
+                <%= erp_form_control('select', {
+                    label: t('contacts.contact.company'),
+                    name: 'contact[company_id]',
+                    id: 'contact_company_id',
+                    options: [
+                                {value: 'CA', text: 'California'},
+                                {value: 'NV', text: 'Nevada'},
+                                {value: 'OR', text: 'Oregon'},
+                                {value: 'WA', text: 'Washington'}
+                             ]
+                }) %>
             </div>
             <div class="col-md-12">
                 <%= erp_form_control('datetime', {
