@@ -19,7 +19,17 @@ module Erp::Contacts
         params["filters"].to_unsafe_h.each do |ft|
           ors = []
           ft[1].each do |cond|
-            ors << "#{cond[1]["name"]} = #{cond[1]["value"]}"
+            ors << "LOWER(#{cond[1]["name"]}) LIKE '#{cond[1]["value"]}'"
+          end
+          ands << '('+ors.join(' OR ')+')'
+        end
+      end
+      #keywords
+      if params["keywords"].present?
+        params["keywords"].to_unsafe_h.each do |ft|
+          ors = []
+          ft[1].each do |cond|
+            ors << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
           end
           ands << '('+ors.join(' OR ')+')'
         end
