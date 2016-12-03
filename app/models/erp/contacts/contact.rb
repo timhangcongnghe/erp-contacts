@@ -13,28 +13,28 @@ module Erp::Contacts
     
     # Filters
     def self.filter(query, params)
-      ands = []
+      and_conds = []
       #filters
       if params["filters"].present?
         params["filters"].to_unsafe_h.each do |ft|
-          ors = []
+          or_conds = []
           ft[1].each do |cond|
-            ors << "LOWER(#{cond[1]["name"]}) LIKE '#{cond[1]["value"]}'"
+            or_conds << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
           end
-          ands << '('+ors.join(' OR ')+')'
+          and_conds << '('+or_conds.join(' OR ')+')'
         end
       end
       #keywords
       if params["keywords"].present?
-        params["keywords"].to_unsafe_h.each do |ft|
-          ors = []
-          ft[1].each do |cond|
-            ors << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
+        params["keywords"].to_unsafe_h.each do |kw|
+          or_conds = []
+          kw[1].each do |cond|
+            or_conds << "LOWER(#{cond[1]["name"]}) LIKE '#{cond[1]["value"]}.downcase.strip'"
           end
-          ands << '('+ors.join(' OR ')+')'
+          and_conds << '('+or_conds.join(' OR ')+')'
         end
       end
-      query = query.where(ands.join(' AND ')) if !ands.empty?
+      query = query.where(and_conds.join(' AND ')) if !and_conds.empty?
       
       query
     end

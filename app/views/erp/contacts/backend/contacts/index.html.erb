@@ -19,12 +19,6 @@
     keywords: [
         {
             text: 'Name', name: 'name'
-        },
-        {
-            text: 'Abbreviation', name: 'abbreviation'
-        },
-        {
-            text: 'User', name: 'user'
         }
     ],
     actions: [
@@ -46,18 +40,15 @@
     ],
     filters: [
         {
-            text: 'Persons', name: 'contact_type', value: "person", checked: false
+            text: 'Persons', name: 'contact_type', value: Erp::Contacts::Contact::TYPE_PERSON, checked: false
         },
         {
-            text: 'Companies', name: 'contact_type', value: "company", checked: false
+            text: 'Companies', name: 'contact_type', value: Erp::Contacts::Contact::TYPE_COMPANY, checked: false
         }
     ],
     columns: [
         {
             text: 'Name', name: 'name', value: true, checked: true
-        },
-        {
-            text: 'Abbreviation', name: 'abbreviation', value: true, checked: true
         },
         {
             text: 'Created at', name: 'created_at', value: true, checked: true
