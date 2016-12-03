@@ -17,15 +17,6 @@
                         help: 'This field is required...',
                         placeholder: 'Enter full name...'
                     }) %>
-                </div>
-                <div class="col-md-4">
-                    <%= erp_form_control('image', {
-                        img_src: contact.image_url,
-                        name: 'contact[image_url]'
-                    }) %>
-                </div>
-                
-                <div class="col-md-12">
                     <%= erp_form_control('select', {
                         label: t('contacts.contact.company'),
                         name: 'contact[company_id]',
@@ -38,6 +29,13 @@
                                  ]
                     }) %>
                 </div>
+                <div class="col-md-4">
+                    <%= erp_form_control('image', {
+                        img_src: contact.image_url,
+                        name: 'contact[image_url]'
+                    }) %>
+                </div>
+                
                 <div class="col-md-12">
                     <%= erp_form_control('datetime', {
                         label: t('birthday'),
