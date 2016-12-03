@@ -1,5 +1,5 @@
 <% content_for :title do %>
-    Contacts
+    <%= t('contacts.contact.contacts') %>
 <% end %>
 
 <% content_for :page_title do %>
@@ -18,7 +18,7 @@
     url: erp_contacts.list_backend_contacts_path,
     keywords: [
         {
-            text: 'Name', name: 'name'
+            text: 'contacts.contact.name', name: 'name'
         }
     ],
     actions: [
@@ -51,13 +51,13 @@
             text: 'Name', name: 'name', value: true, checked: true
         },
         {
-            text: 'Created at', name: 'created_at', value: true, checked: true
+            text: 'Email', name: 'email', value: true, checked: true
         },
         {
-            text: 'Updated at', name: 'updated_at', value: true, checked: true
+            text: 'Archive', name: 'archive', value: true, checked: true
         },
         {
-            text: 'Creator', name: 'creator', value: true, checked: true
+            text: 'Created At', name: 'created_at', value: true, checked: true
         }
     ]    
 ) %>    
