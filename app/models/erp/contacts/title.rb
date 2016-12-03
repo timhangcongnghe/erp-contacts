@@ -2,6 +2,8 @@ module Erp::Contacts
   class Title < ApplicationRecord
     belongs_to :user
     
+    validates :title, :presence => true
+    
     def self.backend_datatable(params)
       records = self.all.order("created_at DESC")
       

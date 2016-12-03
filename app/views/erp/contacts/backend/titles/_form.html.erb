@@ -1,35 +1,24 @@
-<%= form_for([erp_contacts, :backend, title]) do |f| %>
-    <div class="form-body">
-        <%= erp_form_control("text", {
-            name: 'title[title]',
-            value: title.title,                   
-            label: t(:title),
-            help: 'Title is required.....',
-            placeholder: "Enter title....."
-        }) %>
-        
-        <%= erp_form_control("text", {
-            name: 'title[abbreviation]',
-            value: title.abbreviation,                   
-            label: t(:abbreviation),
-            help: 'Abbreviation is required.....',
-            placeholder: "Enter abbreviation....."
-        }) %>
-
-    </div>
-    <div class="form-actions">
-        <div class="row">
-            <div class="col-md-offset-2 col-md-10">
-                <%= erp_component('button/save', {
-                    text: t('contacts.title.submit'),
-                    class: ''
-                }) %>
-                <%= erp_component('button/cancel', {
-                    text: t('contacts.title.cancel'),
-                    href: erp_contacts.backend_titles_path,
-                    class: ''
-                }) %>
-            </div>
-        </div>
-    </div>
+<%= form_for([erp_contacts, :backend, title]) do |f| %>    
+    <%= erp_form_control("text", {
+        name: 'title[title]',
+        value: title.title,                   
+        label: t(:title),
+        required: true,
+        errors: title.errors.full_messages_for(:title)
+    }) %>
+    <%= erp_form_control("text", {
+        name: 'title[abbreviation]',
+        value: title.abbreviation,                   
+        label: t(:abbreviation),
+    }) %>
+    <hr>
+    <%= erp_component('button/save', {
+        text: t('contacts.title.submit'),
+        class: ''
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('contacts.title.cancel'),
+        href: erp_contacts.backend_titles_path,
+        class: ''
+    }) %>
 <% end %>

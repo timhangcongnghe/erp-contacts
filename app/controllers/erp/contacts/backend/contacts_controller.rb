@@ -16,16 +16,16 @@ module Erp
           
           render layout: nil
         end
-    
+
         # GET /contacts/new
         def new
           @contact = Contact.new
         end
-    
+  
         # GET /contacts/1/edit
         def edit
         end
-    
+
         # POST /contacts
         def create
           @contact = Contact.new(contact_params)
@@ -36,7 +36,7 @@ module Erp
             render :new
           end
         end
-    
+
         # PATCH/PUT /contacts/1
         def update
           if @contact.update(contact_params)
@@ -45,7 +45,7 @@ module Erp
             render :edit
           end
         end
-    
+
         # DELETE /contacts/1
         def destroy
           @contact.destroy
