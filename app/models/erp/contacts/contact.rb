@@ -36,14 +36,14 @@ module Erp::Contacts
       end
       query = query.where(and_conds.join(' AND ')) if !and_conds.empty?
       
-      query
+      return query
     end
     
     def self.search(params)
       query = self.all
       query = self.filter(query, params)
-      
-      query
+
+      return query
     end
     
   end

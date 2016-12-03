@@ -12,7 +12,7 @@ module Erp
         
         # POST /contacts/list
         def list
-          @contacts = Contact.search(params).paginate(:page => params[:page], :per_page => 3)
+          @contacts = Contact.search(params).paginate(:page => params[:page], :per_page => 5)
           
           render layout: nil
         end
