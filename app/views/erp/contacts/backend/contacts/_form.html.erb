@@ -18,7 +18,9 @@
                                     value: contact.name,
                                     label: 'Name',
                                     help: 'This field is required...',
-                                    placeholder: 'Enter full name...'
+                                    placeholder: 'Enter full name...',
+                                    required: true,
+                                    errors: contact.errors.full_messages_for(:name)
                                 }) %>
                                 <%= erp_form_control('select', {
                                     label: t('contacts.contact.company'),
@@ -134,7 +136,9 @@
                             value: contact.email,                   
                             label: t(:email_address),
                             help: "user@domain.com",
-                            placeholder: "Enter your email..."
+                            placeholder: "Enter your email...",
+                            required: false,
+                            errors: contact.errors.full_messages_for(:email)
                         }) %>
         
                         <%= erp_form_control("text", {
