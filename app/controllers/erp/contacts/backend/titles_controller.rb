@@ -41,7 +41,11 @@ module Erp
               }
             end
           else
-            render :new
+            if request.xhr?
+              render '_form', layout: nil, locals: {title: @title}
+            else
+              render :new
+            end            
           end
         end
     
