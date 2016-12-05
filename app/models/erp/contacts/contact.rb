@@ -3,6 +3,8 @@ module Erp::Contacts
     validates :name, :presence => true
     validates_format_of :email, :allow_blank => true, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => " is invalid (Eg. 'user@domain.com')"
     
+    belongs_to :title
+    
     # class const
     TYPE_PERSON = 'person'
     TYPE_COMPANY = 'company'
@@ -51,6 +53,11 @@ module Erp::Contacts
       query = self.filter(query, params)
       
       return query
+    end
+    
+    # display contact title
+    def display_title
+      title.present? ? title.display_title : ''
     end
     
   end

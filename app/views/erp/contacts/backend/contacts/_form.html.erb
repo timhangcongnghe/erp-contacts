@@ -1,6 +1,5 @@
 <%= form_for([erp_contacts, :backend, contact]) do |f| %>
-    <div class="form-body">
-        
+    <div class="form-body">        
         <div class="row">
             <div class="col-md-6">
                 <div class="portlet light bordered">
@@ -158,12 +157,17 @@
                         }) %>
                         
                         <%= erp_form_control("dataselect", {
-                            name: 'title_id',
-                            value: '1',
-                            text: 'Mr',
+                            name: 'contact[title_id]',
+                            value: contact.title_id,
+                            text: contact.display_title,
                             placeholder: '',
                             label: t(:title),
-                            url: erp_contacts.dataselect_backend_titles_path(format: 'json')
+                            url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
+                            create: {
+                                url: erp_contacts.new_backend_title_url,
+                                title: 'Create new title',
+                                input_selector: 'input[name="title[title]"]'
+                            }
                         }) %>
         
                         <div class="form-group">

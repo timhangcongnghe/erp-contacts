@@ -38,10 +38,10 @@ module Erp::Contacts
       
       if keyword.present?
         keyword = keyword.strip.downcase
-        query = query.where('LOWER(title) LIKE ?', "%#{keyword}%")
+        query = query.where('LOWER(title) LIKE ? OR LOWER(abbreviation) LIKE ?', "%#{keyword}%", "%#{keyword}%")
       end
       
-      query = query.limit(15).map{|title| {value: title.id, text: title.title} }
+      query = query.limit(15).map{|title| {value: title.id, text: title.display_title} }
     end
     
     def archive
@@ -58,6 +58,11 @@ module Erp::Contacts
     
     def unarchive_all
 			update_all(archive: true)
+		end
+    
+    # display title
+    def display_title
+			abbreviation.present? ? abbreviation : title
 		end
     
   end

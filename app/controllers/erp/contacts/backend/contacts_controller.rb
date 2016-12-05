@@ -20,6 +20,7 @@ module Erp
         # GET /contacts/new
         def new
           @contact = Contact.new
+          @contact.contact_type = Contact::TYPE_PERSON
         end
   
         # GET /contacts/1/edit
@@ -83,7 +84,7 @@ module Erp
     
           # Only allow a trusted parameter "white list" through.
           def contact_params
-            params.fetch(:contact, {}).permit(:name, :image_url, :contact_type, :address_1, :address_2, :city, :zip, :website, :job_position, :phone, :mobile, :fax, :email, :birthday, :internal_note)
+            params.fetch(:contact, {}).permit(:name, :title_id, :image_url, :contact_type, :address_1, :address_2, :city, :zip, :website, :job_position, :phone, :mobile, :fax, :email, :birthday, :internal_note)
           end
       end
     end

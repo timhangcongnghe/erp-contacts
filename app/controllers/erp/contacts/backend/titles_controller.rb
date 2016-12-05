@@ -31,7 +31,15 @@ module Erp
           @title.user = current_user
     
           if @title.save
-            redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully created.'
+            if !params.to_unsafe_hash[:dataselect]
+              redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully created.'
+            else
+              render json: {
+                status: 'success',
+                text: @title.title,
+                value: @title.id
+              }
+            end
           else
             render :new
           end
