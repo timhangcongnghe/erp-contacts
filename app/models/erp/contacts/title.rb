@@ -1,7 +1,6 @@
 module Erp::Contacts
   class Title < ApplicationRecord
     belongs_to :user
-    
     validates :title, :presence => true
     
     # Filters
@@ -45,19 +44,19 @@ module Erp::Contacts
     end
     
     def archive
-			update_columns(archive: false)
+			update_columns(archived: false)
 		end
     
     def unarchive
-			update_columns(archive: true)
+			update_columns(archived: true)
 		end
     
     def archive_all
-			update_all(archive: false)
+			update_all(archived: false)
 		end
     
     def unarchive_all
-			update_all(archive: true)
+			update_all(archived: true)
 		end
     
     # display title

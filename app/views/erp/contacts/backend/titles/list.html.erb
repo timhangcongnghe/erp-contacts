@@ -37,7 +37,7 @@
                     <% end %>
                     <% if get_columns(params).include?("archive") %>
                     <td>
-                        <% if title.archive == false %>
+                        <% if title.archived == false %>
                         <span class="label label-sm label-danger">Archived</span>
                         <% else %>
                         <span class="label label-sm label-success">Unarchive</span>
