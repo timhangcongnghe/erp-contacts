@@ -3,190 +3,169 @@
         
         <div class="row">
             <div class="col-md-6">
-                <div class="col-md-8">
-                    <%= erp_form_control("radio", {
-                        name: 'contact[contact_type]',
-                        label: t('type'),
-                        value: @contact.contact_type,
-                        options: Erp::Contacts::Contact.get_type_options()
-                    }) %>
-                    <%= erp_form_control("text", {
-                        name: 'contact[name]',
-                        value: contact.name,
-                        label: 'Name',
-                        help: 'This field is required...',
-                        placeholder: 'Enter full name...'
-                    }) %>
-                    <%= erp_form_control('select', {
-                        label: t('contacts.contact.company'),
-                        name: 'contact[company_id]',
-                        id: 'contact_company_id',
-                        options: [
-                                    {value: 'CA', text: 'California'},
-                                    {value: 'NV', text: 'Nevada'},
-                                    {value: 'OR', text: 'Oregon'},
-                                    {value: 'WA', text: 'Washington'}
-                                 ]
-                    }) %>
-                </div>
-                <div class="col-md-4">
-                    <%= erp_form_control('image', {
-                        img_src: contact.image_url,
-                        name: 'contact[image_url]'
-                    }) %>
-                </div>
-                
-                <div class="col-md-12">
-                    <%= erp_form_control('datetime', {
-                        label: t('birthday'),
-                        name: 'contact[birthday]',
-                        value: contact.birthday
-                    }) %>
-                </div>
-                
-                <!--<div class="col-md-12">
-                    erp_form_control("dataselect", {
-                        name: '',
-                        value: '',
-                        label: t(:title),
-                        url: '////'
-                    }) %>
-                </div>-->
-                <div class="col-md-6">
-                    <%= erp_form_control("text", {
-                        name: 'contact[address_1]',
-                        value: contact.address_1,                   
-                        label: t(:address_1),
-                        help: 'This field is required...',
-                        placeholder: "Enter address 1..."
-                    }) %>
-                </div>
-                <div class="col-md-6">
-                    <%= erp_form_control("text", {
-                        name: 'contact[address_2]',
-                        value: contact.address_2,                   
-                        label: t(:address_2),
-                        help: 'This field is required...',
-                        placeholder: "Enter address 2..."
-                    }) %>
-                </div>
-                <div class="col-md-12 padding-clear">
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            <%= erp_form_control("text", {
-                                name: 'contact[city]',
-                                value: contact.city,                   
-                                label: 'City',
-                                placeholder: "Enter city..."
-                            }) %>
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <%= erp_form_control("radio", {
+                                    name: 'contact[contact_type]',
+                                    label: t('type'),
+                                    value: @contact.contact_type,
+                                    options: Erp::Contacts::Contact.get_type_options()
+                                }) %>
+                                <%= erp_form_control("text", {
+                                    name: 'contact[name]',
+                                    value: contact.name,
+                                    label: 'Name',
+                                    help: 'This field is required...',
+                                    placeholder: 'Enter full name...'
+                                }) %>
+                                <%= erp_form_control('select', {
+                                    label: t('contacts.contact.company'),
+                                    name: 'contact[company_id]',
+                                    id: 'contact_company_id',
+                                    options: [
+                                                {value: 'CA', text: 'California'},
+                                                {value: 'NV', text: 'Nevada'},
+                                                {value: 'OR', text: 'Oregon'},
+                                                {value: 'WA', text: 'Washington'}
+                                             ]
+                                }) %>
+                            </div>
+                            <div class="col-md-4">
+                                <%= erp_form_control('image', {
+                                    img_src: contact.image_url,
+                                    name: 'contact[image_url]'
+                                }) %>
+                            </div>
                         </div>
-                        <div class="col-md-4">
+                        
+                        <%= erp_form_control('datetime', {
+                            label: t('birthday'),
+                            name: 'contact[birthday]',
+                            value: contact.birthday
+                        }) %>
+                    
+                        <%= erp_form_control("text", {
+                            name: 'contact[address_1]',
+                            value: contact.address_1,                   
+                            label: t(:address_1),
+                            help: 'This field is required...',
+                            placeholder: "Enter address 1..."
+                        }) %>
+                        
+                        <%= erp_form_control("text", {
+                            name: 'contact[address_2]',
+                            value: contact.address_2,                   
+                            label: t(:address_2),
+                            help: 'This field is required...',
+                            placeholder: "Enter address 2..."
+                        }) %>
+                            
+                        <div class="row">
+                            <div class="col-md-4">
+                                <%= erp_form_control("text", {
+                                    name: 'contact[city]',
+                                    value: contact.city,                   
+                                    label: 'City',
+                                    placeholder: "Enter city..."
+                                }) %>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">State</label>
+                                    <select class="form-control select2" id="form_control_1">
+                                        <option value=""></option>
+                                        <option value="1">California</option>
+                                        <option value="2">...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <%= erp_form_control("text", {
+                                    name: 'contact[zip]',
+                                    value: contact.zip,
+                                    label: t('zip_code'),
+                                    help: 'This field is required...',
+                                    placeholder: "Enter ZIP Code..."
+                                }) %>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
                             <div class="form-group">
-                                <label class="control-label">State</label>
+                                <label class="control-label">Country</label>
                                 <select class="form-control select2" id="form_control_1">
                                     <option value=""></option>
-                                    <option value="1">California</option>
-                                    <option value="2">...</option>
+                                    <option value="1">Vietnam</option>
+                                    <option value="2">USA</option>
+                                    <option value="1">England</option>
+                                    <option value="2">Australia</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <%= erp_form_control("text", {
-                                name: 'contact[zip]',
-                                value: contact.zip,
-                                label: t('zip_code'),
-                                help: 'This field is required...',
-                                placeholder: "Enter ZIP Code..."
-                            }) %>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
+                       
+                        <%= erp_form_control("text", {
+                            name: 'contact[job_position]',
+                            value: contact.job_position,                   
+                            label: t(:job_position),
+                            help: 'This field is required...',
+                            placeholder: "E.g. Sales Director"
+                        }) %>
+                        
+                        <%= erp_form_control("text", {
+                            name: 'contact[phone]',
+                            value: contact.phone,                   
+                            label: t(:phone),
+                            help: 'This field is required...',
+                            placeholder: "Enter phone number..."
+                        }) %>
+                        
+                        <%= erp_form_control("text", {
+                            name: 'contact[mobile]',
+                            value: contact.mobile,                   
+                            label: t(:mobile),
+                            help: 'This field is required...',
+                            placeholder: "Enter mobile number..."
+                        }) %>
+                            
+                        <%= erp_form_control("email", {
+                            name: 'contact[email]',
+                            value: contact.email,                   
+                            label: t(:email_address),
+                            help: "user@domain.com",
+                            placeholder: "Enter your email..."
+                        }) %>
+        
+                        <%= erp_form_control("text", {
+                            name: 'contact[website]',
+                            value: contact.website,                   
+                            label: t(:website),
+                            help: 'This field is required...',
+                            placeholder: "E.g. https://www.globalnaturesoft.com"
+                        }) %>
+        
+                        <%= erp_form_control("text", {
+                            name: 'contact[fax]',
+                            value: contact.fax,
+                            label: t(:fax),
+                            help: 'This field is required...',
+                            placeholder: "Enter fax..."
+                        }) %>
+                        
+                        <%= erp_form_control("dataselect", {
+                            name: 'title_id',
+                            value: '1',
+                            text: 'Mr',
+                            placeholder: '',
+                            label: t(:title),
+                            url: erp_contacts.dataselect_backend_titles_path(format: 'json')
+                        }) %>
+        
                         <div class="form-group">
-                            <label class="control-label">Country</label>
-                            <select class="form-control select2" id="form_control_1">
-                                <option value=""></option>
-                                <option value="1">Vietnam</option>
-                                <option value="2">USA</option>
-                                <option value="1">England</option>
-                                <option value="2">Australia</option>
-                            </select>
+                            <label class="control-label">Tags</label>
+                            <input type="text" class="form-control" value="" data-role="tagsinput" />
                         </div>
-                    </div>
-                </div>
-               
-                <div class="col-md-12">
-                    <%= erp_form_control("text", {
-                        name: 'contact[job_position]',
-                        value: contact.job_position,                   
-                        label: t(:job_position),
-                        help: 'This field is required...',
-                        placeholder: "E.g. Sales Director"
-                    }) %>
-                </div>
-               
-                <div class="col-md-12">
-                    <%= erp_form_control("text", {
-                        name: 'contact[phone]',
-                        value: contact.phone,                   
-                        label: t(:phone),
-                        help: 'This field is required...',
-                        placeholder: "Enter phone number..."
-                    }) %>
-                </div>
-                <div class="col-md-12">
-                    <%= erp_form_control("text", {
-                        name: 'contact[mobile]',
-                        value: contact.mobile,                   
-                        label: t(:mobile),
-                        help: 'This field is required...',
-                        placeholder: "Enter mobile number..."
-                    }) %>
-                </div>
-                <div class="col-md-12">
-                    <%= erp_form_control("email", {
-                        name: 'contact[email]',
-                        value: contact.email,                   
-                        label: t(:email_address),
-                        help: "user@domain.com",
-                        placeholder: "Enter your email..."
-                    }) %>
-                </div>
-                
-                <div class="col-md-12">
-                    <%= erp_form_control("text", {
-                        name: 'contact[website]',
-                        value: contact.website,                   
-                        label: t(:website),
-                        help: 'This field is required...',
-                        placeholder: "E.g. https://www.globalnaturesoft.com"
-                    }) %>
-                </div>
-                <div class="col-md-12">
-                    <%= erp_form_control("text", {
-                        name: 'contact[fax]',
-                        value: contact.fax,
-                        label: t(:fax),
-                        help: 'This field is required...',
-                        placeholder: "Enter fax..."
-                    }) %>
-                </div>
-                
-                <div class="col-md-12">
-                    <%= erp_form_control("dataselect", {
-                        name: 'title_id',
-                        value: '1',
-                        text: 'Mr',
-                        placeholder: '',
-                        label: t(:title),
-                        url: erp_contacts.dataselect_backend_titles_path(format: 'json')
-                    }) %>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="control-label">Tags</label>
-                        <input type="text" class="form-control" value="" data-role="tagsinput" />
                     </div>
                 </div>
             </div>
