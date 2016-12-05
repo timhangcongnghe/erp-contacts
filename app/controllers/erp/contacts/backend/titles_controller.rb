@@ -2,7 +2,8 @@ module Erp
   module Contacts
     module Backend
       class TitlesController < Erp::Backend::BackendController
-        before_action :set_title, only: [:archived, :unarchive, :edit, :update, :destroy]
+        before_action :set_title, only: [:archive, :unarchive, :edit, :update, :destroy]
+        before_action :set_titles, only: [:delete_all, :archive_all, :unarchive_all]
     
         # GET /titles
         def index
@@ -60,23 +61,8 @@ module Erp
           end
         end
         
-        # DELETE /titles/delete_all
-        def delete_all
-          @titles = Title.where(id: params[:ids])          
-          @titles.destroy_all
-          
-          respond_to do |format|
-            format.json {
-              render json: {
-                'message': 'Titles were successfully destroyed.',
-                'type': 'success'
-              }
-            }
-          end          
-        end
-        
-        def archived
-          @title.archived
+        def archive
+          @title.archive
           respond_to do |format|
             format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully archived.' }
             format.json {
@@ -101,6 +87,48 @@ module Erp
           end
         end
         
+        # DELETE /titles/delete_all?ids=1,2,3
+        def delete_all         
+          @titles.destroy_all
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': 'Titles were successfully destroyed.',
+                'type': 'success'
+              }
+            }
+          end          
+        end
+        
+        # Archive /titles/archive_all?ids=1,2,3
+        def archive_all         
+          @titles.archive_all
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': 'Titles were successfully archived.',
+                'type': 'success'
+              }
+            }
+          end          
+        end
+        
+        # Unarchive /titles/unarchive_all?ids=1,2,3
+        def unarchive_all         
+          @titles.unarchive_all
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': 'Titles were successfully unarchive.',
+                'type': 'success'
+              }
+            }
+          end          
+        end
+        
         def dataselect
           respond_to do |format|
             format.json {
@@ -113,6 +141,10 @@ module Erp
           # Use callbacks to share common setup or constraints between actions.
           def set_title
             @title = Title.find(params[:id])
+          end
+          
+          def set_titles
+            @titles = Title.where(id: params[:ids])
           end
     
           # Only allow a trusted parameter "white list" through.

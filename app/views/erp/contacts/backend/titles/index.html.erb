@@ -26,10 +26,14 @@
     ],
     actions: [
         {
-            text: '<i class="fa fa-check"></i> Archive', url: 'javascript:;'
+            text: '<i class="fa fa-check"></i> Archive',
+            url: erp_contacts.archive_all_backend_titles_path,
+            data_method: 'PUT'
         },
         {
-            text: '<i class="fa fa-exclamation"></i> Unarchive', url: 'javascript:;'
+            text: '<i class="fa fa-exclamation"></i> Unarchive',
+            url: erp_contacts.unarchive_all_backend_titles_path,
+            data_method: 'PUT'
         },
         {
             divider: true
