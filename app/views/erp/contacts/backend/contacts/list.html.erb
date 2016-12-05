@@ -43,6 +43,10 @@
                     <%= erp_datalist_row_actions(
                         [
                             {
+                                text: '<i class="fa fa-edit"></i> Edit',
+                                href: erp_contacts.edit_backend_contact_path(contact)
+                            },
+                            {
                                 text: '<i class="fa fa-check"></i> Archive', href: 'javascript:;'
                             },
                             {

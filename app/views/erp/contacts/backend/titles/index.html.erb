@@ -1,9 +1,9 @@
 <% content_for :title do %>
-    Titles
+    <%= t('contacts.titles') %>
 <% end %>
 
 <% content_for :page_title do %>
-    <i class="fa fa-bookmark-o"></i> Titles
+    <i class="fa fa-bookmark-o"></i> <%= t('contacts.titles') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
@@ -18,7 +18,7 @@
     url: erp_contacts.list_backend_titles_path,
     keywords: [
         {
-            text: 'Name', name: 'name'
+            text: 'Title', name: 'title'
         },
         {
             text: 'Abbreviation', name: 'abbreviation'
@@ -40,19 +40,19 @@
     ],
     columns: [
         {
-            text: 'Name', name: 'name', value: true, checked: false
+            text: 'Title', name: 'title', value: true, checked: true
         },
         {
-            text: 'Abbreviation', name: 'abbreviation', value: true, checked: false
+            text: 'Abbreviation', name: 'abbreviation', value: true, checked: true
+        },
+        {
+            text: 'Archive', name: 'archive', value: true, checked: true
+        },
+        {
+            text: 'Creator', name: 'creator', value: true, checked: true
         },
         {
             text: 'Created at', name: 'created_at', value: true, checked: true
-        },
-        {
-            text: 'Updated at', name: 'updated_at', value: true, checked: false
-        },
-        {
-            text: 'Creator', name: 'creator', value: true, checked: false
         }
     ]
 ) %>    

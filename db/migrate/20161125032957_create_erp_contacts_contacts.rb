@@ -16,6 +16,7 @@ class CreateErpContactsContacts < ActiveRecord::Migration[5.0]
       t.string :email
       t.string :birthday
       t.text :internal_note
+      t.boolean :archive, default: false
       t.references :user, index: true, references: :erp_users
 
       t.timestamps

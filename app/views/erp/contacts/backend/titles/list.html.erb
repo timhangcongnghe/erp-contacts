@@ -5,10 +5,21 @@
                 <th width='1%'>
                     <%= erp_datalist_check_all %>
                 </th>
+                <% if get_columns(params).include?("title") %>
                 <th><%= t(:title) %></th>
+                <% end %>
+                <% if get_columns(params).include?("abbreviation") %>
                 <th><%= t(:abbreviation) %></th>
+                <% end %>
+                <% if get_columns(params).include?("archive") %>
                 <th><%= t(:archive) %></th>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                <th><%= t(:creator) %></th>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
                 <th><%= t(:created_at) %></th>
+                <% end %>
                 <th width="1%"><%= t(:actions) %></th>
             </tr>
         </thead>
@@ -18,15 +29,30 @@
                     <td>
                         <%= erp_datalist_check_row(id: title.id) %>
                     </td>
+                    <% if get_columns(params).include?("title") %>
                     <td><%= link_to title.title, erp_contacts.edit_backend_title_path(title) %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("abbreviation") %>
                     <td><%= title.abbreviation %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("archive") %>
                     <td>
                         <span class="label label-sm label-success">Archived</span>
                     </td>
+                    <% end %>
+                    <% if get_columns(params).include?("creator") %>
+                    <td></td>
+                    <% end %>
+                    <% if get_columns(params).include?("created_at") %>
                     <td class="center"><%= title.created_at.strftime("%d/%m/%Y") %></td>
+                    <% end %>
                     <td>
                         <%= erp_datalist_row_actions(
                             [
+                                {
+                                    text: '<i class="fa fa-edit"></i> Edit',
+                                    href: erp_contacts.edit_backend_title_path(title)
+                                },
                                 {
                                     text: '<i class="fa fa-check"></i> Archive', href: 'javascript:;'
                                 },
