@@ -2,7 +2,7 @@ module Erp
   module Contacts
     module Backend
       class TitlesController < Erp::Backend::BackendController
-        before_action :set_title, only: [:edit, :update, :destroy]
+        before_action :set_title, only: [:archived, :unarchive, :edit, :update, :destroy]
     
         # GET /titles
         def index
@@ -54,6 +54,47 @@ module Erp
             format.json {
               render json: {
                 'message': 'Title was successfully destroyed.',
+                'type': 'success'
+              }
+            }
+          end
+        end
+        
+        # DELETE /titles/delete_all
+        def delete_all
+          @titles = Title.where(id: params[:ids])          
+          @titles.destroy_all
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': 'Titles were successfully destroyed.',
+                'type': 'success'
+              }
+            }
+          end          
+        end
+        
+        def archived
+          @title.archived
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully archived.' }
+            format.json {
+              render json: {
+                'message': 'Title was successfully archived.',
+                'type': 'success'
+              }
+            }
+          end
+        end
+        
+        def unarchive
+          @title.unarchive
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully unarchive.' }
+            format.json {
+              render json: {
+                'message': 'Title was successfully unarchive.',
                 'type': 'success'
               }
             }

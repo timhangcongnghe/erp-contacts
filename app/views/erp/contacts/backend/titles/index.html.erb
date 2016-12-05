@@ -35,7 +35,10 @@
             divider: true
         },
         {
-            text: '<i class="fa fa-trash"></i> Delete', url: 'javascript:;'
+            text: '<i class="fa fa-trash"></i> Delete',
+            url: erp_contacts.delete_all_backend_titles_path,
+            data_method: 'DELETE',
+            data_confirm: 'Are you sure?'
         }
     ],
     columns: [

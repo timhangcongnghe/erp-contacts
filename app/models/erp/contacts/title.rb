@@ -26,7 +26,7 @@ module Erp::Contacts
     end
     
     def self.search(params)
-      query = self.all
+      query = self.order("created_at DESC")
       query = self.filter(query, params)
       
       return query
@@ -43,5 +43,14 @@ module Erp::Contacts
       
       query = query.limit(15).map{|title| {value: title.id, text: title.title} }
     end
+    
+    def archived
+			update_columns(archive: false)
+		end
+    
+    def unarchive
+			update_columns(archive: true)
+		end
+    
   end
 end

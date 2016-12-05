@@ -37,7 +37,11 @@
                     <% end %>
                     <% if get_columns(params).include?("archive") %>
                     <td>
-                        <span class="label label-sm label-success">Archived</span>
+                        <% if title.archive == false %>
+                        <span class="label label-sm label-danger">Archived</span>
+                        <% else %>
+                        <span class="label label-sm label-success">Unarchive</span>
+                        <% end %> 
                     </td>
                     <% end %>
                     <% if get_columns(params).include?("creator") %>
@@ -54,10 +58,16 @@
                                     href: erp_contacts.edit_backend_title_path(title)
                                 },
                                 {
-                                    text: '<i class="fa fa-check"></i> Archive', href: 'javascript:;'
+                                    text: '<i class="fa fa-check"></i> Archive',
+                                    href: erp_contacts.archived_backend_titles_path(id: title),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link'
                                 },
                                 {
-                                    text: '<i class="fa fa-exclamation"></i> Unarchive', href: 'javascript:;'
+                                    text: '<i class="fa fa-exclamation"></i> Unarchive',
+                                    href: erp_contacts.unarchive_backend_titles_path(id: title),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link'
                                 },
                                 {
                                     divider: true
@@ -75,7 +85,7 @@
                 </tr>
             <% end.empty? %>
                 <tr>
-                    <td colspan="6">No matching records found</td>
+                    <td colspan="7">No matching records found</td>
                 </tr>
             <% end %>
         </tbody>

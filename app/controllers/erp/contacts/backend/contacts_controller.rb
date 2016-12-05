@@ -63,7 +63,6 @@ module Erp
         # DELETE /contacts/delete_all
         def delete_all
           @contacts = Contact.where(id: params[:ids])          
-          
           @contacts.destroy_all
           
           respond_to do |format|
