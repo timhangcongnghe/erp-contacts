@@ -1,20 +1,38 @@
-<li class="classic-menu-dropdown <%= "active" if ["erp/contacts/backend/contacts", "erp/contacts/backend/titles", "erp/contacts/backend/tags"].include?(params[:controller]) %>" aria-haspopup="true">
-    <a href="javascript:;" data-hover="megamenu-dropdown" data-close-others="true">
-        <%= t('contact') %>
+<li class="nav-item <%= "active open" if ["erp/contacts/backend/contacts", "erp/contacts/backend/titles", "erp/contacts/backend/tags"].include?(params[:controller]) %>"">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="fa fa-group"></i>
+        <span class="title">Contacts</span>
         <% if ["erp/contacts/backend/contacts", "erp/contacts/backend/titles", "erp/contacts/backend/tags"].include?(params[:controller]) %>
             <span class="selected"></span>
+            <span class="arrow open"></span>
+        <% else %>
+            <span class="arrow"></span>
         <% end %>
-        <i class="fa fa-angle-down"></i>
     </a>
-    <ul class="dropdown-menu pull-left">
-        <li class="<%= "active" if ["erp/contacts/backend/contacts"].include?(params[:controller]) %>">
-            <a href="<%= erp_contacts.backend_contacts_path %>"><i class="fa fa-users"></i> <%= t('contacts.contacts') %></a>
+    <ul class="sub-menu">
+        <li class="nav-item <%= "active open" if ["erp/contacts/backend/contacts"].include?(params[:controller]) %>">
+            <a href="<%= erp_contacts.backend_contacts_path %>" class="nav-link ">
+                <span class="title"><%= t("contacts.contacts") %></span>
+                <% if ["erp/contacts/backend/contacts"].include?(params[:controller]) %>
+                <span class="selected"></span>
+                <% end %>
+            </a>
         </li>
-        <li class="<%= "active" if ["erp/contacts/backend/titles"].include?(params[:controller]) %>">
-            <a href="<%= erp_contacts.backend_titles_path %>"><i class="fa fa-bookmark-o"></i> <%= t('contacts.titles') %></a>
+        <li class="nav-item <%= "active open" if ["erp/contacts/backend/titles"].include?(params[:controller]) %>">
+            <a href="<%= erp_contacts.backend_titles_path %>" class="nav-link ">
+                <span class="title"><%= t("contacts.titles") %></span>
+                <% if ["erp/contacts/backend/titles"].include?(params[:controller]) %>
+                <span class="selected"></span>
+                <% end %>
+            </a>
         </li>
-        <li class="<%= "active" if ["erp/contacts/backend/tags"].include?(params[:controller]) %>">
-            <a href="<%= erp_contacts.backend_tags_path %>"><i class="fa fa-tags"></i> <%= t('contacts.tags') %></a>
+        <li class="nav-item <%= "active open" if ["erp/contacts/backend/tags"].include?(params[:controller]) %>">
+            <a href="<%= erp_contacts.backend_tags_path %>" class="nav-link ">
+                <span class="title"><%= t("contacts.tags") %></span>
+                <% if ["erp/contacts/backend/tags"].include?(params[:controller]) %>
+                <span class="selected"></span>
+                <% end %>
+            </a>
         </li>
     </ul>
 </li>
