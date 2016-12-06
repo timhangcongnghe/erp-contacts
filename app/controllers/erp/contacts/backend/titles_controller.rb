@@ -132,7 +132,7 @@ module Erp
         end
         
         # Unarchive /titles/unarchive_all?ids=1,2,3
-        def unarchive_all         
+        def unarchive_all
           @titles.unarchive_all
           
           respond_to do |format|

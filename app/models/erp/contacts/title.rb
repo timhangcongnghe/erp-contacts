@@ -51,11 +51,11 @@ module Erp::Contacts
 			update_columns(archived: true)
 		end
     
-    def archive_all
+    def self.archive_all
 			update_all(archived: false)
 		end
     
-    def unarchive_all
+    def self.unarchive_all
 			update_all(archived: true)
 		end
     
