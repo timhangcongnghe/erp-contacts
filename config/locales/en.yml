@@ -8,6 +8,18 @@ en:
       create: "Create contact"
       individual: "Individual"
       company: "Company"
+      contacts_address: "Contacts & Addresses"
+      internal_notes: "Internal notes"
+      sales_purchases: "Sales & Purchases"
+      is_a_customer: "Is a Customer"
+      is_a_vendor: "Is a Vendor"
+      salesperson: "Salesperson"
+      sale: "Sale"
+      purchases: "Purchases"
+      misc: "Misc"
+      internal_reference: "Internal Reference"
+      add: "Add"
+      
     title:
       create: "Create title"
       
