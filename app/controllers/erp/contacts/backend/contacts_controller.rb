@@ -20,7 +20,7 @@ module Erp
         # GET /contacts/new
         def new
           @contact = Contact.new
-          @contact.contact_type = Contact::TYPE_PERSON
+          @contact.contact_type = params[:contact_type].present? ? params[:contact_type] : Contact::TYPE_PERSON
         end
   
         # GET /contacts/1/edit
@@ -30,9 +30,18 @@ module Erp
         # POST /contacts
         def create
           @contact = Contact.new(contact_params)
+          @contact.user = current_user
     
           if @contact.save
-            redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
+            if !request.xhr?
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
+            else
+              render json: {
+                status: 'success',
+                text: @contact.name,
+                value: @contact.id
+              }
+            end
           else
             render :new
           end
@@ -75,6 +84,14 @@ module Erp
             }
           end          
         end
+        
+        def dataselect
+          respond_to do |format|
+            format.json {
+              render json: Contact.dataselect(params[:keyword])
+            }
+          end
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.
@@ -84,7 +101,7 @@ module Erp
     
           # Only allow a trusted parameter "white list" through.
           def contact_params
-            params.fetch(:contact, {}).permit(:name, :title_id, :image_url, :contact_type, :address_1, :address_2, :city, :zip, :website, :job_position, :phone, :mobile, :fax, :email, :birthday, :internal_note)
+            params.fetch(:contact, {}).permit(:name, :title_id, :image_url, :contact_type, :address_1, :address_2, :city, :zip, :website, :job_position, :phone, :mobile, :fax, :email, :birthday, :internal_note, :parent_id)
           end
       end
     end
