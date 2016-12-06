@@ -182,48 +182,160 @@
                 <div class="tabbable-custom ">
                     <ul class="nav nav-tabs ">
                         <li class="active">
-                            <a href="#tab_5_1" data-toggle="tab"> Contacts & Address </a>
+                            <a href="#tab_5_1" data-toggle="tab"> <%= t('contacts.contact.contacts_address') %> </a>
                         </li>
                         <li>
-                            <a href="#tab_5_2" data-toggle="tab"> Sales & Purchases </a>
-                        </li>
-                        <li>
-                            <a href="#tab_5_3" data-toggle="tab"> Internal notes </a>
+                            <a href="#tab_5_2" data-toggle="tab"> <%= t('contacts.contact.sales_purchases') %> </a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_5_1">
-                            <h3 class="text-semibold"> Address 1 </h3>
-                            <p> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. </p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="#form_modal_example" class="btn btn-xs blue"> Add <i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="alert alert-block custom-box-shadow">
+                                        <button type="button" class="close" data-dismiss="alert"></button>
+                                        <div class="clearfix">
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <a class="pull-left" href="javascript:;">
+                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
+                                                    <div class="media-body">
+                                                        <div class="sm-title"><a href="#"><strong>Hung Nguyen</strong></a></div>
+                                                        <div class="sm-title">Sale Admin</div>
+                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
+                                                        <div class="sm-title">Phone: 0963238714</div>
+                                                        <div class="sm-title">Mobile: 0938318714</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alert alert-block custom-box-shadow">
+                                        <button type="button" class="close" data-dismiss="alert"></button>
+                                        <div class="clearfix">
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <a class="pull-left" href="javascript:;">
+                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
+                                                    <div class="media-body">
+                                                        <div class="sm-title"><a href="#"><strong>Hung Nguyen (Invoice)</strong></a></div>
+                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
+                                                        <div class="sm-title">Phone: 0963238714</div>
+                                                        <div class="sm-title">Mobile: 0938318714</div>
+                                                        <div class="sm-title">700000, HCMC, Vietnam</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="alert alert-block custom-box-shadow">
+                                        <button type="button" class="close" data-dismiss="alert"></button>
+                                        <div class="clearfix">
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <a class="pull-left" href="javascript:;">
+                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
+                                                    <div class="media-body">
+                                                        <div class="sm-title"><a href="#"><strong>Hung Nguyen (Shipping)</strong></a></div>
+                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
+                                                        <div class="sm-title">Phone: 0963238714</div>
+                                                        <div class="sm-title">Mobile: 0938318714</div>
+                                                        <div class="sm-title">700000, HCMC, Vietnam</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="alert alert-block custom-box-shadow">
+                                        <button type="button" class="close" data-dismiss="alert"></button>
+                                        <div class="clearfix">
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <a class="pull-left" href="javascript:;">
+                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
+                                                    <div class="media-body">
+                                                        <div class="sm-title"><a href="#"><strong>Hoang Khang Inc.</strong></a></div>
+                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
+                                                        <div class="sm-title">Phone: 0963238714</div>
+                                                        <div class="sm-title">Mobile: 0938318714</div>
+                                                        <div class="sm-title">700000, HCMC, Vietnam</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab_5_2">
-                            <p> Howdy, I'm in Section 2. </p>
-                            <p> Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation. </p>
-                            <p>
-                                <a class="btn green" href="ui_tabs_accordions_navs.html#tab_5_2" target="_blank"> Activate this tab via URL </a>
-                            </p>
-                        </div>
-                        <div class="tab-pane" id="tab_5_3">
-                            <p> Howdy, I'm in Section 3. </p>
-                            <p> Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel
-                                eum iriure dolor in hendrerit in vulputate velit esse molestie consequat </p>
-                            <p>
-                                <a class="btn yellow" href="ui_tabs_accordions_navs.html#tab_5_3" target="_blank"> Activate this tab via URL </a>
-                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><%= t('contacts.contact.sale') %></h4>
+                                    <%= erp_form_control('checkbox', {
+                                        name: '',
+                                        id: '',
+                                        label: '',
+                                        options: [{value: '1', text: t('contacts.contact.is_a_customer')}]
+                                    }) %>
+                                    <%= erp_form_control("dataselect", {
+                                        name: '',
+                                        value: '1',
+                                        text: 'Hung Nguyen',
+                                        placeholder: '',
+                                        label: t('contacts.contact.salesperson'),
+                                        url: erp_contacts.dataselect_backend_titles_path(format: 'json')
+                                    }) %>
+                                    <br/>
+                                    <h4><%= t('contacts.contact.misc') %></h4>
+                                    <%= erp_form_control("text", {
+                                        name: '',
+                                        value: '',                   
+                                        label: t('contacts.contact.internal_reference')
+                                    }) %>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4><%= t('contacts.contact.purchases') %></h4>
+                                    <%= erp_form_control('checkbox', {
+                                        name: '',
+                                        id: '',
+                                        label: '',
+                                        options: [{value: '2', text: t('contacts.contact.is_a_vendor')}]
+                                    }) %>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
                 <br />
                 <h3>
-                    <span aria-hidden="true" class="fa fa-sticky-note-o"></span> Internal notes
+                    <span aria-hidden="true" class="fa fa-sticky-note-o"></span> <%= t('contacts.contact.internal_notes') %>
                 </h3>
                 <div class="tabbable-custom ">
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_5_1">
-                            <p> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. </p>
+                                <%= erp_form_control("textarea", {
+                                    name: 'contact[internal_note]',
+                                    value: contact.internal_note,                   
+                                    label: '',
+                                    placeholder: "Enter internal notes here..."
+                                }) %>
                         </div>                
                     </div>
                 </div>
