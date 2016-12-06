@@ -15,6 +15,7 @@ Erp::Contacts::Engine.routes.draw do
 		resources :contacts do
 			collection do
 				post 'list'
+				get 'dataselect'
 				delete 'delete_all'
 			end
 		end
