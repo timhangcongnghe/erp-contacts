@@ -40,7 +40,7 @@ module Erp::Contacts
         query = query.where('LOWER(title) LIKE ? OR LOWER(abbreviation) LIKE ?', "%#{keyword}%", "%#{keyword}%")
       end
       
-      query = query.limit(15).map{|title| {value: title.id, text: title.display_title} }
+      query = query.limit(8).map{|title| {value: title.id, text: title.display_title} }
     end
     
     def archive
