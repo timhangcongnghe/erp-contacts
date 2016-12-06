@@ -93,10 +93,10 @@ module Erp
         def unarchive
           @title.unarchive
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully unarchive.' }
+            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully active.' }
             format.json {
               render json: {
-                'message': 'Title was successfully unarchive.',
+                'message': 'Title was successfully active.',
                 'type': 'success'
               }
             }
@@ -138,7 +138,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Titles were successfully unarchive.',
+                'message': 'Titles were successfully active.',
                 'type': 'success'
               }
             }
