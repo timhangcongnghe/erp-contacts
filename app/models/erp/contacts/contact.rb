@@ -3,7 +3,9 @@ module Erp::Contacts
     validates :name, :presence => true
     validates_format_of :email, :allow_blank => true, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => " is invalid (Eg. 'user@domain.com')"
     
-    belongs_to :title
+    belongs_to :user
+    belongs_to :title, optional: true
+    belongs_to :company, class_name: "Erp::Contacts::Contact", foreign_key: :parent_id, optional: true
     
     # class const
     TYPE_PERSON = 'person'
@@ -55,9 +57,26 @@ module Erp::Contacts
       return query
     end
     
+    # data for dataselect ajax
+    def self.dataselect(keyword='')
+      query = self.where(contact_type: self::TYPE_COMPANY)
+      
+      if keyword.present?
+        keyword = keyword.strip.downcase
+        query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
+      end
+      
+      query = query.limit(8).map{|contact| {value: contact.id, text: contact.name} }
+    end
+    
     # display contact title
     def display_title
       title.present? ? title.display_title : ''
+    end
+    
+    # display contact company
+    def display_company
+      company.present? ? company.name : ''
     end
     
   end
