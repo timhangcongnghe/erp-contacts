@@ -26,10 +26,10 @@
                     <%= erp_datalist_check_row(id: contact.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                <td><%= link_to contact, erp_contacts.edit_backend_contact_path(contact) %></td>
+                <td><%= link_to contact.name, erp_contacts.edit_backend_contact_path(contact) %></td>
                 <% end %>
                 <% if get_columns(params).include?("email") %>
-                <td><%= contact %></td>
+                <td><%= contact.email %></td>
                 <% end %>
                 <% if get_columns(params).include?("archive") %>
                 <td>
