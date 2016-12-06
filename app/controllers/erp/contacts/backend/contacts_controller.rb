@@ -49,6 +49,7 @@ module Erp
 
         # PATCH/PUT /contacts/1
         def update
+          @contact.user = current_user
           if @contact.update(contact_params)
             redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
           else
