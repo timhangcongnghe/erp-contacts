@@ -1,11 +1,9 @@
 <% content_for :page_toolbar do %>
-    <div class="btn-group">
-        <div class="clearfix">
-            <button type="submit" class="btn btn-sm sbold blue"><%= t('save') %> <i class="fa fa-save"></i></button>
-            <%= link_to "<i class=\"fa fa-times\"></i>  #{t('discard')}".html_safe, erp_contacts.backend_contacts_path, class: "btn btn-sm sbold red" %>
-            <%= link_to (t('contacts.create') + ' <i class="fa fa-plus"></i>').html_safe, erp_contacts.new_backend_contact_path, class: "btn btn-sm sbold btn-primary" %>
-        </div>
-    </div>
+        <%= erp_component('button/create', {
+        text: t('contacts.contact.create'),
+        href: erp_contacts.new_backend_contact_path,
+        class: 'btn-sm'
+    }) %>
 <% end %>
 <!-- BEGIN SAMPLE FORM PORTLET-->
 <% content_for :title do %>
@@ -14,7 +12,7 @@
 
 <% content_for :page_title do %>    
     <a href=""><i class="fa fa-users"></i> Contacts</a> /
-    <%= t('contacts.contact.edit') %>
+    <%= t('contacts.contact.edit') %>: <%= @contact.name %>
 <% end %>
 
 <% content_for :page_toolbar do %>
