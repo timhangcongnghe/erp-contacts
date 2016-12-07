@@ -28,6 +28,8 @@ Erp::Contacts::Engine.routes.draw do
 				get 'dataselect'
 				delete 'delete_all'
 			end
+			
+			resources :contacts, controller: 'contacts_contacts'
 		end
 	end
 end

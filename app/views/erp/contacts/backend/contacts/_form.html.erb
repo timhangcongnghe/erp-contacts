@@ -197,11 +197,11 @@
                             <%= erp_form_control("addablelist", {
                                 button_text: t('contacts.contact.add'),
                                 create: {
-                                    url: erp_contacts.new_backend_contact_url,
+                                    url: erp_contacts.new_backend_contact_contact_url(contact_id: (contact.id.present? ? contact.id : 0)),
                                     title: 'Create new contact',
                                     container_selector: '.new_contact',
-                                    modal_size: 'full',
-                                    list_partial: 'backend/contacts/contacts/contact',
+                                    modal_size: 'md',
+                                    list_partial: 'backend/contacts_contacts/contact',
                                     list_items: contact.contacts,
                                     list_item: :contact
                                 }
