@@ -22,8 +22,8 @@
                                     errors: contact.errors.full_messages_for(:name)
                                 }) %>
                                 <%= erp_form_control("dataselect", {
-                                    name: 'contact[parent_id]',
-                                    value: contact.parent_id,
+                                    name: 'contact[company_id]',
+                                    value: contact.company_id,
                                     text: contact.display_company,
                                     placeholder: t('contacts.contact.select_company'),
                                     label: t('contacts.contact.company'),
