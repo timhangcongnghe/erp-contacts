@@ -1,25 +1,17 @@
-<%= form_for([erp_contacts, :backend, tag], html: {class: ""}) do |f| %>
-    <div class="form-body">
-        <div class="row">
-            <div class="col-md-6">
-            </div>
-            <div class="col-md-6">
-            </div>
-        </div>
-    </div>
-    <div class="form-actions">
-        <div class="row">
-            <div class="col-md-offset-2 col-md-10">
-                <%= erp_component('button/save', {
-                    text: t('contacts.tag.submit'),
-                    class: ''
-                }) %>
-                <%= erp_component('button/cancel', {
-                    text: t('contacts.tag.cancel'),
-                    href: erp_contacts.backend_tags_path,
-                    class: ''
-                }) %>
-            </div>
-        </div>
-    </div>
+<%= form_for([erp_contacts, :backend, tag]) do |f| %>   
+    <%= erp_form_control("text", {
+        name: 'tag[name]',
+        value: tag.name,                   
+        label: t(:name)
+    }) %>
+    <hr>
+    <%= erp_component('button/save', {
+        text: t('contacts.tag.submit'),
+        class: ''
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('contacts.tag.cancel'),
+        href: erp_contacts.backend_tags_path,
+        class: ''
+    }) %>
 <% end %>
