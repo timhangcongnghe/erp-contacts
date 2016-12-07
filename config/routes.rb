@@ -11,7 +11,17 @@ Erp::Contacts::Engine.routes.draw do
 				put 'unarchive_all'
 			end
 		end
-		resources :tags
+		resources :tags do
+			collection do
+				put 'archive'
+				put 'unarchive'
+				post 'list'
+				get 'dataselect'
+				delete 'delete_all'
+				put 'archive_all'
+				put 'unarchive_all'
+			end
+		end
 		resources :contacts do
 			collection do
 				post 'list'
