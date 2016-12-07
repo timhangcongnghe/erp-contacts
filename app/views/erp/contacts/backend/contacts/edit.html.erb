@@ -8,18 +8,34 @@
     </div>
 <% end %>
 <!-- BEGIN SAMPLE FORM PORTLET-->
-<div class="portlet light bordered">
-    <div class="portlet-title">
-        <div class="caption font-green-haze">
-            <i class="icon-pin font-green-haze"></i>
-            <span class="caption-subject bold uppercase"> Edit Contact</span>
-        </div>
-        <div class="actions">
-            <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
+<% content_for :title do %>
+    <%= t('contacts.contact.edit_contact') %>
+<% end %>
+
+<% content_for :page_title do %>    
+    <a href=""><i class="fa fa-users"></i> Contacts</a> /
+    <%= t('contacts.contact.edit') %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <div class="btn-group">
+        <div class="clearfix">
         </div>
     </div>
-    <div class="portlet-body form">
+<% end %>
+
+<div class="row">
+    <div class="col-md-12">
+        <% if @contact.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        <h3>
+            <span aria-hidden="true" class="icon-user-follow"></span> Edit Contact
+        </h3>
+        
+        <!-- BEGIN SAMPLE FORM PORTLET-->
         <%= render 'form', contact: @contact %>
+        <!-- END SAMPLE FORM PORTLET-->
     </div>
 </div>
 <!-- END SAMPLE FORM PORTLET-->
