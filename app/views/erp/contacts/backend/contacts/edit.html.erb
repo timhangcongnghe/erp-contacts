@@ -1,3 +1,11 @@
+<% content_for :title do %>
+    <%= t('contacts.contacts.edit') %>
+<% end %>
+
+<% content_for :page_title do %>    
+    <a href=""><i class="fa fa-users"></i> <%= t('contacts.contacts.contacts') %></a> / <%= t('contacts.contacts.edit') %>: <%= @contact.name %>
+<% end %>
+
 <% content_for :page_toolbar do %>
         <%= erp_component('button/create', {
         text: t('contacts.contact.create'),
@@ -28,7 +36,7 @@
             <%= erp_form_control("form_error_message") %>
         <% end %>
         <h3>
-            <span aria-hidden="true" class="icon-user-follow"></span> Edit Contact
+            <span aria-hidden="true" class="icon-user-follow"></span> <%= t('contacts.contacts.contact_details') %>
         </h3>
         
         <!-- BEGIN SAMPLE FORM PORTLET-->
@@ -36,4 +44,3 @@
         <!-- END SAMPLE FORM PORTLET-->
     </div>
 </div>
-<!-- END SAMPLE FORM PORTLET-->

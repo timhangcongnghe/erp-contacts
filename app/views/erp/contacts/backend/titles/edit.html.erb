@@ -7,12 +7,11 @@
 <% end %>
 
 <% content_for :title do %>
-    Create title
+    <%= t('contacts.titles.edit') %>
 <% end %>
 
 <% content_for :page_title do %>    
-    <a href=""><i class="fa fa-bookmark-o"></i> Titles</a> /
-    Edit: <%= @title.display_title %>
+    <a href=""><i class="fa fa-bookmark-o"></i> <%= t('contacts.titles.titles') %></a> / <%= t('contacts.titles.edit') %>: <%= @title.display_title %>
 <% end %>
 
 <div class="row">

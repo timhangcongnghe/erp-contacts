@@ -1,7 +1,7 @@
 <li class="nav-item <%= "active open" if ["erp/contacts/backend/contacts", "erp/contacts/backend/titles", "erp/contacts/backend/tags"].include?(params[:controller]) %>"">
     <a href="javascript:;" class="nav-link nav-toggle">
         <i class="fa fa-group"></i>
-        <span class="title">Contacts</span>
+        <span class="title"><%= t('contacts.contact') %></span>
         <% if ["erp/contacts/backend/contacts", "erp/contacts/backend/titles", "erp/contacts/backend/tags"].include?(params[:controller]) %>
             <span class="selected"></span>
             <span class="arrow open"></span>
@@ -12,7 +12,7 @@
     <ul class="sub-menu">
         <li class="nav-item <%= "active open" if ["erp/contacts/backend/contacts"].include?(params[:controller]) %>">
             <a href="<%= erp_contacts.backend_contacts_path %>" class="nav-link ">
-                <span class="title"><%= t("contacts.contacts") %></span>
+                <span class="title"><%= t("contacts.contacts.contacts") %></span>
                 <% if ["erp/contacts/backend/contacts"].include?(params[:controller]) %>
                 <span class="selected"></span>
                 <% end %>
@@ -20,7 +20,7 @@
         </li>
         <li class="nav-item <%= "active open" if ["erp/contacts/backend/titles"].include?(params[:controller]) %>">
             <a href="<%= erp_contacts.backend_titles_path %>" class="nav-link ">
-                <span class="title"><%= t("contacts.titles") %></span>
+                <span class="title"><%= t("contacts.titles.titles") %></span>
                 <% if ["erp/contacts/backend/titles"].include?(params[:controller]) %>
                 <span class="selected"></span>
                 <% end %>

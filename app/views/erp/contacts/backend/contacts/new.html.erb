@@ -1,10 +1,9 @@
 <% content_for :title do %>
-    Create contact
+    <%= t('contacts.contacts.create') %>
 <% end %>
 
 <% content_for :page_title do %>    
-    <a href=""><i class="fa fa-users"></i> Contacts</a> /
-    Create new
+    <a href=""><i class="fa fa-users"></i> <%= t('contacts.contacts.contacts') %></a> / <%= t('contacts.contacts.create') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
@@ -20,7 +19,7 @@
             <%= erp_form_control("form_error_message") %>
         <% end %>
         <h3>
-            <span aria-hidden="true" class="icon-user-follow"></span> Contact details
+            <span aria-hidden="true" class="icon-user-follow"></span> <%= t('contacts.contacts.contact_details') %>
         </h3>
         
         <!-- BEGIN SAMPLE FORM PORTLET-->

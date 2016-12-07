@@ -1,14 +1,14 @@
 <% content_for :title do %>
-    <%= t('contacts.titles') %>
+    <%= t('contacts.titles.titles') %>
 <% end %>
 
 <% content_for :page_title do %>
-    <i class="fa fa-bookmark-o"></i> <%= t('contacts.titles') %>
+    <i class="fa fa-bookmark-o"></i> <%= t('contacts.titles.titles') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
     <%= erp_component('button/create', {
-        text: t('contacts.title.create'),
+        text: t('contacts.titles.create'),
         href: erp_contacts.new_backend_title_path,
         class: 'btn-sm'
     }) %>
@@ -18,20 +18,20 @@
     url: erp_contacts.list_backend_titles_path,
     keywords: [
         {
-            text: 'Title', name: 'title'
+            text: t('contacts.titles.title'), name: 'title'
         },
         {
-            text: 'Abbreviation', name: 'abbreviation'
+            text: t('contacts.titles.abbreviation'), name: 'abbreviation'
         }
     ],
     actions: [
         {
-            text: '<i class="fa fa-check"></i> Archive',
+            text: '<i class="fa fa-check"></i> '+t('contacts.titles.archive'),
             url: erp_contacts.archive_all_backend_titles_path,
             data_method: 'PUT'
         },
         {
-            text: '<i class="fa fa-exclamation"></i> Unarchive',
+            text: '<i class="fa fa-exclamation"></i> '+t('contacts.titles.unarchive'),
             url: erp_contacts.unarchive_all_backend_titles_path,
             data_method: 'PUT'
         },
@@ -39,27 +39,27 @@
             divider: true
         },
         {
-            text: '<i class="fa fa-trash"></i> Delete',
+            text: '<i class="fa fa-trash"></i> '+t('contacts.titles.delete'),
             url: erp_contacts.delete_all_backend_titles_path,
             data_method: 'DELETE',
-            data_confirm: 'Are you sure?'
+            data_confirm: t('contacts.titles.delete_confirm')
         }
     ],
     columns: [
         {
-            text: 'Title', name: 'title', value: true, checked: true
+            text: t('contacts.titles.title'), name: 'title', value: true, checked: true
         },
         {
-            text: 'Abbreviation', name: 'abbreviation', value: true, checked: true
+            text: t('contacts.titles.abbreviation'), name: 'abbreviation', value: true, checked: true
         },
         {
-            text: 'Archive', name: 'archive', value: true, checked: true
+            text: t('contacts.titles.status'), name: 'status', value: true, checked: true
         },
         {
-            text: 'Creator', name: 'creator', value: true, checked: true
+            text: t('contacts.titles.creator'), name: 'creator', value: true, checked: true
         },
         {
-            text: 'Created at', name: 'created_at', value: true, checked: true
+            text: t('contacts.titles.created_at'), name: 'created_at', value: true, checked: true
         }
     ]
 ) %>    

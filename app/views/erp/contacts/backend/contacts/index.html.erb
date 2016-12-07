@@ -1,14 +1,14 @@
 <% content_for :title do %>
-    <%= t('contacts.contacts') %>
+    <%= t('contacts.contacts.contacts') %>
 <% end %>
 
 <% content_for :page_title do %>
-    <i class="fa fa-users"></i> <%= t('contacts.contacts') %>
+    <i class="fa fa-users"></i> <%= t('contacts.contacts.contacts') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
     <%= erp_component('button/create', {
-        text: t('contacts.contact.create'),
+        text: t('contacts.contacts.create'),
         href: erp_contacts.new_backend_contact_path,
         class: 'btn-sm'
     }) %>
@@ -18,46 +18,46 @@
     url: erp_contacts.list_backend_contacts_path,
     keywords: [
         {
-            text: 'contacts.contact.name', name: 'name'
+            text: t('contacts.contacts.name'), name: 'name'
         }
     ],
     actions: [
         {
-            text: '<i class="fa fa-check"></i> Archive', url: 'aaa'
+            text: '<i class="fa fa-check"></i> '+t('contacts.contacts.archive'), url: 'javascript:;'
         },
         {
-            text: '<i class="fa fa-exclamation"></i> Unarchive', url: 'javascript:;'
+            text: '<i class="fa fa-exclamation"></i> '+t('contacts.contacts.unarchive'), url: 'javascript:;'
         },
         {
             divider: true
         },
         {
-            text: '<i class="fa fa-trash"></i> Delete',
+            text: '<i class="fa fa-trash"></i> '+t('contacts.contacts.delete'),
             url: erp_contacts.delete_all_backend_contacts_path,
             data_method: 'DELETE',
-            data_confirm: 'Are you sure?'
+            data_confirm: t('contacts.contacts.delete_confirm')
         }
     ],
     filters: [
         {
-            text: 'Persons', name: 'contact_type', value: Erp::Contacts::Contact::TYPE_PERSON, checked: false
+            text: t('contacts.contacts.persons'), name: 'contact_type', value: Erp::Contacts::Contact::TYPE_PERSON, checked: false
         },
         {
-            text: 'Companies', name: 'contact_type', value: Erp::Contacts::Contact::TYPE_COMPANY, checked: false
+            text: t('contacts.contacts.companies'), name: 'contact_type', value: Erp::Contacts::Contact::TYPE_COMPANY, checked: false
         }
     ],
     columns: [
         {
-            text: 'Name', name: 'name', value: true, checked: true
+            text: t('contacts.contacts.name'), name: 'name', value: true, checked: true
         },
         {
-            text: 'Email', name: 'email', value: true, checked: true
+            text: t('contacts.contacts.email'), name: 'email', value: true, checked: true
         },
         {
-            text: 'Archive', name: 'archive', value: true, checked: true
+            text: t('contacts.contacts.status'), name: 'status', value: true, checked: true
         },
         {
-            text: 'Created At', name: 'created_at', value: true, checked: true
+            text: t('contacts.contacts.created_at'), name: 'created_at', value: true, checked: true
         }
     ]    
 ) %>    

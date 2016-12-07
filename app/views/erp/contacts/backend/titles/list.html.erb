@@ -6,21 +6,31 @@
                     <%= erp_datalist_check_all %>
                 </th>
                 <% if get_columns(params).include?("title") %>
-                    <th><%= t(:title) %></th>
+                    <th>
+                        <%= t('contacts.titles.title') %>
+                    </th>
                 <% end %>
                 <% if get_columns(params).include?("abbreviation") %>
-                    <th><%= t(:abbreviation) %></th>
+                    <th>
+                        <%= t('contacts.titles.abbreviation') %>
+                    </th>
                 <% end %>
-                <% if get_columns(params).include?("archive") %>
-                    <th><%= t(:archive) %></th>
+                <% if get_columns(params).include?("status") %>
+                    <th>
+                        <%= t('contacts.titles.status') %>
+                    </th>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>
-                    <th><%= t(:creator) %></th>
+                    <th>
+                        <%= t('contacts.titles.creator') %>
+                    </th>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
-                    <th><%= t(:created_at) %></th>
+                    <th>
+                        <%= t('contacts.titles.created_at') %>
+                    </th>
                 <% end %>
-                <th width="1%"><%= t(:actions) %></th>
+                <th width="7%"><%= t('contacts.titles.actions') %></th>
             </tr>
         </thead>
         <tbody>
@@ -35,14 +45,14 @@
                     <% if get_columns(params).include?("abbreviation") %>
                         <td><%= title.abbreviation %></td>
                     <% end %>
-                    <% if get_columns(params).include?("archive") %>
-                        <td>
-                            <% if title.archived == false %>
-                            <span class="label label-sm label-danger">Archived</span>
-                            <% else %>
-                            <span class="label label-sm label-success">Active</span>
-                            <% end %> 
-                        </td>
+                    <% if get_columns(params).include?("status") %>
+                    <td>
+                        <% if title.archived == true %>
+                        <span class="label label-sm label-danger"><%= t('contacts.titles.archived') %></span>
+                        <% else %>
+                        <span class="label label-sm label-success"><%= t('contacts.titles.active') %></span>
+                        <% end %> 
+                    </td>
                     <% end %>
                     <% if get_columns(params).include?("creator") %>
                         <td></td>
@@ -54,17 +64,17 @@
                         <%= erp_datalist_row_actions(
                             [
                                 {
-                                    text: '<i class="fa fa-edit"></i> Edit',
+                                    text: '<i class="fa fa-edit"></i> '+t('contacts.titles.edit'),
                                     href: erp_contacts.edit_backend_title_path(title)
                                 },
                                 {
-                                    text: '<i class="fa fa-check"></i> Archive',
+                                    text: '<i class="fa fa-check"></i> '+t('contacts.titles.archive'),
                                     href: erp_contacts.archive_backend_titles_path(id: title),
                                     data_method: 'PUT',
                                     class: 'ajax-link'
                                 },
                                 {
-                                    text: '<i class="fa fa-exclamation"></i> Unarchive',
+                                    text: '<i class="fa fa-exclamation"></i> '+t('contacts.titles.unarchive'),
                                     href: erp_contacts.unarchive_backend_titles_path(id: title),
                                     data_method: 'PUT',
                                     class: 'ajax-link'
@@ -73,10 +83,10 @@
                                     divider: true
                                 },
                                 {
-                                    text: '<i class="fa fa-trash"></i> Delete',
+                                    text: '<i class="fa fa-trash"></i> '+t('contacts.titles.delete'),
                                     href: erp_contacts.backend_title_path(title),
                                     data_method: 'DELETE',
-                                    data_confirm: 'Are you sure?',
+                                    data_confirm: t('contacts.titles.delete_confirm'),
                                     class: 'ajax-link'
                                 }
                             ]
@@ -85,7 +95,7 @@
                 </tr>
             <% end.empty? %>
                 <tr>
-                    <td colspan="7">No matching records found</td>
+                    <td colspan="7"><%= t('contacts.titles.no_matching_records_found') %></td>
                 </tr>
             <% end %>
         </tbody>

@@ -5,9 +5,46 @@ en:
     tags: "Tags"
     
     contact:
+      #datalist
       create: "Create contact"
+      #form
+      none: "None..."
       individual: "Individual"
       company: "Company"
+      type: "Type"
+      name: "Name"
+      enter_full_name: "Enter full name..."
+      select_company: "Select Company"
+      company: "Company"
+      birthday: "Birthday"
+      choose_birthday: "Choose birthday..."
+      address_1: "Address 1"
+      address_2: "Address 2"
+      enter_address_1: "Enter address 1..."
+      enter_address_2: "Enter address 2..."
+      country: "Country"
+      city: "City"
+      enter_city: "Enter city..."
+      state: "State"
+      zip_code: "ZIP code"
+      enter_zip_code: "Enter zip code..."
+      job_position: "Job position"
+      eg_job_position: "E.g. Sales Director"
+      phone: "Phone"
+      enter_phone_numbers: "Enter phone numbers..."
+      mobile: "Mobile"
+      enter_mobile_numbers: "Enter mobile numbers..."
+      email_address: "Email address"
+      enter_email_address: "Enter email address"
+      website: "Website"
+      eg_website: "E.g. https://www.globalnaturesoft.com"
+      tax: "Tax"
+      enter_tax: "Enter tax..."
+      fax: "Fax"
+      enter_fax: "Enter fax..."
+      choose_title: "Choose title..."
+      
+      
       contacts_address: "Contacts & Addresses"
       internal_notes: "Internal notes"
       sales_purchases: "Sales & Purchases"
@@ -22,6 +59,7 @@ en:
       select_company: "Choose company"
       country: "Country"
       edit_contact: "Edit contact"
+      
       
     title:
       create: "Create title"
