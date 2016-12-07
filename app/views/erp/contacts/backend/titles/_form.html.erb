@@ -1,8 +1,4 @@
-<%= form_for([erp_contacts, :backend, title]) do |f| %>
-    <% if title.errors.any? %>
-        <%= erp_form_control("form_error_message") %>
-    <% end %>
-    
+<%= form_for([erp_contacts, :backend, title]) do |f| %>    
     <%= erp_form_control("text", {
         name: 'title[title]',
         value: title.title,                   
