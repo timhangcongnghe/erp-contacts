@@ -1,0 +1,89 @@
+<div class="">
+    <table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+        <thead>
+            <tr>
+                <th width='1%'>
+                    <%= erp_datalist_check_all %>
+                </th>
+                <% if get_columns(params).include?("name") %>
+                <th><%= t('contacts.tag.name') %></th>
+                <% end %>
+                <% if get_columns(params).include?("archive") %>
+                <th><%= t(:archive) %></th>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                <th><%= t(:creator) %></th>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                <th><%= t(:created_at) %></th>
+                <% end %>
+                <th width="1%"><%= t(:actions) %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if @tags.each do |tag| %>
+                <tr class="odd gradeX">
+                    <td>
+                        <%= erp_datalist_check_row(id: tag.id) %>
+                    </td>
+                    <% if get_columns(params).include?("name") %>
+                    <td><%= link_to tag.name, erp_contacts.edit_backend_tag_path(tag) %></td>
+                    <% end %>
+                    <% if get_columns(params).include?("archive") %>
+                    <td>
+                        <% if tag.archived == false %>
+                        <span class="label label-sm label-danger">Archived</span>
+                        <% else %>
+                        <span class="label label-sm label-success">Active</span>
+                        <% end %> 
+                    </td>
+                    <% end %>
+                    <% if get_columns(params).include?("creator") %>
+                    <td></td>
+                    <% end %>
+                    <% if get_columns(params).include?("created_at") %>
+                    <td class="center"><%= tag.created_at.strftime("%d/%m/%Y") %></td>
+                    <% end %>
+                    <td>
+                        <%= erp_datalist_row_actions(
+                            [
+                                {
+                                    text: '<i class="fa fa-edit"></i> Edit',
+                                    href: erp_contacts.edit_backend_tag_path(tag)
+                                },
+                                {
+                                    text: '<i class="fa fa-check"></i> Archive',
+                                    href: erp_contacts.archive_backend_tags_path(id: tag),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link'
+                                },
+                                {
+                                    text: '<i class="fa fa-exclamation"></i> Unarchive',
+                                    href: erp_contacts.unarchive_backend_tags_path(id: tag),
+                                    data_method: 'PUT',
+                                    class: 'ajax-link'
+                                },
+                                {
+                                    divider: true
+                                },
+                                {
+                                    text: '<i class="fa fa-trash"></i> Delete',
+                                    href: erp_contacts.backend_tag_path(tag),
+                                    data_method: 'DELETE',
+                                    data_confirm: 'Are you sure?',
+                                    class: 'ajax-link'
+                                }
+                            ]
+                        ) %>
+                    </td>
+                </tr>
+            <% end.empty? %>
+                <tr>
+                    <td colspan="7">No matching records found</td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+        
+<%= erp_datalist_pagination(@tags) %>
