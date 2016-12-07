@@ -6,6 +6,7 @@ module Erp::Contacts
     belongs_to :user
     belongs_to :title, optional: true
     belongs_to :company, class_name: "Erp::Contacts::Contact", foreign_key: :parent_id, optional: true
+    has_many :contacts, class_name: 'Erp::Contacts::Contact', foreign_key: 'parent_id'
     
     # class const
     TYPE_PERSON = 'person'

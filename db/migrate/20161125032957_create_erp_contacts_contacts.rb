@@ -20,6 +20,7 @@ class CreateErpContactsContacts < ActiveRecord::Migration[5.0]
       t.boolean :archived, default: false
       t.references :user, index: true, references: :erp_users
       t.references :title, index: true, references: :erp_contacts_titles
+      t.references :parent, index: true, references: :erp_contacts_contacts
 
       t.timestamps
     end

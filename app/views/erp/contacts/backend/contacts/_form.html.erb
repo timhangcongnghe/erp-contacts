@@ -193,96 +193,19 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_5_1">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <a href="#form_modal_example" class="btn btn-xs blue"> <%= t('contacts.contact.add') %> <i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="alert alert-block custom-box-shadow">
-                                        <button type="button" class="close" data-dismiss="alert"></button>
-                                        <div class="clearfix">
-                                            <ul class="media-list">
-                                                <li class="media">
-                                                    <a class="pull-left" href="javascript:;">
-                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
-                                                    <div class="media-body">
-                                                        <div class="sm-title"><a href="#"><strong>Hung Nguyen</strong></a></div>
-                                                        <div class="sm-title">Sale Admin</div>
-                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
-                                                        <div class="sm-title">Phone: 0963238714</div>
-                                                        <div class="sm-title">Mobile: 0938318714</div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="alert alert-block custom-box-shadow">
-                                        <button type="button" class="close" data-dismiss="alert"></button>
-                                        <div class="clearfix">
-                                            <ul class="media-list">
-                                                <li class="media">
-                                                    <a class="pull-left" href="javascript:;">
-                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
-                                                    <div class="media-body">
-                                                        <div class="sm-title"><a href="#"><strong>Hung Nguyen (Invoice)</strong></a></div>
-                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
-                                                        <div class="sm-title">Phone: 0963238714</div>
-                                                        <div class="sm-title">Mobile: 0938318714</div>
-                                                        <div class="sm-title">700000, HCMC, Vietnam</div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="alert alert-block custom-box-shadow">
-                                        <button type="button" class="close" data-dismiss="alert"></button>
-                                        <div class="clearfix">
-                                            <ul class="media-list">
-                                                <li class="media">
-                                                    <a class="pull-left" href="javascript:;">
-                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
-                                                    <div class="media-body">
-                                                        <div class="sm-title"><a href="#"><strong>Hung Nguyen (Shipping)</strong></a></div>
-                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
-                                                        <div class="sm-title">Phone: 0963238714</div>
-                                                        <div class="sm-title">Mobile: 0938318714</div>
-                                                        <div class="sm-title">700000, HCMC, Vietnam</div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <div class="alert alert-block custom-box-shadow">
-                                        <button type="button" class="close" data-dismiss="alert"></button>
-                                        <div class="clearfix">
-                                            <ul class="media-list">
-                                                <li class="media">
-                                                    <a class="pull-left" href="javascript:;">
-                                                        <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
-                                                    <div class="media-body">
-                                                        <div class="sm-title"><a href="#"><strong>Hoang Khang Inc.</strong></a></div>
-                                                        <div class="sm-title">hungnt@hoangkhang.com</div>
-                                                        <div class="sm-title">Phone: 0963238714</div>
-                                                        <div class="sm-title">Mobile: 0938318714</div>
-                                                        <div class="sm-title">700000, HCMC, Vietnam</div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        
+                            <%= erp_form_control("addablelist", {
+                                button_text: t('contacts.contact.add'),
+                                create: {
+                                    url: erp_contacts.new_backend_contact_url,
+                                    title: 'Create new contact',
+                                    container_selector: '.new_contact',
+                                    modal_size: 'full',
+                                    list_partial: 'backend/contacts/contacts/contact',
+                                    list_items: contact.contacts,
+                                    list_item: :contact
+                                }
+                            }) %>
                         </div>
                         <div class="tab-pane" id="tab_5_2">
                             <div class="row">

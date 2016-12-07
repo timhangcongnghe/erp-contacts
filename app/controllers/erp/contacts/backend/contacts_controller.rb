@@ -33,15 +33,17 @@ module Erp
           @contact.user = current_user
     
           if @contact.save
-            if !request.xhr?
-              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
-            else
+            if params.to_unsafe_hash['format'] == 'partial'
+              render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
+            elsif params.to_unsafe_hash['format'] == 'json'
               render json: {
                 status: 'success',
                 text: @contact.name,
                 value: @contact.id
-              }
-            end
+              }              
+            else
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
+            end            
           else
             render :new
           end
@@ -102,7 +104,7 @@ module Erp
     
           # Only allow a trusted parameter "white list" through.
           def contact_params
-            params.fetch(:contact, {}).permit(:name, :title_id, :image_url, :contact_type, :address_1, :address_2, :city, :zip, :website, :job_position, :phone, :mobile, :fax, :email, :birthday, :internal_note, :parent_id)
+            params.fetch(:contact, {}).permit(:name, :title_id, :image_url, :contact_type, :address_1, :address_2, :city, :zip, :website, :job_position, :phone, :mobile, :fax, :email, :birthday, :internal_note, :parent_id, contact_ids: [])
           end
       end
     end
