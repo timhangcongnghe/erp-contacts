@@ -1,8 +1,10 @@
-<%= form_for([erp_contacts, :backend, tag]) do |f| %>   
+<%= form_for([erp_contacts, :backend, tag]) do |f| %>    
     <%= erp_form_control("text", {
         name: 'tag[name]',
         value: tag.name,                   
-        label: t(:name)
+        label: t(:name),
+        required: true,
+        errors: tag.errors.full_messages_for(:name)
     }) %>
     <hr>
     <%= erp_component('button/save', {
