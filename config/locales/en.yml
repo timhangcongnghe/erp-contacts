@@ -19,6 +19,9 @@ en:
       misc: "Misc"
       internal_reference: "Internal Reference"
       add: "Add"
+      select_company: "Choose company"
+      country: "Country"
+      edit_contact: "Edit contact"
       
     title:
       create: "Create title"
