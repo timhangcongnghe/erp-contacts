@@ -1,176 +1,151 @@
 <%= form_for([erp_contacts, :backend, contact], :url => erp_contacts.backend_contact_contacts_path) do |f| %>
+    <%= erp_form_control("radio", {
+        name: 'contact[contact_type]',
+        label: t('contacts.contacts.type'),
+        value: @contact.contact_type,
+        options: Erp::Contacts::Contact.get_contacts_type_options()
+    }) %>
     <div class="row">
-        <div class="col-md-8">
-            <%= erp_form_control("radio", {
-                name: 'contact[contact_type]',
-                label: t('contacts.contacts.type'),
-                value: @contact.contact_type,
-                options: Erp::Contacts::Contact.get_type_options()
+        <div class="col-md-6">
+            <%= erp_form_control("text", {
+                name: 'contact[address_1]',
+                value: contact.address_1,                   
+                label: t('contacts.contacts.address_1'),
+                placeholder: t('contacts.contacts.enter_address_1')
             }) %>
+            
+            <%= erp_form_control("text", {
+                name: 'contact[address_2]',
+                value: contact.address_2,                   
+                label: t('contacts.contacts.address_2'),
+                placeholder: t('contacts.contacts.enter_address_2')
+            }) %>
+                
+            <div class="row">
+                <div class="col-md-4">
+                    <%= erp_form_control("text", {
+                        name: 'contact[city]',
+                        value: contact.city,                   
+                        label: t('contacts.contacts.city'),
+                        placeholder: t('contacts.contacts.enter_city')
+                    }) %>
+                </div>
+                <div class="col-md-4">
+                    <%= erp_form_control('select', {
+                        label: t('contacts.contacts.state'),
+                        name: 'abc',
+                        id: 'abc',
+                        options: [
+                            {value: '', text: t('contacts.contacts.none')},
+                            {value: '1', text: 'Quận 1'},
+                            {value: '2', text: 'Quận 2'},
+                            {value: '3', text: 'Quận 3'},
+                            {value: '4', text: 'Quận 4'}
+                        ]
+                    }) %>
+                </div>
+                <div class="col-md-4">
+                    <%= erp_form_control("text", {
+                        name: 'contact[zip]',
+                        value: contact.zip,
+                        label: t('contacts.contacts.zip_code'),
+                        help: '',
+                        placeholder: t('contacts.contacts.enter_zip_code')
+                    }) %>
+                </div>
+            </div>
+            
+            <%= erp_form_control('select', {
+                label: t('contacts.contact.country'),
+                name: 'contact[country_id]',
+                id: '',
+                options: [
+                    {value: 'VI', text: 'Viet Nam'},
+                    {value: 'US', text: 'United States'},
+                    {value: 'EN', text: 'England'},
+                    {value: 'AU', text: 'Australia'}
+                ]
+            }) %>
+        </div>
+        
+        <div class="col-md-6">
             <%= erp_form_control("text", {
                 name: 'contact[name]',
                 value: contact.name,
-                label: t('contacts.contacts.name'),
+                label: t('contacts.contacts.contact_name'),
                 placeholder: t('contacts.contacts.enter_full_name'),
                 required: true,
                 errors: contact.errors.full_messages_for(:name)
             }) %>
+            
             <%= erp_form_control("dataselect", {
-                name: 'contact[parent_id]',
-                value: contact.parent_id,
-                text: contact.display_company,
-                placeholder: t('contacts.contacts.select_company'),
-                label: t('contacts.contacts.company'),
-                url: erp_contacts.dataselect_backend_contacts_path(format: 'json'),
+                name: 'contact[title_id]',
+                value: contact.title_id,
+                text: contact.display_title,
+                placeholder: t('contacts.contacts.choose_title'),
+                label: t('contacts.contacts.title'),
+                url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
                 create: {
-                    url: erp_contacts.new_backend_contact_url(contact_type: Erp::Contacts::Contact::TYPE_COMPANY),
+                    url: erp_contacts.new_backend_title_url,
                     title: t('contacts.contacts.create'),
-                    container_selector: '.new_contact',
-                    input_selector: 'input[name="contact[name]"]',
-                    modal_size: "full"
+                    container_selector: '.new_title',
+                    input_selector: 'input[name="title[title]"]'
                 }
             }) %>
-        </div>
-        <div class="col-md-4">
-            <%= erp_form_control('image', {
-                img_src: contact.image_url,
-                name: 'contact[image_url]'
-            }) %>
-        </div>
-    </div>
-    
-    <%= erp_form_control('date', {
-        label: t('contacts.contacts.birthday'),
-        name: 'contact[birthday]',
-        value: contact.birthday
-    }) %>
-
-    <%= erp_form_control("text", {
-        name: 'contact[address_1]',
-        value: contact.address_1,                   
-        label: t('contacts.contacts.address_1'),
-        placeholder: t('contacts.contacts.enter_address_1')
-    }) %>
-    
-    <%= erp_form_control("text", {
-        name: 'contact[address_2]',
-        value: contact.address_2,                   
-        label: t('contacts.contacts.address_1'),
-        placeholder: t('contacts.contacts.enter_address_2')
-    }) %>
-        
-    <div class="row">
-        <div class="col-md-4">
+            
             <%= erp_form_control("text", {
-                name: 'contact[city]',
-                value: contact.city,                   
-                label: t('contacts.contacts.city'),
-                placeholder: t('contacts.contacts.enter_city')
+                name: 'contact[job_position]',
+                value: contact.job_position,                   
+                label: t('contacts.contacts.job_position'),
+                help: '',
+                placeholder: t('contacts.contacts.eg_job_position')
             }) %>
-        </div>
-        <div class="col-md-4">
-            <%= erp_form_control('select', {
-                label: t('contacts.contacts.state'),
-                name: 'abc',
-                id: 'abc',
-                options: [
-                    {value: '', text: t('contacts.contacts.none')},
-                    {value: '1', text: 'Quận 1'},
-                    {value: '2', text: 'Quận 2'},
-                    {value: '3', text: 'Quận 3'},
-                    {value: '4', text: 'Quận 4'}
-                ]
+            
+            <%= erp_form_control("email", {
+                name: 'contact[email]',
+                value: contact.email,                   
+                label: t('contacts.contacts.email_address'),
+                help: "user@domain.com",
+                placeholder: t('contacts.contacts.enter_email_address'),
+                required: false,
+                errors: contact.errors.full_messages_for(:email)
             }) %>
-        </div>
-        <div class="col-md-4">
+            
             <%= erp_form_control("text", {
-                name: 'contact[zip]',
-                value: contact.zip,
-                label: t('contacts.contacts.zip_code'),
-                placeholder: t('contacts.contacts.enter_zip_code')
+                name: 'contact[phone]',
+                value: contact.phone,                   
+                label: t('contacts.contacts.phone'),
+                help: '',
+                placeholder: t('contacts.contacts.enter_phone_numbers')
+            }) %>
+            
+            <%= erp_form_control("text", {
+                name: 'contact[mobile]',
+                value: contact.mobile,                   
+                label: t('contacts.contacts.mobile'),
+                help: '',
+                placeholder: t('contacts.contacts.enter_mobile_numbers')
+            }) %>
+            
+            <%= erp_form_control("textarea", {
+                name: 'contact[internal_note]',
+                value: contact.internal_note,                   
+                label: t('contacts.contacts.notes'),
+                placeholder: t('contacts.contacts.enter_notes')
             }) %>
         </div>
     </div>
     
-    <%= erp_form_control('select', {
-        label: t('contacts.contacts.country'),
-        name: 'contact[country_id]',
-        id: '',
-        options: [
-            {value: 'VI', text: 'Viet Nam'},
-            {value: 'US', text: 'United States'},
-            {value: 'EN', text: 'England'},
-            {value: 'AU', text: 'Australia'}
-        ]
-    }) %>
-   
-    <%= erp_form_control("text", {
-        name: 'contact[job_position]',
-        value: contact.job_position,                   
-        label: t('contacts.contacts.job_position'),
-        placeholder: t('contacts.contacts.eg_job_position')
-    }) %>
-    
-    <%= erp_form_control("text", {
-        name: 'contact[phone]',
-        value: contact.phone,                   
-        label: t(:phone),
-        help: 'This field is required...',
-        placeholder: "Enter phone number..."
-    }) %>
-    
-    <%= erp_form_control("text", {
-        name: 'contact[mobile]',
-        value: contact.mobile,                   
-        label: t('contacts.contacts.phone'),
-        placeholder: t('contacts.contacts.enter_phone_numbers')
-    }) %>
-        
-    <%= erp_form_control("email", {
-        name: 'contact[email]',
-        value: contact.email,                   
-        label: t('contacts.contacts.email_address'),
-        placeholder: t('contacts.contacts.enter_email_address'),
-        required: false,
-        errors: contact.errors.full_messages_for(:email)
-    }) %>
-
-    <%= erp_form_control("text", {
-        name: 'contact[website]',
-        value: contact.website,                   
-        label: t('contacts.contacts.website'),
-        placeholder: t('contacts.contacts.eg_website')
-    }) %>
-
-    <%= erp_form_control("text", {
-        name: 'contact[fax]',
-        value: contact.fax,
-        label: t('contacts.contacts.tax'),
-        placeholder: t('contacts.contacts.enter_tax')
-    }) %>
-    
-    <%= erp_form_control("dataselect", {
-        name: 'contact[title_id]',
-        value: contact.title_id,
-        text: contact.display_title,
-        placeholder: t('contacts.contacts.choose_title'),
-        label: t('contacts.contacts.title'),
-        url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
-        create: {
-            url: erp_contacts.new_backend_title_url,
-            title: t('contacts.titles.create'),
-            container_selector: '.new_title',
-            input_selector: 'input[name="title[title]"]'
-        }
-    }) %>
-
-    <div class="form-group">
-        <label class="control-label">Tags</label>
-        <input type="text" class="form-control" value="" data-role="tagsinput" />
-    </div>
-
     <%= erp_component('button/save', {
-        text: 'nút đang để test',
+        text: t('contacts.contacts.save_close'),
+        class: ''
+    }) %>
+    <%= erp_component('button/save', {
+        text: t('contacts.contacts.save_create'),
+        class: ''
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('contacts.contacts.cancel'),
         class: ''
     }) %>
 <% end %>
