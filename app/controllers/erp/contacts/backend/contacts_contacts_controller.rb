@@ -9,6 +9,7 @@ module Erp
         # GET /contacts/new
         def new
           @contact = Contact.new
+          @contact.contact_type = params[:contact_type].present? ? params[:contact_type] : Contact::TYPE_PERSON
         end
   
         # GET /contacts/1/edit
