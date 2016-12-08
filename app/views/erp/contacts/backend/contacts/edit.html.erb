@@ -14,14 +14,6 @@
     }) %>
 <% end %>
 <!-- BEGIN SAMPLE FORM PORTLET-->
-<% content_for :title do %>
-    <%= t('contacts.contact.edit_contact') %>
-<% end %>
-
-<% content_for :page_title do %>    
-    <a href=""><i class="fa fa-users"></i> Contacts</a> /
-    <%= t('contacts.contact.edit') %>: <%= @contact.name %>
-<% end %>
 
 <% content_for :page_toolbar do %>
     <div class="btn-group">
