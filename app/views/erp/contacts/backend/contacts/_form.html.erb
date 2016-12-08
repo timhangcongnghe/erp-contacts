@@ -5,6 +5,12 @@
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
                         <div class="row">
+                            <div class="col-md-4">
+                                <%= erp_form_control('image', {
+                                    img_src: contact.image_url,
+                                    name: 'contact[image_url]'
+                                }) %>
+                            </div>
                             <div class="col-md-8">
                                 <%= erp_form_control("radio", {
                                     name: 'contact[contact_type]',
@@ -34,12 +40,6 @@
                                         input_selector: 'input[name="contact[name]"]',
                                         modal_size: "full"
                                     }
-                                }) %>
-                            </div>
-                            <div class="col-md-4">
-                                <%= erp_form_control('image', {
-                                    img_src: contact.image_url,
-                                    name: 'contact[image_url]'
                                 }) %>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                     name: 'contact[city]',
                                     value: contact.city,                   
                                     label: t('contacts.contacts.city'),
-                                    placeholder: t('contacts.contacts.enter_city')
+                                    placeholder: t('contacts.contacts.choose_city')
                                 }) %>
                             </div>
                             <div class="col-md-4">
@@ -208,7 +208,6 @@
             <div class="col-md-12">
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
-                        
                         <div class="tabbable-custom ">
                             <ul class="nav nav-tabs ">
                                 <li class="active">

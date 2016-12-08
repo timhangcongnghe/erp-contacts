@@ -1,23 +1,22 @@
 vi:
   contacts:
-    contact: "Khách hàng"
-    tags: "Tags"
-    
     contacts:
-      contacts: "Quản lý khách hàng"
+      #actions
+      add: "Thêm mới"
       create: "Tạo mới"
-      create_contact: "Tạo mới khách hàng"
       edit: "Chỉnh sửa"
       save: "Lưu"
       save_close: "Lưu & Đóng"
       save_create: "Lưu & Tạo mới"
       cancel: "Hủy"
+      delete: "Xóa"
+      create_contact: "Tạo mới khách hàng"
       archive: "Ít dùng"
       unarchive: "Dùng nhiều"
       archived: "Đang lưu trữ"
       active: "Đang sử dụng"
-      delete: "Xóa"
       delete_confirm: "Bạn có chắc muốn xóa?"
+      #datalist
       persons: "Cá nhân"
       companies: "Công ty/Tổ chức"
       name: "Tên"
@@ -26,7 +25,10 @@ vi:
       created_at: "Ngày tạo"
       actions: "Thao tác"
       no_matching_records_found: "Hiện tại, dữ liệu bảng đang trống."
+      #control
       none: "Chưa chọn..."
+      contact: "Khách hàng"
+      contacts: "Quản lý khách hàng"
       contact_details: "Chi tiết khách hàng"
       individual: "Cá nhân"
       company: "Công ty/Tổ chức"
@@ -44,7 +46,7 @@ vi:
       enter_address_2: "Nhập địa chỉ (2)..."
       country: "Quốc gia"
       city: "Thành phố"
-      enter_city: "Chọn thành phố..."
+      choose_city: "Chọn thành phố..."
       state: "State"
       zip_code: "Mã ZIP"
       enter_zip_code: "Nhập mã ZIP..."
@@ -72,17 +74,14 @@ vi:
       is_a_vendor: "Là nhà cung cấp"
       salesperson: "Nhân viên kinh doanh"
       sale: "Người mua"
-      purchases: "Nhà cung cấp"
+      purchase: "Nhà bán"
       misc: "Misc"
       enter_internal_notes: "Nhập ghi chú..."
       enter_notes: "Nhập ghi chú..."
-      add: "Thêm mới"
-      contact: "Khách hàng"
       invoice: "Địa chỉ hóa đơn"
       shipping: "Địa chỉ giao hàng"
       other: "Khác"
       contact_name: "Tên liên hệ"
-      
     titles:
       titles: "Quản lý danh xưng"
       create: "Tạo mới"
