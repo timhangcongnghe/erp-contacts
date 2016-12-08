@@ -50,6 +50,19 @@
                             value: contact.birthday,
                             placeholder: t('contacts.contacts.choose_birthday')
                         }) %>
+                        
+                        <div class="form-group">
+                            <%= erp_form_control('select', {
+                                label: t('contacts.contacts.gender'),
+                                name: 'abc',
+                                id: 'abc',
+                                options: [
+                                    {value: '', text: t('contacts.contacts.none')},
+                                    {value: 'male', text: t('contacts.contacts.male')},
+                                    {value: 'female', text: t('contacts.contacts.female')}    
+                                ]
+                            }) %>
+                        </div>
                     
                         <%= erp_form_control("text", {
                             name: 'contact[address_1]',
@@ -67,15 +80,17 @@
                         
                         <div class="form-group">
                             <%= erp_form_control('select', {
-                                    label: t('contacts.contacts.country'),
-                                    name: 'abc',
-                                    id: 'abc',
-                                    options: [
-                                        {value: '', text: t('contacts.contacts.none')},
-                                        {value: 'vn', text: 'Việt Nam'},
-                                        {value: 'en', text: 'USA'}
-                                    ]
-                                }) %>
+                                label: t('contacts.contacts.country'),
+                                name: 'abc',
+                                id: 'abc',
+                                options: [
+                                    {value: '', text: t('contacts.contacts.none')},
+                                    {value: 'VI', text: 'Viet Nam'},
+                                    {value: 'US', text: 'United States'},
+                                    {value: 'EN', text: 'England'},
+                                    {value: 'AU', text: 'Australia'}    
+                                ]
+                            }) %>
                         </div>
                             
                         <div class="row">
@@ -110,19 +125,12 @@
                                 }) %>
                             </div>
                         </div>
-                       
-                        <%= erp_form_control('select', {
-                            label: t('contacts.contact.country'),
-                            name: 'contact[country_id]',
-                            id: '',
-                            options: [
-                                {value: 'VI', text: 'Viet Nam'},
-                                {value: 'US', text: 'United States'},
-                                {value: 'EN', text: 'England'},
-                                {value: 'AU', text: 'Australia'}
-                            ]
-                        }) %>
-                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
                         <%= erp_form_control("text", {
                             name: 'contact[job_position]',
                             value: contact.job_position,                   
@@ -187,7 +195,7 @@
                                 input_selector: 'input[name="title[title]"]'
                             }
                         }) %>
-        
+                        
                         <div class="form-group">
                             <label class="control-label">Tags</label>
                             <input type="text" class="form-control" value="" data-role="tagsinput" />
@@ -195,79 +203,81 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="tabbable-custom ">
-                    <ul class="nav nav-tabs ">
-                        <li class="active">
-                            <a href="#tab_5_1" data-toggle="tab"> <%= t('contacts.contacts.contacts_address') %> </a>
-                        </li>
-                        <li>
-                            <a href="#tab_5_2" data-toggle="tab"> <%= t('contacts.contacts.sales_purchases') %> </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_5_1">
-                            <%= erp_form_control("addablelist", {
-                                button_text: t('contacts.contact.add'),
-                                create: {
-                                    url: erp_contacts.new_backend_contact_contact_url(contact_id: (contact.id.present? ? contact.id : 0)),
-                                    title: 'Create new contact',
-                                    container_selector: '.new_contact',
-                                    modal_size: 'md',
-                                    list_partial: 'backend/contacts_contacts/contact',
-                                    list_items: contact.contacts,
-                                    list_item: :contact
-                                }
-                            }) %>
-                        </div>
-                        <div class="tab-pane" id="tab_5_2">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4><%= t('contacts.contacts.sale') %></h4>
-                                    <%= erp_form_control('checkbox', {
-                                        name: '',
-                                        id: '',
-                                        label: '',
-                                        options: [{value: '1', text: t('contacts.contacts.is_a_customer')}]
-                                    }) %>
-                                    <%= erp_form_control("dataselect", {
-                                        name: '',
-                                        value: '1',
-                                        text: 'Hung Nguyen',
-                                        placeholder: '',
-                                        label: t('contacts.contacts.salesperson'),
-                                        url: erp_contacts.dataselect_backend_titles_path(format: 'json')
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
+                        
+                        <div class="tabbable-custom ">
+                            <ul class="nav nav-tabs ">
+                                <li class="active">
+                                    <a href="#tab_5_1" data-toggle="tab"> <%= t('contacts.contacts.contacts_address') %> </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_5_2" data-toggle="tab"> <%= t('contacts.contacts.internal_notes') %> </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_5_3" data-toggle="tab"> <%= t('contacts.contacts.sales_purchases') %> </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_5_1">
+                                    <%= erp_form_control("addablelist", {
+                                        button_text: t('contacts.contact.add'),
+                                        create: {
+                                            url: erp_contacts.new_backend_contact_contact_url(contact_id: (contact.id.present? ? contact.id : 0)),
+                                            title: t('contacts.contacts.create_contact'),
+                                            container_selector: '.new_contact',
+                                            modal_size: 'md',
+                                            list_partial: 'backend/contacts_contacts/contact',
+                                            list_items: contact.contacts,
+                                            list_item: :contact
+                                        }
                                     }) %>
                                 </div>
-                                <div class="col-md-6">
-                                    <h4><%= t('contacts.contacts.purchases') %></h4>
-                                    <%= erp_form_control('checkbox', {
-                                        name: '',
-                                        id: '',
+                                <div class="tab-pane" id="tab_5_2">
+                                    <%= erp_form_control("textarea", {
+                                        name: 'contact[internal_note]',
+                                        value: contact.internal_note,                   
                                         label: '',
-                                        options: [{value: '2', text: t('contacts.contacts.is_a_vendor')}]
+                                        placeholder: t('contacts.contacts.enter_internal_notes')
                                     }) %>
+                                </div>                
+                                <div class="tab-pane" id="tab_5_3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4><%= t('contacts.contacts.sale') %></h4>
+                                            <%= erp_form_control('checkbox', {
+                                                name: '',
+                                                id: '',
+                                                label: '',
+                                                options: [{value: '1', text: t('contacts.contacts.is_a_customer')}]
+                                            }) %>
+                                            <%= erp_form_control("dataselect", {
+                                                name: '',
+                                                value: '1',
+                                                text: 'Hung Nguyen',
+                                                placeholder: '',
+                                                label: t('contacts.contacts.salesperson'),
+                                                url: erp_contacts.dataselect_backend_titles_path(format: 'json')
+                                            }) %>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4><%= t('contacts.contacts.purchases') %></h4>
+                                            <%= erp_form_control('checkbox', {
+                                                name: '',
+                                                id: '',
+                                                label: '',
+                                                options: [{value: '2', text: t('contacts.contacts.is_a_vendor')}]
+                                            }) %>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                            </div>
                         </div>
-                    </div>
-                </div>
-                <br />
-                <h3>
-                    <span aria-hidden="true" class="fa fa-sticky-note-o"></span> <%= t('contacts.contacts.internal_notes') %>
-                </h3>
-                <div class="tabbable-custom ">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_5_1">
-                            <%= erp_form_control("textarea", {
-                                name: 'contact[internal_note]',
-                                value: contact.internal_note,                   
-                                label: '',
-                                placeholder: t('contacts.contacts.enter_internal_notes')
-                            }) %>
-                        </div>                
                     </div>
                 </div>
             </div>
