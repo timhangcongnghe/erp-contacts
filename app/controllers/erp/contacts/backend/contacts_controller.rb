@@ -70,7 +70,7 @@ module Erp
                 'type': 'success'
               }
             }
-          end          
+          end
         end
         
         # DELETE /contacts/delete_all

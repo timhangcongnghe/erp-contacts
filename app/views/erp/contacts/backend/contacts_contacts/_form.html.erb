@@ -1,10 +1,11 @@
-<%= form_for([erp_contacts, :backend, contact], :url => erp_contacts.backend_contact_contacts_path) do |f| %>
+<%= form_for([erp_contacts, :backend, Erp::Contacts::Contact.new(id: 0), contact]) do |f| %>
     <%= erp_form_control("radio", {
         name: 'contact[contact_type]',
         label: t('contacts.contacts.type'),
         value: @contact.contact_type,
         options: Erp::Contacts::Contact.get_contacts_type_options()
     }) %>
+
     <div class="row">
         <div class="hiddable-control"
             data-cond-item="input[name='contact[contact_type]']"

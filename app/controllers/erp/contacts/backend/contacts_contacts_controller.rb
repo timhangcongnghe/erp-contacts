@@ -36,10 +36,28 @@ module Erp
         def update
           @contact.user = current_user
           if @contact.update(contact_params)
-            redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
+            if params.to_unsafe_hash['format'] == 'partial'
+              render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
+            else
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
+            end            
           else
             render :edit
           end
+        end
+        
+        # DELETE /contacts/1
+        def destroy
+          @contact.destroy
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': 'Contact was successfully destroyed.',
+                'type': 'success'
+              }
+            }
+          end          
         end
         
         private
