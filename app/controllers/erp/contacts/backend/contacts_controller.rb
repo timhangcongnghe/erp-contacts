@@ -118,7 +118,8 @@ module Erp
             params.fetch(:contact, {}).permit(:name, :title_id, :image_url, :contact_type,
                                               :address_1, :address_2, :city, :zip, :website,
                                               :job_position, :phone, :mobile, :fax, :email,
-                                              :birthday, :internal_note, :company_id, contact_ids: [])
+                                              :birthday, :internal_note, :company_id,
+                                              :is_customer, :is_vendor, contact_ids: [])
           end
       end
     end
