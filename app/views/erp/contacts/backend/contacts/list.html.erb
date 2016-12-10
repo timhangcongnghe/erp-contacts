@@ -6,25 +6,25 @@
             </th>
             <% if get_columns(params).include?("name") %>
                 <th>
-                    <%= t('contacts.contacts.name') %>
+                    <%= t('.name') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("email") %>
                 <th>
-                    <%= t('contacts.contacts.email') %>
+                    <%= t('.email') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
-                    <%= t('contacts.contacts.status') %>
+                    <%= t('.status') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("created_at") %>
                 <th>
-                    <%= t('contacts.contacts.created_at') %>
+                    <%= t('.created_at') %>
                 </th>
             <% end %>
-            <th width="7%"><%= t('contacts.contacts.actions') %></th>
+            <th width="7%"><%= t('.actions') %></th>
         </tr>
     </thead>
     <tbody>
@@ -34,17 +34,17 @@
                     <%= erp_datalist_check_row(id: contact.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                <td><%= link_to contact.name, erp_contacts.edit_backend_contact_path(contact) %></td>
+                <td><%= link_to contact.name, [:backend, contact] %></td>
                 <% end %>
                 <% if get_columns(params).include?("email") %>
                 <td><%= contact.email %></td>
                 <% end %>
-                <% if get_columns(params).include?("archive") %>
+                <% if get_columns(params).include?("status") %>
                 <td>
                     <% if contact.archived == true %>
-                    <span class="label label-sm label-danger"><%= t('contacts.contacts.archived') %></span>
+                    <span class="label label-sm label-danger"><%= t('.archived') %></span>
                     <% else %>
-                    <span class="label label-sm label-success"><%= t('contacts.contacts.active') %></span>
+                    <span class="label label-sm label-success"><%= t('.active') %></span>
                     <% end %>
                 </td>
                 <% end %>
@@ -55,24 +55,8 @@
                     <%= erp_datalist_row_actions(
                         [
                             {
-                                text: '<i class="fa fa-edit"></i> '+t('contacts.contacts.edit'),
+                                text: '<i class="fa fa-edit"></i> '+t('.edit'),
                                 href: erp_contacts.edit_backend_contact_path(contact)
-                            },
-                            {
-                                text: '<i class="fa fa-check"></i> '+t('contacts.contacts.archive'), href: 'javascript:;'
-                            },
-                            {
-                                text: '<i class="fa fa-exclamation"></i> '+t('contacts.contacts.unarchive'), href: 'javascript:;'
-                            },
-                            {
-                                divider: true
-                            },
-                            {
-                                text: '<i class="fa fa-trash"></i> '+t('contacts.contacts.delete'),
-                                href: erp_contacts.backend_contact_path(contact),
-                                data_method: 'DELETE',
-                                data_confirm: t('contacts.contacts.delete_confirm'),
-                                class: 'ajax-link'
                             }
                         ]
                     ) %>
@@ -80,7 +64,7 @@
             </tr>
         <% end.empty? %>
             <tr>
-                <td colspan="6"><%= t('contacts.contacts.no_matching_records_found') %></td>
+                <td colspan="6"><%= t('.no_matching_records_found') %></td>
             </tr>
         <% end %>
     </tbody>

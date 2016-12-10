@@ -24,18 +24,18 @@ module Erp::Contacts
     # get type options for contact
     def self.get_type_options()
       [
-        {text: I18n.t('contacts.contacts.individual'),value: self::TYPE_PERSON},
-        {text: I18n.t('contacts.contacts.company'),value: self::TYPE_COMPANY}
+        {text: I18n.t('person'),value: self::TYPE_PERSON},
+        {text: I18n.t('company'),value: self::TYPE_COMPANY}
       ]
     end
     
     # get type options for contact contacts
     def self.get_contacts_type_options()
       [
-        {text: I18n.t('contacts.contacts.individual'),value: self::TYPE_PERSON},
-        {text: I18n.t('contacts.contacts.invoice'),value: self::TYPE_INVOICE},
-        {text: I18n.t('contacts.contacts.shipping'),value: self::TYPE_SHIPPING},
-        {text: I18n.t('contacts.contacts.other'),value: self::TYPE_OTHER}
+        {text: I18n.t('individual'),value: self::TYPE_PERSON},
+        {text: I18n.t('invoice'),value: self::TYPE_INVOICE},
+        {text: I18n.t('shipping'),value: self::TYPE_SHIPPING},
+        {text: I18n.t('other'),value: self::TYPE_OTHER}
       ]
     end
     

@@ -4,10 +4,15 @@ module Erp
   module Contacts
     module Backend
       class ContactsController < Erp::Backend::BackendController
-        before_action :set_contact, only: [:edit, :update, :destroy]
+        before_action :set_contact, only: [:show, :edit, :update, :destroy]
     
         # GET /contacts
         def index
+        end
+        
+        # GET /contacts/1
+        # GET /contacts/1.json
+        def show
         end
         
         # POST /contacts/list
