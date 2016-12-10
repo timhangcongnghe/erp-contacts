@@ -33,9 +33,7 @@ module Erp
           @contact.user = current_user
     
           if @contact.save
-            if params.to_unsafe_hash['format'] == 'partial'
-              render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
-            elsif params.to_unsafe_hash['format'] == 'json'
+            if params.to_unsafe_hash['format'] == 'json'
               render json: {
                 status: 'success',
                 text: @contact.name,
@@ -53,7 +51,15 @@ module Erp
         def update
           @contact.user = current_user
           if @contact.update(contact_params)
-            redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
+            if params.to_unsafe_hash['format'] == 'json'
+              render json: {
+                status: 'success',
+                text: @contact.name,
+                value: @contact.id
+              }              
+            else
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
+            end            
           else
             render :edit
           end
