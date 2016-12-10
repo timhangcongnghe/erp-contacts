@@ -253,10 +253,12 @@
                                         <div class="col-md-6">
                                             <h4><%= t('contacts.contacts.sale') %></h4>
                                             <%= erp_form_control('checkbox', {
-                                                name: '',
-                                                id: '',
+                                                name: 'contact[is_customer]',
+                                                id: 'contact_is_customer',
                                                 label: '',
-                                                options: [{value: '1', text: t('contacts.contacts.is_a_customer')}]
+                                                value: contact.is_customer,
+                                                not_selected_value: 'false',
+                                                options: [{value: 'true', text: t('contacts.contacts.is_a_customer')}]
                                             }) %>
                                             <%= erp_form_control("dataselect", {
                                                 name: '',
@@ -270,14 +272,14 @@
                                         <div class="col-md-6">
                                             <h4><%= t('contacts.contacts.purchases') %></h4>
                                             <%= erp_form_control('checkbox', {
-                                                name: '',
-                                                id: '',
+                                                name: 'contact[is_vendor]',
+                                                id: 'contact_is_vendor',
                                                 label: '',
-                                                options: [{value: '2', text: t('contacts.contacts.is_a_vendor')}]
+                                                value: contact.is_vendor,
+                                                not_selected_value: 'false',
+                                                options: [{value: 'true', text: t('contacts.contacts.is_a_vendor')}]
                                             }) %>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +290,7 @@
         </div>
     </div>
     <%= erp_component('button/save', {
-        text: 'nút đang để test',
+        text: t('contacts.contacts.save'),
         class: ''
     }) %>
 <% end %>
