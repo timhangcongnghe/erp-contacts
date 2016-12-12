@@ -261,12 +261,12 @@
                                                 options: [{value: 'true', text: t('contacts.contacts.is_a_customer')}]
                                             }) %>
                                             <%= erp_form_control("dataselect", {
-                                                name: '',
-                                                value: '1',
-                                                text: 'Hung Nguyen',
-                                                placeholder: '',
+                                                name: 'contact[salesperson_id]',
+                                                value: '',
+                                                text: '',
+                                                placeholder: t('contacts.contacts.choose_salesperson'),
                                                 label: t('contacts.contacts.salesperson'),
-                                                url: erp_contacts.dataselect_backend_titles_path(format: 'json')
+                                                url: erp.dataselect_backend_users_path(format: 'json')
                                             }) %>
                                         </div>
                                         <div class="col-md-6">
