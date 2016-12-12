@@ -75,6 +75,7 @@ vi:
             enter_fax: "Nhập số fax"
             title: "Danh xưng"
             choose_title: "Chọn danh xưng"
+            choose_salesperson: "Chọn nhân viên kinh doanh..."
   activerecord:
     errors:
       models:

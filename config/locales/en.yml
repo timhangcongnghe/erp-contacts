@@ -66,6 +66,7 @@ en:
       enter_fax: "Enter fax..."
       title: "Title"
       choose_title: "Select title..."
+      choose_salesperson: "Choose Salesperson..."
       contacts_address: "Contacts & Addresses"
       internal_notes: "Internal notes"
       sales_purchases: "Sales & Purchases"
