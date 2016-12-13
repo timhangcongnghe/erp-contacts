@@ -219,28 +219,6 @@
                                 input_selector: 'input[name="tag[name]"]'
                             }
                         }) %>
-                        <div class="hiddable-control"
-                             data-cond-item="input[name='contact[contact_type]']"
-                             data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
-                            <%= erp_form_control("dataselect", {
-                                name: 'contact[title_id]',
-                                value: contact.title_id,
-                                text: contact.display_title,
-                                placeholder: t('.choose_title'),
-                                label: t('.title'),
-                                url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
-                                create: {
-                                    url: erp_contacts.new_backend_title_path,
-                                    title: t('.create'),
-                                    container_selector: '.new_title',
-                                    input_selector: 'input[name="title[name]"]'
-                                }
-                            }) %>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label"><%= t('.tags') %></label>
-                            <input type="text" class="form-control" value="" data-role="tagsinput" />
-                        </div>
                     </div>
                 </div>
             </div>
