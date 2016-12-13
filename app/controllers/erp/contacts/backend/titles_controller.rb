@@ -32,7 +32,7 @@ module Erp
         # POST /titles
         def create
           @title = Title.new(title_params)
-          @title.user = current_user
+          @title.creator = current_user
     
           if @title.save
             if params.to_unsafe_hash['format'] == 'json'

@@ -35,7 +35,7 @@ module Erp
         # POST /contacts
         def create
           @contact = Contact.new(contact_params)
-          @contact.user = current_user
+          @contact.creator = current_user
 
           if @contact.save
             if params.to_unsafe_hash['format'] == 'json'

@@ -19,7 +19,7 @@ class CreateErpContactsContacts < ActiveRecord::Migration[5.0]
       t.boolean :is_customer, default: false
       t.boolean :is_vendor, default: false
       t.boolean :archived, default: false
-      t.references :user, index: true, references: :erp_users
+      t.references :creator, index: true, references: :erp_users
       t.references :title, index: true, references: :erp_contacts_titles
       t.references :country, index: true, references: :erp_areas_countries
       t.references :state, index: true, references: :erp_areas_states

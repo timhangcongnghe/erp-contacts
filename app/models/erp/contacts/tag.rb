@@ -1,7 +1,8 @@
 module Erp::Contacts
-  class Tag < ApplicationRecord
-    belongs_to :user
+  class Tag < ApplicationRecord    
     validates :name, :presence => true
+    
+    belongs_to :creator, class_name: "Erp::User"
     
     # Filters
     def self.filter(query, params)

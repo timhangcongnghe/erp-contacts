@@ -28,7 +28,7 @@ module Erp
         # POST /tags
         def create
           @tag = Tag.new(tag_params)
-          @tag.user = current_user
+          @tag.creator = current_user
     
           if @tag.save
             if params.to_unsafe_hash['format'] == 'json'

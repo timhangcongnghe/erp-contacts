@@ -3,7 +3,7 @@ class CreateErpContactsTags < ActiveRecord::Migration[5.0]
     create_table :erp_contacts_tags do |t|
       t.string :name
       t.boolean :archived, default: false
-      t.references :user, index: true, references: :erp_users
+      t.references :creator, index: true, references: :erp_users
 
       t.timestamps
     end

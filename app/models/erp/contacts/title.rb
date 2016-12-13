@@ -1,6 +1,6 @@
 module Erp::Contacts
   class Title < ApplicationRecord
-    belongs_to :user
+    belongs_to :creator, class_name: "Erp::User"
     validates :name, :presence => true
     
     # Filters
