@@ -59,7 +59,7 @@ module Erp::Contacts
 			update_all(archived: true)
 		end
     
-    # display title
+    # display name
     def display_name
 			abbreviation.present? ? abbreviation : name
 		end

@@ -38,7 +38,7 @@ module Erp
             if params.to_unsafe_hash['format'] == 'json'
               render json: {
                 status: 'success',
-                text: @title.display_title,
+                text: @title.display_name,
                 value: @title.id
               }
             else
