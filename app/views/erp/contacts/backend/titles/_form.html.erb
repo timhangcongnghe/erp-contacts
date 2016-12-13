@@ -1,24 +1,22 @@
 <%= form_for([erp_contacts, :backend, title]) do |f| %>    
     <%= erp_form_control("text", {
-        name: 'title[title]',
-        value: title.title,                   
-        label: t('contacts.titles.title'),
+        name: 'title[name]',
+        value: title.name,                   
+        label: t('.name'),
         required: true,
-        errors: title.errors.full_messages_for(:title)
+        errors: title.errors.full_messages_for(:name)
     }) %>
     <%= erp_form_control("text", {
         name: 'title[abbreviation]',
         value: title.abbreviation,                   
-        label: t('contacts.titles.abbreviation'),
+        label: t('.abbreviation'),
     }) %>
     <hr>
     <%= erp_component('button/save', {
-        text: t('contacts.titles.submit'),
-        class: ''
+        text: t('.submit')
     }) %>
     <%= erp_component('button/cancel', {
-        text: t('contacts.titles.cancel'),
-        href: erp_contacts.backend_titles_path,
-        class: ''
+        text: t('.cancel'),
+        href: erp_contacts.backend_titles_path
     }) %>
 <% end %>

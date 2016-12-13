@@ -1,7 +1,7 @@
 module Erp::Contacts
   class Title < ApplicationRecord
     belongs_to :user
-    validates :title, :presence => true
+    validates :name, :presence => true
     
     # Filters
     def self.filter(query, params)
@@ -37,10 +37,10 @@ module Erp::Contacts
       
       if keyword.present?
         keyword = keyword.strip.downcase
-        query = query.where('LOWER(title) LIKE ? OR LOWER(abbreviation) LIKE ?', "%#{keyword}%", "%#{keyword}%")
+        query = query.where('LOWER(name) LIKE ? OR LOWER(abbreviation) LIKE ?', "%#{keyword}%", "%#{keyword}%")
       end
       
-      query = query.limit(8).map{|title| {value: title.id, text: title.display_title} }
+      query = query.limit(8).map{|title| {value: title.id, text: title.display_name} }
     end
     
     def archive
@@ -60,8 +60,8 @@ module Erp::Contacts
 		end
     
     # display title
-    def display_title
-			abbreviation.present? ? abbreviation : title
+    def display_name
+			abbreviation.present? ? abbreviation : name
 		end
     
   end

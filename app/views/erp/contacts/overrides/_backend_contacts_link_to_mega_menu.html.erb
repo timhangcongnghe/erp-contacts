@@ -1,0 +1,32 @@
+<% if ["erp/contacts/backend/contacts", "erp/contacts/backend/titles", "erp/contacts/backend/tags"].include?(params[:controller]) %>
+<li class="classic-menu-dropdown">
+    <%= link_to t('.contacts'), erp_contacts.backend_contacts_path %>
+</li>
+<li class="mega-menu-dropdown" aria-haspopup="true">
+    <a href="javascript:;" class="dropdown-toggle" data-hover="megamenu-dropdown" data-close-others="true"> <%= t('.configuration') %>
+        <i class="fa fa-angle-down"></i>
+    </a>
+    <ul class="dropdown-menu" style="min-width: 250px;">
+        <li>
+            <!-- Content container to add padding -->
+            <div class="mega-menu-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="mega-menu-submenu">
+                            <li>
+                                <h3><%= t('.contacts') %></h3>
+                            </li>
+                            <li>
+                                <%= link_to t('.titles'), erp_contacts.backend_titles_path %>
+                            </li>
+                            <li>
+                                <%= link_to t('.tags'), erp_contacts.backend_titles_path %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</li>
+<% end %>

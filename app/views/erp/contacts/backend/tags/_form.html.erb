@@ -2,18 +2,16 @@
     <%= erp_form_control("text", {
         name: 'tag[name]',
         value: tag.name,                   
-        label: t(:name),
+        label: t('.name'),
         required: true,
         errors: tag.errors.full_messages_for(:name)
     }) %>
     <hr>
     <%= erp_component('button/save', {
-        text: t('contacts.tag.submit'),
-        class: ''
+        text: t('.submit'),
     }) %>
     <%= erp_component('button/cancel', {
-        text: t('contacts.tag.cancel'),
+        text: t('.cancel'),
         href: erp_contacts.backend_tags_path,
-        class: ''
     }) %>
 <% end %>

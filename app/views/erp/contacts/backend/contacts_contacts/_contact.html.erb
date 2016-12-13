@@ -10,25 +10,25 @@
                     <div class="sm-title"><%= contact.job_position %></div>
                     <div class="sm-title"><%= contact.email %></div>
                     <div class="sm-title">
-                        <%= contact.phone.present? ? t('contacts.contact.phone') + ': ' + contact.phone : "" %>
+                        <%= contact.phone.present? ? t('.phone') + ': ' + contact.phone : "" %>
                     </div>
                     <div class="sm-title">
-                        <%= contact.mobile.present? ? t('contacts.contact.mobile') + ': ' + contact.mobile : "" %>
+                        <%= contact.mobile.present? ? t('.mobile') + ': ' + contact.mobile : "" %>
                     </div>
                 </div>
                 <br />
                 <a class="btn btn-sm blue addablelist-edit"
                     data-url="<%= erp_contacts.edit_backend_contact_contact_url(contact_id: (contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
-                    data-title="<%= t('contacts.contacts.edit') %>"
+                    data-title="<%= t('.edit') %>"
                     data-selector=".edit_contact"
                 >
-                    <i class="fa fa-pencil"></i> <%= t('contacts.contact.edit') %>
+                    <i class="fa fa-pencil"></i> <%= t('.edit') %>
                 </a>
                 <a class="btn btn-sm btn-danger addablelist-delete"
                     data-url="<%= erp_contacts.backend_contact_contact_url(contact_id: contact.parent_id, id: contact.id) %>"
                     data-method="DELETE"
                 >
-                    <i class="fa fa-close"></i> <%= t('contacts.contact.delete') %>
+                    <i class="fa fa-close"></i> <%= t('.delete') %>
                 </a>
             </li>
         </ul>

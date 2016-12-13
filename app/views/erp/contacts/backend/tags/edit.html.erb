@@ -1,18 +1,11 @@
-<% content_for :page_toolbar do %>
-    <%= erp_component('button/create', {
-        text: t('contacts.tag.create'),
-        href: erp_contacts.new_backend_tag_path,
-        class: 'btn-sm'
-    }) %>
-<% end %>
-
 <% content_for :title do %>
-    Edit Tag
+    <%= t('.edit') %>
 <% end %>
 
 <% content_for :page_title do %>    
-    <a href=""><i class="fa fa-bookmark-o"></i> Tags</a> /
-    Edit: <%= @tag.name %>
+    <a href="<%= erp_contacts.backend_tags_path %>">
+    <i class="fa fa-bookmark-o"></i> <%= t('.tags') %>
+    </a> / <%= t('.edit') %>
 <% end %>
 
 <div class="row">

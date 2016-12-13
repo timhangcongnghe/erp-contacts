@@ -1,12 +1,28 @@
 vi:
   person: "Cá nhân"
   company: "Công ty"
+  invoice: "In hóa đơn"
+  shipping: "Giao hàng"
+  other: "Khác"
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          contact: "Khách hàng"
+          contacts: "Tất cả khách hàng"
+          titles: "Tất cả danh xưng"
+          tags: "Tất cả nhãn"
+        mega_menu:
+          configuration: "Cấu hình"
+          contacts: "Tất cả khách hàng"
+          titles: "Tất cả danh xưng"
+          tags: "Tất cả nhãn"
   erp:
-    contacts:
+    contacts: 
       backend:
         contacts:
           index:
-            contacts: "Quản lý khách hàng"
+            contacts: "Tất cả khách hàng"
             create: "Thêm khách hàng mới"
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
@@ -29,11 +45,11 @@ vi:
             edit: "Cập nhật thông tin"
             no_matching_records_found: "Danh sách khách hàng hiện tại đang trống."
           new:
-            contacts: "Quản lý khách hàng"
+            contacts: "Tất cả khách hàng"
             create: "Thêm khách hàng mới"
             contact_details: "Chi tiết khách hàng"
           edit:
-            contacts: "Quản lý khách hàng"
+            contacts: "Tất cả khách hàng"
             edit: "Cập nhật thông tin khách hàng"
             contact_details: "Chi tiết khách hàng"
           form:
@@ -54,9 +70,11 @@ vi:
             enter_address_1: "Nhập địa chỉ (1)"
             enter_address_2: "Nhập địa chỉ (2)"
             country: "Quốc gia"
+            choose_country: "Chọn quốc gia"
             city: "Thành phố"
             choose_city: "Chọn thành phố..."
-            state: "Tiểu bang"
+            state: "Khu vực"
+            choose_state: "Chọn khu vực"
             zip_code: "Mã ZIP"
             enter_zip_code: "Nhập mã ZIP"
             job_position: "Vị trí công việc"
@@ -76,13 +94,135 @@ vi:
             title: "Danh xưng"
             choose_title: "Chọn danh xưng"
             choose_salesperson: "Chọn nhân viên kinh doanh..."
+            contacts_address: "Liên hệ & Địa chỉ khác"
+            internal_notes: "Ghi chú"
+            sales_purchases: "Cài đặt người mua/người bán"
+            add: "Thêm"
+            create_contact: "Tạo mới khách hàng"
+            enter_internal_notes: "Nhập nội dung ghi chú"
+            is_a_customer: "Là khách hàng mua"
+            is_a_vendor: "Là khách hàng cung cấp"
+            salesperson: "Nhân viên bán hàng"
+            sale: "Khách hàng mua"
+            purchases: "Khách hàng bán"
+            submit: "Lưu"
+            cancel: "Hủy"
+        contacts_contacts:
+          form:
+            none: "Chưa chọn..."
+            type: "Loại liên hệ/địa chỉ"
+            address_1: "Địa chỉ (1)"
+            address_2: "Địa chỉ (2)"
+            enter_address_1: "Nhập địa chỉ (1)"
+            enter_address_2: "Nhập địa chỉ (2)"
+            city: "Thành phố"
+            state: "Tiểu bang"
+            choose_city: "Chọn thành phố..."
+            zip_code: "Mã ZIP"
+            country: "Quốc gia"
+            enter_zip_code: "Nhập mã ZIP"
+            name: "Tên khách hàng"
+            enter_full_name: "Nhập tên khách hàng..."
+            title: "Danh xưng"
+            choose_title: "Chọn danh xưng"
+            create: "Tạo mới"
+            job_position: "Vị trí công việc"
+            eg_job_position: "Ví dụ: Giám đốc tài chính"
+            email_address: "Địa chỉ email"
+            enter_email_address: "Nhập địa chỉ email"
+            phone: "Số điện thoại bàn"
+            enter_phone_numbers: "Nhập số điện thoại bàn"
+            mobile: "Số di động"
+            enter_mobile_numbers: "Nhập số di động"
+            notes: "Ghi chú"
+            enter_notes: "Nhập ghi chú"
+            save_close: "Lưu & Đóng"
+            save_create: "Lưu & Tạo mới"
+            cancel: "Hủy"
+          contact:
+            phone: "Số điện thoại bàn"
+            mobile: "Số di động"
+            edit: "Cập nhật"
+            delete: "Xóa"
+        titles:
+          index:
+            archive: "Ẩn khỏi danh sách"
+            unarchive: "Hiện ra danh sách"
+            titles: "Tất cả danh xưng"
+            create: "Tạo mới danh xưng"
+            name: "Tên danh xưng"
+            abbreviation: "Tên viết tắt"
+            delete: "Xóa danh xưng"
+            delete_confirm: "Bạn có chắc muốn xóa?"
+            status: "Trạng thái"
+            creator: "Người tạo"
+            created_at: "Ngày tạo"
+          list:
+            edit: "Cập nhật"
+            name: "Tên danh xưng"
+            abbreviation: "Tên viết tắt"
+            status: "Trạng thái"
+            creator: "Người tạo"
+            created_at: "Ngày tạo"
+            actions: "Thao tác"
+            no_matching_records_found: "Danh sách danh xưng hiện tại đang trống."
+            archived: "Đã ẩn"
+            active: "Đang hiển thị"
+          new:
+            titles: "Tất cả danh xưng"
+            create: "Tạo mới danh xưng"
+          edit:
+            titles: "Tất cả danh xưng"
+            edit: "Cập nhật danh xưng"
+          form:
+            name: "Tên danh xưng"
+            abbreviation: "Tên viết tắt"
+            submit: "Lưu"
+            cancel: "Hủy"
+        tags:
+          index:
+            tags: "Tất cả nhãn"
+            create: "Tạo mới nhãn"
+            archive: "Ẩn khỏi danh sách"
+            unarchive: "Hiện ra danh sách"
+            delete: "Xóa nhãn"
+            delete_confirm: "Bạn có chắc muốn xóa?"
+            name: "Tên nhãn"
+            status: "Trạng thái"
+            creator: "Người tạo"
+            created_at: "Ngày tạo"
+          list:
+            name: "Tên nhãn"
+            status: "Trạng thái"
+            creator: "Người tạo"
+            created_at: "Ngày tạo"
+            actions: "Thao tác"
+            archived: "Đã ẩn"
+            active: "Đang hiển thị"
+            edit: "Cập nhật"
+          new:
+            create: "Tạo mới nhãn"
+            tags: "Tất cả nhãn"
+          edit:
+            edit: "Cập nhật nhãn"
+            tags: "Tất cả nhãn"
+          form:
+            name: "Tên"
+            submit: "Lưu"
+            cancel: "Hủy"
   activerecord:
     errors:
       models:
         erp/contacts/title:
           attributes:
-            title:
+            name:
+              blank: "không được trống."
+        erp/contacts/tag:
+          attributes:
+            name:
               blank: "không được trống."
     attributes:
       erp/contacts/title:
-        title: "Danh xưng"
+        name: "Danh xưng"
+      erp/contacts/tag:
+        name: "Tên"

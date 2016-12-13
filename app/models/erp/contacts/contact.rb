@@ -4,6 +4,8 @@ module Erp::Contacts
     validates_format_of :email, :allow_blank => true, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => " is invalid (Eg. 'user@domain.com')"
     
     belongs_to :user
+    belongs_to :country
+    belongs_to :state
     belongs_to :title, optional: true
     
     belongs_to :company, class_name: "Erp::Contacts::Contact", foreign_key: :company_id, optional: true
@@ -34,7 +36,7 @@ module Erp::Contacts
     # get type options for contact contacts
     def self.get_contacts_type_options()
       [
-        {text: I18n.t('individual'),value: self::TYPE_PERSON},
+        {text: I18n.t('person'),value: self::TYPE_PERSON},
         {text: I18n.t('invoice'),value: self::TYPE_INVOICE},
         {text: I18n.t('shipping'),value: self::TYPE_SHIPPING},
         {text: I18n.t('other'),value: self::TYPE_OTHER}
@@ -101,6 +103,16 @@ module Erp::Contacts
     def display_company
       company.present? ? company.name : ''
     end
+    
+    # country name
+    def country_name
+			country.present? ? country.name : ''
+		end
+    
+    # state name
+    def state_name
+			state.present? ? state.name : ''
+		end
     
   end
 end

@@ -1,9 +1,18 @@
 <% content_for :title do %>
-    <%= t('contacts.titles.create') %>
+    <%= t('.create') %>
 <% end %>
 
 <% content_for :page_title do %>    
-    <a href=""><i class="fa fa-bookmark-o"></i> <%= t('contacts.titles.titles') %></a> / <%= t('contacts.titles.create') %>
+    <a href="<%= erp_contacts.backend_titles_path %>">
+    <i class="fa fa-users"></i> <%= t('.titles') %>
+    </a> / <%= t('.create') %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <div class="btn-group">
+        <div class="clearfix">
+        </div>
+    </div>
 <% end %>
 
 <div class="row">
@@ -11,6 +20,7 @@
         <% if @title.errors.any? %>
             <%= erp_form_control("form_error_message") %>
         <% end %>
+        
         <!-- BEGIN SAMPLE FORM PORTLET-->
         <div class="portlet light bordered">
             <div class="portlet-body">

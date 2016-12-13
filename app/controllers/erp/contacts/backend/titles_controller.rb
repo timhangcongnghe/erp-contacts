@@ -36,13 +36,13 @@ module Erp
     
           if @title.save
             if params.to_unsafe_hash['format'] == 'json'
-              redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully created.'
-            else
               render json: {
                 status: 'success',
                 text: @title.display_title,
                 value: @title.id
               }
+            else
+              redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully created.'
             end
           else
             if params.to_unsafe_hash['format'] == 'json'
@@ -165,7 +165,7 @@ module Erp
     
           # Only allow a trusted parameter "white list" through.
           def title_params
-            params.require(:title).permit(:title, :abbreviation)
+            params.fetch(:title).permit(:name, :abbreviation)
           end
       end
     end
