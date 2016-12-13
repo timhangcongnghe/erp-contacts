@@ -271,24 +271,16 @@
                                                 id: 'contact_is_customer',
                                                 value: contact.is_customer,
                                                 not_selected_value: 'false',
-                                                options: [{value: 'true', text: t('contacts.contacts.is_a_customer')}]
+                                                options: [{value: 'true', text: t('.is_a_customer')}]
                                             }) %>
                                             <%= erp_form_control("dataselect", {
                                                 name: 'contact[salesperson_id]',
                                                 value: '',
                                                 text: '',
-                                                placeholder: t('contacts.contacts.choose_salesperson'),
-                                                label: t('contacts.contacts.salesperson'),
+                                                placeholder: t('.choose_salesperson'),
+                                                label: t('.salesperson'),
                                                 url: erp.dataselect_backend_users_path(format: 'json'),
                                                 options: [{value: '1', text: t('.is_a_customer')}]
-                                            }) %>
-                                            <%= erp_form_control("dataselect", {
-                                                name: '',
-                                                value: '1',
-                                                text: 'Hung Nguyen',
-                                                placeholder: '',
-                                                label: t('.salesperson'),
-                                                url: erp_contacts.dataselect_backend_titles_path(format: 'json')
                                             }) %>
                                         </div>
                                         <div class="col-md-6">
