@@ -48,6 +48,7 @@ module Erp
               redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
             end            
           else
+            puts @contact.errors.to_json
             render :new
           end
         end

@@ -104,7 +104,7 @@ module Erp::Contacts
     
     # display contact title
     def display_title
-      title.present? ? title.display_title : ''
+      title.present? ? title.display_name : ''
     end
     
     # display contact company
