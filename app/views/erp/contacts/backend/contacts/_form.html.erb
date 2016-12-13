@@ -52,12 +52,16 @@
                                 </div>
                             </div>
                         </div>
-                        <%= erp_form_control('date', {
-                            label: t('.birthday'),
-                            name: 'contact[birthday]',
-                            value: contact.birthday,
-                            placeholder: t('.choose_birthday')
-                        }) %>
+                        <div class="hiddable-control"
+                        data-cond-item="input[name='contact[contact_type]']"
+                        data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
+                            <%= erp_form_control('date', {
+                                label: t('.birthday'),
+                                name: 'contact[birthday]',
+                                value: contact.birthday,
+                                placeholder: t('.choose_birthday')
+                            }) %>
+                        </div>
                         <div class="hiddable-control"
                              data-cond-item="input[name='contact[contact_type]']"
                              data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
@@ -146,12 +150,16 @@
             <div class="col-md-6">
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
-                        <%= erp_form_control("text", {
-                            name: 'contact[job_position]',
-                            value: contact.job_position,                   
-                            label: t('.job_position'),
-                            placeholder: t('.eg_job_position')
-                        }) %>
+                        <div class="hiddable-control"
+                        data-cond-item="input[name='contact[contact_type]']"
+                        data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
+                            <%= erp_form_control("text", {
+                                name: 'contact[job_position]',
+                                value: contact.job_position,                   
+                                label: t('.job_position'),
+                                placeholder: t('.eg_job_position')
+                            }) %>
+                        </div>
                         <%= erp_form_control("text", {
                             name: 'contact[phone]',
                             value: contact.phone,                   
@@ -177,32 +185,40 @@
                             label: t('.website'),
                             placeholder: t('.eg_website')
                         }) %>
-                        <%= erp_form_control("text", {
-                            name: '',
-                            value: '',                   
-                            label: t('.tax'),
-                            placeholder: t('.enter_tax')
-                        }) %>
-                        <%= erp_form_control("text", {
-                            name: 'contact[fax]',
-                            value: contact.fax,
-                            label: t('.fax'),
-                            placeholder: t('.enter_fax'),
-                        }) %>
-                        <%= erp_form_control("dataselect", {
-                            name: 'contact[title_id]',
-                            value: contact.title_id,
-                            text: contact.display_title,
-                            placeholder: t('.choose_title'),
-                            label: t('.title'),
-                            url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
-                            create: {
-                                url: erp_contacts.new_backend_title_url,
-                                title: t('.create'),
-                                container_selector: '.new_title',
-                                input_selector: 'input[name="title[title]"]'
-                            }
-                        }) %>
+                        <div class="hiddable-control"
+                        data-cond-item="input[name='contact[contact_type]']"
+                        data-cond-value="<%= Erp::Contacts::Contact::TYPE_COMPANY %>">
+                            <%= erp_form_control("text", {
+                                name: '',
+                                value: '',                   
+                                label: t('.tax'),
+                                placeholder: t('.enter_tax')
+                            }) %>                        
+                            <%= erp_form_control("text", {
+                                name: 'contact[fax]',
+                                value: contact.fax,
+                                label: t('.fax'),
+                                placeholder: t('.enter_fax'),
+                            }) %>
+                        </div>
+                        <div class="hiddable-control"
+                        data-cond-item="input[name='contact[contact_type]']"
+                        data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
+                            <%= erp_form_control("dataselect", {
+                                name: 'contact[title_id]',
+                                value: contact.title_id,
+                                text: contact.display_title,
+                                placeholder: t('.choose_title'),
+                                label: t('.title'),
+                                url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
+                                create: {
+                                    url: erp_contacts.new_backend_title_url,
+                                    title: t('.create'),
+                                    container_selector: '.new_title',
+                                    input_selector: 'input[name="title[title]"]'
+                                }
+                            }) %>
+                        </div>
                         <%= erp_form_control("dataselect", {
                             name: 'contact[tag_ids][]',
                             value: '',
