@@ -40,7 +40,7 @@
                         <%= erp_datalist_check_row(id: title.id) %>
                     </td>
                     <% if get_columns(params).include?("name") %>
-                        <td><%= link_to title.name, erp_contacts.edit_backend_title_path(title) %></td>
+                        <td><%= link_to title.title, erp_contacts.edit_backend_title_path(title) %></td>
                     <% end %>
                     <% if get_columns(params).include?("abbreviation") %>
                         <td><%= title.abbreviation %></td>
