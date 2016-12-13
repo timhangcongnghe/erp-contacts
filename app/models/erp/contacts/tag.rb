@@ -47,5 +47,21 @@ module Erp::Contacts
 			update_all(archived: true)
 		end
     
+    # data for dataselect ajax
+    def self.dataselect(keyword='', params={})
+      query = self.all
+      
+      if keyword.present?
+        keyword = keyword.strip.downcase
+        query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
+      end
+      
+      if params[:current_value].present?
+        query = query.where.not(id: params[:current_value].split(','))
+      end
+      
+      query = query.limit(8).map{|tag| {value: tag.id, text: tag.name} }
+    end
+    
   end
 end

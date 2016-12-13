@@ -31,7 +31,15 @@ module Erp
           @tag.user = current_user
     
           if @tag.save
-            redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: 'Tag was successfully created.'
+            if params.to_unsafe_hash['format'] == 'json'
+              render json: {
+                status: 'success',
+                text: @tag.name,
+                value: @tag.id
+              }              
+            else
+              redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: 'Tag was successfully created.'
+            end            
           else
             render :new
           end
@@ -127,6 +135,14 @@ module Erp
             }
           end          
         end
+        
+        def dataselect
+          respond_to do |format|
+            format.json {
+              render json: Tag.dataselect(params[:keyword], params)
+            }
+          end
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.
@@ -140,7 +156,7 @@ module Erp
     
           # Only allow a trusted parameter "white list" through.
           def tag_params
-            params.fetch(:tag, {}).permit(:name)
+            params.fetch(:tag, {}).permit(:name, tag_ids: [])
           end
       end
     end

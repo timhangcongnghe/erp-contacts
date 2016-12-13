@@ -12,6 +12,8 @@ module Erp::Contacts
     belongs_to :parent, class_name: "Erp::Contacts::Contact", foreign_key: :parent_id, optional: true
     has_many :contacts, class_name: 'Erp::Contacts::Contact', foreign_key: :parent_id
     
+    has_and_belongs_to_many :tags
+    
     mount_uploader :image_url, Erp::Contacts::ContactUploader
     
     # class const

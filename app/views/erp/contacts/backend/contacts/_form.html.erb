@@ -201,10 +201,22 @@
                             }
                         }) %>
                         
-                        <div class="form-group">
-                            <label class="control-label">Tags</label>
-                            <input type="text" class="form-control" value="" data-role="tagsinput" />
-                        </div>
+                        <%= erp_form_control("dataselect", {
+                            name: 'contact[tag_ids][]',
+                            value: '',
+                            values: (contact.tags.map {|tag| {text: tag.name, value: tag.id}}),
+                            text: '',
+                            placeholder: '',
+                            multiple: true,
+                            label: t('contacts.contacts.tags'),
+                            url: erp_contacts.dataselect_backend_tags_path(format: 'json'),
+                            create: {
+                                url: erp_contacts.new_backend_tag_url,
+                                title: t('.create'),
+                                container_selector: '.new_tag',
+                                input_selector: 'input[name="tag[name]"]'
+                            }
+                        }) %>
                     </div>
                 </div>
             </div>
