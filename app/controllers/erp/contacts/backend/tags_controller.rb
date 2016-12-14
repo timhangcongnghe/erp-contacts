@@ -1,3 +1,5 @@
+require_dependency "erp/application_controller"
+
 module Erp
   module Contacts
     module Backend

@@ -21,7 +21,6 @@ Erp::Contacts::Engine.routes.draw do
 					delete 'delete_all'
 					put 'archive_all'
 					put 'unarchive_all'
-					get 'dataselect'
 				end
 			end
 			resources :contacts do
