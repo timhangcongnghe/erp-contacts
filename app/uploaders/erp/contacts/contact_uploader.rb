@@ -51,11 +51,11 @@ module Erp
       
       # For backend list
 			version :small do
-				process :resize_to_fit => [85, 85]
+				process :resize_to_fill => [85, 85]
 			end
 			
 			version :medium do
-				process :resize_to_fit => [150, 150]
+				process :resize_to_fill => [150, 150]
 			end
     end
   end
