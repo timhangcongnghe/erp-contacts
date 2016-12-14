@@ -55,7 +55,6 @@ module Erp
 
         # PATCH/PUT /contacts/1
         def update
-          @contact.user = current_user
           if @contact.update(contact_params)
             if params.to_unsafe_hash['format'] == 'json'
               render json: {
