@@ -38,7 +38,7 @@ module Erp
           @contact.creator = current_user
 
           if @contact.save
-            if params.to_unsafe_hash['format'] == 'json'
+            if request.xhr?
               render json: {
                 status: 'success',
                 text: @contact.name,
@@ -56,7 +56,7 @@ module Erp
         # PATCH/PUT /contacts/1
         def update
           if @contact.update(contact_params)
-            if params.to_unsafe_hash['format'] == 'json'
+            if request.xhr?
               render json: {
                 status: 'success',
                 text: @contact.name,

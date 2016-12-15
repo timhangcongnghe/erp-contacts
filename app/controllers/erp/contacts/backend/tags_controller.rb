@@ -33,7 +33,7 @@ module Erp
           @tag.creator = current_user
     
           if @tag.save
-            if params.to_unsafe_hash['format'] == 'json'
+            if request.xhr?
               render json: {
                 status: 'success',
                 text: @tag.name,

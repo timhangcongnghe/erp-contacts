@@ -22,7 +22,7 @@ module Erp
           @contact.user = current_user
     
           if @contact.save
-            if params.to_unsafe_hash['format'] == 'partial'
+            if params.to_unsafe_hash['partial'].present?
               render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
             else
               redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
@@ -36,7 +36,7 @@ module Erp
         def update
           @contact.user = current_user
           if @contact.update(contact_params)
-            if params.to_unsafe_hash['format'] == 'partial'
+            if params.to_unsafe_hash['partial'].present?
               render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
             else
               redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
