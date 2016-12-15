@@ -9,6 +9,19 @@
 <% end %>
 
 <% content_for :page_toolbar do %>
+    <%= erp_component('button/edit', {
+        text: t('contacts.contact.edit'),
+        href: erp_contacts.edit_backend_contact_path(@contact),
+        class: 'btn-sm'
+    }) %>
+    <%= erp_component('button/create', {
+        text: t('contacts.contact.create'),
+        href: erp_contacts.new_backend_contact_path,
+        class: 'btn-sm'
+    }) %>
+<% end %>
+
+<% content_for :page_toolbar do %>
     <div class="btn-group">
         <div class="clearfix">
         </div>
@@ -17,6 +30,9 @@
 
 <div class="row">
     <div class="col-md-12">
-        
+        <h3>
+            <span aria-hidden="true" class="icon-user-follow"></span> <%= t('.contact_details') %>
+        </h3>
+         <%= render 'detail', contact: @contact %>            
     </div>
 </div>
