@@ -19,7 +19,7 @@ module Erp
         # POST /contacts
         def create
           @contact = Contact.new(contact_params)
-          @contact.user = current_user
+          @contact.creator = current_user
     
           if @contact.save
             if params.to_unsafe_hash['partial'].present?
@@ -34,7 +34,6 @@ module Erp
 
         # PATCH/PUT /contacts/1
         def update
-          @contact.user = current_user
           if @contact.update(contact_params)
             if params.to_unsafe_hash['partial'].present?
               render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
