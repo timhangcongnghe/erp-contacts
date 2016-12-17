@@ -90,24 +90,22 @@
                             label: t('.address_2'),
                             placeholder: t('.enter_address_2')
                         }) %>
-                        <div class="form-group">
-                            <%= erp_form_control("dataselect", {
-                                name: 'contact[country_id]',
-                                value: contact.country_id,
-                                text: contact.country_name,
-                                placeholder: t('.choose_country'),
-                                label: t('.country'),
-                                url: erp_areas.dataselect_backend_countries_path(format: 'json'),
-                                create: {
-                                    url: erp_areas.new_backend_country_path,
-                                    title: t('.create'),
-                                    container_selector: '.new_country',
-                                    input_selector: 'input[name="country[name]"]'
-                                },
-                                required: true,
-                                errors: contact.errors.full_messages_for(:country)
-                            }) %>
-                        </div> 
+                        <%= erp_form_control("dataselect", {
+                            name: 'contact[country_id]',
+                            value: contact.country_id,
+                            text: contact.country_name,
+                            placeholder: t('.choose_country'),
+                            label: t('.country'),
+                            url: erp_areas.dataselect_backend_countries_path(format: 'json'),
+                            create: {
+                                url: erp_areas.new_backend_country_path,
+                                title: t('.create'),
+                                container_selector: '.new_country',
+                                input_selector: 'input[name="country[name]"]'
+                            },
+                            required: true,
+                            errors: contact.errors.full_messages_for(:country)
+                        }) %>
                         <div class="row">
                             <div class="col-md-4">
                                 <%= erp_form_control("text", {
