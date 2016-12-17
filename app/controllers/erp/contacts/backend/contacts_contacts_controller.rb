@@ -20,7 +20,11 @@ module Erp
         def create
           @contact = Contact.new(contact_params)
           @contact.creator = current_user
+<<<<<<< 98fd18c9067801243174b1bc216ca611855eb37e
     
+=======
+
+>>>>>>> user -> creator: contacts_contacts controller
           if @contact.save
             if params.to_unsafe_hash['partial'].present?
               render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
@@ -28,6 +32,7 @@ module Erp
               redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
             end            
           else
+            puts @contact.errors.to_json
             render :new
           end
         end
