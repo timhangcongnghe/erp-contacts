@@ -20,11 +20,7 @@ module Erp
         def create
           @contact = Contact.new(contact_params)
           @contact.creator = current_user
-<<<<<<< 98fd18c9067801243174b1bc216ca611855eb37e
-    
-=======
 
->>>>>>> user -> creator: contacts_contacts controller
           if @contact.save
             if params.to_unsafe_hash['partial'].present?
               render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
