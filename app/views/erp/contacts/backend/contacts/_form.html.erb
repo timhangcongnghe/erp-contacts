@@ -132,7 +132,9 @@
                                         input_selector: 'input[name="state[name]"]'
                                     },
                                     required: true,
-                                    errors: contact.errors.full_messages_for(:state)
+                                    errors: contact.errors.full_messages_for(:state),
+                                    parent_control: "input[name='contact[country_id]']",
+                                    parent_id: "country_id"
                                 }) %>   
                             </div>
                             <div class="col-md-4">
