@@ -37,7 +37,7 @@ module Erp
           @title.creator = current_user
     
           if @title.save
-            if params.to_unsafe_hash['format'] == 'json'
+            if request.xhr?
               render json: {
                 status: 'success',
                 text: @title.display_name,
@@ -47,7 +47,7 @@ module Erp
               redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully created.'
             end
           else
-            if params.to_unsafe_hash['format'] == 'json'
+            if request.xhr?
               render '_form', layout: nil, locals: {title: @title}
             else
               render :new

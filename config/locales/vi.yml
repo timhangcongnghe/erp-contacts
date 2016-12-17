@@ -226,3 +226,8 @@ vi:
         name: "Danh xưng"
       erp/contacts/tag:
         name: "Tên"
+  backend:
+    contacts_contacts:
+      contact:
+        edit: Cập nhật
+        delete: Xóa
