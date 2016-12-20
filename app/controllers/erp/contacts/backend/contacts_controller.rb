@@ -119,7 +119,7 @@ module Erp
               :address_1, :address_2, :city, :zip, :website,
               :job_position, :phone, :mobile, :fax, :email,
               :birthday, :internal_note, :company_id,
-              :country_id, :state_id,
+              :country_id, :state_id, :salesperson_id,
               :is_customer, :is_vendor, contact_ids: [], tag_ids: [])
           end
       end
