@@ -309,12 +309,17 @@
                                             }) %>
                                             <%= erp_form_control("dataselect", {
                                                 name: 'contact[salesperson_id]',
-                                                value: '',
-                                                text: '',
+                                                value: contact.salesperson_id,
+                                                text: contact.salesperson_name,
                                                 placeholder: t('.choose_salesperson'),
                                                 label: t('.salesperson'),
                                                 url: erp.dataselect_backend_users_path(format: 'json'),
-                                                options: [{value: '1', text: t('.is_a_customer')}]
+                                                create: {
+                                                    url: erp.new_backend_user_url,
+                                                    title: t('.create'),
+                                                    container_selector: '.new_user',
+                                                    input_selector: 'input[name="user[name]"]'
+                                                }
                                             }) %>
                                         </div>
                                         <div class="col-md-6">
