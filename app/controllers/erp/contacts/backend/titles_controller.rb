@@ -58,7 +58,15 @@ module Erp
         # PATCH/PUT /titles/1
         def update
           if @title.update(title_params)
-            redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully updated.'
+            if request.xhr?
+              render json: {
+                status: 'success',
+                text: @title.name,
+                value: @title.id
+              }              
+            else
+              redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully updated.'
+            end
           else
             render :edit
           end
