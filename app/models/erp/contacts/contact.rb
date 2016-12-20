@@ -91,8 +91,12 @@ module Erp::Contacts
     end
     
     # data for dataselect ajax
-    def self.dataselect(keyword='')
-      query = self.where(contact_type: self::TYPE_COMPANY)
+    def self.dataselect(keyword='', params='')
+      if params[:contact_type].present?
+        query = self.where(contact_type: params[:contact_type])
+      else
+        query = self.all
+      end
       
       if keyword.present?
         keyword = keyword.strip.downcase
