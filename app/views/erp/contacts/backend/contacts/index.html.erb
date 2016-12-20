@@ -23,7 +23,10 @@
         {
             text: t('creator'),
             name: 'erp_users.name',
-            data_url: erp.dataselect_backend_users_path
+            select: {
+                name: 'erp_users.id',
+                data_url: erp.dataselect_backend_users_path
+            }
         }
     ],
     actions: [
