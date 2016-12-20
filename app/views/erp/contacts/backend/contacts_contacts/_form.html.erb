@@ -84,35 +84,6 @@
                 errors: contact.errors.full_messages_for(:name)
             }) %>
             
-            <div class="hiddable-control"
-                data-cond-item="input[name='contact[contact_type]']"
-                data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
-            
-                <%= erp_form_control("dataselect", {
-                    name: 'contact[title_id]',
-                    value: contact.title_id,
-                    text: contact.display_title,
-                    placeholder: t('.choose_title'),
-                    label: t('.title'),
-                    url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
-                    create: {
-                        url: erp_contacts.new_backend_title_url,
-                        title: t('.create'),
-                        container_selector: '.new_title',
-                        input_selector: 'input[name="title[title]"]'
-                    }
-                }) %>
-                
-                <%= erp_form_control("text", {
-                    name: 'contact[job_position]',
-                    value: contact.job_position,                   
-                    label: t('.job_position'),
-                    help: '',
-                    placeholder: t('.eg_job_position')
-                }) %>
-                
-            </div>
-            
             <%= erp_form_control("email", {
                 name: 'contact[email]',
                 value: contact.email,                   
@@ -145,6 +116,35 @@
                 label: t('.notes'),
                 placeholder: t('.enter_notes')
             }) %>
+        </div>
+        
+        <div class="hiddable-control col-md-6"
+            data-cond-item="input[name='contact[contact_type]']"
+            data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
+        
+            <%= erp_form_control("dataselect", {
+                name: 'contact[title_id]',
+                value: contact.title_id,
+                text: contact.display_title,
+                placeholder: t('.choose_title'),
+                label: t('.title'),
+                url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
+                create: {
+                    url: erp_contacts.new_backend_title_url,
+                    title: t('.create'),
+                    container_selector: '.new_title',
+                    input_selector: 'input[name="title[title]"]'
+                }
+            }) %>
+            
+            <%= erp_form_control("text", {
+                name: 'contact[job_position]',
+                value: contact.job_position,                   
+                label: t('.job_position'),
+                help: '',
+                placeholder: t('.eg_job_position')
+            }) %>
+            
         </div>
     </div>
     
