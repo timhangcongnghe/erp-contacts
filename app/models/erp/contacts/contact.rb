@@ -69,7 +69,8 @@ module Erp::Contacts
           and_conds << '('+or_conds.join(' OR ')+')'
         end
       end
-
+      
+      query = query.joins(:creator)
       query = query.where(and_conds.join(' AND ')) if !and_conds.empty?
       
       return query

@@ -4,6 +4,7 @@ vi:
   invoice: "In hóa đơn"
   shipping: "Giao hàng"
   other: "Khác"
+  creator: "Người tạo"
   layouts:
     erp:
       backend:

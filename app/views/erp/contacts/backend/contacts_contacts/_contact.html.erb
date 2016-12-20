@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 
-                <% if editable != false %>
+                <% if !defined?(editable) or editable != false %>
                     <br />
                     <a class="btn btn-sm blue addablelist-edit"
                         data-url="<%= erp_contacts.edit_backend_contact_contact_url(contact_id: (!contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
