@@ -41,8 +41,8 @@
                                         <span class="font-grey-cascade">
                                             <%= contact.address_1.present? ? "#{contact.address_1} <br/>".html_safe : "" %>
                                             <%= contact.address_2.present? ? "#{contact.address_2} <br/>".html_safe : "" %>
-                                            <%= contact.city %> - <%= contact.state.name %> - <%= contact.zip %> <br/>
-                                            <%= contact.country.name %>
+                                            <%= contact.city %> - <%= contact.state_name %> - <%= contact.zip %> <br/>
+                                            <%= contact.country_name %>
                                         </span>
                                     </div>
                                 </div>
@@ -154,18 +154,9 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_5_1">
-                                    <%= erp_form_control("addablelist", {
-                                        button_text: t('.add'),
-                                        create: {
-                                            url: erp_contacts.new_backend_contact_contact_url(contact_id: (contact.id.present? ? contact.id : 0)),
-                                            title: t('.create_contact'),
-                                            container_selector: '.new_contact',
-                                            modal_size: 'lg',
-                                            list_partial: 'backend/contacts_contacts/contact',
-                                            list_items: contact.contacts,
-                                            list_item: :contact
-                                        }
-                                    }) %>
+                                    <% contact.contacts.each do |child_contact| %>
+                                        <%= render 'backend/contacts_contacts/contact', contact: child_contact, editable: false %>
+                                    <% end %>
                                 </div>
                                 <div class="tab-pane" id="tab_5_2">
                                     <span class="font-grey-cascade"><%= contact.internal_note %></span>

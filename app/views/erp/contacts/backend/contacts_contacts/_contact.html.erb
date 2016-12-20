@@ -16,20 +16,23 @@
                         <%= contact.mobile.present? ? t('.mobile') + ': ' + contact.mobile : "" %>
                     </div>
                 </div>
-                <br />
-                <a class="btn btn-sm blue addablelist-edit"
-                    data-url="<%= erp_contacts.edit_backend_contact_contact_url(contact_id: (!contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
-                    data-title="<%= t('.edit') %>"
-                    data-selector=".edit_contact"
-                >
-                    <i class="fa fa-pencil"></i> <%= t('.edit') %>
-                </a>
-                <a class="btn btn-sm btn-danger addablelist-delete"
-                    data-url="<%= erp_contacts.backend_contact_contact_url(contact_id: (!contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
-                    data-method="DELETE"
-                >
-                    <i class="fa fa-close"></i> <%= t('.delete') %>
-                </a>
+                
+                <% if editable != false %>
+                    <br />
+                    <a class="btn btn-sm blue addablelist-edit"
+                        data-url="<%= erp_contacts.edit_backend_contact_contact_url(contact_id: (!contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
+                        data-title="<%= t('.edit') %>"
+                        data-selector=".edit_contact"
+                    >
+                        <i class="fa fa-pencil"></i> <%= t('.edit') %>
+                    </a>
+                    <a class="btn btn-sm btn-danger addablelist-delete"
+                        data-url="<%= erp_contacts.backend_contact_contact_url(contact_id: (!contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
+                        data-method="DELETE"
+                    >
+                        <i class="fa fa-close"></i> <%= t('.delete') %>
+                    </a>
+                <% end %>
             </li>
         </ul>
     </div>
