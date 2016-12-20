@@ -4,6 +4,7 @@ module Erp::Contacts
     validates_format_of :email, :allow_blank => true, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => " is invalid (Eg. 'user@domain.com')"
     
     belongs_to :creator, class_name: "Erp::User"
+    belongs_to :salesperson, class_name: "Erp::User", foreign_key: :salesperson_id, optional: true
     belongs_to :country, class_name: "Erp::Areas::Country", optional: true
     belongs_to :state, class_name: "Erp::Areas::State", optional: true
     belongs_to :title, optional: true
@@ -126,6 +127,11 @@ module Erp::Contacts
     def state_name
 			state.present? ? state.name : ''
 		end
+    
+    # salesperson name
+    def salesperson_name
+      salesperson.present? ? salesperson.name : ''
+    end
     
   end
 end
