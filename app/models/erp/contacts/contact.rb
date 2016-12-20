@@ -5,6 +5,7 @@ module Erp::Contacts
     
     belongs_to :creator, class_name: "Erp::User"
     belongs_to :salesperson, class_name: "Erp::User", foreign_key: :salesperson_id, optional: true
+    has_one :user, class_name: "Erp::User"
     belongs_to :country, class_name: "Erp::Areas::Country", optional: true
     belongs_to :state, class_name: "Erp::Areas::State", optional: true
     belongs_to :title, optional: true
