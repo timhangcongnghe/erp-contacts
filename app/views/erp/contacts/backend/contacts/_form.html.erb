@@ -35,7 +35,7 @@
                                         text: contact.display_company,
                                         label: t('.company'),
                                         placeholder: t('.select_company'),
-                                        url: erp_contacts.dataselect_backend_contacts_path(format: 'json'),
+                                        url: erp_contacts.dataselect_backend_contacts_path(format: 'json', contact_type: Erp::Contacts::Contact::TYPE_COMPANY),
                                         create: {
                                             url: erp_contacts.new_backend_contact_url(contact_type: Erp::Contacts::Contact::TYPE_COMPANY),
                                             title: t('.create'),
@@ -90,22 +90,30 @@
                             label: t('.address_2'),
                             placeholder: t('.enter_address_2')
                         }) %>
-                        <%= erp_form_control("dataselect", {
-                            name: 'contact[country_id]',
-                            value: contact.country_id,
-                            text: contact.country_name,
-                            placeholder: t('.choose_country'),
-                            label: t('.country'),
-                            url: erp_areas.dataselect_backend_countries_path(format: 'json'),
-                            create: {
-                                url: erp_areas.new_backend_country_path,
-                                title: t('.create'),
-                                container_selector: '.new_country',
-                                input_selector: 'input[name="country[name]"]'
-                            },
-                            required: true,
-                            errors: contact.errors.full_messages_for(:country)
-                        }) %>
+                        <div class="form-group">
+                            <%= erp_form_control("dataselect", {
+                                name: 'contact[country_id]',
+                                value: contact.country_id,
+                                text: contact.country_name,
+                                placeholder: t('.choose_country'),
+                                label: t('.country'),
+                                url: erp_areas.dataselect_backend_countries_path(format: 'json'),
+                                create: {
+                                    url: erp_areas.new_backend_country_path,
+                                    title: t('.create'),
+                                    container_selector: '.new_country',
+                                    input_selector: 'input[name="country[name]"]'
+                                },
+                                edit: {
+                                    url: erp_areas.edit_backend_country_url(id: ':value'),
+                                    title: t('contacts.contacts.edit'),
+                                    container_selector: '.edit_country',
+                                },
+                                required: true,
+                                errors: contact.errors.full_messages_for(:country)
+                            }) %>
+                        </div>
+                        
                         <div class="row">
                             <div class="col-md-4">
                                 <%= erp_form_control("text", {
@@ -128,6 +136,11 @@
                                         title: t('.create'),
                                         container_selector: '.new_state',
                                         input_selector: 'input[name="state[name]"]'
+                                    },
+                                    edit: {
+                                        url: erp_areas.edit_backend_state_url(id: ':value'),
+                                        title: t('contacts.contacts.edit'),
+                                        container_selector: '.edit_state',
                                     },
                                     required: true,
                                     errors: contact.errors.full_messages_for(:state),
@@ -216,6 +229,11 @@
                                     title: t('.create'),
                                     container_selector: '.new_title',
                                     input_selector: 'input[name="title[name]"]'
+                                },
+                                edit: {
+                                    url: erp_contacts.edit_backend_title_url(id: ':value'),
+                                    title: t('contacts.contacts.edit'),
+                                    container_selector: '.edit_title',
                                 }
                             }) %>
                         </div>
