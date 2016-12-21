@@ -54,8 +54,6 @@
                                 title: t('contacts.contacts.edit'),
                                 container_selector: '.edit_state',
                             },
-                            required: true,
-                            errors: contact.errors.full_messages_for(:state),
                             parent_control: "input[name='contact[country_id]']",
                             parent_id: "country_id"
                         }) %>
@@ -87,9 +85,7 @@
                         url: erp_areas.edit_backend_country_url(id: ':value'),
                         title: t('contacts.contacts.edit'),
                         container_selector: '.edit_country',
-                    },
-                    required: true,
-                    errors: contact.errors.full_messages_for(:country)
+                    }
                 }) %>
             </div>
         </div>
