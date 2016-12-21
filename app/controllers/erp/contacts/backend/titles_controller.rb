@@ -44,7 +44,7 @@ module Erp
                 value: @title.id
               }
             else
-              redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully created.'
+              redirect_to erp_contacts.edit_backend_title_path(@title), notice: t('.success')
             end
           else
             if request.xhr?
@@ -65,7 +65,7 @@ module Erp
                 value: @title.id
               }              
             else
-              redirect_to erp_contacts.edit_backend_title_path(@title), notice: 'Title was successfully updated.'
+              redirect_to erp_contacts.edit_backend_title_path(@title), notice: t('.success')
             end
           else
             render :edit
@@ -77,10 +77,10 @@ module Erp
           @title.destroy
 
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully destroyed.' }
+            format.html { redirect_to erp_contacts.backend_titles_path, notice: t('.success') }
             format.json {
               render json: {
-                'message': 'Title was successfully destroyed.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -90,10 +90,10 @@ module Erp
         def archive
           @title.archive
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully archived.' }
+            format.html { redirect_to erp_contacts.backend_titles_path, notice: t('.success') }
             format.json {
               render json: {
-                'message': 'Title was successfully archived.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -103,10 +103,10 @@ module Erp
         def unarchive
           @title.unarchive
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_titles_path, notice: 'Title was successfully active.' }
+            format.html { redirect_to erp_contacts.backend_titles_path, notice: t('.success') }
             format.json {
               render json: {
-                'message': 'Title was successfully active.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -120,7 +120,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Titles were successfully destroyed.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -134,7 +134,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Titles were successfully archived.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -148,7 +148,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Titles were successfully active.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }

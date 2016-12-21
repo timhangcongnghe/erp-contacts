@@ -13,8 +13,10 @@ class CreateErpContactsContacts < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :mobile
       t.string :fax
+      t.string :tax
+      t.string :gender
       t.string :email
-      t.string :birthday
+      t.datetime :birthday
       t.text :internal_note
       t.boolean :is_customer, default: false
       t.boolean :is_vendor, default: false

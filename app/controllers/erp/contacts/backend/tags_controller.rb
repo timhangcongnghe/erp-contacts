@@ -40,7 +40,7 @@ module Erp
                 value: @tag.id
               }              
             else
-              redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: 'Tag was successfully created.'
+              redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: t('.success')
             end            
           else
             render :new
@@ -50,7 +50,7 @@ module Erp
         # PATCH/PUT /tags/1
         def update
           if @tag.update(tag_params)
-            redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: 'Tag was successfully updated.'
+            redirect_to erp_contacts.edit_backend_tag_path(@tag), notice: t('.success')
           else
             render :edit
           end
@@ -60,36 +60,10 @@ module Erp
         def destroy
           @tag.destroy
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_tags_path, notice: 'Tag was successfully destroyed.' }
+            format.html { redirect_to erp_contacts.backend_tags_path, notice: t('.success') }
             format.json {
               render json: {
-                'message': 'Tag was successfully destroyed.',
-                'type': 'success'
-              }
-            }
-          end
-        end
-        
-        def archive
-          @tag.archive
-          respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_tags_path, notice: 'Tag was successfully archived.' }
-            format.json {
-              render json: {
-                'message': 'Tag was successfully archived.',
-                'type': 'success'
-              }
-            }
-          end
-        end
-        
-        def unarchive
-          @tag.unarchive
-          respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_tags_path, notice: 'Tag was successfully active.' }
-            format.json {
-              render json: {
-                'message': 'Tag was successfully active.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -103,7 +77,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Tags were successfully destroyed.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -117,7 +91,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Tags were successfully archived.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -131,7 +105,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Tags were successfully active.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }

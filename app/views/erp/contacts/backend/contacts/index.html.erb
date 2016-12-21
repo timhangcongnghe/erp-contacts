@@ -31,10 +31,14 @@
     ],
     actions: [
         {
-            text: '<i class="fa fa-check"></i> '+t('.archive'), url: 'javascript:;'
+            text: '<i class="fa fa-eye-slash"></i> '+t('.archive'),
+            url: erp_contacts.archive_all_backend_contacts_path,
+            data_method: 'PUT'
         },
         {
-            text: '<i class="fa fa-exclamation"></i> '+t('.unarchive'), url: 'javascript:;'
+            text: '<i class="fa fa-eye"></i> '+t('.unarchive'),
+            url: erp_contacts.unarchive_all_backend_contacts_path,
+            data_method: 'PUT'
         },
         {
             divider: true

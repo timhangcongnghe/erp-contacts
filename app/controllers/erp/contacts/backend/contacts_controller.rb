@@ -5,7 +5,8 @@ module Erp
     module Backend
       class ContactsController < Erp::Backend::BackendController
         before_action :set_contact, only: [:show, :edit, :update, :destroy]
-    
+        before_action :set_contacts, only: [:delete_all, :archive_all, :unarchive_all]
+        
         # GET /contacts
         def index
         end
@@ -45,7 +46,7 @@ module Erp
                 value: @contact.id
               }              
             else
-              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: t('.success')
             end            
           else
             puts @contact.errors.to_json
@@ -63,7 +64,7 @@ module Erp
                 value: @contact.id
               }              
             else
-              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: t('.success')
             end            
           else
             render :edit
@@ -77,7 +78,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Contact was successfully destroyed.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -92,7 +93,35 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Contacts were successfully destroyed.',
+                'message': t('.success'),
+                'type': 'success'
+              }
+            }
+          end          
+        end
+        
+        # Archive /contacts/archive_all?ids=1,2,3
+        def archive_all         
+          @contacts.archive_all
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': t('.success'),
+                'type': 'success'
+              }
+            }
+          end          
+        end
+        
+        # Unarchive /contacts/unarchive_all?ids=1,2,3
+        def unarchive_all
+          @contacts.unarchive_all
+          
+          respond_to do |format|
+            format.json {
+              render json: {
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -112,6 +141,10 @@ module Erp
           def set_contact
             @contact = Contact.find(params[:id])
           end
+          
+          def set_contacts
+            @contacts = Contact.where(id: params[:ids])
+          end
     
           # Only allow a trusted parameter "white list" through.
           def contact_params
@@ -119,7 +152,7 @@ module Erp
               :address_1, :address_2, :city, :zip, :website,
               :job_position, :phone, :mobile, :fax, :email,
               :birthday, :internal_note, :company_id,
-              :country_id, :state_id, :salesperson_id,
+              :country_id, :state_id, :salesperson_id, :gender, :tax,
               :is_customer, :is_vendor, contact_ids: [], tag_ids: [])
           end
       end

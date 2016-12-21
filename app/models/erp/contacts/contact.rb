@@ -129,10 +129,23 @@ module Erp::Contacts
 			state.present? ? state.name : ''
 		end
     
+    # contact birthday
+    def contact_birthday
+			birthday.present? ? birthday.strftime("%d-%m-%Y") : Time.now.in_time_zone("Asia/Bangkok").strftime("%d-%m-%Y")
+		end
+    
     # salesperson name
     def salesperson_name
       salesperson.present? ? salesperson.name : ''
     end
+    
+    def self.archive_all
+			update_all(archived: true)
+		end
+    
+    def self.unarchive_all
+			update_all(archived: false)
+		end
     
   end
 end

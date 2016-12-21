@@ -43,20 +43,12 @@ module Erp::Contacts
       query = query.limit(8).map{|title| {value: title.id, text: title.display_name} }
     end
     
-    def archive
-			update_columns(archived: false)
-		end
-    
-    def unarchive
-			update_columns(archived: true)
-		end
-    
     def self.archive_all
-			update_all(archived: false)
+			update_all(archived: true)
 		end
     
     def self.unarchive_all
-			update_all(archived: true)
+			update_all(archived: false)
 		end
     
     # display name

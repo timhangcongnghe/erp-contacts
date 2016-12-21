@@ -3,8 +3,6 @@ Erp::Contacts::Engine.routes.draw do
 		namespace :backend, module: "backend", path: "backend/contacts" do
 			resources :titles do
 				collection do
-					put 'archive'
-					put 'unarchive'
 					post 'list'
 					get 'dataselect'
 					delete 'delete_all'
@@ -14,8 +12,6 @@ Erp::Contacts::Engine.routes.draw do
 			end
 			resources :tags do
 				collection do
-					put 'archive'
-					put 'unarchive'
 					post 'list'
 					get 'dataselect'
 					delete 'delete_all'
@@ -28,6 +24,8 @@ Erp::Contacts::Engine.routes.draw do
 					post 'list'
 					get 'dataselect'
 					delete 'delete_all'
+					put 'archive_all'
+					put 'unarchive_all'
 				end
 				
 				resources :contacts, controller: 'contacts_contacts'

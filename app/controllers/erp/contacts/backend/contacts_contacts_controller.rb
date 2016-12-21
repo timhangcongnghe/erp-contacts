@@ -25,7 +25,7 @@ module Erp
             if params.to_unsafe_hash['partial'].present?
               render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
             else
-              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully created.'
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: t('.success')
             end            
           else
             puts @contact.errors.to_json
@@ -39,7 +39,7 @@ module Erp
             if params.to_unsafe_hash['partial'].present?
               render partial: params.to_unsafe_hash['partial'], locals: {contact: @contact}
             else
-              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: 'Contact was successfully updated.'
+              redirect_to erp_contacts.edit_backend_contact_path(@contact), notice: t('.success')
             end            
           else
             render :edit
@@ -53,7 +53,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Contact was successfully destroyed.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }

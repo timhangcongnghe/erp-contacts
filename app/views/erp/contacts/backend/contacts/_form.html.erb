@@ -58,7 +58,7 @@
                             <%= erp_form_control('date', {
                                 label: t('.birthday'),
                                 name: 'contact[birthday]',
-                                value: contact.birthday,
+                                value: contact.contact_birthday,
                                 placeholder: t('.choose_birthday')
                             }) %>
                         </div>
@@ -68,8 +68,8 @@
                             <div class="form-group">
                                 <%= erp_form_control('select', {
                                     label: t('.gender'),
-                                    name: 'abc',
-                                    id: 'abc',
+                                    name: 'contact[gender]',
+                                    value: contact.gender,
                                     options: [
                                         {value: '', text: t('.none')},
                                         {value: 'male', text: t('.male')},
@@ -198,8 +198,8 @@
                         data-cond-item="input[name='contact[contact_type]']"
                         data-cond-value="<%= Erp::Contacts::Contact::TYPE_COMPANY %>">
                             <%= erp_form_control("text", {
-                                name: '',
-                                value: '',                   
+                                name: 'contact[tax]',
+                                value: contact.tax,                   
                                 label: t('.tax'),
                                 placeholder: t('.enter_tax')
                             }) %>                        

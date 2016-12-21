@@ -22,6 +22,18 @@ vi:
     contacts: 
       backend:
         contacts:
+          create:
+            success: "Thêm thông tin khách hàng thành công."
+          update:
+            success: "Cập nhật thông tin khách hàng thành công."
+          destroy:
+            success: "Xóa thông tin khách hàng thành công."
+          delete_all:
+            success: "Xóa thông tin khách hàng được chọn thành công."
+          archive_all:
+            success: "Ẩn thông tin khách hàng được chọn thành công."
+          unarchive_all:
+            success: "Hiện thông tin khách hàng được chọn thành công."
           index:
             contacts: "Tất cả khách hàng"
             create: "Thêm khách hàng mới"
@@ -50,6 +62,7 @@ vi:
             create: "Thêm khách hàng mới"
             contact_details: "Chi tiết khách hàng"
           edit:
+            create: "Thêm khách hàng mới"
             contacts: "Tất cả khách hàng"
             edit: "Cập nhật thông tin khách hàng"
             contact_details: "Chi tiết khách hàng"
@@ -135,6 +148,12 @@ vi:
             is_a_vendor: "Là khách hàng bán"
             salesperson: "Nhân viên bán hàng"
         contacts_contacts:
+          create:
+            success: "Thêm thông tin khách hàng thành công."
+          update:
+            success: "Cập nhật thông tin khách hàng thành công."
+          destroy:
+            success: "Xóa thông tin khách hàng thành công."
           form:
             none: "Chưa chọn..."
             type: "Loại liên hệ/địa chỉ"
@@ -171,12 +190,26 @@ vi:
           contact:
             edit: "Cập nhật"
             delete: "Xóa"
+            phone: "Điện thoại"
+            mobile: "Di động"
         titles:
+          create:
+            success: "Thêm danh xưng thành công."
+          update:
+            success: "Cập nhật danh xưng thành công."
+          destroy:
+            success: "Xóa danh xưng thành công."
+          delete_all:
+            success: "Xóa danh xưng được chọn thành công."
+          archive_all:
+            success: "Ẩn danh xưng được chọn thành công."
+          unarchive_all:
+            success: "Hiện danh xưng được chọn thành công."
           index:
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
             titles: "Tất cả danh xưng"
-            create: "Tạo mới danh xưng"
+            create: "Thêm danh xưng"
             name: "Tên danh xưng"
             abbreviation: "Tên viết tắt"
             delete: "Xóa danh xưng"
@@ -197,19 +230,31 @@ vi:
             active: "Đang hiển thị"
           new:
             titles: "Tất cả danh xưng"
-            create: "Tạo mới danh xưng"
+            create: "Thêm danh xưng"
           edit:
             titles: "Tất cả danh xưng"
-            edit: "Cập nhật danh xưng"
+            edit: "Cập nhật"
           form:
             name: "Tên danh xưng"
             abbreviation: "Tên viết tắt"
             submit: "Lưu"
             cancel: "Hủy"
         tags:
+          create:
+            success: "Thêm nhãn thành công."
+          update:
+            success: "Cập nhật nhãn thành công."
+          destroy:
+            success: "Xóa nhãn thành công."
+          delete_all:
+            success: "Xóa nhãn được chọn thành công."
+          archive_all:
+            success: "Ẩn nhãn được chọn thành công."
+          unarchive_all:
+            success: "Hiện nhãn được chọn thành công."
           index:
             tags: "Tất cả nhãn"
-            create: "Tạo mới nhãn"
+            create: "Thêm nhãn"
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
             delete: "Xóa nhãn"
@@ -228,10 +273,10 @@ vi:
             active: "Đang hiển thị"
             edit: "Cập nhật"
           new:
-            create: "Tạo mới nhãn"
+            create: "Thêm mãi"
             tags: "Tất cả nhãn"
           edit:
-            edit: "Cập nhật nhãn"
+            edit: "Cập nhật"
             tags: "Tất cả nhãn"
           form:
             name: "Tên"
@@ -240,6 +285,10 @@ vi:
   activerecord:
     errors:
       models:
+        erp/contacts/contact:
+          attributes:
+            name:
+              blank: "không được trống."
         erp/contacts/title:
           attributes:
             name:
@@ -249,14 +298,9 @@ vi:
             name:
               blank: "không được trống."
     attributes:
+      erp/contacts/contact:
+        name: "Tên khách hàng"
       erp/contacts/title:
-        name: "Danh xưng"
+        name: "Tên danh xưng"
       erp/contacts/tag:
-        name: "Tên"
-  backend:
-    contacts_contacts:
-      contact:
-        phone: "Điện thoại"
-        mobile: "Di động"
-        edit: Cập nhật
-        delete: Xóa
+        name: "Tên nhãn"
