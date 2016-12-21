@@ -53,6 +53,11 @@ vi:
             contacts: "Tất cả khách hàng"
             edit: "Cập nhật thông tin khách hàng"
             contact_details: "Chi tiết khách hàng"
+          show:
+            contacts: "Tất cả khách hàng"
+            edit: "Chỉnh sửa"
+            create: "Thêm khách hàng"
+            contact_details: "Chi tiết liên hệ"
           form:
             none: "Chưa chọn..."
             type: "Nhóm khách hàng"
@@ -108,6 +113,27 @@ vi:
             purchases: "Khách hàng bán"
             submit: "Lưu"
             cancel: "Hủy"
+          detail:
+            birthday: "Sinh nhật"
+            gender: "Giới tính"
+            address: "Địa chỉ"
+            job_position: "Vị trí công việc"
+            phone: "Số điện thoại bàn"
+            mobile: "Số di động"
+            email_address: "Địa chỉ e-mail"
+            website: "Trang web"
+            title: "Danh xưng"
+            tags: "Tất cả nhãn"
+            tax: "Mã số thuế"
+            fax: "Số máy fax"
+            contacts_addresses: "Liên hệ & Địa chỉ khác"
+            internal_notes: "Ghi chú"
+            sales_purchases: "Cài đặt người mua/người bán"
+            sale: "Khách hàng mua"
+            purchases: "Khách hàng bán"
+            is_a_customer: "Là khách hàng mua"
+            is_a_vendor: "Là khách hàng bán"
+            salesperson: "Nhân viên bán hàng"
         contacts_contacts:
           form:
             none: "Chưa chọn..."
@@ -143,8 +169,6 @@ vi:
             save_create: "Lưu & Tạo mới"
             cancel: "Hủy"
           contact:
-            phone: "Số điện thoại bàn"
-            mobile: "Số di động"
             edit: "Cập nhật"
             delete: "Xóa"
         titles:
@@ -232,5 +256,7 @@ vi:
   backend:
     contacts_contacts:
       contact:
+        phone: "Điện thoại"
+        mobile: "Di động"
         edit: Cập nhật
         delete: Xóa
