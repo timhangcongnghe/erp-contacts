@@ -4,18 +4,18 @@
 
 <% content_for :page_title do %>    
     <a href="<%= erp_contacts.backend_contacts_path %>">
-        <i class="fa fa-users"></i> <%= t('contacts.contacts.contacts') %>
+        <i class="fa fa-users"></i> <%= t('.contacts') %>
     </a> / <%= @contact.name %>
 <% end %>
 
 <% content_for :page_toolbar do %>
     <%= erp_component('button/edit', {
-        text: t('contacts.contact.edit'),
+        text: t('.edit'),
         href: erp_contacts.edit_backend_contact_path(@contact),
         class: 'btn-sm'
     }) %>
     <%= erp_component('button/create', {
-        text: t('contacts.contact.create'),
+        text: t('.create'),
         href: erp_contacts.new_backend_contact_path,
         class: 'btn-sm'
     }) %>
