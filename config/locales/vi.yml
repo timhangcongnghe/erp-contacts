@@ -69,7 +69,7 @@ vi:
             contact_details: "Chi tiết khách hàng"
           show:
             contacts: "Tất cả khách hàng"
-            actions: "Các thao tác"
+            actions: "Thao tác khác"
             edit: "Chỉnh sửa"
             create: "Thêm khách hàng"
             delete: "Xóa liên hệ"
