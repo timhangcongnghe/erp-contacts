@@ -69,8 +69,13 @@ vi:
             contact_details: "Chi tiết khách hàng"
           show:
             contacts: "Tất cả khách hàng"
+            actions: "Các thao tác"
             edit: "Chỉnh sửa"
             create: "Thêm khách hàng"
+            delete: "Xóa liên hệ"
+            delete_confirm: "Bạn có chắc muốn xóa?"
+            archive: "Ẩn khỏi danh sách"
+            unarchive: "Hiển thị danh sách"
             contact_details: "Chi tiết liên hệ"
           form:
             none: "Chưa chọn..."
