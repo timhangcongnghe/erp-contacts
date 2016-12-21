@@ -47,6 +47,7 @@ vi:
             email: "Địa chỉ email"
             status: "Trạng thái"
             created_at: "Ngày tạo"
+            archived: "Hiện liên hệ ẩn"
           list:
             name: "Tên khách hàng"
             email: "Địa chỉ email"
