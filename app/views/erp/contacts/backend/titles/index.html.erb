@@ -22,7 +22,20 @@
         },
         {
             text: t('.abbreviation'), name: 'abbreviation'
+        },
+        {
+            text: t('creator'),
+            name: 'erp_users.name',
+            select: {
+                name: 'erp_users.id',
+                data_url: erp.dataselect_backend_users_path
+            }
         }
+    ],
+    filters: [
+        {
+            text: t('.archived'), name: 'show_archived', value: true, checked: false
+        },
     ],
     actions: [
         {
