@@ -58,6 +58,11 @@
             data_confirm: t('.delete_confirm')
         }
     ],
+    filters: [
+        {
+            text: t('.archived'), name: 'show_archived', value: true, checked: false
+        }
+    ],
     columns: [
         {
             text: t('.name'), name: 'name', value: true, checked: true
@@ -69,10 +74,11 @@
             text: t('.status'), name: 'status', value: true, checked: true
         },
         {
-            text: t('.creator'), name: 'creator', value: true, checked: true
+            text: t('.creator'), name: 'creator', value: true, checked: false
         },
         {
-            text: t('.created_at'), name: 'created_at', value: true, checked: true
+            text: t('.created_at'), name: 'created_at', value: true, checked: false
         }
-    ]
+    ],
+    sort: { sort_by: 'erp_contacts_titles.name', sort_direction: 'asc' }
 ) %>    
