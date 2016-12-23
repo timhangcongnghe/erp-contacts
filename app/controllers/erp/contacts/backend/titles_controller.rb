@@ -21,10 +21,6 @@ module Erp
         # GET /titles/new
         def new
           @title = Title.new
-          
-          if request.xhr?
-            render '_form', layout: nil, locals: {title: @title}
-          end
         end
     
         # GET /titles/1/edit
@@ -47,11 +43,7 @@ module Erp
               redirect_to erp_contacts.edit_backend_title_path(@title), notice: t('.success')
             end
           else
-            if request.xhr?
-              render '_form', layout: nil, locals: {title: @title}
-            else
-              render :new
-            end            
+            render :new        
           end
         end
     
