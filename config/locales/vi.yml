@@ -278,6 +278,7 @@ vi:
             archived: "Đã ẩn"
             active: "Đang hiển thị"
             edit: "Cập nhật"
+            delete_confirm: "Bạn có chắc muốn xóa liên hệ này?"
           new:
             create: "Thêm mãi"
             tags: "Tất cả nhãn"

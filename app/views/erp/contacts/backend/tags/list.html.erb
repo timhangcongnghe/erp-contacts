@@ -49,7 +49,14 @@
                             [
                                 {
                                     text: '<i class="fa fa-edit"></i> '+t('.edit'),
-                                    href: erp_contacts.edit_backend_tag_path(tag)
+                                    url: erp_contacts.edit_backend_tag_path(tag)
+                                },
+                                {
+                                    text: '<i class="fa fa-trash"></i> '+t('.delete'),
+                                    url: erp_contacts.backend_tag_path(tag),
+                                    data_method: 'DELETE',
+                                    class: 'ajax-link',
+                                    data_confirm: t('.delete_confirm')
                                 }
                             ]
                         ) %>
