@@ -41,15 +41,24 @@ vi:
             unarchive: "Hiện ra danh sách"
             delete: "Xóa khách hàng"
             delete_confirm: "Bạn có chắc muốn xóa?"
-            persons: "Khách hàng là cá nhân"
-            companies: "Khách hàng là công ty"
+            persons: "Nhóm cá nhân"
+            companies: "Nhóm công ty"
+            customers: "Nhóm khách hàng"
+            vendors: "Nhóm nhà cung cấp"
+            invoices: "Thông tin hóa đơn"
+            shippings: "Thông tin giao hàng"
+            others: "Các thông tin khác"
             name: "Tên khách hàng"
+            contact_type: "Nhóm/Loại"
+            phone: "Điện thoại"
             email: "Địa chỉ email"
             status: "Trạng thái"
+            creator: "Người tạo"
             created_at: "Ngày tạo"
             archived: "Hiện liên hệ ẩn"
           list:
             name: "Tên khách hàng"
+            contact_type: "Nhóm/Loại"
             email: "Địa chỉ email"
             status: "Trạng thái"
             created_at: "Ngày tạo"
@@ -58,12 +67,16 @@ vi:
             active: "Đang hiển thị"
             edit: "Cập nhật thông tin"
             no_matching_records_found: "Danh sách khách hàng hiện tại đang trống."
+            archive: "Ẩn khỏi danh sách"
+            unarchive: "Hiện ra danh sách"
+            delete: "Xóa khách hàng"
+            delete_confirm: "Bạn có chắc muốn xóa?"
           new:
             contacts: "Tất cả khách hàng"
-            create: "Thêm khách hàng mới"
+            create: "Thêm khách hàng"
             contact_details: "Chi tiết khách hàng"
           edit:
-            create: "Thêm khách hàng mới"
+            create: "Thêm khách hàng"
             contacts: "Tất cả khách hàng"
             edit: "Cập nhật thông tin khách hàng"
             contact_details: "Chi tiết khách hàng"
@@ -232,14 +245,19 @@ vi:
             created_at: "Ngày tạo"
             actions: "Thao tác"
             no_matching_records_found: "Danh sách danh xưng hiện tại đang trống."
+            archive: "Ẩn khỏi danh sách"
+            unarchive: "Hiện ra danh sách"
             archived: "Đã ẩn"
             active: "Đang hiển thị"
+            delete: "Xóa danh xưng"
+            delete_confirm: "Bạn có chắc muốn xóa?"
           new:
             titles: "Tất cả danh xưng"
             create: "Thêm danh xưng"
           edit:
             titles: "Tất cả danh xưng"
             edit: "Cập nhật"
+            create: "Thêm danh xưng"
           form:
             name: "Tên danh xưng"
             abbreviation: "Tên viết tắt"
@@ -254,6 +272,10 @@ vi:
             success: "Xóa nhãn thành công."
           delete_all:
             success: "Xóa nhãn được chọn thành công."
+          archive:
+            success: "Nhãn đã được ẩn thành công"
+          unarchive:
+            success: "Nhãn đã được hiện thành công"
           archive_all:
             success: "Ẩn nhãn được chọn thành công."
           unarchive_all:
@@ -275,16 +297,20 @@ vi:
             creator: "Người tạo"
             created_at: "Ngày tạo"
             actions: "Thao tác"
+            archive: "Ẩn khỏi danh sách"
+            unarchive: "Hiện ra danh sách"
             archived: "Đã ẩn"
             active: "Đang hiển thị"
             edit: "Cập nhật"
             delete_confirm: "Bạn có chắc muốn xóa liên hệ này?"
+            delete: "Xóa nhãn"
           new:
-            create: "Thêm mãi"
+            create: "Thêm nhãn"
             tags: "Tất cả nhãn"
           edit:
             edit: "Cập nhật"
             tags: "Tất cả nhãn"
+            create: "Thêm nhãn"
           form:
             name: "Tên"
             submit: "Lưu"
