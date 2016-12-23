@@ -4,7 +4,7 @@ module Erp
   module Contacts
     module Backend
       class ContactsController < Erp::Backend::BackendController
-        before_action :set_contact, only: [:show, :edit, :update, :destroy]
+        before_action :set_contact, only: [:archive, :unarchive, :show, :edit, :update, :destroy]
         before_action :set_contacts, only: [:delete_all, :archive_all, :unarchive_all]
         
         # GET /contacts
@@ -76,6 +76,32 @@ module Erp
           @contact.destroy
           
           respond_to do |format|
+            format.json {
+              render json: {
+                'message': t('.success'),
+                'type': 'success'
+              }
+            }
+          end
+        end
+        
+        def archive
+          @contact.archive
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_contacts_path, notice: t('.success') }
+            format.json {
+              render json: {
+                'message': t('.success'),
+                'type': 'success'
+              }
+            }
+          end
+        end
+        
+        def unarchive
+          @contact.unarchive
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_contacts_path, notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
