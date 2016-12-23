@@ -8,6 +8,14 @@
     </a> / <%= t('.edit') %>
 <% end %>
 
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_contacts.new_backend_tag_path,
+        class: 'btn-sm'
+    }) %>
+<% end %>
+
 <div class="row">
     <div class="col-md-6">
         <% if @tag.errors.any? %>
