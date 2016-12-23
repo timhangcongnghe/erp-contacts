@@ -88,7 +88,7 @@ module Erp
         def archive
           @contact.archive
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_contacts_path, notice: t('.success') }
+            format.html { redirect_to erp_contacts.backend_contact_path(@contact), notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
@@ -101,7 +101,7 @@ module Erp
         def unarchive
           @contact.unarchive
           respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_contacts_path, notice: t('.success') }
+            format.html { redirect_to erp_contacts.backend_contact_path(@contact), notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
