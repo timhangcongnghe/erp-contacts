@@ -154,6 +154,14 @@ module Erp::Contacts
       salesperson.present? ? salesperson.name : ''
     end
     
+    def archive
+			update_attributes(archived: true)
+		end
+    
+    def unarchive
+			update_attributes(archived: false)
+		end
+    
     def self.archive_all
 			update_all(archived: true)
 		end
