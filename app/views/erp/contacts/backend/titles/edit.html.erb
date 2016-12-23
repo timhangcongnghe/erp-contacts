@@ -5,7 +5,7 @@
 <% content_for :page_title do %>    
     <a href="<%= erp_contacts.backend_titles_path %>">
     <i class="fa fa-users"></i> <%= t('.titles') %>
-    </a> / <%= t('.edit') %>
+    </a> / <%= @title.name %>
 <% end %>
 
 <% content_for :page_toolbar do %>
