@@ -70,6 +70,32 @@ module Erp
           end
         end
         
+        def archive
+          @tag.archive
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_tags_path, notice: t('.success') }
+            format.json {
+              render json: {
+                'message': t('.success'),
+                'type': 'success'
+              }
+            }
+          end
+        end
+        
+        def unarchive
+          @tag.unarchive
+          respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_tags_path, notice: t('.success') }
+            format.json {
+              render json: {
+                'message': t('.success'),
+                'type': 'success'
+              }
+            }
+          end
+        end
+        
         # DELETE /tags/delete_all?ids=1,2,3
         def delete_all         
           @tags.destroy_all
