@@ -6,6 +6,8 @@ Erp::Contacts::Engine.routes.draw do
 					post 'list'
 					get 'dataselect'
 					delete 'delete_all'
+					put 'archive'
+					put 'unarchive'
 					put 'archive_all'
 					put 'unarchive_all'
 				end
@@ -15,6 +17,8 @@ Erp::Contacts::Engine.routes.draw do
 					post 'list'
 					get 'dataselect'
 					delete 'delete_all'
+					put 'archive'
+					put 'unarchive'
 					put 'archive_all'
 					put 'unarchive_all'
 				end
@@ -24,6 +28,8 @@ Erp::Contacts::Engine.routes.draw do
 					post 'list'
 					get 'dataselect'
 					delete 'delete_all'
+					put 'archive'
+					put 'unarchive'
 					put 'archive_all'
 					put 'unarchive_all'
 				end
