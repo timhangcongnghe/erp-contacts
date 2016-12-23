@@ -61,6 +61,28 @@
             divider: true
         },
         {
+            text: t('.customers'), name: 'is_customer', value: true, checked: false
+        },
+        {
+            text: t('.vendors'), name: 'is_vendor', value: true, checked: false
+        },
+        {
+            divider: true
+        },
+        
+        {
+            text: t('.invoices'), name: 'contact_type', value: Erp::Contacts::Contact::TYPE_INVOICE, checked: false
+        },
+        {
+            text: t('.shippings'), name: 'contact_type', value: Erp::Contacts::Contact::TYPE_SHIPPING, checked: false
+        },
+        {
+            text: t('.others'), name: 'contact_type', value: Erp::Contacts::Contact::TYPE_OTHER, checked: false
+        },
+        {
+            divider: true
+        },
+        {
             text: t('.archived'), name: 'show_archived', value: true, checked: false
         },
     ],
@@ -69,14 +91,23 @@
             text: t('.name'), name: 'name', value: true, checked: true
         },
         {
-            text: t('.email'), name: 'email', value: true, checked: true
+            text: t('.contact_type'), name: 'contact_type', value: true, checked: true
+        },
+        {
+            text: t('.phone'), name: 'phone', value: true, checked: false
+        },
+        {
+            text: t('.email'), name: 'email', value: true, checked: false
         },
         {
             text: t('.status'), name: 'status', value: true, checked: true
         },
         {
-            text: t('.created_at'), name: 'created_at', value: true, checked: true
+            text: t('.creator'), name: 'creator', value: true, checked: false
+        },
+        {
+            text: t('.created_at'), name: 'created_at', value: true, checked: false
         }
     ],
-    sort: { sort_by: 'erp_contacts_contacts.name', sort_direction: 'desc' }
+    sort: { sort_by: 'erp_contacts_contacts.created_at', sort_direction: 'desc' }
 ) %>    
