@@ -5,7 +5,15 @@
 <% content_for :page_title do %>    
     <a href="<%= erp_contacts.backend_tags_path %>">
     <i class="fa fa-bookmark-o"></i> <%= t('.tags') %>
-    </a> / <%= t('.edit') %>
+    </a> / <%= @tag.name %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+        <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_contacts.new_backend_tag_path,
+        class: 'btn-sm'
+    }) %>
 <% end %>
 
 <% content_for :page_toolbar do %>
