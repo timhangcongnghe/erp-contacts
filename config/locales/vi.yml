@@ -10,9 +10,8 @@ vi:
       backend:
         sidebar:
           contact: "Khách hàng"
-          contacts: "Tất cả khách hàng"
-          titles: "Tất cả danh xưng"
-          tags: "Tất cả nhãn"
+          manufacturer: "Nhà cung cấp"
+          delivery_partners: "Đối tác giao hàng"
         mega_menu:
           configuration: "Cấu hình"
           contacts: "Tất cả khách hàng"
