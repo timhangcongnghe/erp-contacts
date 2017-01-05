@@ -36,6 +36,18 @@ Erp::Contacts::Engine.routes.draw do
 				
 				resources :contacts, controller: 'contacts_contacts'
 			end
+			resources :contact_groups do
+				collection do
+					post 'list'
+					get 'dataselect'
+					delete 'delete_all'
+					put 'archive'
+					put 'unarchive'
+					put 'archive_all'
+					put 'unarchive_all'
+					get 'form_contact_group_condition'
+				end
+			end
 		end
 	end
 end

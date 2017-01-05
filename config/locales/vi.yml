@@ -5,16 +5,34 @@ vi:
   shipping: "Giao hàng"
   other: "Khác"
   creator: "Người tạo"
+  percent: "Tỉ lệ phần trăm"
+  total_revenue: "Tống bán (trừ trả hàng)"
+  total_invoiced: "Tổng bán"
+  reward_point: "Điểm hiện tại"
+  total_point: "Tổng điểm"
+  purchase_date: "Thời gian mua hàng"
+  purchase_number: "Số lần mua hàng"
+  debt: "Công nợ hiện tại"
+  birthday: "Tháng sinh"
+  age: "Tuổi"
+  gender: "Giới tính"
+  greater_than: ">"
+  less_than: "<"
+  equals: "="
+  greater_than_or_equal_to: ">="
+  less_than_or_equal_to: "<="
   layouts:
     erp:
       backend:
         sidebar:
+          contacts: "Danh bạ"
           contact: "Khách hàng"
           manufacturer: "Nhà cung cấp"
           delivery_partners: "Đối tác giao hàng"
         mega_menu:
           configuration: "Cấu hình"
           contacts: "Tất cả khách hàng"
+          contact_groups: "Nhóm khách hàng"
           titles: "Tất cả danh xưng"
           tags: "Tất cả nhãn"
   erp:
@@ -210,6 +228,45 @@ vi:
             delete: "Xóa"
             phone: "Điện thoại"
             mobile: "Di động"
+        contact_groups:
+          create:
+            success: "Thêm nhóm khách hàng thành công."
+          update:
+            success: "Cập nhật nhóm khách hàng thành công."
+          destroy:
+            success: "Xóa nhóm khách hàng thành công."
+          delete_all:
+            success: "Xóa nhóm khách hàng được chọn thành công."
+          archive_all:
+            success: "Ẩn nhóm khách hàng được chọn thành công."
+          unarchive_all:
+            success: "Hiện nhóm khách hàng được chọn thành công."
+          index:
+            contact_groups: "Nhóm khách hàng"
+            create: "Thêm nhóm khách hàng"
+            name: "Tên nhóm"
+            discount: "Giảm"
+            discount_type: "Loại"
+            delete: "Xóa nhóm khách hàng"
+            contact_group_archived: "Nhóm khách hàng đã bị ẩn"
+          list:
+            name: "Tên nhóm"
+            discount: "Giảm"
+            discount_type: "Loại"
+            delete: "Xóa nhóm khách hàng"
+            no_matching_records_found: "Danh sách nhóm khách hàng hiện tại đang trống."
+          new:
+            contact_groups: "Nhóm khách hàng"
+            create: "Thêm nhóm khách hàng"
+          edit:
+            contact_groups: "Nhóm khách hàng"
+            create: "Thêm nhóm khách hàng"
+          form:
+            name: "Tên nhóm"
+            discount: "Giảm"
+            discount_type: "Loại"
+            note: "Ghi chú"
+            add: "Thêm điều kiện"
         titles:
           create:
             success: "Thêm danh xưng thành công."
@@ -260,8 +317,6 @@ vi:
           form:
             name: "Tên danh xưng"
             abbreviation: "Tên viết tắt"
-            submit: "Lưu"
-            cancel: "Hủy"
         tags:
           create:
             success: "Thêm nhãn thành công."
@@ -312,12 +367,14 @@ vi:
             create: "Thêm nhãn"
           form:
             name: "Tên"
-            submit: "Lưu"
-            cancel: "Hủy"
   activerecord:
     errors:
       models:
         erp/contacts/contact:
+          attributes:
+            name:
+              blank: "không được trống."
+        erp/contacts/contact_group:
           attributes:
             name:
               blank: "không được trống."
@@ -332,6 +389,8 @@ vi:
     attributes:
       erp/contacts/contact:
         name: "Tên khách hàng"
+      erp/contacts/contact_group:
+        name: "Tên nhóm"
       erp/contacts/title:
         name: "Tên danh xưng"
       erp/contacts/tag:

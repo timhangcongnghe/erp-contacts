@@ -1,0 +1,73 @@
+<%= form_for([erp_contacts, :backend, contact_group]) do |f| %>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <%= erp_form_control("text", {
+                        name: 'contact_group[name]',
+                        value: contact_group.name,                   
+                        label: t('.name'),
+                        required: true,
+                        errors: contact_group.errors.full_messages_for(:name)
+                    }) %>
+                    <%= erp_form_control('select', {
+                        label: t('.discount_type'),
+                        name: 'contact_group[discount_type]',
+                        value: contact_group.discount_type,
+                        options: Erp::Contacts::ContactGroup.get_discount_type_options(),
+                        required: true,
+                        errors: contact_group.errors.full_messages_for(:discount_type)
+                    }) %>
+                    <div class="hiddable-control"
+                        data-cond-item="select[name='contact_group[discount_type]']"
+                        data-cond-value="<%= Erp::Contacts::ContactGroup::DISCOUNT_TYPE_FIXED %>">
+                        <%= erp_form_control("text", {
+                            name: 'contact_group[discount]',
+                            value: contact_group.discount,               
+                            label: t('.discount'),
+                            required: true,
+                            errors: contact_group.errors.full_messages_for(:discount)
+                        }) %>
+                    </div>
+                    <div class="hiddable-control"
+                        data-cond-item="select[name='contact_group[discount_type]']"
+                        data-cond-value="<%= Erp::Contacts::ContactGroup::DISCOUNT_TYPE_PERCENT %>">
+                        <%= erp_form_control("text", {
+                            name: 'contact_group[discount]',
+                            id: 'touchspin_1',
+                            value: contact_group.discount,               
+                            label: t('.discount'),
+                            required: true,
+                            errors: contact_group.errors.full_messages_for(:discount)
+                        }) %>
+                    </div>
+                    <%= erp_form_control("textarea", {
+                        name: 'contact_group[note]',
+                        value: contact_group.note,                   
+                        label: t('.note')
+                    }) %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <%= erp_form_control("addableform", {
+                        add_button: t('.add'),
+                        partial: 'erp/contacts/backend/contact_groups/form_contact_group_condition',
+                        partial_url: erp_contacts.form_contact_group_condition_backend_contact_groups_path,
+                        items: @contact_group.contact_group_conditions,
+                        item: :contact_group_condition
+                    }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%= erp_component('button/save', {
+        text: t('submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('cancel'),
+        href: erp_contacts.backend_contact_groups_path
+    }) %>
+<% end %>
