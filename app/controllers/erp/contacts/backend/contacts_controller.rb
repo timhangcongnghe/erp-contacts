@@ -37,7 +37,7 @@ module Erp
         def create
           @contact = Contact.new(contact_params)
           @contact.creator = current_user
-
+          
           if @contact.save
             if request.xhr?
               render json: {
@@ -174,12 +174,12 @@ module Erp
     
           # Only allow a trusted parameter "white list" through.
           def contact_params
-            params.fetch(:contact, {}).permit(:name, :title_id, :image_url, :contact_type,
-              :address_1, :address_2, :city, :zip, :website,
-              :job_position, :phone, :mobile, :fax, :email,
-              :birthday, :internal_note, :company_id,
-              :country_id, :state_id, :salesperson_id, :gender, :tax,
-              :is_customer, :is_vendor, contact_ids: [], tag_ids: [])
+            params.fetch(:contact, {}).permit(:image_url, :contact_type, :code, :name,
+              :company_name, :phone, :address, :tax_code, :birthday,
+              :email, :gender, :note, :fax, :website,
+              :commission_percent, :archived, :user_id,
+              :contact_group_id, :country_id, :state_id, :price_term_id, :tax_id,
+              :payment_method_id, :payment_term_id, contact_ids: [], tag_ids: [])
           end
       end
     end

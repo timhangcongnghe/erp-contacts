@@ -13,61 +13,11 @@
             <%= Erp::Contacts::Contact::TYPE_OTHER %>">
             <div class="col-md-6">
                 <%= erp_form_control("text", {
-                    name: 'contact[address_1]',
-                    value: contact.address_1,                   
-                    label: t('.address_1'),
-                    placeholder: t('.enter_address_1')
+                    name: 'contact[address]',
+                    value: contact.address,                   
+                    label: t('.address'),
+                    placeholder: t('.enter_address')
                 }) %>
-                
-                <%= erp_form_control("text", {
-                    name: 'contact[address_2]',
-                    value: contact.address_2,                   
-                    label: t('.address_2'),
-                    placeholder: t('.enter_address_2')
-                }) %>
-                    
-                <div class="row">
-                    <div class="col-md-4">
-                        <%= erp_form_control("text", {
-                            name: 'contact[city]',
-                            value: contact.city,                   
-                            label: t('.city'),
-                            placeholder: t('.choose_city')
-                        }) %>
-                    </div>
-                    <div class="col-md-4">
-                        <%= erp_form_control("dataselect", {
-                            name: 'contact[state_id]',
-                            value: contact.state_id,
-                            text: contact.state_name,
-                            placeholder: t('.choose_state'),
-                            label: t('.state'),
-                            url: erp_areas.dataselect_backend_states_path(format: 'json'),
-                            create: {
-                                url: erp_areas.new_backend_state_path,
-                                title: t('.create'),
-                                container_selector: '.new_state',
-                                input_selector: 'input[name="state[name]"]'
-                            },
-                            edit: {
-                                url: erp_areas.edit_backend_state_url(id: ':value'),
-                                title: t('contacts.contacts.edit'),
-                                container_selector: '.edit_state',
-                            },
-                            parent_control: "input[name='contact[country_id]']",
-                            parent_id: "country_id"
-                        }) %>
-                    </div>
-                    <div class="col-md-4">
-                        <%= erp_form_control("text", {
-                            name: 'contact[zip]',
-                            value: contact.zip,
-                            label: t('.zip_code'),
-                            placeholder: t('.enter_zip_code')
-                        }) %>
-                    </div>
-                </div>
-                
                 <%= erp_form_control("dataselect", {
                     name: 'contact[country_id]',
                     value: contact.country_id,
@@ -86,6 +36,27 @@
                         title: t('contacts.contacts.edit'),
                         container_selector: '.edit_country',
                     }
+                }) %>
+                <%= erp_form_control("dataselect", {
+                    name: 'contact[state_id]',
+                    value: contact.state_id,
+                    text: contact.state_name,
+                    placeholder: t('.choose_state'),
+                    label: t('.state'),
+                    url: erp_areas.dataselect_backend_states_path(format: 'json'),
+                    create: {
+                        url: erp_areas.new_backend_state_path,
+                        title: t('.create'),
+                        container_selector: '.new_state',
+                        input_selector: 'input[name="state[name]"]'
+                    },
+                    edit: {
+                        url: erp_areas.edit_backend_state_url(id: ':value'),
+                        title: t('contacts.contacts.edit'),
+                        container_selector: '.edit_state',
+                    },
+                    parent_control: "input[name='contact[country_id]']",
+                    parent_id: "country_id"
                 }) %>
             </div>
         </div>
@@ -117,55 +88,12 @@
                 help: '',
                 placeholder: t('.enter_phone_numbers')
             }) %>
-            
-            <%= erp_form_control("text", {
-                name: 'contact[mobile]',
-                value: contact.mobile,                   
-                label: t('.mobile'),
-                help: '',
-                placeholder: t('.enter_mobile_numbers')
-            }) %>
-            
             <%= erp_form_control("textarea", {
-                name: 'contact[internal_note]',
-                value: contact.internal_note,                   
+                name: 'contact[note]',
+                value: contact.note,                   
                 label: t('.notes'),
                 placeholder: t('.enter_notes')
             }) %>
-        </div>
-        
-        <div class="hiddable-control col-md-6"
-            data-cond-item="input[name='contact[contact_type]']"
-            data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
-        
-            <%= erp_form_control("dataselect", {
-                name: 'contact[title_id]',
-                value: contact.title_id,
-                text: contact.display_title,
-                placeholder: t('.choose_title'),
-                label: t('.title'),
-                url: erp_contacts.dataselect_backend_titles_path(format: 'json'),
-                create: {
-                    url: erp_contacts.new_backend_title_url,
-                    title: t('.create'),
-                    container_selector: '.new_title',
-                    input_selector: 'input[name="title[title]"]'
-                },
-                edit: {
-                    url: erp_contacts.edit_backend_title_url(id: ':value'),
-                    title: t('contacts.contacts.edit'),
-                    container_selector: '.edit_title',
-                }
-            }) %>
-            
-            <%= erp_form_control("text", {
-                name: 'contact[job_position]',
-                value: contact.job_position,                   
-                label: t('.job_position'),
-                help: '',
-                placeholder: t('.eg_job_position')
-            }) %>
-            
         </div>
     </div>
     

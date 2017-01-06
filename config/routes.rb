@@ -33,7 +33,6 @@ Erp::Contacts::Engine.routes.draw do
 					put 'archive_all'
 					put 'unarchive_all'
 				end
-				
 				resources :contacts, controller: 'contacts_contacts'
 			end
 			resources :contact_groups do

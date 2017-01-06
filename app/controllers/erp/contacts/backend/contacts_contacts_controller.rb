@@ -69,10 +69,8 @@ module Erp
           # Only allow a trusted parameter "white list" through.
           def contact_params
             params.fetch(:contact, {}).permit(
-              :name, :title_id, :image_url, :contact_type, :address_1, :address_2,
-              :city, :country_id, :state_id, :zip,
-              :website, :job_position, :phone, :mobile, :fax, :email,
-              :birthday, :internal_note, :parent_id,
+              :name, :contact_type, :address, :country_id, :state_id,
+              :website, :phone, :fax, :email, :note, :parent_id,
               contact_ids: []
             )
           end

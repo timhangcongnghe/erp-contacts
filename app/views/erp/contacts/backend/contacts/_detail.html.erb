@@ -14,7 +14,6 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <h3 class="col-md-12 profile-desc-title bold font-blue-madison"><%= contact.name %></h3>
-                                    <span class="col-md-12 caption-subject font-green"><%= contact.display_company %></span>
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -39,9 +38,8 @@
                                     <label class="col-md-3 control-label"><%= t('.address') %></label>
                                     <div class="col-md-9 control-label">
                                         <span class="font-grey-cascade">
-                                            <%= contact.address_1.present? ? "#{contact.address_1} <br/>".html_safe : "" %>
-                                            <%= contact.address_2.present? ? "#{contact.address_2} <br/>".html_safe : "" %>
-                                            <%= contact.city %> - <%= contact.state_name %> - <%= contact.zip %> <br/>
+                                            <%= contact.address.present? ? "#{contact.address} <br/>".html_safe : "" %>
+                                            <%= contact.state_name %><br/>
                                             <%= contact.country_name %>
                                         </span>
                                     </div>
@@ -54,29 +52,11 @@
             <div class="col-md-6">
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
-                        <% if contact.contact_type == Erp::Contacts::Contact::TYPE_PERSON %>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"><%= t('.job_position') %></label>
-                                <div class="col-md-9 control-label">
-                                    <span class="font-grey-cascade">
-                                        <%= contact.job_position %>
-                                    </span>
-                                </div>
-                            </div>
-                        <% end %>
                         <div class="form-group">
                             <label class="col-md-3 control-label"><%= t('.phone') %></label>
                             <div class="col-md-9 control-label">
                                 <span class="font-grey-cascade">
                                     <%= contact.phone %>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"><%= t('.mobile') %></label>
-                            <div class="col-md-9 control-label">
-                                <span class="font-grey-cascade">
-                                    <%= contact.mobile %>
                                 </span>
                             </div>
                         </div>
@@ -96,16 +76,6 @@
                                 </span>
                             </div>
                         </div>
-                        <% if contact.contact_type == Erp::Contacts::Contact::TYPE_PERSON %>
-                            <div class="form-group">
-                                <label class="col-md-3 control-label"><%= t('.title') %></label>
-                                <div class="col-md-9 control-label">
-                                    <span class="font-grey-cascade">
-                                        <%= contact.display_title %>
-                                    </span>
-                                </div>
-                            </div>
-                        <% end %>
                         <% if contact.contact_type == Erp::Contacts::Contact::TYPE_COMPANY %>
                             <div class="form-group">
                                 <label class="col-md-3 control-label"><%= t('.tax') %></label>
@@ -159,39 +129,15 @@
                                     <% end %>
                                 </div>
                                 <div class="tab-pane" id="tab_5_2">
-                                    <span class="font-grey-cascade"><%= contact.internal_note %></span>
+                                    <span class="font-grey-cascade"><%= contact.note %></span>
                                 </div>                
                                 <div class="tab-pane" id="tab_5_3">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h4><%= t('.sale') %></h4>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"><%= t('.is_a_customer') %></label>
-                                                <div class="col-md-9 control-label">
-                                                    <span class="font-grey-cascade">
-                                                        <i class="fa fa-<%= contact.is_customer == true ? 'check-square' : 'square' %>-o"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"><%= t('.salesperson') %></label>
-                                                <div class="col-md-9 control-label">
-                                                    <span class="font-grey-cascade">
-                                                        <a href="javascript:;" class="font-blue-madison"><%= contact.salesperson_name %></a>
-                                                    </span>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <div class="col-md-6">
-                                            <h4><%= t('.purchases') %></h4>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"><%= t('.is_a_vendor') %></label>
-                                                <div class="col-md-9 control-label">
-                                                    <span class="font-grey-cascade">
-                                                        <i class="fa fa-<%= contact.is_vendor == true ? 'check-square' : 'square' %>-o"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

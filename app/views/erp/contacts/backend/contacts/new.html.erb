@@ -20,9 +20,6 @@
         <% if @contact.errors.any? %>
             <%= erp_form_control("form_error_message") %>
         <% end %>
-        <h3>
-            <span aria-hidden="true" class="icon-user-follow"></span> <%= t('.contact_details') %>
-        </h3>
         
         <!-- BEGIN SAMPLE FORM PORTLET-->
         <%= render 'form', contact: @contact %>
