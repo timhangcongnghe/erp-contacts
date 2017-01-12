@@ -3,14 +3,14 @@
 <% end %>
 
 <% content_for :page_title do %>
-    <i class="fa fa-users"></i> <%= t('.contacts') %>
+    <i class="icon-users"></i> <%= t('.contacts') %>
 <% end %>
 
 <% content_for :page_toolbar do %>
     <%= erp_component('button/create', {
         text: t('.create'),
         href: erp_contacts.new_backend_contact_path,
-        class: 'btn-sm'
+        class: 'btn-noborder'
     }) %>
 <% end %>
 

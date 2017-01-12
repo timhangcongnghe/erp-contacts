@@ -4,7 +4,7 @@
 
 <% content_for :page_title do %>    
     <a href="<%= erp_contacts.backend_contacts_path %>">
-        <i class="fa fa-users"></i> <%= t('.contacts') %>
+        <i class="icon-users"></i> <%= t('.contacts') %>
     </a> / <%= @contact.name %>
 <% end %>
 
@@ -12,7 +12,12 @@
     <%= erp_component('button/edit', {
         text: t('.edit'),
         href: erp_contacts.edit_backend_contact_path(@contact),
-        class: 'btn-sm'
+        class: 'btn-noborder'
+    }) %>
+    <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_contacts.new_backend_contact_path,
+        class: 'btn-noborder'
     }) %>
     <%= erp_component('button/actions', {
         actions:
@@ -41,7 +46,7 @@
             }
         ],
         text: t('.actions'),
-        class: 'btn-sm'
+        class: 'btn-noborder'
     }) %>
     <%= erp_component('button/create', {
         text: t('.create'),
@@ -59,9 +64,6 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3>
-            <span aria-hidden="true" class="icon-user-follow"></span> <%= t('.contact_details') %>
-        </h3>
-         <%= render 'detail', contact: @contact %>            
+        <%= render 'detail', contact: @contact %>            
     </div>
 </div>

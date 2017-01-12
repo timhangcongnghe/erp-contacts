@@ -8,7 +8,9 @@
                             <div class="col-md-4">
                                 <%= erp_form_control('image', {
                                     img_src: contact.image_url.medium,
-                                    name: 'contact[image_url]'
+                                    name: 'contact[image_url]',
+                                    width: 150,
+                                    height: 150
                                 }) %>
                             </div>
                             <div class="col-md-8">
@@ -17,15 +19,15 @@
                                 </div>
                                 <hr>
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label"><%= t('.birthday') %></label>
-                                    <div class="col-md-9 control-label">
-                                        <span class="font-grey-cascade">
+                                    <label class="col-md-4 control-label"><%= t('.birthday') %></label>
+                                    <div class="col-md-8 control-label">
+                                        <span class="text-semibold">
                                             <%= contact.birthday %>26-03-1994
                                         </span>
                                     </div>
-                                    <label class="col-md-3 control-label"><%= t('.gender') %></label>
-                                    <div class="col-md-9 control-label">
-                                        <span class="font-grey-cascade">
+                                    <label class="col-md-4 control-label"><%= t('.gender') %></label>
+                                    <div class="col-md-8 control-label">
+                                        <span class="text-semibold">
                                             Nam
                                         </span>
                                     </div>
@@ -35,8 +37,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label"><%= t('.address') %></label>
-                                    <div class="col-md-9 control-label">
+                                    <label class="col-md-4 control-label"><%= t('.address') %></label>
+                                    <div class="col-md-8 control-label">
                                         <span class="font-grey-cascade">
                                             <%= contact.address.present? ? "#{contact.address} <br/>".html_safe : "" %>
                                             <%= contact.state_name %><br/>
@@ -49,54 +51,54 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 form-control-mb-10">
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
                         <div class="form-group">
-                            <label class="col-md-3 control-label"><%= t('.phone') %></label>
-                            <div class="col-md-9 control-label">
-                                <span class="font-grey-cascade">
+                            <label class="col-md-4 control-label"><%= t('.phone') %></label>
+                            <div class="col-md-8 control-label">
+                                <span class="text-semibold">
                                     <%= contact.phone %>
                                 </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"><%= t('.email_address') %></label>
-                            <div class="col-md-9 control-label">
+                            <label class="col-md-4 control-label"><%= t('.email_address') %></label>
+                            <div class="col-md-8 control-label">
                                 <span class="font-grey-cascade">
                                     <%= contact.email %>
                                 </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"><%= t('.website') %></label>
-                            <div class="col-md-9 control-label">
-                                <span class="font-grey-cascade">
+                            <label class="col-md-4 control-label"><%= t('.website') %></label>
+                            <div class="col-md-8 control-label">
+                                <span class="text-semibold">
                                     <%= contact.website %>
                                 </span>
                             </div>
                         </div>
                         <% if contact.contact_type == Erp::Contacts::Contact::TYPE_COMPANY %>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"><%= t('.tax') %></label>
-                                <div class="col-md-9 control-label">
-                                    <span class="font-grey-cascade">
+                                <label class="col-md-4 control-label"><%= t('.tax') %></label>
+                                <div class="col-md-8 control-label">
+                                    <span class="text-semibold">
                                         
                                     </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label"><%= t('.fax') %></label>
-                                <div class="col-md-9 control-label">
-                                    <span class="font-grey-cascade">
+                                <label class="col-md-4 control-label"><%= t('.fax') %></label>
+                                <div class="col-md-8 control-label">
+                                    <span class="text-semibold">
                                         <%= contact.fax %>
                                     </span>
                                 </div>
                             </div>
                         <% end %>
                         <div class="form-group">
-                            <label class="col-md-3 control-label"><%= t('.tags') %></label>
-                            <div class="col-md-9 control-label">
+                            <label class="col-md-4 control-label"><%= t('.tags') %></label>
+                            <div class="col-md-8 control-label">
                                 <% contact.tags.each do |t| %>
                                     <span class="tag-border-radius label label-default"><%= t.name %></span>
                                 <% end %>

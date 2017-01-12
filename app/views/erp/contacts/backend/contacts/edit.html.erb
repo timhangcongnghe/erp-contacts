@@ -4,7 +4,7 @@
 
 <% content_for :page_title do %>    
     <a href="<%= erp_contacts.backend_contacts_path %>">
-    <i class="fa fa-users"></i> <%= t('.contacts') %>
+    <i class="icon-users"></i> <%= t('.contacts') %>
     </a> / <%= @contact.name %>
 <% end %>
 
@@ -28,9 +28,6 @@
         <% if @contact.errors.any? %>
             <%= erp_form_control("form_error_message") %>
         <% end %>
-        <h3>
-            <span aria-hidden="true" class="icon-user"></span> <%= t('.contact_details') %>
-        </h3>
         
         <!-- BEGIN SAMPLE FORM PORTLET-->
         <%= render 'form', contact: @contact %>

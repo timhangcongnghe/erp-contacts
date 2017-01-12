@@ -8,7 +8,9 @@
                             <div class="col-md-4">
                                 <%= erp_form_control('image', {
                                     img_src: contact.image_url.medium,
-                                    name: 'contact[image_url]'
+                                    name: 'contact[image_url]',
+                                    width: 150,
+                                    height: 150
                                 }) %>
                             </div>
                             <div class="col-md-8">
@@ -233,13 +235,11 @@
                                     <%= erp_form_control("addablelist", {
                                         button_text: t('.add'),
                                         create: {
-                                            url: erp_contacts.new_backend_contact_contact_url(contact_id: (contact.id.present? ? contact.id : 0)),
-                                            title: t('.create_contact'),
-                                            container_selector: '.new_contact',
-                                            modal_size: 'lg',
-                                            list_partial: 'backend/contacts_contacts/contact',
-                                            list_items: contact.contacts,
-                                            list_item: :contact
+                                            url: erp.new_backend_user_url,
+                                            title: t('.create'),
+                                            container_selector: '.new_user',
+                                            input_selector: 'input[name="user[name]"]',
+                                            list_items: []
                                         }
                                     }) %>
                                 </div>             

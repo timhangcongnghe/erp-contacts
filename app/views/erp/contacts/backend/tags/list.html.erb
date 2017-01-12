@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            <% if @tags.each do |tag| %>
+            <% @tags.each do |tag| %>
                 <tr class="odd gradeX">
                     <td>
                         <%= erp_datalist_check_row(id: tag.id) %>
@@ -79,13 +79,12 @@
                         ) %>
                     </td>
                 </tr>
-            <% end.empty? %>
-                <tr>
-                    <td colspan="7">No matching records found</td>
-                </tr>
             <% end %>
         </tbody>
     </table>
+    <% if @tags.empty? %>
+        <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+    <% end %>
 </div>
         
 <%= erp_datalist_pagination(@tags) %>
