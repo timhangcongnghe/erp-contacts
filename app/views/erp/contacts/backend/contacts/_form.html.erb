@@ -111,7 +111,7 @@
                                         input_selector: 'input[name="country[name]"]'
                                     },
                                     edit: {
-                                        url: erp_areas.edit_backend_country_url(id: ':value'),
+                                        url: erp_areas.edit_backend_country_path(id: ':value'),
                                         title: t('contacts.contacts.edit'),
                                         container_selector: '.edit_country',
                                     }
@@ -132,7 +132,7 @@
                                         input_selector: 'input[name="state[name]"]'
                                     },
                                     edit: {
-                                        url: erp_areas.edit_backend_state_url(id: ':value'),
+                                        url: erp_areas.edit_backend_state_path(id: ':value'),
                                         title: t('contacts.contacts.edit'),
                                         container_selector: '.edit_state',
                                     },
@@ -235,7 +235,7 @@
                                     <%= erp_form_control("addablelist", {
                                         button_text: t('.add'),
                                         create: {
-                                            url: erp.new_backend_user_url,
+                                            url: erp.new_backend_user_path,
                                             title: t('.create'),
                                             container_selector: '.new_user',
                                             input_selector: 'input[name="user[name]"]',

@@ -19,16 +19,22 @@
                                 </div>
                                 <hr>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label"><%= t('.birthday') %></label>
-                                    <div class="col-md-8 control-label">
+                                    <label class="col-md-6 control-label"><%= t('.code') %>:</label>
+                                    <div class="col-md-6 control-label">
                                         <span class="text-semibold">
-                                            <%= contact.birthday %>26-03-1994
+                                            <%= contact.code %>
                                         </span>
                                     </div>
-                                    <label class="col-md-4 control-label"><%= t('.gender') %></label>
-                                    <div class="col-md-8 control-label">
+                                    <label class="col-md-6 control-label"><%= t('.birthday') %>:</label>
+                                    <div class="col-md-6 control-label">
                                         <span class="text-semibold">
-                                            Nam
+                                            <%= contact.birthday.strftime("%d/%m/%Y") %>
+                                        </span>
+                                    </div>
+                                    <label class="col-md-6 control-label"><%= t('.gender') %>:</label>
+                                    <div class="col-md-6 control-label">
+                                        <span class="text-semibold">
+                                            <%= t(contact.gender) %>
                                         </span>
                                     </div>
                                 </div>
@@ -37,12 +43,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label"><%= t('.address') %></label>
+                                    <label class="col-md-4 control-label"><%= t('.address') %>:</label>
                                     <div class="col-md-8 control-label">
-                                        <span class="font-grey-cascade">
-                                            <%= contact.address.present? ? "#{contact.address} <br/>".html_safe : "" %>
-                                            <%= contact.state_name %><br/>
-                                            <%= contact.country_name %>
+                                        <span class="text-semibold">
+                                            <%= contact.address.present? ? "#{contact.address} , ".html_safe : "" %><%= contact.state_name %>, <%= contact.country_name %>.
                                         </span>
                                     </div>
                                 </div>
@@ -55,7 +59,7 @@
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
                         <div class="form-group">
-                            <label class="col-md-4 control-label"><%= t('.phone') %></label>
+                            <label class="col-md-4 control-label"><%= t('.phone') %>:</label>
                             <div class="col-md-8 control-label">
                                 <span class="text-semibold">
                                     <%= contact.phone %>
@@ -63,32 +67,48 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label"><%= t('.email_address') %></label>
+                            <label class="col-md-4 control-label"><%= t('.email_address') %>:</label>
                             <div class="col-md-8 control-label">
-                                <span class="font-grey-cascade">
+                                <span class="text-semibold">
                                     <%= contact.email %>
                                 </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label"><%= t('.website') %></label>
+                            <label class="col-md-4 control-label"><%= t('.website') %>:</label>
                             <div class="col-md-8 control-label">
                                 <span class="text-semibold">
                                     <%= contact.website %>
                                 </span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"><%= t('.staff') %>:</label>
+                            <div class="col-md-8 control-label">
+                                <span class="text-semibold">
+                                    <%= contact.staff_name %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"><%= t('.contact_group') %>:</label>
+                            <div class="col-md-8 control-label">
+                                <span class="text-semibold">
+                                    <%= contact.contact_group_name %>
+                                </span>
+                            </div>
+                        </div>
                         <% if contact.contact_type == Erp::Contacts::Contact::TYPE_COMPANY %>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><%= t('.tax') %></label>
+                                <label class="col-md-4 control-label"><%= t('.tax') %>:</label>
                                 <div class="col-md-8 control-label">
                                     <span class="text-semibold">
-                                        
+                                        <%= contact.tax %>
                                     </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label"><%= t('.fax') %></label>
+                                <label class="col-md-4 control-label"><%= t('.fax') %>:</label>
                                 <div class="col-md-8 control-label">
                                     <span class="text-semibold">
                                         <%= contact.fax %>
@@ -118,10 +138,13 @@
                                     <a href="#tab_5_1" data-toggle="tab"> <%= t('.contacts_addresses') %> </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_5_2" data-toggle="tab"> <%= t('.internal_notes') %> </a>
+                                    <a href="#tab_5_2" data-toggle="tab"> <%= t('.payments_prices') %> </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_5_3" data-toggle="tab"> <%= t('.sales_purchases') %> </a>
+                                    <a href="#tab_5_3" data-toggle="tab"> <%= t('.taxes_commission') %> </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_5_4" data-toggle="tab"> <%= t('.notes') %> </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -131,18 +154,64 @@
                                     <% end %>
                                 </div>
                                 <div class="tab-pane" id="tab_5_2">
-                                    <span class="font-grey-cascade"><%= contact.note %></span>
-                                </div>                
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label><%= t('.payment_method') %>:</label>
+                                                <div>
+                                                    <span class="text-semibold">
+                                                        <%= contact.payment_method_name %>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label><%= t('.payment_term') %>:</label>
+                                                <div>
+                                                    <span class="text-semibold">
+                                                        <%= contact.payment_term_name %>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label><%= t('.price_term') %>:</label>
+                                                <div>
+                                                    <span class="text-semibold">
+                                                        <%= contact.price_term_name %>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>             
                                 <div class="tab-pane" id="tab_5_3">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            
+                                            <div class="form-group">
+                                                <label><%= t('.tax') %>:</label>
+                                                <div>
+                                                    <span class="text-semibold">
+                                                        <%= contact.tax_name %>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            
+                                            <div class="form-group">
+                                                <label><%= t('.commission_percent') %>:</label>
+                                                <div>
+                                                    <span class="text-semibold">
+                                                        <%= contact.commission_percent %>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane" id="tab_5_4">
+                                    <span class="text-semibold"><%= contact.note %></span>
+                                </div>  
                             </div>
                         </div>
                     </div>

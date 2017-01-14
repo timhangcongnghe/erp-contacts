@@ -11,26 +11,24 @@
 <% content_for :page_toolbar do %>
     <%= erp_component('button/edit', {
         text: t('.edit'),
-        href: erp_contacts.edit_backend_contact_path(@contact),
-        class: 'btn-noborder'
+        href: erp_contacts.edit_backend_contact_path(@contact)
     }) %>
     <%= erp_component('button/create', {
         text: t('.create'),
-        href: erp_contacts.new_backend_contact_path,
-        class: 'btn-noborder'
+        href: erp_contacts.new_backend_contact_path
     }) %>
     <%= erp_component('button/actions', {
         actions:
         [
             {
-                text: '<i class="fa fa-eye"></i> '+t('.unarchive'),
+                text: '<i class="fa fa-eye"></i> '+t('unarchive'),
                 url: erp_contacts.unarchive_backend_contacts_path(id: @contact.id),
                 data_method: 'PUT',
                 hide: !@contact.archived,
                 class: 'link-method'
             },
             {
-                text: '<i class="fa fa-eye-slash"></i> '+t('.archive'),
+                text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
                 url: erp_contacts.archive_backend_contacts_path(id: @contact.id),
                 data_method: 'PUT',
                 hide: @contact.archived,
@@ -41,17 +39,12 @@
                 text: '<i class="glyphicon glyphicon-trash"></i> '+t('.delete'),
                 href: erp_contacts.backend_contact_path(@contact),
                 data_method: 'DELETE',
-                data_confirm: t('.delete_confirm'),
+                data_confirm: t('delete_confirm'),
                 class: 'ajax-link'
             }
         ],
-        text: t('.actions'),
+        text: t('actions'),
         class: 'btn-noborder'
-    }) %>
-    <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp_contacts.new_backend_contact_path,
-        class: 'btn-sm'
     }) %>
 <% end %>
 

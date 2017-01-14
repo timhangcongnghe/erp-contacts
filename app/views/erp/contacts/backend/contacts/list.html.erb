@@ -1,4 +1,4 @@
-<table class="table table-advance table-hover table-striped table-checkable order-column" id="">
+<table class="table table-advance table-hover table-striped table-checkable order-column">
     <thead>
         <tr>
             <th width='1%'>
@@ -43,7 +43,7 @@
         </tr>
     </thead>
     <tbody>
-        <% @contacts.each do |contact| %>
+        <% if @contacts.each do |contact| %>
             <tr class="odd gradeX">
                 <td>
                     <%= erp_datalist_check_row(id: contact.id) %>
@@ -79,8 +79,8 @@
                     <%= erp_datalist_row_actions(
                         [
                             {
-                                text: '<i class="fa fa-edit"></i> '+t('.edit'),
-                                href: erp_contacts.edit_backend_contact_path(contact)
+                                text: '<i class="fa fa-edit"></i> '+t('.show'),
+                                url: erp_contacts.backend_contact_path(contact)
                             },
                             {
                                 text: '<i class="fa fa-eye-slash"></i> '+t('.archive'),
@@ -108,11 +108,12 @@
                     ) %>
                 </td>
             </tr>
+        <% end.empty? %>
+            <tr>
+                <td colspan="9"><%= t('.no_matching_records_found') %></td>
+            </tr>
         <% end %>
     </tbody>
 </table>
-<% if @contacts.empty? %>
-    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
-<% end %>
     
 <%= erp_datalist_pagination(@contacts) %>

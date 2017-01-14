@@ -8,6 +8,13 @@
     </a> / <%= t('.create') %>
 <% end %>
 
+<% content_for :page_toolbar do %>
+    <div class="btn-group">
+        <div class="clearfix">
+        </div>
+    </div>
+<% end %>
+
 <div class="row">
     <div class="col-md-6">
         <% if @tag.errors.any? %>

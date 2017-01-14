@@ -11,8 +11,8 @@ module Erp::Contacts
     # get discount type
     def self.get_discount_type_options()
       [
-        {text: I18n.t('fixed'), value: 'fixed'},
-        {text: I18n.t('percent'), value: 'percent'}
+        {text: I18n.t('percent'), value: 'percent'},
+        {text: I18n.t('fixed'), value: 'fixed'}
       ]
     end
     
