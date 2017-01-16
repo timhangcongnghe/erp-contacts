@@ -189,7 +189,7 @@ module Erp::Contacts
     
     # contact birthday
     def contact_birthday
-			birthday.present? ? birthday.strftime("%d-%m-%Y") : Time.now.in_time_zone("Asia/Bangkok").strftime("%d-%m-%Y")
+			birthday.present? ? birthday : nil
 		end
     
     def archive
