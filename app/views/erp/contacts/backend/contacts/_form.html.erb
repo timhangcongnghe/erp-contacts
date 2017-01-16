@@ -235,11 +235,13 @@
                                     <%= erp_form_control("addablelist", {
                                         button_text: t('.add'),
                                         create: {
-                                            url: erp.new_backend_user_path,
+                                            url: erp_contacts.new_backend_contact_contact_path(contact_id: (!contact.id ? '00' : contact.id)),
                                             title: t('.create'),
-                                            container_selector: '.new_user',
-                                            input_selector: 'input[name="user[name]"]',
-                                            list_items: []
+                                            container_selector: '.new_contact',
+                                            modal_size: 'md',
+                                            list_partial: 'backend/contacts_contacts/contact',
+                                            list_items: contact.contacts,
+                                            list_item: :contact
                                         }
                                     }) %>
                                 </div>             
