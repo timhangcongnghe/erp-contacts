@@ -54,7 +54,11 @@
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>
-                    <td></td>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: contact_group.creator
+                        }) %>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
                     <td><%= contact_group.created_at.strftime("%d/%m/%Y") %></td>

@@ -13,12 +13,14 @@
                 <th><%= t('status') %></th>
             <% end %>
             <% if get_columns(params).include?("creator") %>
-                <th class="sortable" sort-by='erp_contacts_tags.created_at'>
+                <th>
                     <%= t('creator') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("created_at") %>
-                <th><%= t('created_at') %></th>
+                <th class="sortable" sort-by='erp_contacts_tags.created_at'>
+                    <%= t('created_at') %>
+                </th>
             <% end %>
             <th width="7%"><%= t('actions') %></th>
         </tr>
@@ -30,22 +32,26 @@
                     <%= erp_datalist_check_row(id: tag.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                <td><%= link_to tag.name, erp_contacts.edit_backend_tag_path(tag) %></td>
+                    <td><%= link_to tag.name, erp_contacts.edit_backend_tag_path(tag) %></td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
-                <td>
-                    <% if tag.archived == true %>
-                    <span class="label label-sm label-danger"><%= t('archived') %></span>
-                    <% else %>
-                    <span class="label label-sm label-success"><%= t('active') %></span>
-                    <% end %>  
-                </td>
+                    <td>
+                        <% if tag.archived == true %>
+                            <span class="label label-sm label-danger"><%= t('archived') %></span>
+                        <% else %>
+                            <span class="label label-sm label-success"><%= t('active') %></span>
+                        <% end %>  
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>
-                <td></td>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: tag.creator
+                        }) %>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
-                <td><%= tag.created_at.strftime("%d/%m/%Y") %></td>
+                    <td><%= tag.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
                 <td>
                     <%= erp_datalist_row_actions(
