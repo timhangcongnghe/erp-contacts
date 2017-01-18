@@ -19,19 +19,49 @@ module Erp::Contacts
     if Erp::Core.available?("payments")
       belongs_to :payment_method, class_name: "Erp::Payments::PaymentMethod", optional: true
       belongs_to :payment_term, class_name: "Erp::Payments::PaymentTerm", optional: true
+      
+      # payment method name
+      def payment_method_name
+        payment_method.present? ? payment_method.name : ''
+      end
+      
+      # payment term name
+      def payment_term_name
+        payment_term.present? ? payment_term.name : ''
+      end
     end
     
     if Erp::Core.available?("currencies")
       belongs_to :price_term, class_name: "Erp::Currencies::PriceTerm", optional: true
+      
+      # price term name
+      def price_term_name
+        price_term.present? ? price_term.name : ''
+      end
     end
     
     if Erp::Core.available?("areas")
       belongs_to :country, class_name: "Erp::Areas::Country", optional: true
       belongs_to :state, class_name: "Erp::Areas::State", optional: true
+      
+      # country name
+      def country_name
+        country.present? ? country.name : ''
+      end
+      
+      # state name
+      def state_name
+        state.present? ? state.name : ''
+      end
     end
     
     if Erp::Core.available?("taxes")
       belongs_to :tax, class_name: "Erp::Taxes::Tax", optional: true
+      
+      # tax name
+      def tax_name
+        tax.present? ? tax.name : ''
+      end
     end
 
     # class const
@@ -147,44 +177,14 @@ module Erp::Contacts
       query = query.limit(8).map{|contact| {value: contact.id, text: contact.name} }
     end
     
-    # country name
-    def country_name
-			country.present? ? country.name : ''
-		end
-    
     # staff name
     def staff_name
 			user.present? ? user.name : ''
 		end
     
-    # payment method name
-    def payment_method_name
-			payment_method.present? ? payment_method.name : ''
-		end
-    
-    # payment term name
-    def payment_term_name
-			payment_term.present? ? payment_term.name : ''
-		end
-    
-    # price term name
-    def price_term_name
-			price_term.present? ? price_term.name : ''
-		end
-    
-    # tax name
-    def tax_name
-			tax.present? ? tax.name : ''
-		end
-    
     # contact group name
     def contact_group_name
 			contact_group.present? ? contact_group.name : ''
-		end
-    
-    # state name
-    def state_name
-			state.present? ? state.name : ''
 		end
     
     # contact birthday
