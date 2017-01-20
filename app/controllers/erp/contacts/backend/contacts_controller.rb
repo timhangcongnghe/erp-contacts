@@ -76,6 +76,7 @@ module Erp
           @contact.destroy
           
           respond_to do |format|
+            format.html { redirect_to erp_contacts.backend_contacts_path, notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
