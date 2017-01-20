@@ -23,6 +23,7 @@ vi:
   less_than_or_equal_to: "<="
   male: "Nam"
   female: "Nữ"
+  not_allow_blank: "không được để trống"
   layouts:
     erp:
       backend:
@@ -73,6 +74,7 @@ vi:
             shippings: "Thông tin giao hàng"
             others: "Các thông tin khác"
             name: "Tên khách hàng"
+            company_name: "Tên công ty"
             contact_type: "Nhóm/Loại"
             phone: "Điện thoại"
             email: "Địa chỉ email"
@@ -82,6 +84,7 @@ vi:
             archived: "Hiện liên hệ ẩn"
           list:
             name: "Tên khách hàng"
+            company_name: "Tên công ty"
             contact_type: "Nhóm/Loại"
             email: "Địa chỉ email"
             status: "Trạng thái"
@@ -225,6 +228,7 @@ vi:
             choose_country: "Chọn quốc gia"
             enter_zip_code: "Nhập mã ZIP"
             name: "Tên khách hàng"
+            company_name: "Tên công ty"
             enter_full_name: "Nhập tên khách hàng..."
             title: "Danh xưng"
             choose_title: "Chọn danh xưng"
@@ -393,6 +397,7 @@ vi:
     attributes:
       erp/contacts/contact:
         name: "Tên khách hàng"
+        company_name: "Tên công ty"
       erp/contacts/contact_group:
         name: "Tên nhóm"
       erp/contacts/title:
