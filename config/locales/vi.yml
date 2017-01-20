@@ -61,7 +61,7 @@ vi:
             success: "Hiện thông tin khách hàng được chọn thành công."
           index:
             contacts: "Tất cả khách hàng"
-            create: "Thêm khách hàng mới"
+            create: "Thêm khách hàng"
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
             delete: "Xóa khách hàng"
