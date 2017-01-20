@@ -51,7 +51,7 @@
                                     <label class="col-md-4 control-label"><%= t('.address') %>:</label>
                                     <div class="col-md-8 control-label">
                                         <span class="text-semibold">
-                                            <%= contact.address.present? ? "#{contact.address} , ".html_safe : "" %><%= contact.state_name %>, <%= contact.country_name %>.
+                                            <%= display_contact_address(contact) %>
                                         </span>
                                     </div>
                                 </div>
