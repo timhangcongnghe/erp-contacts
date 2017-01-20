@@ -1,7 +1,7 @@
 module Erp::Contacts
   class Contact < ApplicationRecord
     mount_uploader :image_url, Erp::Contacts::ContactUploader
-    validates :name, :presence => true
+    validate :name_or_company_name_must_present
     validates_format_of :email, :allow_blank => true, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => " is invalid (Eg. 'user@domain.com')"
     
     belongs_to :creator, class_name: "Erp::User", optional: true
@@ -207,6 +207,15 @@ module Erp::Contacts
     def self.unarchive_all
 			update_all(archived: false)
 		end
+    
+    def name_or_company_name_must_present
+      if self.contact_type == Erp::Contacts::Contact::TYPE_PERSON and !self.name.present?
+        errors.add(:name, I18n.t('not_allow_blank'))
+      end
+      if self.contact_type == Erp::Contacts::Contact::TYPE_COMPANY and !self.company_name.present?
+        errors.add(:company_name, I18n.t('not_allow_blank'))
+      end
+    end
     
   end
 end
