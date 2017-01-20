@@ -177,6 +177,16 @@ module Erp::Contacts
       query = query.limit(8).map{|contact| {value: contact.id, text: contact.name} }
     end
     
+    # contact name
+    def contact_name
+      if self.contact_type == Erp::Contacts::Contact::TYPE_PERSON
+        return name if !name.nil?
+      end
+      if self.contact_type == Erp::Contacts::Contact::TYPE_COMPANY
+        return company_name if !company_name.nil?
+      end
+    end
+    
     # staff name
     def staff_name
 			user.present? ? user.name : ''

@@ -1,11 +1,11 @@
 <% content_for :title do %>
-    <%= @contact.name %>
+    <%= @contact.contact_name %>
 <% end %>
 
 <% content_for :page_title do %>    
     <a href="<%= erp_contacts.backend_contacts_path %>">
     <i class="icon-users"></i> <%= t('.contacts') %>
-    </a> / <%= @contact.name %>
+    </a> / <%= @contact.contact_name %>
 <% end %>
 
 <% content_for :page_toolbar do %>

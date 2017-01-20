@@ -1,7 +1,7 @@
 <%= form_for([erp_contacts, :backend, contact], html: {class: "form-horizontal"}) do |f| %>
     <div class="form-body">        
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 form-control-mb-10">
                 <div class="portlet light bordered">
                     <div class="portlet-body form">
                         <div class="row">
@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <h3 class="col-md-12 profile-desc-title bold font-blue-madison"><%= contact.name %></h3>
+                                    <h3 class="col-md-12 profile-desc-title bold font-blue-madison"><%= contact.contact_name %></h3>
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -26,12 +26,16 @@
                                             <%= contact.code %>
                                         </span>
                                     </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-md-6 control-label"><%= t('.birthday') %>:</label>
                                     <div class="col-md-6 control-label">
                                         <span class="text-semibold">
                                             <%= contact.birthday %>
                                         </span>
                                     </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-md-6 control-label"><%= t('.gender') %>:</label>
                                     <div class="col-md-6 control-label">
                                         <span class="text-semibold">
