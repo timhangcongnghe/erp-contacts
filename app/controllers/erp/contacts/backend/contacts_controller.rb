@@ -164,6 +164,16 @@ module Erp
             }
           end
         end
+        
+        # export to xlsx
+        def export
+          @contacts = Contact.all
+          render helpers.export_partial,
+            locals: {
+              header: ["name", "address", "phone"],
+              rows: (@contacts.map {|contact| [contact.name, contact.name, contact.name] })
+            }
+        end
     
         private
           # Use callbacks to share common setup or constraints between actions.
