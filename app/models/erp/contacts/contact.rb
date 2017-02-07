@@ -227,5 +227,11 @@ module Erp::Contacts
       end
     end
     
+    # Get main contact
+    def self.get_main_contact
+      #@todo: hard code
+      return self.first
+    end
+    
   end
 end
