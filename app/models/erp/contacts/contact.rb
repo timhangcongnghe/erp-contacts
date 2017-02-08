@@ -174,7 +174,7 @@ module Erp::Contacts
         query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
       end
       
-      query = query.limit(8).map{|contact| {value: contact.id, text: contact.name} }
+      query = query.limit(8).map{|contact| {value: contact.id, text: contact.contact_name} }
     end
     
     # contact name
