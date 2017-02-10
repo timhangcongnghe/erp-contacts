@@ -5,7 +5,6 @@ class CreateErpContactsContacts < ActiveRecord::Migration[5.0]
       t.string :contact_type
       t.string :code
       t.string :name
-      t.string :company_name
       t.string :phone
       t.string :address
       t.string :tax_code

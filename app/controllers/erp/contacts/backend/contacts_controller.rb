@@ -44,7 +44,7 @@ module Erp
             if request.xhr?
               render json: {
                 status: 'success',
-                text: @contact.name,
+                text: @contact.contact_name,
                 value: @contact.id
               }              
             else
@@ -62,7 +62,7 @@ module Erp
             if request.xhr?
               render json: {
                 status: 'success',
-                text: @contact.name,
+                text: @contact.contact_name,
                 value: @contact.id
               }              
             else
@@ -171,7 +171,7 @@ module Erp
           render helpers.export_partial,
             locals: {
               header: ["name", "address", "phone"],
-              rows: (@contacts.map {|contact| [contact.name, contact.name, contact.name] })
+              rows: (@contacts.map {|contact| [contact.contact_name, contact.contact_name, contact.contact_name] })
             }
         end
     

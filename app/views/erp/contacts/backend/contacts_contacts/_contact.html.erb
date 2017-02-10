@@ -7,7 +7,7 @@
                     <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
                 <div class="media-body">
                     <div class="sm-title">
-                        <strong><%= link_to contact.name, erp_contacts.backend_contact_path(contact), class: "modal-link" %>
+                        <strong><%= link_to contact.contact_name, erp_contacts.backend_contact_path(contact), class: "modal-link" %>
                     </strong></div>
                     <div class="sm-title"><%= contact.email %></div>
                     <% if contact.contact_type != Erp::Contacts::Contact::TYPE_PERSON %>

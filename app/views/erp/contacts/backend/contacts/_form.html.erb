@@ -28,30 +28,14 @@
                                     required: true,
                                     errors: contact.errors.full_messages_for(:code)
                                 }) %>
-                                <div class="hiddable-control"
-                                     data-cond-item="input[name='contact[contact_type]']"
-                                     data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
-                                    <%= erp_form_control("text", {
-                                        name: 'contact[name]',
-                                        value: contact.name,
-                                        label: t('.name'),
-                                        placeholder: t('.enter_name'),
-                                        required: true,
-                                        errors: contact.errors.full_messages_for(:name)
-                                    }) %>
-                                </div>
-                                <div class="hiddable-control"
-                                     data-cond-item="input[name='contact[contact_type]']"
-                                     data-cond-value="<%= Erp::Contacts::Contact::TYPE_COMPANY %>">
-                                    <%= erp_form_control("text", {
-                                        name: 'contact[company_name]',
-                                        value: contact.company_name,
-                                        label: t('.company_name'),
-                                        placeholder: t('.enter_company_name'),
-                                        required: true,
-                                        errors: contact.errors.full_messages_for(:company_name)
-                                    }) %>
-                                </div>
+                                <%= erp_form_control("text", {
+                                    name: 'contact[name]',
+                                    value: contact.name,
+                                    label: t('.name'),
+                                    placeholder: t('.enter_name'),
+                                    required: true,
+                                    errors: contact.errors.full_messages_for(:name)
+                                }) %>
                             </div>
                         </div>
                         <div class="hiddable-control"
