@@ -11,6 +11,7 @@ module Erp
         
         # GET /contacts
         def index
+          authorize! :read, Erp::Contacts::Contact
         end
         
         # GET /contacts/1
@@ -33,6 +34,7 @@ module Erp
   
         # GET /contacts/1/edit
         def edit
+          authorize! :update, @contact
         end
 
         # POST /contacts
