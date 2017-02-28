@@ -49,7 +49,13 @@
                     <%= erp_datalist_check_row(id: contact.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                <td><%= link_to contact.contact_name, erp_contacts.edit_backend_contact_path(contact), class: 'title' %></td>
+                <td>
+                    <% if can? :update, contact %>
+                        <%= link_to contact.contact_name, erp_contacts.edit_backend_contact_path(contact), class: 'title' %>
+                    <% else %>
+                        <span class="title"><%= contact.contact_name %></span>
+                    <% end %>
+                </td>
                 <% end %>
                 <% if get_columns(params).include?("contact_type") %>
                 <td><%= t("#{contact.contact_type}") %></td>
