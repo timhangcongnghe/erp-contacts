@@ -55,15 +55,21 @@ vi:
             success: "Xóa thông tin khách hàng thành công."
           delete_all:
             success: "Xóa thông tin khách hàng được chọn thành công."
+          archive:
+            success: "Liên hệ không còn được sử dụng."
+          unarchive:
+            success: "Liên hệ đã được sử dụng trở lại."
           archive_all:
-            success: "Ẩn thông tin khách hàng được chọn thành công."
+            success: "Liên hệ không còn được sử dụng."
           unarchive_all:
-            success: "Hiện thông tin khách hàng được chọn thành công."
+            success: "Liên hệ đã được sử dụng trở lại."
           index:
             contacts: "Tất cả khách hàng"
             create: "Thêm khách hàng"
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng liên hệ này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại liên hệ này?"
             delete: "Xóa khách hàng"
             delete_confirm: "Bạn có chắc muốn xóa?"
             persons: "Nhóm cá nhân"
@@ -81,7 +87,7 @@ vi:
             status: "Trạng thái"
             creator: "Người tạo"
             created_at: "Ngày tạo"
-            archived: "Hiện liên hệ ẩn"
+            contact_archived: "Đã ngưng sử dụng"
           list:
             name: "Tên khách hàng"
             company_name: "Tên công ty"
@@ -97,6 +103,8 @@ vi:
             no_matching_records_found: "Danh sách khách hàng hiện tại đang trống."
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng liên hệ này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại liên hệ này?"
             delete: "Xóa khách hàng"
             delete_confirm: "Bạn có chắc muốn xóa?"
           new:
@@ -260,10 +268,14 @@ vi:
             success: "Xóa nhóm khách hàng thành công."
           delete_all:
             success: "Xóa nhóm khách hàng được chọn thành công."
+          archive:
+            success: "Thao tác thành công! Nhóm khách hàng đã ngưng sử dụng."
           archive_all:
-            success: "Ẩn nhóm khách hàng được chọn thành công."
+            success: "Thao tác thành công! Nhóm khách hàng đã ngưng sử dụng."
+          unarchive:
+            success: "Thao tác thành công! Nhóm khách hàng đã được sử dụng lại."
           unarchive_all:
-            success: "Hiện nhóm khách hàng được chọn thành công."
+            success: "Thao tác thành công! Nhóm khách hàng đã được sử dụng lại."
           index:
             contact_groups: "Nhóm khách hàng"
             create: "Thêm nhóm khách hàng"
@@ -272,11 +284,15 @@ vi:
             discount_type: "Loại"
             delete: "Xóa nhóm khách hàng"
             contact_group_archived: "Nhóm khách hàng đã bị ẩn"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng nhóm khách hàng?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại nhóm khách hàng?"
           list:
             name: "Tên nhóm"
             discount: "Giảm"
             discount_type: "Loại"
             delete: "Xóa nhóm khách hàng"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng nhóm khách hàng?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại nhóm khách hàng?"
             no_matching_records_found: "Danh sách nhóm khách hàng hiện tại đang trống."
           new:
             contact_groups: "Nhóm khách hàng"
@@ -297,12 +313,16 @@ vi:
             success: "Cập nhật danh xưng thành công."
           destroy:
             success: "Xóa danh xưng thành công."
+          archive:
+            success: "Danh xưng đã ngưng sử dụng."
+          unarchive:
+            success: "Danh xưng đã được sử dụng trở lại."
           delete_all:
             success: "Xóa danh xưng được chọn thành công."
           archive_all:
-            success: "Ẩn danh xưng được chọn thành công."
+            success: "Danh xưng đã ngưng sử dụng."
           unarchive_all:
-            success: "Hiện danh xưng được chọn thành công."
+            success: "Danh xưng đã được sử dụng trở lại."
           index:
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
@@ -315,6 +335,8 @@ vi:
             status: "Trạng thái"
             creator: "Người tạo"
             created_at: "Ngày tạo"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng danh xưng này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại danh xưng này?"
           list:
             edit: "Cập nhật"
             name: "Tên danh xưng"
@@ -330,6 +352,8 @@ vi:
             active: "Đang hiển thị"
             delete: "Xóa danh xưng"
             delete_confirm: "Bạn có chắc muốn xóa?"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng danh xưng này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại danh xưng này?"
           new:
             titles: "Tất cả danh xưng"
             create: "Thêm danh xưng"
@@ -346,27 +370,31 @@ vi:
           update:
             success: "Cập nhật nhãn thành công."
           archive:
-            success: "Ẩn nhãn thành công."
+            success: "Nhãn không còn được sử dụng."
           unarchive:
-            success: "Hiện nhãn thành công."
+            success: "Nhãn đã được sử dụng trở lại."
           destroy:
             success: "Xóa nhãn thành công."
           delete_all:
             success: "Xóa nhãn được chọn thành công."
           archive_all:
-            success: "Ẩn nhãn được chọn thành công."
+            success: "Nhãn không còn được sử dụng."
           unarchive_all:
-            success: "Hiện nhãn được chọn thành công."
+            success: "Nhãn đã được sử dụng trở lại."
           index:
             tags: "Tất cả nhãn"
             create: "Thêm nhãn"
             delete: "Xóa nhãn"
             name: "Tên nhãn"
-            tag_archived: "Nhãn đã bị ẩn"
+            tag_archived: "Nhãn không còn sử dụng"
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng thẻ này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại thẻ này?"
           list:
             name: "Tên nhãn"
             delete: "Xóa nhãn"
             no_matching_records_found: "Danh sách nhãn hiện tại đang trống."
+            archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng thẻ này?"
+            unarchive_confirm: "Bạn chắc chắn muốn sử dụng lại thẻ này?"
           new:
             tags: "Tất cả nhãn"
             create: "Thêm nhãn"

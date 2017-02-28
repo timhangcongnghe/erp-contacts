@@ -43,7 +43,7 @@
         </tr>
     </thead>
     <tbody>
-        <% if @contacts.each do |contact| %>
+        <% @contacts.each do |contact| %>
             <tr class="odd gradeX">
                 <td>
                     <%= erp_datalist_check_row(id: contact.id) %>
@@ -97,14 +97,16 @@
                                 url: erp_contacts.archive_backend_contacts_path(id: contact.id),
                                 data_method: 'PUT',
                                 hide: contact.archived,
-                                class: 'ajax-link'
+                                class: 'ajax-link',
+                                data_confirm: t('.archive_confirm')
                             },
                             {
                                 text: '<i class="fa fa-eye"></i> '+t('unarchive'),
                                 url: erp_contacts.unarchive_backend_contacts_path(id: contact.id),
                                 data_method: 'PUT',
                                 hide: !contact.archived,
-                                class: 'ajax-link'
+                                class: 'ajax-link',
+                                data_confirm: t('.unarchive_confirm')
                             },
                             { divider: true },
                             {
@@ -118,12 +120,11 @@
                     ) %>
                 </td>
             </tr>
-        <% end.empty? %>
-            <tr>
-                <td colspan="9"><%= t('.no_matching_records_found') %></td>
-            </tr>
         <% end %>
     </tbody>
 </table>
+<% if @contacts.empty? %>
+    <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
+<% end %>
     
 <%= erp_datalist_pagination(@contacts) %>

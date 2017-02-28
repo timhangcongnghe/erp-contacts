@@ -1,11 +1,7 @@
-require_dependency "erp/application_controller"
-
 module Erp
   module Contacts
     module Backend
-      class ContactsController < Erp::Backend::BackendController
-        helper Erp::Contacts::Engine.helpers
-        
+      class ContactsController < Erp::Backend::BackendController        
         before_action :set_contact, only: [:archive, :unarchive, :show, :edit, :update, :destroy]
         before_action :set_contacts, only: [:delete_all, :archive_all, :unarchive_all]
         
