@@ -1,0 +1,12 @@
+Chào <%= @msg.to_contact.email %>,
+<p>Một yêu cầu liên hệ/góp ý đã được gửi đến bạn.</p>
+<p>
+    Thông tin liên hệ: <br />
+    Tên liên hệ: <%= @msg.contact.name %><br />
+    Số điện thoại: <%= @msg.contact.phone %><br />
+    Địa chỉ email: <%= @msg.contact.email %>
+</p>
+<p>Nội dung: <%= @msg.message %></p>
+<p>Vui lòng xử lý nội dung trên và phản hồi sớm đến Quý khách hàng.</p>
+<p>----</p>
+<strong>BQT. Hệ Thống OnlineStore</strong>
