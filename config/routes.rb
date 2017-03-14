@@ -48,6 +48,11 @@ Erp::Contacts::Engine.routes.draw do
 					get 'form_contact_group_condition'
 				end
 			end
+			resources :messages do
+				collection do
+					post 'list'
+				end
+			end
 		end
 	end
 end
