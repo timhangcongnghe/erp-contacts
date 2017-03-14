@@ -32,6 +32,7 @@ vi:
           contact: "Khách hàng"
           manufacturer: "Nhà cung cấp"
           delivery_partners: "Đối tác giao hàng"
+          message: "Tất cả tin nhắn"
         mega_menu:
           configuration: "Cấu hình"
           contacts: "Tất cả khách hàng"
@@ -403,6 +404,30 @@ vi:
             create: "Thêm nhãn"
           form:
             name: "Tên nhãn"
+        messages:
+          destroy:
+            success: "Tin nhắn đã xóa thành công"
+          delete_all:
+            success: "Tin nhắn đã xóa thành công"
+          index:
+            messages: "Tất cả tin nhắn"
+            name: "Tên khách hàng"
+            email: "Địa chỉ email"
+            phone: "Điện thoại"
+            message: "Chi tiết lời nhắn"
+            created_at: "Ngày gửi"
+            delete: "Xóa tin nhắn"
+          list:
+            messages: "Tất cả tin nhắn"
+            name: "Tên khách hàng"
+            email: "Địa chỉ email"
+            phone: "Điện thoại"
+            message: "Chi tiết lời nhắn"
+            created_at: "Ngày gửi"
+            actions: "Thao tác"
+            delete: "Xóa tin nhắn"
+            delete_confirm: "Bạn thực sự muốn xóa nội dung tin nhắn này?"
+            no_matching_records_found: "Danh sách tin nhắn không được tìm thấy"
   activerecord:
     errors:
       models:
