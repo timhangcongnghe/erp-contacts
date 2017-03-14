@@ -16,6 +16,9 @@ module Erp::Contacts
 
     has_and_belongs_to_many :tags
     
+    has_many :sent_messages, class_name: "Erp::Contacts::Message", dependent: :destroy
+    has_many :received_messages, class_name: "Erp::Contacts::Message", foreign_key: :to_contact_id, dependent: :destroy
+    
     if Erp::Core.available?("payments")
       belongs_to :payment_method, class_name: "Erp::Payments::PaymentMethod", optional: true
       belongs_to :payment_term, class_name: "Erp::Payments::PaymentTerm", optional: true
