@@ -51,6 +51,7 @@ Erp::Contacts::Engine.routes.draw do
 			resources :messages do
 				collection do
 					post 'list'
+					delete 'delete_all'
 				end
 			end
 		end
