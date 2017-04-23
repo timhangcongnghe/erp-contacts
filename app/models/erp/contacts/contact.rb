@@ -46,6 +46,7 @@ module Erp::Contacts
     if Erp::Core.available?("areas")
       belongs_to :country, class_name: "Erp::Areas::Country", optional: true
       belongs_to :state, class_name: "Erp::Areas::State", optional: true
+      belongs_to :district, class_name: "Erp::Areas::District", optional: true
       
       # country name
       def country_name
