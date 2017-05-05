@@ -200,6 +200,16 @@ module Erp::Contacts
 			contact_group.present? ? contact_group.name : ''
 		end
     
+    # contact district name
+    def district_name
+      district.present? ? district.name : ''
+    end
+    
+    # contact state name
+    def state_name
+      state.present? ? state.name : ''
+    end
+    
     # contact birthday
     def contact_birthday
 			birthday.present? ? birthday : nil
