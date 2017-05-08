@@ -5,7 +5,7 @@ module Erp::Contacts
     validates_format_of :email, :allow_blank => true, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => " is invalid (Eg. 'user@domain.com')"
     
     if Erp::Core.available?("online_store")
-      validates :phone, :state_id, :district_id, :address, presence: true
+      validates :phone, presence: true
     end
     
     belongs_to :creator, class_name: "Erp::User", optional: true
