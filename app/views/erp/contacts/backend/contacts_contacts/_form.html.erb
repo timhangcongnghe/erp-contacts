@@ -58,6 +58,16 @@
                     parent_control: "input[name='contact[country_id]']",
                     parent_id: "country_id"
                 }) %>
+                <%= erp_form_control("dataselect", {
+                    name: 'contact[district_id]',
+                    value: contact.district_id,
+                    text: contact.district_name,
+                    placeholder: t('.choose_district'),
+                    label: t('.district'),
+                    url: erp_areas.dataselect_backend_districts_path(format: 'json'),
+                    parent_control: "input[name='contact[state_id]']",
+                    parent_id: "state_id"
+                }) %>
             </div>
         </div>
             
