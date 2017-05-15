@@ -4,7 +4,7 @@ module Erp::Contacts
       @msg = msg
       
       #@todo static emails
-      @recipients = ['Hùng Nguyễn <hungnt@hoangkhang.com.vn>', 'Luân Phạm <luanpm@hoangkhang.com.vn>', 'Sơn Nguyễn <sonnn@hoangkhang.com.vn>']
+      @recipients = ['Hùng Nguyễn <hungnt@hoangkhang.com.vn>']#, 'Luân Phạm <luanpm@hoangkhang.com.vn>', 'Sơn Nguyễn <sonnn@hoangkhang.com.vn>']
       
       send_email(@recipients.join("; "), "Nội dung tin nhắn liên hệ/góp ý từ #{@msg.contact.email}")
     end 
