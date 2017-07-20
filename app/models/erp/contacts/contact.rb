@@ -71,6 +71,8 @@ module Erp::Contacts
         tax.present? ? tax.name : ''
       end
     end
+    
+    before_create :generate_contact_code
 
     # class const
     TYPE_PERSON = 'person'
@@ -235,6 +237,18 @@ module Erp::Contacts
     def self.get_main_contact
       #@todo: hard code
       return self.first
+    end
+    
+    # @todo: update code under 'Customer' and 'Supplier'
+    # Generate automatically contact code 
+    def generate_contact_code
+			lastest = Contact.all.order("id DESC").first
+			if !lastest.nil?
+				num = lastest.id.to_i + 1
+				self.code = "C" + num.to_s.rjust(4, '0')
+			else
+				self.code = "C" + 1.to_s.rjust(4, '0')
+			end
     end
   end
 end
