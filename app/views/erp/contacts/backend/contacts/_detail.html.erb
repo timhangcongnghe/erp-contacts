@@ -142,12 +142,16 @@
                                 <li class="active">
                                     <a href="#tab_5_1" data-toggle="tab"> <%= t('.contacts_addresses') %> </a>
                                 </li>
+                                <% if Erp::Core.available?("currencies") %>
                                 <li>
                                     <a href="#tab_5_2" data-toggle="tab"> <%= t('.payments_prices') %> </a>
                                 </li>
+                                <% end %>
+                                <% if Erp::Core.available?("taxes") %>
                                 <li>
                                     <a href="#tab_5_3" data-toggle="tab"> <%= t('.taxes_commission') %> </a>
                                 </li>
+                                <% end %>
                                 <li>
                                     <a href="#tab_5_4" data-toggle="tab"> <%= t('.notes') %> </a>
                                 </li>
@@ -158,6 +162,7 @@
                                         <%= render 'backend/contacts_contacts/contact', contact: child_contact, editable: false %>
                                     <% end %>
                                 </div>
+                                <% if Erp::Core.available?("currencies") %>
                                 <div class="tab-pane" id="tab_5_2">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -189,7 +194,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>             
+                                </div>
+                                <% end %>
+                                <% if Erp::Core.available?("taxes") %>
                                 <div class="tab-pane" id="tab_5_3">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -214,6 +221,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <% end %>
                                 <div class="tab-pane" id="tab_5_4">
                                     <span class="text-semibold"><%= contact.note %></span>
                                 </div>  
