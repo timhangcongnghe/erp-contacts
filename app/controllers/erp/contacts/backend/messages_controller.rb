@@ -7,7 +7,7 @@ module Erp
     
         # GET /messages
         def list
-          @messages = Message.search(params).paginate(:page => params[:page], :per_page => 3)
+          @messages = Message.search(params).paginate(:page => params[:page], :per_page => 10)
         end
     
         # DELETE /messages/1
