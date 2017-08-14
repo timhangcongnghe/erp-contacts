@@ -53,6 +53,15 @@
     ],
     filters: [
         {
+            text: t('.customers'), name: 'is_customer', value: true, checked: false
+        },
+        {
+            text: t('.vendors'), name: 'is_supplier', value: true, checked: false
+        },
+        {
+            divider: true
+        },
+        {
             text: t('.persons'), name: 'contact_type', value: Erp::Contacts::Contact::TYPE_PERSON, checked: false
         },
         {

@@ -58,7 +58,11 @@
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("contact_type") %>
-                <td><%= t("#{contact.contact_type}") %></td>
+                <td>
+                    <%= ' - ' + t("#{contact.contact_type}") %>
+                    <%= '<br>'.html_safe + ' - ' + t('.is_customer') if contact.is_customer == true %>
+                    <%= '<br>'.html_safe + ' - ' + t('.is_supplier') if contact.is_supplier == true %>
+                </td>
                 <% end %>
                 <% if get_columns(params).include?("phone") %>
                 <td><%= contact.phone %></td>

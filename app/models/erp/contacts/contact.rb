@@ -239,16 +239,13 @@ module Erp::Contacts
       return self.first
     end
 
-    # @todo: update code under 'Customer' and 'Supplier'
-    # Generate automatically contact code
-    def generate_contact_code
-			lastest = Contact.all.order("id DESC").first
-			if !lastest.nil?
-				num = lastest.id.to_i + 1
-				self.code = "C" + num.to_s.rjust(4, '0')
-			else
-				self.code = "C" + 1.to_s.rjust(4, '0')
+    # Generate code
+    after_save :generate_code
+    def generate_code
+			if !code.present?
+				str = 'LH'
+				update_columns(code: str + id.to_s.rjust(5, '0'))
 			end
-    end
+		end
   end
 end
