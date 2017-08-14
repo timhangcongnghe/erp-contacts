@@ -175,7 +175,11 @@ module Erp::Contacts
     def self.dataselect(keyword='', params='')
       if params[:contact_type].present?
         query = self.where(contact_type: params[:contact_type])
-      else
+      elsif params[:is_customer].present?
+        query = self.where(is_customer: params[:is_customer])
+      elsif params[:is_supplier].present?
+        query = self.where(is_supplier: params[:is_supplier])
+      else 
         query = self.all
       end
 
