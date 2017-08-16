@@ -401,7 +401,7 @@ vi:
             name:
               blank: "không được để trống."
             is_customer:
-              invalid_format: "Bạn phải chọn liên hệ này là 'Khách Hàng' hay 'Nhà Cung Cấp'"
+              message_must_select: "Bắt buộc liên hệ phải là 'Khách hàng' hay/hoặc 'Nhà cung cấp'"
         erp/contacts/contact_group:
           attributes:
             name:

@@ -27,7 +27,9 @@
                                             id: 'contact_is_customer',
                                             value: contact.is_customer,
                                             not_selected_value: 'false',
-                                            options: [{value: 'true', text: t('.is_customer')}]
+                                            options: [{value: 'true', text: t('.is_customer')}],
+                                            errors: contact.errors.full_messages_for(:is_customer),
+                                            alert: true
                                         }) %>
                                     </div>
                                     <div class="col-md-6 col-sm-3 col-xs-6">

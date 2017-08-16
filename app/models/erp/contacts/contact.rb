@@ -251,5 +251,10 @@ module Erp::Contacts
 				update_columns(code: str + id.to_s.rjust(5, '0'))
 			end
 		end
+    
+    validate :must_select_is_customer_or_supplier
+    def must_select_is_customer_or_supplier
+      errors.add(:is_customer, :message_must_select) unless (is_customer == true or is_supplier == true)
+    end
   end
 end
