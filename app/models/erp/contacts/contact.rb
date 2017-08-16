@@ -72,8 +72,6 @@ module Erp::Contacts
       end
     end
 
-    before_create :generate_contact_code
-
     # class const
     TYPE_PERSON = 'person'
     TYPE_COMPANY = 'company'
