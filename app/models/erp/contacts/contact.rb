@@ -171,15 +171,20 @@ module Erp::Contacts
 
     # data for dataselect ajax
     def self.dataselect(keyword='', params='')
+      
+      query = self.all
+      
       if params[:contact_type].present?
-        query = self.where(contact_type: params[:contact_type])
-      elsif params[:is_customer].present?
-        query = self.where(is_customer: params[:is_customer])
-      elsif params[:is_supplier].present?
-        query = self.where(is_supplier: params[:is_supplier])
-      else 
-        query = self.all
+        query = query.where(contact_type: params[:contact_type])
       end
+      
+      if params[:is_customer].present?
+        query = query.where(is_customer: params[:is_customer])
+      end
+      
+      if params[:is_supplier].present?
+        query = query.where(is_supplier: params[:is_supplier])
+			end
 
       if keyword.present?
         keyword = keyword.strip.downcase
