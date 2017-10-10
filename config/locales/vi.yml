@@ -24,6 +24,11 @@ vi:
   male: "Nam"
   female: "Nữ"
   not_allow_blank: "không được để trống"
+  backend:
+    contacts_contacts:
+      contact:
+        edit: "Sửa"
+        delete: "Xóa"
   layouts:
     erp:
       backend:
@@ -149,7 +154,7 @@ vi:
             enter_tax_code: "Nhập mã số thuế"
             fax: "Số fax"
             enter_fax: "Nhập số fax"
-            staff: "Nhân viên phụ trách"
+            salesperson: "Nhân viên phụ trách"
             choose_staff: "Chọn nhân viên phụ trách"
             title: "Danh xưng"
             choose_title: "Chọn danh xưng"
@@ -184,21 +189,28 @@ vi:
             code: "Mã liên hệ"
             birthday: "Sinh nhật"
             gender: "Giới tính"
-            address: "Địa chỉ"
-            phone: "Số điện thoại"
-            email_address: "Địa chỉ e-mail"
+            address: "Địa chỉ liên hệ"
+            phone: "Điện thoại"
+            email_address: "E-mail"
+            type: "Loại liên hệ"
+            is_customer: "Khách hàng"
+            is_supplier: "Nhà cung cấp"
             website: "Trang web"
             tags: "Tất cả nhãn"
-            tax: "Mã số thuế"
-            fax: "Số máy fax"
+            tax: "Mã thuế"
+            fax: "Số Fax"
+            salesperson: "Nhân viên phụ trách"
+            contact_group: "Nhóm liên hệ"
             contacts_addresses: "Liên hệ & Địa chỉ khác"
             payments_prices: "Thanh toán & Giá"
             payment_term: "Kỳ hạn thanh toán"
             payment_method: "Hình thức thanh toán"
             taxes_commission: "Thuế & Chiết khấu"
-            commission_percent: "Phần trăm chiết khấu (%)"
+            commission_percent: "Phần trăm hoa hồng"
+            new_account_commission: "Thưởng New Acc"
             price_term: "Chính sách giá"
             notes: "Ghi chú"
+            contact_child: "Thông tin liên hệ khác"
         contacts_contacts:
           create:
             success: "Thêm thông tin liên hệ thành công."

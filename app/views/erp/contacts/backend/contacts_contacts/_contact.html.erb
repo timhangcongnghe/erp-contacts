@@ -1,21 +1,19 @@
-<div class="alert alert-block custom-box-shadow">
+<div class="alert alert-child-contact custom-box-shadow">
     <input type='hidden' name='contact[contact_ids][]' value='<%= contact.id %>'>
     <div class="clearfix">
         <ul class="media-list">
             <li class="media">
                 <a class="pull-left modal-link" href="<%= url_for(erp_contacts.backend_contact_path(contact)) %>">
-                    <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
+                    <img class="media-object" src="<%= contact.image_url.medium.present? ? contact.image_url.medium : url_for("/backend/img/placeholder.jpg") %>" style="width: 85px; height: 85px;"> </a>
                 <div class="media-body">
                     <div class="sm-title">
-                        <strong><%= link_to contact.contact_name, erp_contacts.backend_contact_path(contact), class: "modal-link" %>
+                        <i class="fa fa-user"></i> <strong><%= link_to contact.contact_name, erp_contacts.backend_contact_path(contact), class: "modal-link" %>
                     </strong></div>
-                    <div class="sm-title"><%= contact.email %></div>
-                    <% if contact.contact_type != Erp::Contacts::Contact::TYPE_PERSON %>
-                        <div class="sm-title"><%= contact.address %>, <%= contact.state_name %>, <%= contact.country_name %></div>
-                    <% end %>
+                    <div class="sm-title"><%= raw contact.email.present? ? '<i class="fa fa-envelope"></i> ' + contact.email : '' %></div>
                     <div class="sm-title">
-                        <%= contact.phone.present? ? t('.phone') + ': ' + contact.phone : "" %>
+                        <%= raw contact.phone.present? ? '<i class="fa fa-phone"></i> ' + contact.phone : "" %>
                     </div>
+                    <div class="sm-title"><i class="fa fa-home"></i> <%= display_contact_address(contact) %></div>
                 </div>
                 
                 <% if !defined?(editable) or editable != false %>

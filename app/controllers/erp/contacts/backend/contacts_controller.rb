@@ -188,7 +188,7 @@ module Erp
             params.fetch(:contact, {}).permit(:image_url, :contact_type, :is_customer, :is_supplier, :code, :name,
               :company_name, :phone, :address, :tax_code, :birthday,
               :email, :gender, :note, :fax, :website,
-              :commission_percent, :archived, :user_id,
+              :commission_percent, :archived, :user_id, :salesperson_id,
               :contact_group_id, :country_id, :state_id, :district_id, :price_term_id, :tax_id,
               :payment_method_id, :payment_term_id, contact_ids: [], tag_ids: [])
           end

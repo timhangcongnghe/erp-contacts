@@ -161,7 +161,7 @@
                             <div class="col-md-6">
                                 <%= erp_form_control("text", {
                                     name: 'contact[tax_code]',
-                                    value: contact.tax_code,                   
+                                    value: contact.tax_code,
                                     label: t('.tax_code'),
                                     placeholder: t('.enter_tax_code')
                                 }) %>
@@ -176,11 +176,11 @@
                             </div>
                         </div>
                         <%= erp_form_control("dataselect", {
-                            name: 'contact[user_id]',
-                            value: contact.user_id,
-                            text: contact.staff_name,
-                            placeholder: t('.choose_staff'),
-                            label: t('.staff'),
+                            name: 'contact[salesperson_id]',
+                            value: contact.salesperson_id,
+                            text: contact.salesperson_name,
+                            placeholder: t('.choose_salesperson'),
+                            label: t('.salesperson'),
                             url: erp.dataselect_backend_users_path(format: 'json')
                         }) %>
                         <%= erp_form_control("dataselect", {

@@ -6,8 +6,9 @@ module Erp
       def display_contact_address(contact)
         str = []
         str << contact.address if contact.address?
+        str << contact.district_name if contact.district_name.present?
         str << contact.state_name if contact.state_name.present?
-        str << contact.country_name if contact.country_name.present?
+        #str << contact.country_name if contact.country_name.present?
         return str.join(", ")
       end
       

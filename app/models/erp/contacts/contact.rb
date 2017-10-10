@@ -10,6 +10,7 @@ module Erp::Contacts
 
     belongs_to :creator, class_name: "Erp::User", optional: true
     belongs_to :user, class_name: "Erp::User", optional: true
+    belongs_to :salesperson, class_name: "Erp::User", optional: true
     belongs_to :contact_group, optional: true
 
     belongs_to :company, class_name: "Erp::Contacts::Contact", foreign_key: :company_id, optional: true
@@ -202,6 +203,11 @@ module Erp::Contacts
     # staff name
     def staff_name
 			user.present? ? user.name : ''
+		end
+
+    # salesperson name
+    def salesperson_name
+			salesperson.present? ? salesperson.name : ''
 		end
 
     # contact group name
