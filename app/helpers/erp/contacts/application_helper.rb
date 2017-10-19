@@ -12,6 +12,11 @@ module Erp
         return str.join(", ")
       end
       
+      # contact link helper
+      def contact_link(contact)
+        raw "<a href='#{erp_contacts.backend_contact_path(contact)}' class='modal-link'>#{contact.name}</a>"
+      end
+      
     end
   end
 end
