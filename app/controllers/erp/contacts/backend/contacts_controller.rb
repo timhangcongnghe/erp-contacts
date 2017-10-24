@@ -26,6 +26,7 @@ module Erp
         def new
           @contact = Contact.new
           @contact.contact_type = params[:contact_type].present? ? params[:contact_type] : Contact::TYPE_PERSON
+          @contact.country = Erp::Areas::Country.first # @todo re-update if the system has many countries
         end
   
         # GET /contacts/1/edit
@@ -188,9 +189,10 @@ module Erp
             params.fetch(:contact, {}).permit(:image_url, :contact_type, :is_customer, :is_supplier, :code, :name,
               :company_name, :phone, :address, :tax_code, :birthday,
               :email, :gender, :note, :fax, :website,
-              :commission_percent, :archived, :user_id, :salesperson_id,
+              :commission_percent, :new_account_commission_amount, :archived, :user_id, :salesperson_id,
               :contact_group_id, :country_id, :state_id, :district_id, :price_term_id, :tax_id,
-              :payment_method_id, :payment_term_id, contact_ids: [], tag_ids: [])
+              :payment_method_id, :payment_term_id, contact_ids: [], tag_ids: [],
+              :conts_cates_commission_rates_attributes => [ :id, :contact_id, :category_id, :rate, :_destroy ])
           end
       end
     end

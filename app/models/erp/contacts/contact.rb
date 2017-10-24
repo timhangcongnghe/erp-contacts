@@ -18,11 +18,15 @@ module Erp::Contacts
 
     belongs_to :parent, class_name: "Erp::Contacts::Contact", foreign_key: :parent_id, optional: true
     has_many :contacts, class_name: 'Erp::Contacts::Contact', foreign_key: :parent_id
-
+    
     has_and_belongs_to_many :tags
 
     has_many :sent_messages, class_name: "Erp::Contacts::Message", dependent: :destroy
     has_many :received_messages, class_name: "Erp::Contacts::Message", foreign_key: :to_contact_id, dependent: :destroy
+    
+    def new_account_commission_amount=(new_price)
+      self[:new_account_commission_amount] = new_price.to_s.gsub(/\,/, '')
+    end
 
     if Erp::Core.available?("payments")
       belongs_to :payment_method, class_name: "Erp::Payments::PaymentMethod", optional: true
@@ -37,6 +41,11 @@ module Erp::Contacts
       def payment_term_name
         payment_term.present? ? payment_term.name : ''
       end
+    end
+    
+    if Erp::Core.available?("products")
+      has_many :conts_cates_commission_rates, dependent: :destroy
+      accepts_nested_attributes_for :conts_cates_commission_rates, :reject_if => lambda { |a| a[:category_id].blank? or a[:rate].blank? }, :allow_destroy => true
     end
 
     if Erp::Core.available?("currencies")
@@ -270,6 +279,17 @@ module Erp::Contacts
     validate :must_select_is_customer_or_supplier
     def must_select_is_customer_or_supplier
       errors.add(:is_customer, :message_must_select) unless (is_customer == true or is_supplier == true)
+    end
+    
+    # get customer commission rate by product
+    def get_customer_commission_rate_by_product(product)
+      # @todo re-update this function
+      query = self.conts_cates_commission_rates.where(category_id: product.category_id).last
+      if query.present?
+        return query.rate
+      else
+        return nil
+      end
     end
     
   end

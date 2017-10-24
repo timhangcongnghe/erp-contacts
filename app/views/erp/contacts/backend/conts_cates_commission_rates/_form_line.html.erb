@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-4">
+        <input type="hidden" name="contact[conts_cates_commission_rates_attributes][<%= uid %>][id]" value="<%= conts_cates_commission_rate.id %>">
+        <input type="hidden" name="contact[conts_cates_commission_rates_attributes][<%= uid %>][_destroy]" value="">
+        <%= erp_form_control("dataselect", {
+            name: 'contact[conts_cates_commission_rates_attributes][' + uid + '][category_id]',
+            value: conts_cates_commission_rate.category_id,
+            text: conts_cates_commission_rate.category_name,
+            placeholder: t('.choose_category'),
+            url: erp_products.dataselect_backend_categories_path(format: 'json')
+        }) %>
+    </div>
+    <div class="col-md-2">
+        <%= erp_form_control("number", {
+            name: 'contact[conts_cates_commission_rates_attributes][' + uid + '][rate]',
+            value: conts_cates_commission_rate.rate,
+            text: conts_cates_commission_rate.rate,
+            placeholder: t('.enter_rate')
+        }) %>
+    </div>
+    <div class="col-md-2">        
+        <%= erp_form_control("addableform_remove_button", {
+            is_nested_form: true
+        }) %>
+    </div>
+</div>

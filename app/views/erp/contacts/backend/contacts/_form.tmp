@@ -60,31 +60,6 @@
                             required: true,
                             errors: contact.errors.full_messages_for(:name)
                         }) %>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <%= erp_form_control("text", {
-                                    name: 'contact[phone]',
-                                    value: contact.phone,                   
-                                    label: t('.phone'),
-                                    placeholder: t('.enter_phone_numbers')
-                                }) %>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <%= erp_form_control("email", {
-                                    name: 'contact[email]',
-                                    value: contact.email,                   
-                                    label: t('.email_address'),
-                                    placeholder: t('.enter_email_address')
-                                }) %>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="portlet light bordered">
-                    <div class="portlet-body form">
                         <div class="hiddable-control"
                             data-cond-item="input[name='contact[contact_type]']"
                             data-cond-value="<%= Erp::Contacts::Contact::TYPE_PERSON %>">
@@ -107,31 +82,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="hiddable-control"
-                            data-cond-item="input[name='contact[contact_type]']"
-                            data-cond-value="<%= Erp::Contacts::Contact::TYPE_COMPANY %>">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <%= erp_form_control("text", {
-                                        name: 'contact[tax_code]',
-                                        value: contact.tax_code,
-                                        label: t('.tax_code'),
-                                        placeholder: t('.enter_tax_code')
-                                    }) %>
-                                </div>
-                                <div class="col-md-6">
-                                    <%= erp_form_control("text", {
-                                        name: 'contact[fax]',
-                                        value: contact.fax,
-                                        label: t('.fax'),
-                                        placeholder: t('.enter_fax'),
-                                    }) %>
-                                </div>
-                            </div>
-                        </div>                        
+                        <%= erp_form_control("text", {
+                            name: 'contact[phone]',
+                            value: contact.phone,                   
+                            label: t('.phone'),
+                            placeholder: t('.enter_phone_numbers')
+                        }) %>
+                        <%= erp_form_control("email", {
+                            name: 'contact[email]',
+                            value: contact.email,                   
+                            label: t('.email_address'),
+                            placeholder: t('.enter_email_address')
+                        }) %>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="portlet light bordered">
+                    <div class="portlet-body form">
                         <% if Erp::Core.available?("areas") %>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <%= erp_form_control("dataselect", {
                                         name: 'contact[country_id]',
                                         value: contact.country_id,
@@ -141,7 +113,7 @@
                                         url: erp_areas.dataselect_backend_countries_path(format: 'json')
                                     }) %>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <%= erp_form_control("dataselect", {
                                         name: 'contact[state_id]',
                                         value: contact.state_id,
@@ -159,7 +131,7 @@
                                         parent_id: "country_id"
                                     }) %>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <%= erp_form_control("dataselect", {
                                         name: 'contact[district_id]',
                                         value: contact.district_id,
@@ -171,56 +143,79 @@
                                         parent_id: "state_id"
                                     }) %>
                                 </div>
-                                <div class="col-md-6">
-                                    <%= erp_form_control("text", {
-                                        name: 'contact[address]',
-                                        value: contact.address,                   
-                                        label: t('.address'),
-                                        placeholder: t('.enter_address')
-                                    }) %>
-                                </div>
                             </div>
                         <% end %>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <%= erp_form_control("dataselect", {
-                                    name: 'contact[contact_group_id]',
-                                    value: contact.contact_group_id,
-                                    text: contact.contact_group_name,
-                                    placeholder: t('.choose_contact_group'),
-                                    label: t('.contact_group'),
-                                    url: erp_contacts.dataselect_backend_contact_groups_path(format: 'json'),
-                                    create: {
-                                        url: erp_contacts.new_backend_contact_group_path,
-                                        title: t('.create'),
-                                        modal_size: 'lg',
-                                        container_selector: '.new_contact_group',
-                                        input_selector: 'input[name="contact_group[name]"]'
-                                    },
-                                    edit: {
-                                        url: erp_contacts.edit_backend_contact_group_path(id: ':value'),
-                                        title: t('.edit'),
-                                        modal_size: 'lg',
-                                        container_selector: '.edit_contact_group',
-                                    }
-                                }) %>
-                            </div>
-                            <div class="col-md-6">
-                                <%= erp_form_control("dataselect", {
-                                    name: 'contact[salesperson_id]',
-                                    value: contact.salesperson_id,
-                                    text: contact.salesperson_name,
-                                    placeholder: t('.choose_salesperson'),
-                                    label: t('.salesperson'),
-                                    url: erp.dataselect_backend_users_path(format: 'json')
-                                }) %>
-                            </div>
-                        </div>
+                        <%= erp_form_control("text", {
+                            name: 'contact[address]',
+                            value: contact.address,                   
+                            label: t('.address'),
+                            placeholder: t('.enter_address')
+                        }) %>
                         <%= erp_form_control("text", {
                             name: 'contact[website]',
                             value: contact.website,                   
                             label: t('.website'),
                             placeholder: t('.eg_website')
+                        }) %>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'contact[tax_code]',
+                                    value: contact.tax_code,
+                                    label: t('.tax_code'),
+                                    placeholder: t('.enter_tax_code')
+                                }) %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= erp_form_control("text", {
+                                    name: 'contact[fax]',
+                                    value: contact.fax,
+                                    label: t('.fax'),
+                                    placeholder: t('.enter_fax'),
+                                }) %>
+                            </div>
+                        </div>
+                        <%= erp_form_control("dataselect", {
+                            name: 'contact[salesperson_id]',
+                            value: contact.salesperson_id,
+                            text: contact.salesperson_name,
+                            placeholder: t('.choose_salesperson'),
+                            label: t('.salesperson'),
+                            url: erp.dataselect_backend_users_path(format: 'json')
+                        }) %>
+                        <%= erp_form_control("dataselect", {
+                            name: 'contact[contact_group_id]',
+                            value: contact.contact_group_id,
+                            text: contact.contact_group_name,
+                            placeholder: t('.choose_contact_group'),
+                            label: t('.contact_group'),
+                            url: erp_contacts.dataselect_backend_contact_groups_path(format: 'json'),
+                            create: {
+                                url: erp_contacts.new_backend_contact_group_path,
+                                title: t('.create'),
+                                modal_size: 'lg',
+                                container_selector: '.new_contact_group',
+                                input_selector: 'input[name="contact_group[name]"]'
+                            },
+                            edit: {
+                                url: erp_contacts.edit_backend_contact_group_path(id: ':value'),
+                                title: t('.edit'),
+                                modal_size: 'lg',
+                                container_selector: '.edit_contact_group',
+                            }
+                        }) %>
+                        <%= erp_form_control("dataselect", {
+                            name: 'contact[tag_ids][]',
+                            values: (contact.tags.map {|tag| {text: tag.name, value: tag.id}}),
+                            multiple: true,
+                            label: t('.tags'),
+                            url: erp_contacts.dataselect_backend_tags_path(format: 'json'),
+                            create: {
+                                url: erp_contacts.new_backend_tag_path,
+                                title: t('.create'),
+                                container_selector: '.new_tag',
+                                input_selector: 'input[name="tag[name]"]'
+                            }
                         }) %>
                     </div>
                 </div>
@@ -234,16 +229,22 @@
                             <a href="#tab_5_1" data-toggle="tab"> <%= t('.contacts_address') %> </a>
                         </li>
                         <li>
-                            <a href="#tab_5_2" data-toggle="tab"> <%= t('.commission_rate') %> </a>
+                            <a href="#tab_5_2" data-toggle="tab"> <%= t('.payments_prices') %> </a>
                         </li>
                         <li>
-                            <a href="#tab_5_3" data-toggle="tab"> <%= t('.notes') %> </a>
+                            <a href="#tab_5_3" data-toggle="tab"> <%= t('.taxes_commission') %> </a>
+                        </li>
+                        <li>
+                            <a href="#tab_5_4" data-toggle="tab"> <%= t('.notes') %> </a>
+                        </li>
+                        <li>
+                            <a href="#tab_5_5" data-toggle="tab"> <%= t('.commission_rate') %> </a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_5_1">
                             <%= erp_form_control("addablelist", {
-                                button_text: t('.add_contact'),
+                                button_text: t('.add'),
                                 create: {
                                     url: erp_contacts.new_backend_contact_contact_path(contact_id: (!contact.id ? '00' : contact.id)),
                                     title: t('.create'),
@@ -256,9 +257,56 @@
                             }) %>
                         </div>             
                         <div class="tab-pane" id="tab_5_2">
-                            <h5 class="profile-desc-title bold font-blue-madison"><%= t('.commission_rate_for_salesperson') %></span></sup></h5>
                             <div class="row">
-                                <div class="col-md-4">
+                                <% if Erp::Core.available?("payments") %>
+                                    <div class="col-md-6">
+                                        <%= erp_form_control("dataselect", {
+                                            name: 'contact[payment_method_id]',
+                                            value: contact.payment_method_id,
+                                            text: contact.payment_method_name,
+                                            placeholder: t('.choose_payment_method'),
+                                            label: t('.payment_method'),
+                                            url: erp_payments.dataselect_backend_payment_methods_path(format: 'json')
+                                        }) %>
+                                        <%= erp_form_control("dataselect", {
+                                            name: 'contact[payment_term_id]',
+                                            value: contact.payment_term_id,
+                                            text: contact.payment_term_name,
+                                            placeholder: t('.choose_payment_term'),
+                                            label: t('.payment_term'),
+                                            url: erp_payments.dataselect_backend_payment_terms_path(format: 'json')
+                                        }) %>
+                                    </div>
+                                <% end %>
+                                <% if Erp::Core.available?("currencies") %>
+                                    <div class="col-md-6">
+                                        <%= erp_form_control("dataselect", {
+                                            name: 'contact[price_term_id]',
+                                            value: contact.price_term_id,
+                                            text: contact.price_term_name,
+                                            placeholder: t('.choose_price_term'),
+                                            label: t('.price_term'),
+                                            url: erp_currencies.dataselect_backend_price_terms_path(format: 'json')
+                                        }) %>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_5_3">
+                            <div class="row">
+                                <% if Erp::Core.available?("taxes") %>
+                                <div class="col-md-6">
+                                    <%= erp_form_control("dataselect", {
+                                        name: 'contact[tax_id]',
+                                        value: contact.tax_id,
+                                        text: contact.tax_name,
+                                        placeholder: t('.choose_tax_default'),
+                                        label: t('.tax_default'),
+                                        url: erp_taxes.dataselect_backend_taxes_path(format: 'json')
+                                    }) %>
+                                </div>
+                                <% end %>
+                                <div class="col-md-6">
                                     <%= erp_form_control("number", {
                                         name: 'contact[commission_percent]',
                                         value: contact.commission_percent,               
@@ -267,18 +315,16 @@
                                         max: 100
                                     }) %>
                                 </div>
-                                <div class="col-md-4">
-                                    <%= erp_form_control("number", {
-                                        name: 'contact[new_account_commission_amount]',
-                                        value: contact.new_account_commission_amount,               
-                                        label: t('.new_account_commission_amount'),
-                                        min: 0,
-                                        max: 100
-                                    }) %>
-                                </div>
                             </div>
-                            <hr class="no-margin mb-10">
-                            <h5 class="profile-desc-title bold font-blue-madison"><%= t('.commission_rate_for_contact') %></span></sup></h5>
+                        </div>
+                        <div class="tab-pane" id="tab_5_4">
+                            <%= erp_form_control("textarea", {
+                                name: 'contact[note]',
+                                value: contact.note,
+                                placeholder: t('.enter_note')
+                            }) %>
+                        </div>
+                        <div class="tab-pane" id="tab_5_5">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label><%= t('.category_name') %></label>
@@ -289,17 +335,10 @@
                             </div>
                             <%= erp_form_control("addableform", {
                                 add_button: t('.add_commission_rate'),
-                                partial: 'erp/contacts/backend/conts_cates_commission_rates/form_line',
-                                partial_url: erp_contacts.form_line_backend_conts_cates_commission_rates_path,
-                                items: @contact.conts_cates_commission_rates,
-                                item: :conts_cates_commission_rate
-                            }) %>
-                        </div>
-                        <div class="tab-pane" id="tab_5_3">
-                            <%= erp_form_control("textarea", {
-                                name: 'contact[note]',
-                                value: contact.note,
-                                placeholder: t('.enter_note')
+                                partial: 'erp/contacts/backend/cons_cats_commission_rates/form_line',
+                                partial_url: erp_contacts.form_line_backend_cons_cats_commission_rates_path,
+                                items: @contact.cons_cats_commission_rates,
+                                item: :cons_cats_commission_rate
                             }) %>
                         </div>
                     </div>

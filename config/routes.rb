@@ -54,6 +54,11 @@ Erp::Contacts::Engine.routes.draw do
 					delete 'delete_all'
 				end
 			end
+			resources :conts_cates_commission_rates do
+				collection do
+					get 'form_line'
+				end
+			end
 		end
 	end
 end
