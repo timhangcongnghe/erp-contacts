@@ -13,8 +13,9 @@ module Erp
       end
       
       # contact link helper
-      def contact_link(contact)
-        raw "<a href='#{erp_contacts.backend_contact_path(contact)}' class='modal-link'>#{contact.name}</a>"
+      def contact_link(contact, text=nil)
+        text = text.nil? ? order.code : text
+        raw "<a href='#{erp_contacts.backend_contact_path(contact)}' class='modal-link'>#{text}</a>"
       end
       
     end
