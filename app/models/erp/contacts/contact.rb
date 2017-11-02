@@ -18,12 +18,12 @@ module Erp::Contacts
 
     belongs_to :parent, class_name: "Erp::Contacts::Contact", foreign_key: :parent_id, optional: true
     has_many :contacts, class_name: 'Erp::Contacts::Contact', foreign_key: :parent_id
-    
+
     has_and_belongs_to_many :tags
 
     has_many :sent_messages, class_name: "Erp::Contacts::Message", dependent: :destroy
     has_many :received_messages, class_name: "Erp::Contacts::Message", foreign_key: :to_contact_id, dependent: :destroy
-    
+
     def new_account_commission_amount=(new_price)
       self[:new_account_commission_amount] = new_price.to_s.gsub(/\,/, '')
     end
@@ -42,7 +42,7 @@ module Erp::Contacts
         payment_term.present? ? payment_term.name : ''
       end
     end
-    
+
     if Erp::Core.available?("products")
       has_many :conts_cates_commission_rates, dependent: :destroy
       accepts_nested_attributes_for :conts_cates_commission_rates, :reject_if => lambda { |a| a[:category_id].blank? or a[:rate].blank? }, :allow_destroy => true
@@ -181,19 +181,23 @@ module Erp::Contacts
 
     # data for dataselect ajax
     def self.dataselect(keyword='', params='')
-      
+
       query = self.all
-      
+
       if params[:contact_type].present?
         query = query.where(contact_type: params[:contact_type])
       end
-      
+
       if params[:is_customer].present?
         query = query.where(is_customer: params[:is_customer])
       end
-      
+
       if params[:is_supplier].present?
         query = query.where(is_supplier: params[:is_supplier])
+			end
+
+      if params[:contact_group_id].present?
+        query = query.where(contact_group_id: params[:contact_group_id])
 			end
 
       if keyword.present?
@@ -275,12 +279,12 @@ module Erp::Contacts
 				update_columns(code: str + id.to_s.rjust(4, '0'))
 			end
 		end
-    
+
     validate :must_select_is_customer_or_supplier
     def must_select_is_customer_or_supplier
       errors.add(:is_customer, :message_must_select) unless (is_customer == true or is_supplier == true)
     end
-    
+
     # get customer commission rate by product
     def get_customer_commission_rate_by_product(product)
       # @todo re-update this function
@@ -291,6 +295,6 @@ module Erp::Contacts
         return nil
       end
     end
-    
+
   end
 end
