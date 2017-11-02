@@ -205,7 +205,11 @@ module Erp::Contacts
         query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
       end
 
-      query = query.limit(8).map{|contact| {value: contact.id, text: contact.contact_name} }
+      if params[:contact_id].present?
+        query = query.where.not(id: params[:contact_id])
+      end
+
+      query = query.limit(20).map{|contact| {value: contact.id, text: contact.contact_name} }
     end
 
     # contact name
@@ -294,6 +298,10 @@ module Erp::Contacts
       else
         return nil
       end
+    end
+
+    def parent_name
+      parent.nil? ? '' : parent.name
     end
 
   end
