@@ -243,6 +243,19 @@
                         <li>
                             <a href="#tab_5_2" data-toggle="tab"> <%= t('.commission_rate') %> </a>
                         </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle pointer" data-toggle="dropdown"> <%= t('.prices_list_for_contact') %>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#tab_5_4" tabindex="-1" data-toggle="tab"> <%= t('.sales_prices') %> </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_5_5" tabindex="-1" data-toggle="tab"> <%= t('.purchase_prices') %> </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="#tab_5_3" data-toggle="tab"> <%= t('.notes') %> </a>
                         </li>
@@ -307,6 +320,56 @@
                                 name: 'contact[note]',
                                 value: contact.note,
                                 placeholder: t('.enter_note')
+                            }) %>
+                        </div>
+                        <div class="tab-pane" id="tab_5_4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="profile-desc-title bold font-blue-madison">
+                                        <%= t('.title_sales_prices') %>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr class="no-margin mb-10">
+                            <%= erp_form_control("addableform", {
+                                type: 'table',
+                                add_button: t('.add_sales_price'),
+                                partial: 'erp/prices/backend/customer_prices/line_form',
+                                partial_url: erp_prices.line_form_backend_customer_prices_path,
+                                items: @contact.contact_prices.customer_prices,
+                                item: :customer_price,
+                                thead: "<th width=\"15%\">#{t('.categories')}</th>
+                                        <th class='text-right'>#{t('.properties_values')}</th>
+                                        <th class='text-right'>#{t('.min_quantity')}</th>
+                                        <th class='text-right'>#{t('.max_quantity')}</th>
+                                        <th class='text-right'>#{t('.sales_price')}</th>
+                                        <th class='text-right'>#{t('.actions')}</th>",
+                                no_tr: true
+                            }) %>
+                        </div>
+                        <div class="tab-pane" id="tab_5_5">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="profile-desc-title bold font-blue-madison">
+                                        <%= t('.title_purchase_prices') %>
+                                    </h4>
+                                </div>
+                            </div>
+                            <hr class="no-margin mb-10">
+                            <%= erp_form_control("addableform", {
+                                type: 'table',
+                                add_button: t('.add_purchase_price'),
+                                partial: 'erp/prices/backend/supplier_prices/line_form',
+                                partial_url: erp_prices.line_form_backend_supplier_prices_path,
+                                items: @contact.contact_prices.supplier_prices,
+                                item: :customer_price,
+                                thead: "<th width=\"15%\">#{t('.categories')}</th>
+                                        <th class='text-right'>#{t('.properties_values')}</th>
+                                        <th class='text-right'>#{t('.min_quantity')}</th>
+                                        <th class='text-right'>#{t('.max_quantity')}</th>
+                                        <th class='text-right'>#{t('.purchase_price')}</th>
+                                        <th class='text-right'>#{t('.actions')}</th>",
+                                no_tr: true
                             }) %>
                         </div>
                     </div>
