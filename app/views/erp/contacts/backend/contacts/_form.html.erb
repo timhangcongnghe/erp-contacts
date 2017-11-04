@@ -243,6 +243,7 @@
                         <li>
                             <a href="#tab_5_2" data-toggle="tab"> <%= t('.commission_rate') %> </a>
                         </li>
+                        <% if Erp::Core.available?("prices") %>
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle pointer" data-toggle="dropdown"> <%= t('.prices_list_for_contact') %>
                                 <i class="fa fa-angle-down"></i>
@@ -256,6 +257,7 @@
                                 </li>
                             </ul>
                         </li>
+                        <% end %>
                         <li>
                             <a href="#tab_5_3" data-toggle="tab"> <%= t('.notes') %> </a>
                         </li>
@@ -322,6 +324,7 @@
                                 placeholder: t('.enter_note')
                             }) %>
                         </div>
+                        <% if Erp::Core.available?("prices") %>
                         <div class="tab-pane" id="tab_5_4">
                             <div class="row">
                                 <div class="col-md-12">
@@ -372,6 +375,7 @@
                                 no_tr: true
                             }) %>
                         </div>
+                        <% end %>
                     </div>
                 </div>
             </div>
