@@ -24,6 +24,11 @@
                     <%= t('.email') %>
                 </th>
             <% end %>
+            <% if get_columns(params).include?("address") %>
+                <th>
+                    <%= t('.address') %>
+                </th>
+            <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
                     <%= t('status') %>
@@ -69,6 +74,9 @@
                 <% end %>
                 <% if get_columns(params).include?("email") %>
                 <td><%= contact.email %></td>
+                <% end %>
+                <% if get_columns(params).include?("address") %>
+                <td><%= display_contact_address(contact) %></td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
                     <td>
