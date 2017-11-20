@@ -23,6 +23,8 @@ module Erp::Contacts
 
     has_many :sent_messages, class_name: "Erp::Contacts::Message", dependent: :destroy
     has_many :received_messages, class_name: "Erp::Contacts::Message", foreign_key: :to_contact_id, dependent: :destroy
+    
+    MAIN_CONTACT_ID = 1
 
     def new_account_commission_amount=(new_price)
       self[:new_account_commission_amount] = new_price.to_s.gsub(/\,/, '')
@@ -266,7 +268,7 @@ module Erp::Contacts
     # Get main contact
     def self.get_main_contact
       #@todo: hard code
-      return self.first
+      return Contact.first
     end
 
     # Generate code
