@@ -23,7 +23,7 @@ module Erp::Contacts
 
     has_many :sent_messages, class_name: "Erp::Contacts::Message", dependent: :destroy
     has_many :received_messages, class_name: "Erp::Contacts::Message", foreign_key: :to_contact_id, dependent: :destroy
-    
+
     MAIN_CONTACT_ID = 1
 
     def new_account_commission_amount=(new_price)
@@ -211,7 +211,7 @@ module Erp::Contacts
         query = query.where.not(id: params[:contact_id])
       end
 
-      query = query.limit(20).map{|contact| {value: contact.id, text: contact.contact_name} }
+      query = query.limit(25).map{|contact| {value: contact.id, text: contact.contact_name} }
     end
 
     # contact name

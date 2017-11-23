@@ -19,6 +19,9 @@
                     <%= t('.phone') %>
                 </th>
             <% end %>
+            <th>
+                Thuộc liên hệ
+            </th>
             <% if get_columns(params).include?("email") %>
                 <th>
                     <%= t('.email') %>
@@ -69,6 +72,9 @@
                     <%= '<br>'.html_safe + ' - ' + t('.is_supplier') if contact.is_supplier == true %>
                 </td>
                 <% end %>
+                <td>
+                    <%= contact.parent.name if contact.parent.present? %>
+                </td>
                 <% if get_columns(params).include?("phone") %>
                 <td><%= contact.phone %></td>
                 <% end %>
@@ -83,7 +89,7 @@
                         <% if contact.archived == true %>
                             <%= erp_component('label/danger', {
                                 text: t('archived')
-                            }) %>                            
+                            }) %>
                         <% else %>
                             <%= erp_component('label/success', {
                                 text: t('active')
@@ -142,5 +148,5 @@
 <% if @contacts.empty? %>
     <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
 <% end %>
-    
+
 <%= erp_datalist_pagination(@contacts) %>

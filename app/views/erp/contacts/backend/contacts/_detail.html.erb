@@ -1,4 +1,4 @@
-<div class="form-body custom-show">        
+<div class="form-body custom-show">
     <div class="row">
         <div class="col-md-6"><!--form-control-mb-10-->
             <div class="portlet light bordered">
@@ -170,7 +170,7 @@
                                     <label class="col-md-4 control-label"><%= t('.commission_percent') %>:</label>
                                     <div class="col-md-8 control-label">
                                         <span class="text-semibold">
-                                            <%= contact.commission_percent.to_s + '%' if !contact.commission_percent.nil? %> 
+                                            <%= contact.commission_percent.to_s + '%' if !contact.commission_percent.nil? %>
                                         </span>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                     <label class="col-md-4 control-label"><%= t('.new_account_commission') %>:</label>
                                     <div class="col-md-8 control-label">
                                         <span class="text-semibold">
-                                            <%= format_price(0000) %> 
+                                            <%= format_price(0000) %>
                                         </span>
                                     </div>
                                 </div>
@@ -222,105 +222,4 @@
         </div>
     </div>
     <% end %>
-        
-        
-        
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet light bordered">
-                <div class="portlet-body form">
-                    <div class="tabbable-custom ">
-                        <ul class="nav nav-tabs ">
-                            <li class="active">
-                                <a href="#tab_5_1" data-toggle="tab"> <%= t('.contacts_addresses') %> </a>
-                            </li>
-                            <% if Erp::Core.available?("currencies") %>
-                            <li>
-                                <a href="#tab_5_2" data-toggle="tab"> <%= t('.payments_prices') %> </a>
-                            </li>
-                            <% end %>
-                            <% if Erp::Core.available?("taxes") %>
-                            <li>
-                                <a href="#tab_5_3" data-toggle="tab"> <%= t('.taxes_commission') %> </a>
-                            </li>
-                            <% end %>
-                            <li>
-                                <a href="#tab_5_4" data-toggle="tab"> <%= t('.notes') %> </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tab_5_1">
-                                <% contact.contacts.each do |child_contact| %>
-                                    <%= render 'backend/contacts_contacts/contact', contact: child_contact, editable: false %>
-                                <% end %>
-                            </div>
-                            <% if Erp::Core.available?("currencies") %>
-                            <div class="tab-pane" id="tab_5_2">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><%= t('.payment_method') %>:</label>
-                                            <div>
-                                                <span class="text-semibold">
-                                                    <%= contact.payment_method_name %>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label><%= t('.payment_term') %>:</label>
-                                            <div>
-                                                <span class="text-semibold">
-                                                    <%= contact.payment_term_name %>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><%= t('.price_term') %>:</label>
-                                            <div>
-                                                <span class="text-semibold">
-                                                    <%= contact.price_term_name %>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <% end %>
-                            <% if Erp::Core.available?("taxes") %>
-                            <div class="tab-pane" id="tab_5_3">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><%= t('.tax') %>:</label>
-                                            <div>
-                                                <span class="text-semibold">
-                                                    <%= contact.tax_name %>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><%= t('.commission_percent') %>:</label>
-                                            <div>
-                                                <span class="text-semibold">
-                                                    <%= contact.commission_percent %>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <% end %>
-                            <div class="tab-pane" id="tab_5_4">
-                                <span class="text-semibold"><%= contact.note %></span>
-                            </div>  
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
