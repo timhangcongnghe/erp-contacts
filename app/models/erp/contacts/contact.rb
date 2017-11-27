@@ -202,6 +202,10 @@ module Erp::Contacts
         query = query.where(contact_group_id: params[:contact_group_id])
 			end
 
+      if params[:parent_id].present?
+        query = query.where(parent_id: params[:parent_id])
+			end
+
       if keyword.present?
         keyword = keyword.strip.downcase
         query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")

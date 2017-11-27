@@ -27,6 +27,7 @@ module Erp
           @contact = Contact.new
           @contact.contact_type = params[:contact_type].present? ? params[:contact_type] : Contact::TYPE_PERSON
           @contact.country = Erp::Areas::Country.first # @todo re-update if the system has many countries
+          @contact.parent_id = params.to_unsafe_hash[:parent_id]
         end
 
         # GET /contacts/1/edit
