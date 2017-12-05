@@ -19,9 +19,6 @@
                     <%= t('.phone') %>
                 </th>
             <% end %>
-            <th>
-                Thuộc liên hệ
-            </th>
             <% if get_columns(params).include?("email") %>
                 <th>
                     <%= t('.email') %>
@@ -31,6 +28,11 @@
                 <th>
                     <%= t('.address') %>
                 </th>
+            <% end %>
+            <% if get_columns(params).include?("parent_contact") %>
+            <th>
+                <%= t('.parent_contact') %>
+            </th>
             <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
@@ -72,9 +74,6 @@
                     <%= '<br>'.html_safe + ' - ' + t('.is_supplier') if contact.is_supplier == true %>
                 </td>
                 <% end %>
-                <td>
-                    <%= contact.parent.name if contact.parent.present? %>
-                </td>
                 <% if get_columns(params).include?("phone") %>
                 <td><%= contact.phone %></td>
                 <% end %>
@@ -83,6 +82,11 @@
                 <% end %>
                 <% if get_columns(params).include?("address") %>
                 <td><%= display_contact_address(contact) %></td>
+                <% end %>
+                <% if get_columns(params).include?("parent_contact") %>
+                <td>
+                    <%= contact.parent.name if contact.parent.present? %>
+                </td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
                     <td>
