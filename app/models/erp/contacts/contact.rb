@@ -47,7 +47,7 @@ module Erp::Contacts
 
     if Erp::Core.available?("products")
       has_many :conts_cates_commission_rates, dependent: :destroy
-      accepts_nested_attributes_for :conts_cates_commission_rates, :reject_if => lambda { |a| a[:category_id].blank? or a[:rate].blank? }, :allow_destroy => true
+      accepts_nested_attributes_for :conts_cates_commission_rates, :reject_if => lambda { |a| a[:category_id].blank? or (a[:rate].blank? and a[:price].blank?) }, :allow_destroy => true
     end
 
     if Erp::Core.available?("currencies")
@@ -298,9 +298,11 @@ module Erp::Contacts
     # get customer commission rate by product
     def get_customer_commission_rate_by_product(product)
       # @todo re-update this function
-      query = self.conts_cates_commission_rates.where(category_id: product.category_id).last
+      cat_ids = [product.category_id]
+      cat_ids << product.category.parent_id if product.category.present? and product.category.parent_id.present?
+      query = self.conts_cates_commission_rates.where(category_id: cat_ids).last
       if query.present?
-        return query.rate
+        return query
       else
         return nil
       end

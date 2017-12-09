@@ -1,0 +1,118 @@
+<%= form_for([erp_contacts, :backend, Erp::Contacts::Contact.new(id: 0), contact]) do |f| %>
+    <%= erp_form_control("radio", {
+        name: 'contact[contact_type]',
+        label: t('.type'),
+        value: @contact.contact_type,
+        options: Erp::Contacts::Contact.get_contacts_type_options()
+    }) %>
+    <div class="row">
+        <div class="hiddable-control"
+            data-cond-item="input[name='contact[contact_type]']"
+            data-cond-value="<%= Erp::Contacts::Contact::TYPE_INVOICE %>,
+            <%= Erp::Contacts::Contact::TYPE_SHIPPING %>,
+            <%= Erp::Contacts::Contact::TYPE_OTHER %>">
+            <div class="col-md-6">
+                <%= erp_form_control("text", {
+                    name: 'contact[address]',
+                    value: contact.address,                   
+                    label: t('.address'),
+                    placeholder: t('.enter_address')
+                }) %>
+                <%= erp_form_control("dataselect", {
+                    name: 'contact[country_id]',
+                    value: contact.country_id,
+                    text: contact.country_name,
+                    placeholder: t('.choose_country'),
+                    label: t('.country'),
+                    url: erp_areas.dataselect_backend_countries_path(format: 'json'),
+                    create: {
+                        url: erp_areas.new_backend_country_path,
+                        title: t('.create'),
+                        container_selector: '.new_country',
+                        input_selector: 'input[name="country[name]"]'
+                    },
+                    edit: {
+                        url: erp_areas.edit_backend_country_url(id: ':value'),
+                        title: t('contacts.contacts.edit'),
+                        container_selector: '.edit_country',
+                    }
+                }) %>
+                <%= erp_form_control("dataselect", {
+                    name: 'contact[state_id]',
+                    value: contact.state_id,
+                    text: contact.state_name,
+                    placeholder: t('.choose_state'),
+                    label: t('.state'),
+                    url: erp_areas.dataselect_backend_states_path(format: 'json'),
+                    create: {
+                        url: erp_areas.new_backend_state_path,
+                        title: t('.create'),
+                        container_selector: '.new_state',
+                        input_selector: 'input[name="state[name]"]'
+                    },
+                    edit: {
+                        url: erp_areas.edit_backend_state_url(id: ':value'),
+                        title: t('contacts.contacts.edit'),
+                        container_selector: '.edit_state',
+                    },
+                    parent_control: "input[name='contact[country_id]']",
+                    parent_id: "country_id"
+                }) %>
+                <%= erp_form_control("dataselect", {
+                    name: 'contact[district_id]',
+                    value: contact.district_id,
+                    text: contact.district_name,
+                    placeholder: t('.choose_district'),
+                    label: t('.district'),
+                    url: erp_areas.dataselect_backend_districts_path(format: 'json'),
+                    parent_control: "input[name='contact[state_id]']",
+                    parent_id: "state_id"
+                }) %>
+            </div>
+        </div>
+            
+        <div class="col-md-6">
+            <%= erp_form_control("text", {
+                name: 'contact[name]',
+                value: contact.name,
+                label: t('.name'),
+                placeholder: t('.enter_full_name'),
+                required: true,
+                errors: contact.errors.full_messages_for(:name)
+            }) %>
+            
+            <%= erp_form_control("email", {
+                name: 'contact[email]',
+                value: contact.email,                   
+                label: t('.email_address'),
+                help: "user@domain.com",
+                placeholder: t('.enter_email_address'),
+                required: false,
+                errors: contact.errors.full_messages_for(:email)
+            }) %>
+            
+            <%= erp_form_control("text", {
+                name: 'contact[phone]',
+                value: contact.phone,                   
+                label: t('.phone'),
+                placeholder: t('.enter_phone_numbers')
+            }) %>
+            <%= erp_form_control("textarea", {
+                name: 'contact[note]',
+                value: contact.note,                   
+                label: t('.notes'),
+                placeholder: t('.enter_notes')
+            }) %>
+        </div>
+    </div>
+    
+    <%= erp_component('button/save', {
+        text: t('.save_close'),
+    }) %>
+    <%= erp_component('button/save', {
+        text: t('.save_create'),
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('.cancel'),
+    }) %>
+<% end %>

@@ -193,7 +193,7 @@ module Erp
               :commission_percent, :new_account_commission_amount, :archived, :user_id, :salesperson_id,
               :contact_group_id, :country_id, :state_id, :district_id, :price_term_id, :tax_id,
               :payment_method_id, :payment_term_id, contact_ids: [], tag_ids: [],
-              :conts_cates_commission_rates_attributes => [ :id, :contact_id, :category_id, :rate, :_destroy ],
+              :conts_cates_commission_rates_attributes => [ :id, :contact_id, :category_id, :rate, :price, :_destroy ],
               :contact_prices_attributes => [:id, :contact_id, :category_id, :properties_value_id, :price_type,
                                               :min_quantity, :max_quantity, :price, :_destroy])
           end

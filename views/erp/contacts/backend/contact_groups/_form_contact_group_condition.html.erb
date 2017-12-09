@@ -1,0 +1,27 @@
+<div class="row">
+    <input type="hidden" name="contact_group[contact_group_conditions_attributes][<%= uid %>][id]"
+           value="<%= contact_group_condition.id %>">
+    <div class="col-md-4">
+        <%= erp_form_control('select', {
+            name: 'contact_group[contact_group_conditions_attributes]['+ uid +'][name]',
+            value: contact_group_condition.name,
+            options: Erp::Contacts::ContactGroupCondition.get_contact_group_condition_name_options()
+        }) %>
+    </div>
+    <div class="col-md-2">
+        <%= erp_form_control('select', {
+            name: 'contact_group[contact_group_conditions_attributes]['+ uid +'][operator]',
+            value: contact_group_condition.operator,
+            options: Erp::Contacts::ContactGroupCondition.get_contact_group_condition_operator_options()
+        }) %>
+    </div>
+    <div class="col-md-4">
+        <%= erp_form_control("text", {
+            name: 'contact_group[contact_group_conditions_attributes]['+ uid +'][value]',
+            value: contact_group_condition.value
+        }) %>
+    </div>
+    <div class="col-md-2">        
+        <%= erp_form_control("addableform_remove_button", { }) %>
+    </div>
+</div>

@@ -14,8 +14,10 @@ PATH
       rmega
       rubyzip (~> 1.1.0)
       unidecoder
+      wicked_pdf
       will_paginate
       will_paginate-bootstrap
+      wkhtmltopdf-binary
 
 PATH
   remote: .
@@ -192,9 +194,11 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    wicked_pdf (1.1.0)
     will_paginate (3.1.6)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
+    wkhtmltopdf-binary (0.12.3.1)
 
 PLATFORMS
   ruby
@@ -204,4 +208,4 @@ DEPENDENCIES
   erp_core!
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3

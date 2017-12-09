@@ -1,0 +1,81 @@
+<% content_for :title do %>
+    <%= t('.titles') %>
+<% end %>
+
+<% content_for :page_title do %>
+    <i class="fa fa-bookmark-o"></i> <%= t('.titles') %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_contacts.new_backend_title_path,
+        class: 'btn-noborder'
+    }) %>
+<% end %>
+
+<%= erp_datalist(
+    url: erp_contacts.list_backend_titles_path,
+    keywords: [
+        {
+            text: t('.name'), name: 'name'
+        },
+        {
+            text: t('.abbreviation'), name: 'abbreviation'
+        },
+        {
+            text: t('creator'),
+            name: 'erp_users.name',
+            select: {
+                name: 'erp_users.id',
+                data_url: erp.dataselect_backend_users_path
+            }
+        }
+    ],
+    actions: [
+        {
+            text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
+            url: erp_contacts.archive_all_backend_titles_path,
+            data_method: 'PUT',
+            data_confirm: t('.archive_confirm')
+        },
+        {
+            text: '<i class="fa fa-eye"></i> '+t('unarchive'),
+            url: erp_contacts.unarchive_all_backend_titles_path,
+            data_method: 'PUT',
+            data_confirm: t('.unarchive_confirm')
+        },
+        {
+            divider: true
+        },
+        {
+            text: '<i class="fa fa-trash"></i> '+t('.delete'),
+            url: erp_contacts.delete_all_backend_titles_path,
+            data_method: 'DELETE',
+            data_confirm: t('.delete_confirm')
+        }
+    ],
+    filters: [
+        {
+            text: t('archived'), name: 'show_archived', value: true, checked: false
+        }
+    ],
+    columns: [
+        {
+            text: t('.name'), name: 'name', value: true, checked: true
+        },
+        {
+            text: t('.abbreviation'), name: 'abbreviation', value: true, checked: true
+        },
+        {
+            text: t('.status'), name: 'status', value: true, checked: true
+        },
+        {
+            text: t('.creator'), name: 'creator', value: true, checked: false
+        },
+        {
+            text: t('.created_at'), name: 'created_at', value: true, checked: false
+        }
+    ],
+    sort: { sort_by: 'erp_contacts_titles.name', sort_direction: 'asc' }
+) %>    

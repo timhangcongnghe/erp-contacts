@@ -1,0 +1,39 @@
+<div class="alert alert-block custom-box-shadow">
+    <input type='hidden' name='contact[contact_ids][]' value='<%= contact.id %>'>
+    <div class="clearfix">
+        <ul class="media-list">
+            <li class="media">
+                <a class="pull-left modal-link" href="<%= url_for(erp_contacts.backend_contact_path(contact)) %>">
+                    <img class="media-object" src="/backend/assets/pages/media/users/avatar80_3.jpg" style="width: 85px; height: 85px;"> </a>
+                <div class="media-body">
+                    <div class="sm-title">
+                        <strong><%= link_to contact.contact_name, erp_contacts.backend_contact_path(contact), class: "modal-link" %>
+                    </strong></div>
+                    <div class="sm-title"><%= contact.email %></div>
+                    <% if contact.contact_type != Erp::Contacts::Contact::TYPE_PERSON %>
+                        <div class="sm-title"><%= contact.address %>, <%= contact.state_name %>, <%= contact.country_name %></div>
+                    <% end %>
+                    <div class="sm-title">
+                        <%= contact.phone.present? ? t('.phone') + ': ' + contact.phone : "" %>
+                    </div>
+                </div>
+                
+                <% if !defined?(editable) or editable != false %>
+                    <br />
+                    <a class="btn btn-sm blue addablelist-edit"
+                        data-url="<%= erp_contacts.edit_backend_contact_contact_path(contact_id: (!contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
+                        data-title="<%= t('.edit') %>"
+                        data-selector=".edit_contact"
+                    >
+                        <i class="fa fa-pencil"></i> <%= t('.edit') %>
+                    </a>
+                    <a class="btn btn-sm btn-danger addablelist-delete"
+                        data-url="<%= erp_contacts.backend_contact_contact_path(contact_id: (!contact.parent_id.present? ? 0 : contact.parent_id), id: contact.id) %>"
+                        data-method="DELETE" >
+                        <i class="fa fa-close"></i> <%= t('.delete') %>
+                    </a>
+                <% end %>
+            </li>
+        </ul>
+    </div>
+</div>

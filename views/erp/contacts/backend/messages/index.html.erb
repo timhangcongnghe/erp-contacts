@@ -1,0 +1,63 @@
+<% content_for :title do %>
+    <%= t('.messages') %>
+<% end %>
+
+<% content_for :page_title do %>
+    <i class="fa fa-bookmark-o"></i> <%= t('.messages') %>
+<% end %>
+
+<%= erp_datalist(
+    url: erp_contacts.list_backend_messages_path,
+    keywords: [
+        {
+            text: t('.name'),
+            name: 'erp_contacts_contacts.name',
+            select: {
+                name: 'erp_contacts_contacts.id',
+                data_url: erp_contacts.dataselect_backend_contacts_path
+            }
+        },
+        {
+            text: t('.email'),
+            name: 'erp_contacts_contacts.email',
+            select: {
+                name: 'erp_contacts_contacts.id',
+                data_url: erp_contacts.dataselect_backend_contacts_path
+            }
+        },
+        {
+            text: t('.phone'),
+            name: 'erp_contacts_contacts.phone',
+            select: {
+                name: 'erp_contacts_contacts.id',
+                data_url: erp_contacts.dataselect_backend_contacts_path
+            }
+        }
+    ],
+    actions: [
+        {
+            text: '<i class="fa fa-trash"></i> '+t('.delete'),
+            url: erp_contacts.delete_all_backend_messages_path,
+            data_method: 'DELETE',
+            data_confirm: t('delete_confirm')
+        }
+    ],
+    columns: [
+        {
+            text: t('.name'), name: 'name', value: true, checked: true
+        },
+        {
+            text: t('.email'), name: 'email', value: true, checked: true
+        },
+        {
+            text: t('.phone'), name: 'phone', value: true, checked: false
+        },
+        {
+            text: t('.message'), name: 'message', value: true, checked: true
+        },
+        {
+            text: t('.created_at'), name: 'created_at', value: true, checked: false
+        }
+    ],
+    sort: { sort_by: 'erp_contacts_messages.created_at', sort_direction: 'asc' }
+) %>    

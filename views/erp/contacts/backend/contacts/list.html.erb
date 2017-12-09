@@ -24,16 +24,6 @@
                     <%= t('.email') %>
                 </th>
             <% end %>
-            <% if get_columns(params).include?("address") %>
-                <th>
-                    <%= t('.address') %>
-                </th>
-            <% end %>
-            <% if get_columns(params).include?("parent_contact") %>
-            <th>
-                <%= t('.parent_contact') %>
-            </th>
-            <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
                     <%= t('status') %>
@@ -61,18 +51,14 @@
                 <% if get_columns(params).include?("name") %>
                 <td>
                     <% if can? :update, contact %>
-                        <%= link_to contact.contact_name, erp_contacts.backend_contact_path(contact), class: 'title' %>
+                        <%= link_to contact.contact_name, erp_contacts.edit_backend_contact_path(contact), class: 'title' %>
                     <% else %>
                         <span class="title"><%= contact.contact_name %></span>
                     <% end %>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("contact_type") %>
-                <td>
-                    <%= ' - ' + t("#{contact.contact_type}") %>
-                    <%= '<br>'.html_safe + ' - ' + t('.is_customer') if contact.is_customer == true %>
-                    <%= '<br>'.html_safe + ' - ' + t('.is_supplier') if contact.is_supplier == true %>
-                </td>
+                <td><%= t("#{contact.contact_type}") %></td>
                 <% end %>
                 <% if get_columns(params).include?("phone") %>
                 <td><%= contact.phone %></td>
@@ -80,20 +66,12 @@
                 <% if get_columns(params).include?("email") %>
                 <td><%= contact.email %></td>
                 <% end %>
-                <% if get_columns(params).include?("address") %>
-                <td><%= display_contact_address(contact) %></td>
-                <% end %>
-                <% if get_columns(params).include?("parent_contact") %>
-                <td>
-                    <%= contact.parent.name if contact.parent.present? %>
-                </td>
-                <% end %>
                 <% if get_columns(params).include?("status") %>
                     <td>
                         <% if contact.archived == true %>
                             <%= erp_component('label/danger', {
                                 text: t('archived')
-                            }) %>
+                            }) %>                            
                         <% else %>
                             <%= erp_component('label/success', {
                                 text: t('active')
@@ -115,8 +93,8 @@
                     <%= erp_datalist_row_actions(
                         [
                             {
-                                text: '<i class="fa fa-edit"></i> Sửa thông tin',
-                                url: erp_contacts.edit_backend_contact_path(contact)
+                                text: '<i class="fa fa-edit"></i> '+t('.show'),
+                                url: erp_contacts.backend_contact_path(contact)
                             },
                             {
                                 text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
@@ -152,5 +130,5 @@
 <% if @contacts.empty? %>
     <div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div>
 <% end %>
-
+    
 <%= erp_datalist_pagination(@contacts) %>

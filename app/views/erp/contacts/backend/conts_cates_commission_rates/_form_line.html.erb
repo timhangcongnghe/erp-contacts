@@ -7,7 +7,8 @@
             value: conts_cates_commission_rate.category_id,
             text: conts_cates_commission_rate.category_name,
             placeholder: t('.choose_category'),
-            url: erp_products.dataselect_backend_categories_path(format: 'json')
+            url: erp_products.dataselect_backend_categories_path(format: 'json'),
+            required: true
         }) %>
     </div>
     <div class="col-md-2">
@@ -18,7 +19,15 @@
             placeholder: t('.enter_rate')
         }) %>
     </div>
-    <div class="col-md-2">        
+    <div class="col-md-2">
+        <%= erp_form_control("number", {
+            name: 'contact[conts_cates_commission_rates_attributes][' + uid + '][price]',
+            value: conts_cates_commission_rate.price,
+            text: conts_cates_commission_rate.price,
+            placeholder: 'Nhập số tiền chiếu khấu'
+        }) %>
+    </div>
+    <div class="col-md-2">
         <%= erp_form_control("addableform_remove_button", {
             is_nested_form: true
         }) %>
