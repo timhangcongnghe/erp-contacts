@@ -116,6 +116,7 @@ vi:
             delete: "Xóa liên hệ"
             delete_confirm: "Bạn có chắc muốn xóa?"
             contact_details: "Chi tiết liên hệ"
+            edit: "Cập nhật"
           form:
             contact_group: "Nhóm liên hệ"
             choose_contact_group: "Chọn nhóm liên hệ"
