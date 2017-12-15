@@ -2,7 +2,7 @@ module Erp
   module Contacts
     module Backend
       class ContactsController < Erp::Backend::BackendController
-        before_action :set_contact, only: [:archive, :unarchive, :show, :edit, :update, :destroy]
+        before_action :set_contact, only: [:contact_details, :archive, :unarchive, :show, :edit, :update, :destroy]
         before_action :set_contacts, only: [:delete_all, :archive_all, :unarchive_all]
 
         # GET /contacts
@@ -19,6 +19,14 @@ module Erp
         def list
           @contacts = Contact.search(params).paginate(:page => params[:page], :per_page => 10)
 
+          render layout: nil
+        end
+        
+        def contact_details
+          @sales_orders = @contact.sales_orders
+          @payment_records = Erp::Payments::PaymentRecord.where(customer_id: @contact.id)
+            .where(payment_type_id: [Erp::Payments::PaymentType.find_by_code(Erp::Payments::PaymentType::CODE_CUSTOMER),
+                    Erp::Payments::PaymentType.find_by_code(Erp::Payments::PaymentType::CODE_SALES_ORDER)])
           render layout: nil
         end
 

@@ -54,12 +54,13 @@
     </thead>
     <tbody>
         <% @contacts.each do |contact| %>
-            <tr class="odd gradeX">
+            <tr class="odd gradeX <%= 'blurred' if contact.archived? %> has-child-table" data-url="<%= erp_contacts.contact_details_backend_contacts_path(id: contact.id) %>">
                 <td>
                     <%= erp_datalist_check_row(id: contact.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
                 <td>
+                    <i class="fa fa-plus expand tr-expand-button"></i>
                     <% if can? :update, contact %>
                         <%= link_to contact.contact_name, erp_contacts.backend_contact_path(contact), class: 'title' %>
                     <% else %>

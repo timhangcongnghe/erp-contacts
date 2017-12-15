@@ -237,6 +237,18 @@ vi:
             price_term: "Chính sách giá"
             notes: "Ghi chú"
             contact_child: "Thông tin liên hệ khác"
+          contact_details:
+            payment_code: "Mã thanh toán"
+            payment_type: "Loại phiếu"
+            contact: "Người nộp/nhận"
+            amount: "Số tiền"
+            payment_date: "Ngày thanh toán"
+            description: "Mô tả"
+            accountant: "Kế toán"
+            actions: "Hành động"
+            receive: "Phiếu thu"
+            pay: "Phiếu chi"
+            edit: "Cập nhật"
         contacts_contacts:
           create:
             success: "Thêm thông tin liên hệ thành công."

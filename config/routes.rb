@@ -33,6 +33,7 @@ Erp::Contacts::Engine.routes.draw do
 					put 'archive_all'
 					put 'unarchive_all'
 					get 'export'
+					get 'contact_details'
 				end
 				resources :contacts, controller: 'contacts_contacts'
 			end
