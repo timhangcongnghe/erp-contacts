@@ -1,5 +1,5 @@
 <% uid = unique_id %>
-<% if @payment_records.empty? %>
+<% if @sales_orders.empty? and @payment_records.empty? %>
     <div class="alert alert-warning no-margin">Không tìm thấy có giao dịch nào gần đây!</div>
 <% else %>
     <div class="tabbable-custom ">
