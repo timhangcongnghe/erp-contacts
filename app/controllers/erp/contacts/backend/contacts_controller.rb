@@ -21,7 +21,7 @@ module Erp
 
           render layout: nil
         end
-        
+
         def contact_details
           @sales_orders = @contact.sales_orders
           @payment_records = Erp::Payments::PaymentRecord.where(customer_id: @contact.id)
@@ -36,6 +36,8 @@ module Erp
           @contact.contact_type = params[:contact_type].present? ? params[:contact_type] : Contact::TYPE_PERSON
           @contact.country = Erp::Areas::Country.first # @todo re-update if the system has many countries
           @contact.parent_id = params.to_unsafe_hash[:parent_id]
+          @contact.is_customer = params.to_unsafe_hash[:is_customer]
+          @contact.contact_group_id = params.to_unsafe_hash[:contact_group_id]
         end
 
         # GET /contacts/1/edit
