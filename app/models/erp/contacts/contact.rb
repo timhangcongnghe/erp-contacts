@@ -272,7 +272,7 @@ module Erp::Contacts
     # Get main contact
     def self.get_main_contact
       #@todo: hard code
-      return Contact.first
+      return Contact.find(self::MAIN_CONTACT_ID)
     end
 
     # Generate code

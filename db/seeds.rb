@@ -6,6 +6,7 @@ Erp::Contacts::Contact.destroy_all
 puts "Owner"
 country = Erp::Areas::Country.first
 owner = Erp::Contacts::Contact.create(
+  id: 1,
   name: 'Công ty TNHH Ortho-K Việt Nam',
   address: '535 An Dương Vương, Phường 8',
   state_id: country.states.first.id,
