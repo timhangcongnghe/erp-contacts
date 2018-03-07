@@ -34,6 +34,11 @@
                 <%= t('.parent_contact') %>
             </th>
             <% end %>
+            <% if get_columns(params).include?("salesperson") %>
+            <th>
+                <%= t('.salesperson') %>
+            </th>
+            <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
                     <%= t('status') %>
@@ -87,6 +92,17 @@
                 <% if get_columns(params).include?("parent_contact") %>
                 <td>
                     <%= contact.parent.name if contact.parent.present? %>
+                </td>
+                <% end %>
+                <% if get_columns(params).include?("salesperson") %>
+                <td>
+                    <%= contact.salesperson_name %>
+                    <% if contact.commission_percent.present? %>
+                        <br>
+                        <div class="font-yellow text-small text-semibold" style="font-size: 80%" title="Phần trăm hoa hồng được hưởng: <%= contact.commission_percent %>%">
+                            <span style="font-family:sans-serif;">(HH: <%= contact.commission_percent %>%)</span>
+                        </div>
+                    <% end %>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>

@@ -85,6 +85,7 @@ vi:
             email: "Email"
             address: "Địa chỉ"
             parent_contact: "Thuộc liên hệ"
+            salesperson: "N.viên phụ trách"
             contact_archived: "Đã ngưng sử dụng"
           list:
             name: "Tên liên hệ"
@@ -94,6 +95,7 @@ vi:
             phone: "Điện thoại"
             address: "Địa chỉ"
             parent_contact: "Thuộc liên hệ"
+            salesperson: "N.viên p.trách"
             show: "Xem chi tiết"
             no_matching_records_found: "Danh sách liên hệ hiện tại đang trống."            
             archive_confirm: "Bạn chắc chắn muốn ngừng sử dụng liên hệ này?"
