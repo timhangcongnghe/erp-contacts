@@ -176,6 +176,15 @@ module Erp::Contacts
 
       # add conditions to query
       query = query.where(and_conds.join(' AND ')) if !and_conds.empty?
+      
+      # single keyword
+      if params[:keyword].present?
+				keyword = params[:keyword].strip.downcase
+				keyword.split(' ').each do |q|
+					q = q.strip
+					query = query.where('LOWER(erp_contacts_contacts.cache_search) LIKE ?', '%'+q+'%')
+				end
+			end
 
       return query
     end
@@ -304,6 +313,21 @@ module Erp::Contacts
         end
 				update_columns(code: str + id.to_s.rjust(4, '0'))
 			end
+		end
+    
+    # Update cache search
+    after_save :update_cache_search
+		def update_cache_search
+			str = []
+			str << code.to_s.downcase.strip
+			str << name.to_s.downcase.strip
+			str << phone.to_s.downcase.strip if phone.present?
+			str << email.to_s.downcase.strip if email.present?
+			str << address.to_s.downcase.strip if address.present?
+			str << district_name.to_s.downcase.strip if district.present?
+			str << state_name.to_s.downcase.strip if state.present?
+
+			self.update_column(:cache_search, str.join(" ") + " " + str.join(" ").to_ascii)
 		end
 
     validate :must_select_is_customer_or_supplier

@@ -30,19 +30,7 @@
 
 <%= erp_datalist(
     url: erp_contacts.list_backend_contacts_path,
-    keywords: [
-        {
-            text: t('.name'), name: 'erp_contacts_contacts.name'
-        },
-        {
-            text: t('creator'),
-            name: 'erp_users.name',
-            select: {
-                name: 'erp_users.id',
-                data_url: erp.dataselect_backend_users_path
-            }
-        }
-    ],
+    keyword: true,
     actions: [
         {
             text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
