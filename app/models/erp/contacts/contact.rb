@@ -154,6 +154,20 @@ module Erp::Contacts
         end
       end
 
+
+      # global filter
+      global_filter = params[:global_filter]
+
+      if global_filter.present?
+				# filter by patient
+				if global_filter[:contact_group_id].present?
+					query = query.where(contact_group_id: global_filter[:contact_group_id])
+				end
+
+			end
+      # end// global filter
+
+
       # join with users table for search creator
       query = query.joins(:creator)
 

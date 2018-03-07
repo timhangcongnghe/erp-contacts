@@ -13,6 +13,21 @@
     }) %>
 <% end %>
 
+<% content_for :global_filter do %>
+    <% if Erp::Core.available?("ortho_k") %>
+        <div class="row top-datalist">
+            <div class="col-md-3">
+                <%= erp_form_control("dataselect", {
+                    name: 'contact_group_id',
+                    label: 'Nhóm liên hệ',
+                    placeholder: 'Tìm theo nhóm',
+                    url: erp_contacts.dataselect_backend_contact_groups_path(format: 'json'),
+                }) %>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
 <%= erp_datalist(
     url: erp_contacts.list_backend_contacts_path,
     keywords: [
