@@ -228,11 +228,14 @@ module Erp::Contacts
       if params[:parent_id].present?
         query = query.where(parent_id: params[:parent_id])
 			end
-
+      
       if keyword.present?
-        keyword = keyword.strip.downcase
-        query = query.where('LOWER(name) LIKE ?', "%#{keyword}%")
-      end
+				keyword = keyword.strip.downcase
+				keyword.split(' ').each do |q|
+					q = q.strip
+					query = query.where('LOWER(erp_contacts_contacts.cache_search) LIKE ?', '%'+q+'%')
+				end
+			end
 
       if params[:contact_id].present?
         query = query.where.not(id: params[:contact_id])
@@ -323,9 +326,9 @@ module Erp::Contacts
 			str << name.to_s.downcase.strip
 			str << phone.to_s.downcase.strip if phone.present?
 			str << email.to_s.downcase.strip if email.present?
-			str << address.to_s.downcase.strip if address.present?
-			str << district_name.to_s.downcase.strip if district.present?
-			str << state_name.to_s.downcase.strip if state.present?
+			#str << address.to_s.downcase.strip if address.present?
+			#str << district_name.to_s.downcase.strip if district.present?
+			#str << state_name.to_s.downcase.strip if state.present?
 
 			self.update_column(:cache_search, str.join(" ") + " " + str.join(" ").to_ascii)
 		end
