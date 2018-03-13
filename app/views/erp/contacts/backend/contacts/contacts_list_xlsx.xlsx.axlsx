@@ -56,6 +56,9 @@ wb.styles do |s|
     header[:columns] << 'Hoa hồng NV (%)'
     header[:styles] << (s.add_style bg_info.merge(bold))
 
+    header[:columns] << 'Công nợ đầu kỳ'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
     sheet.add_row header[:columns], style: header[:styles]
 
     # rows
@@ -109,6 +112,9 @@ wb.styles do |s|
       row[:styles] << (s.add_style text_left)
   
       row[:columns] << format_number(contact.commission_percent)
+      row[:styles] << (s.add_style {})
+  
+      row[:columns] << ''
       row[:styles] << (s.add_style {})
       
       sheet.add_row row[:columns], style: row[:styles]
