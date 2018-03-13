@@ -1,0 +1,120 @@
+wb = xlsx_package.workbook
+xlsx_package.use_autowidth = true
+wb.styles do |s|
+  wb.styles.fonts.first.name = 'Calibri'
+  wb.add_worksheet(name: "Liên hệ #{Time.now.strftime('%Y%m%d')}") do |sheet|
+    # style
+    bg_info = {:bg_color => "305496", :fg_color => "FF"}
+    text_center = {alignment: { horizontal: :center }}
+    text_left = {alignment: { horizontal: :left }}
+    text_right = {alignment: { horizontal: :right }}
+    number = {format_code: '#,##0'}
+    bold = {b: true}
+
+    # header
+    header = {columns: [], styles: []}
+
+    header[:columns] << 'STT'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Mã đối tượng'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Tên đối tượng'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+    
+    header[:columns] << 'Loại'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+    
+    header[:columns] << 'Hình thức'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Nhóm'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Địa chỉ'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Quận/Huyện/Th.Xã'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Tỉnh/TP'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Điện thoại'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Email'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Mã liên hệ cha'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Nhân viên kinh doanh'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    header[:columns] << 'Hoa hồng NV (%)'
+    header[:styles] << (s.add_style bg_info.merge(bold))
+
+    sheet.add_row header[:columns], style: header[:styles]
+
+    # rows
+    @contacts.each_with_index do |contact,index|
+      row = {columns: [], styles: []}
+  
+      row[:columns] << (index+1)
+      row[:styles] << (s.add_style text_center)
+  
+      row[:columns] << contact.code
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.contact_name
+      row[:styles] << (s.add_style text_left)
+  
+      kh_ncc = []
+      kh_ncc << 'Khách hàng' if contact.is_customer?
+      kh_ncc << 'Nhà cung cấp' if contact.is_supplier?
+      row[:columns] << kh_ncc.join('/')
+      row[:styles] << (s.add_style text_left)
+      
+      type = ''
+      type = 'Cá nhân' if contact.contact_type == Erp::Contacts::Contact::TYPE_PERSON
+      type = 'Tổ chức' if contact.contact_type == Erp::Contacts::Contact::TYPE_COMPANY
+      type = 'Khác' if contact.contact_type == Erp::Contacts::Contact::TYPE_OTHER
+      row[:columns] << type
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.contact_group_name
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.address
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.district_name
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.state_name
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.phone
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.email
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.parent_code
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << contact.salesperson_name
+      row[:styles] << (s.add_style text_left)
+  
+      row[:columns] << format_number(contact.commission_percent)
+      row[:styles] << (s.add_style text_left)
+      
+      sheet.add_row row[:columns], style: row[:styles]
+    end
+
+    # Setup
+    sheet.column_info.first.width = 5
+  end
+end

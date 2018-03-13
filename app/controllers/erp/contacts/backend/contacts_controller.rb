@@ -184,6 +184,17 @@ module Erp
               rows: (@contacts.map {|contact| [contact.contact_name, contact.contact_name, contact.contact_name] })
             }
         end
+        
+        # export contacts list to xlsx
+        def contacts_list_xlsx
+          @contacts = Contact.search(params)
+          
+          respond_to do |format|
+            format.xlsx {
+              response.headers['Content-Disposition'] = 'attachment; filename="Danh sach lien he.xlsx"'
+            }
+          end
+        end
 
         private
           # Use callbacks to share common setup or constraints between actions.

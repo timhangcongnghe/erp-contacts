@@ -351,6 +351,10 @@ module Erp::Contacts
       end
     end
 
+    def parent_code
+      parent.nil? ? '' : parent.code
+    end
+
     def parent_name
       parent.nil? ? '' : parent.name
     end
