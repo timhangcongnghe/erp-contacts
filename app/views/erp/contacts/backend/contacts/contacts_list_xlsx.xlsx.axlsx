@@ -109,7 +109,7 @@ wb.styles do |s|
       row[:styles] << (s.add_style text_left)
   
       row[:columns] << format_number(contact.commission_percent)
-      row[:styles] << (s.add_style text_left)
+      row[:styles] << (s.add_style {})
       
       sheet.add_row row[:columns], style: row[:styles]
     end
