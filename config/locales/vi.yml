@@ -78,6 +78,7 @@ vi:
             invoices: "Thông tin hóa đơn"
             shippings: "Thông tin giao hàng"
             others: "Các thông tin khác"
+            code: "Mã liên hệ"
             name: "Tên liên hệ"
             company_name: "Tên công ty"
             contact_type: "Nhóm/Loại"
@@ -88,6 +89,7 @@ vi:
             salesperson: "N.viên phụ trách"
             contact_archived: "Đã ngưng sử dụng"
           list:
+            code: "Mã liên hệ"
             name: "Tên liên hệ"
             company_name: "Tên công ty"
             contact_type: "Nhóm/Loại"

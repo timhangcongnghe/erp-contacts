@@ -12,6 +12,11 @@
             <th width='1%'>
                 <%= erp_datalist_check_all %>
             </th>
+            <% if get_columns(params).include?("code") %>
+                <th class="sortable" sort-by='erp_contacts_contacts.code'>
+                    <%= t('.code') %>
+                </th>
+            <% end %>
             <% if get_columns(params).include?("name") %>
                 <th class="sortable" sort-by='erp_contacts_contacts.name'>
                     <%= t('.name') %>
@@ -71,14 +76,15 @@
                 <td>
                     <%= erp_datalist_check_row(id: contact.id) %>
                 </td>
+                <% if get_columns(params).include?("code") %>
+                    <td>
+                        <i class="fa fa-plus expand tr-expand-button"></i>
+                        <%= link_to contact.code, erp_contacts.backend_contact_path(contact), class: 'title' %>
+                    </td>
+                <% end %>
                 <% if get_columns(params).include?("name") %>
                 <td>
-                    <i class="fa fa-plus expand tr-expand-button"></i>
-                    <% if can? :update, contact %>
-                        <%= link_to contact.contact_name, erp_contacts.backend_contact_path(contact), class: 'title' %>
-                    <% else %>
-                        <span class="title"><%= contact.contact_name %></span>
-                    <% end %>
+                    <span class="title"><%= contact.contact_name %></span>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("contact_type") %>
