@@ -30,6 +30,10 @@ module Erp::Contacts
       self[:new_account_commission_amount] = new_price.to_s.gsub(/\,/, '')
     end
 
+    def init_debt_amount=(new_price)
+      self[:init_debt_amount] = new_price.to_s.gsub(/\,/, '')
+    end
+
     if Erp::Core.available?("payments")
       belongs_to :payment_method, class_name: "Erp::Payments::PaymentMethod", optional: true
       belongs_to :payment_term, class_name: "Erp::Payments::PaymentTerm", optional: true

@@ -211,7 +211,7 @@ module Erp
             params.fetch(:contact, {}).permit(:parent_id, :image_url, :contact_type, :is_customer, :is_supplier, :code, :name,
               :company_name, :phone, :address, :tax_code, :birthday,
               :email, :gender, :note, :fax, :website,
-              :commission_percent, :new_account_commission_amount, :archived, :user_id, :salesperson_id,
+              :commission_percent, :new_account_commission_amount, :archived, :user_id, :salesperson_id, :init_debt_amount, :init_debt_date,
               :contact_group_id, :country_id, :state_id, :district_id, :price_term_id, :tax_id,
               :payment_method_id, :payment_term_id, contact_ids: [], tag_ids: [],
               :conts_cates_commission_rates_attributes => [ :id, :contact_id, :category_id, :rate, :price, :_destroy ],
