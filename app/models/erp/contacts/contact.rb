@@ -267,6 +267,11 @@ module Erp::Contacts
     def contact_group_name
 			contact_group.present? ? contact_group.name : ''
 		end
+    
+    # contact group code
+    def contact_group_code
+			contact_group.present? ? contact_group.code : nil
+		end
 
     # contact district name
     def district_name
@@ -304,22 +309,20 @@ module Erp::Contacts
       #@todo: hard code
       return Contact.find(self::MAIN_CONTACT_ID)
     end
-
-    # Generate code
-    after_save :generate_code
+    
+    # force generate code
+    after_create :generate_code
     def generate_code
-			if !code.present?
-        if is_customer == true and is_supplier == true
-          str = 'LHE-'
-        elsif is_customer == true and is_supplier == false
-          str = 'KHA-'
-        elsif is_customer == false and is_supplier == true
-          str = 'NCC-'
-        else
-          str = "LHE-"
-        end
-				update_columns(code: str + id.to_s.rjust(4, '0'))
-			end
+      # group code
+      group_code = self.contact_group_code
+      group_code = 'LH' if !group_code.present?
+      
+      query = Erp::Contacts::Contact.where(contact_group_id: self.contact_group_id)
+      
+      num = query.where('created_at <= ?', self.created_at).count
+
+      self.code = "#{group_code}-#{num.to_s.rjust(4, '0')}"
+      self.save
 		end
     
     # Update cache search

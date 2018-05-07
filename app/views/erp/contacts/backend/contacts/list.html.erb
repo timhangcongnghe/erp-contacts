@@ -77,7 +77,7 @@
                     <%= erp_datalist_check_row(id: contact.id) %>
                 </td>
                 <% if get_columns(params).include?("code") %>
-                    <td>
+                    <td class="text-nowrap">
                         <i class="fa fa-plus expand tr-expand-button"></i>
                         <%= link_to contact.code, erp_contacts.backend_contact_path(contact), class: 'title' %>
                     </td>
@@ -89,9 +89,10 @@
                 <% end %>
                 <% if get_columns(params).include?("contact_type") %>
                 <td>
-                    <%= ' - ' + t("#{contact.contact_type}") %>
+                    <!--<%= ' - ' + t("#{contact.contact_type}") %>
                     <%= '<br>'.html_safe + ' - ' + t('.is_customer') if contact.is_customer == true %>
-                    <%= '<br>'.html_safe + ' - ' + t('.is_supplier') if contact.is_supplier == true %>
+                    <%= '<br>'.html_safe + ' - ' + t('.is_supplier') if contact.is_supplier == true %>-->
+                    <%= contact.contact_group_name if contact.contact_group.present? %>
                 </td>
                 <% end %>
                 <% if get_columns(params).include?("phone") %>
