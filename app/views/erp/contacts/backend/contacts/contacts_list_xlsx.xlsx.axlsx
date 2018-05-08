@@ -15,49 +15,52 @@ wb.styles do |s|
     header = {columns: [], styles: []}
 
     header[:columns] << 'STT'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Mã đối tượng'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Tên đối tượng'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
     
     header[:columns] << 'Loại'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
     
     header[:columns] << 'Hình thức'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Nhóm'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Địa chỉ'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Quận/Huyện/Th.Xã'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Tỉnh/TP'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Điện thoại'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Email'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Mã liên hệ cha'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Nhân viên kinh doanh'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Hoa hồng NV (%)'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     header[:columns] << 'Công nợ đầu kỳ'
-    header[:styles] << (s.add_style bg_info.merge(bold))
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
+    
+    header[:columns] << 'Thời gian công nợ'
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     sheet.add_row header[:columns], style: header[:styles]
 
@@ -114,8 +117,11 @@ wb.styles do |s|
       row[:columns] << format_number(contact.commission_percent)
       row[:styles] << (s.add_style {})
   
-      row[:columns] << ''
-      row[:styles] << (s.add_style {})
+      row[:columns] << contact.init_debt_amount
+      row[:styles] << (s.add_style text_right.deep_merge(number))
+  
+      row[:columns] << (contact.init_debt_date.nil? ? nil : contact.init_debt_date.strftime('%d/%m/%Y'))
+      row[:styles] << (s.add_style text_center)
       
       sheet.add_row row[:columns], style: row[:styles]
     end

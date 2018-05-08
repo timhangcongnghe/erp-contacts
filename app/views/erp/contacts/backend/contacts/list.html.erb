@@ -165,14 +165,6 @@
                                 hide: !contact.archived,
                                 class: 'ajax-link',
                                 data_confirm: t('.unarchive_confirm')
-                            },
-                            { divider: true },
-                            {
-                              text: '<i class="fa fa-trash"></i> '+t('.delete'),
-                              url: erp_contacts.backend_contact_path(contact),
-                              data_method: 'DELETE',
-                              data_confirm: t('delete_confirm'),
-                              class: 'ajax-link'
                             }
                         ]
                     ) %>
