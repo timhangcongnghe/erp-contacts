@@ -1,5 +1,7 @@
 module Erp::Contacts
-  class ApplicationRecord < ActiveRecord::Base
+  class ApplicationRecord < Erp::ApplicationRecord
+    
+    
     self.abstract_class = true
   end
 end
