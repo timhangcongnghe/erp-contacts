@@ -211,7 +211,7 @@ module Erp::Contacts
     # data for dataselect ajax
     def self.dataselect(keyword='', params='')
 
-      query = self.all
+      query = self.all_active
 
       if params[:contact_type].present?
         query = query.where(contact_type: params[:contact_type])
@@ -298,6 +298,10 @@ module Erp::Contacts
 
     def self.archive_all
 			update_all(archived: true)
+		end
+    
+    def self.all_active
+			self.where(archived: false)
 		end
 
     def self.unarchive_all
