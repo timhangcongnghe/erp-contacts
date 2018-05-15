@@ -24,6 +24,14 @@
                     url: erp_contacts.dataselect_backend_contact_groups_path(format: 'json'),
                 }) %>
             </div>
+            <div class="col-md-3">
+                <%= erp_form_control("dataselect", {
+                    name: 'salesperson_id',
+                    label: 'Nhân viên phụ trách',
+                    placeholder: 'Tìm theo nhân viên phụ trách',
+                    url: erp.dataselect_backend_users_path(format: 'json')
+                }) %>
+            </div>
         </div>
     <% end %>
 <% end %>

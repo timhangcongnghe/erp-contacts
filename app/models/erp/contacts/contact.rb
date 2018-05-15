@@ -167,6 +167,10 @@ module Erp::Contacts
 				if global_filter[:contact_group_id].present?
 					query = query.where(contact_group_id: global_filter[:contact_group_id])
 				end
+				
+				if global_filter[:salesperson_id].present?
+					query = query.where(salesperson_id: global_filter[:salesperson_id])
+				end
 
 			end
       # end// global filter
