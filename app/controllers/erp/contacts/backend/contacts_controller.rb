@@ -23,11 +23,40 @@ module Erp
         end
 
         def contact_details
-          @sales_orders = @contact.sales_orders
-          @payment_records = Erp::Payments::PaymentRecord.where(customer_id: @contact.id)
-            .where(payment_type_id: [Erp::Payments::PaymentType.find_by_code(Erp::Payments::PaymentType::CODE_CUSTOMER),
-                    Erp::Payments::PaymentType.find_by_code(Erp::Payments::PaymentType::CODE_SALES_ORDER)])
+          @orders = @contact.sales_orders
+          @product_returns = @contact.sales_product_returns
+          @payment_records = Erp::Payments::PaymentRecord.all_done
+            .where('erp_payments_payment_records.customer_id IN (?) OR erp_payments_payment_records.supplier_id IN (?)', @contact.id, @contact.id)
+          
           render layout: nil
+        end
+        
+        def history_sales_export_list
+          @orders = Erp::Contacts::Contact.find(params[:contact_id]).sales_orders
+          
+          @full_orders = @orders
+          
+          @orders = @orders.order('order_date DESC, created_at DESC')
+            .paginate(:page => params[:page], :per_page => 10)
+        end
+        
+        def history_sales_import_list
+          @product_returns = Erp::Contacts::Contact.find(params[:contact_id]).sales_product_returns
+          
+          @full_product_returns = @product_returns
+          
+          @product_returns = @product_returns.order('date DESC, created_at DESC')
+            .paginate(:page => params[:page], :per_page => 10)
+        end
+        
+        def history_payment_records_list
+          @payment_records = Erp::Payments::PaymentRecord.all_done
+            .where('erp_payments_payment_records.customer_id IN (?) OR erp_payments_payment_records.supplier_id IN (?)', params[:contact_id], params[:contact_id])
+          
+          @full_payment_records = @payment_records
+          
+          @payment_records = @payment_records.order('payment_date DESC, code DESC')
+            .paginate(:page => params[:page], :per_page => 10)
         end
 
         # GET /contacts/new

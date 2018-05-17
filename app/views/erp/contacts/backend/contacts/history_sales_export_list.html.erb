@@ -1,0 +1,56 @@
+<% if @orders.count > 0 %>
+    <table class="table table-bordered table-advance order-column">
+        <thead class="flip-content">
+            <tr>
+                <td class="text-center bold" colspan="5">Tổng mua</td>
+                <td class="stock-num text-center bold font-red-thunderbird"><%= @full_orders.sum(&:items_count) %></td>
+                <td class="stock-num text-center bold font-red-thunderbird"><%= format_number(@full_orders.sum(&:total_without_tax)) %></td>
+            </tr>
+            <tr>
+                <th width="12%" class="bg-blue-madison bg-font-blue-madison border-blue-madison text-center">Ngày mua hàng</th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center">Mã đơn hàng</th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-left">Tên bệnh nhân</th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-left">Mặt hàng</th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-right">Đơn giá</th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center">Số lượng</th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-right">Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @orders.each do |order| %>
+                <tr>
+                    <td class="bg-grey bg-font-grey text-center text-nowrap"><%= format_date(order.order_date) %></td>
+                    <td class="bg-grey bg-font-grey text-center"><%= order_link(order) %></td>
+                    <td class="bg-grey bg-font-grey text-left text-nowrap">
+                        <% if Erp::Core.available?("ortho_k") %>
+                            <% if order.patient.present? or order.patient_state.present? %>
+                                <% if order.patient.present? and order.patient_state.present? %>
+                                    <%= order.patient_name %> (<%= 'BN: ' + order.patient_state_name %>)
+                                <% else %>
+                                    <%= order.patient_name %><%= order.patient_state_name %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </td>
+                    <td class="bg-grey bg-font-grey text-center bold" colspan="2"></td>
+                    <td class="bg-grey bg-font-grey text-center bold"><%= order.items_count %></td>
+                    <td class="bg-grey bg-font-grey text-right bold"><%= format_number(order.total_without_tax) %></td>
+                </tr>
+                <% order.order_details.each do |order_detail| %>
+                    <tr>
+                        <td class="text-left" colspan="3"></td>
+                        <td class="text-left"><%= order_detail.product_name %></td>
+                        <td class=" text-right"><%= format_number(order_detail.price) %></td>
+                        <td class=" text-center"><%= order_detail.quantity %></td>
+                        <td class=" text-right"><%= format_number(order_detail.total_without_tax) %></td>
+                    </tr>
+                <% end %>
+            <% end %>
+        </tbody>
+    </table>
+    <%= erp_datalist_pagination(@orders) %>
+<% else %>
+    <div class="alert alert-warning alert-dismissable no-margin text-center">
+        Không tìm thấy lịch sử mua hàng
+    </div>
+<% end %>

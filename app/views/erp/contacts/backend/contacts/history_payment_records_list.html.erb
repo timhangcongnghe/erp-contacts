@@ -1,0 +1,38 @@
+<% if !@payment_records.empty? %>
+    <table class="table table-bordered table-advance order-column">
+        <thead class="flip-content">
+            <tr>
+                <td class="text-center bold" colspan="3">Tổng thanh toán</td>
+                <td class="stock-num text-right bold font-red-thunderbird"><%= format_number(@full_payment_records.sum(&:amount)) %></td>
+                <td class="stock-num text-right bold font-red-thunderbird" colspan="3"></td>
+            </tr>
+            <tr>
+                <th  width="12%" class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-centers"><%= t('.payment_date') %></th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center"><%= t('.payment_code') %></th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center"><%= t('.contact') %></th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center"><%= t('.amount') %></th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center"><%= t('.payment_type') %></th>
+                <th width="20%" class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center"><%= t('.description') %></th>
+                <th class="bg-blue-madison bg-font-blue-madison border-blue-madison text-nowrap text-center"><%= t('.accountant') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @payment_records.each do |payment_record| %>
+                <tr>
+                    <td class="text-center"><%= format_date(payment_record.payment_date) %></td>
+                    <td class="text-center"><%= payment_record_link(payment_record) %></td>
+                    <td class="text-left"><%= payment_record.customer_name %></td>
+                    <td class="text-right"><%= format_number(payment_record.amount) %></td>
+                    <td class="text-left"><%= t(".#{display_payment_record_type(payment_record)}") %></td>
+                    <td class="text-justify"><%= raw payment_record.description %></td>
+                    <td class="text-left"><%= payment_record.accountant_name %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= erp_datalist_pagination(@payment_records) %>
+<% else %>
+    <div class="alert alert-warning alert-dismissable no-margin text-center">
+        Không tìm thấy lịch sử thanh toán nào gần đây.
+    </div>
+<% end %>

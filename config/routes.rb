@@ -34,6 +34,9 @@ Erp::Contacts::Engine.routes.draw do
 					put 'unarchive_all'
 					get 'export'
 					get 'contact_details'
+					post 'history_sales_export_list'
+					post 'history_sales_import_list'
+					post 'history_payment_records_list'
 					get 'contacts_list_xlsx'
 				end
 				resources :contacts, controller: 'contacts_contacts'
