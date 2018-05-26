@@ -66,6 +66,7 @@ module Erp
           @contact.country = Erp::Areas::Country.first # @todo re-update if the system has many countries
           @contact.parent_id = params.to_unsafe_hash[:parent_id]
           @contact.is_customer = params.to_unsafe_hash[:is_customer]
+          @contact.is_supplier = params.to_unsafe_hash[:is_supplier]
           @contact.contact_group_id = params.to_unsafe_hash[:contact_group_id]
         end
 
