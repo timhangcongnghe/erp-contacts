@@ -245,24 +245,26 @@
                         </li>
                         <% end %>
                         
-                        <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle pointer" data-toggle="dropdown"> <%= 'Cấu hình' %>
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <% if Erp::Core.available?("prices") %>
+                        <% if Erp::Core.available?("ortho_k") %>
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle pointer" data-toggle="dropdown"> <%= 'Cấu hình' %>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <% if Erp::Core.available?("prices") %>
+                                        <li>
+                                            <a href="#tab_5_4" tabindex="-1" data-toggle="tab"> <%= t('.sales_prices') %> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#tab_5_5" tabindex="-1" data-toggle="tab"> <%= t('.purchase_prices') %> </a>
+                                        </li>
+                                    <% end %>
                                     <li>
-                                        <a href="#tab_5_4" tabindex="-1" data-toggle="tab"> <%= t('.sales_prices') %> </a>
+                                        <a href="#tab_5_6" tabindex="-1" data-toggle="tab"> <%= 'Công nợ ban đầu' %> </a>
                                     </li>
-                                    <li>
-                                        <a href="#tab_5_5" tabindex="-1" data-toggle="tab"> <%= t('.purchase_prices') %> </a>
-                                    </li>
-                                <% end %>
-                                <li>
-                                    <a href="#tab_5_6" tabindex="-1" data-toggle="tab"> <%= 'Công nợ ban đầu' %> </a>
-                                </li>
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
+                        <% end %>
                         <li>
                             <a href="#tab_5_3" data-toggle="tab"> <%= t('.notes') %> </a>
                         </li>
