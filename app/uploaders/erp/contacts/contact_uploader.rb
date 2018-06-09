@@ -57,6 +57,10 @@ module Erp
 			version :medium do
 				process :resize_to_fill => [150, 150]
 			end
+			
+			version :large do
+				process :resize_to_fill => [700, 700]
+			end
     end
   end
 end
