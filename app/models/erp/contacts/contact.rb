@@ -139,7 +139,7 @@ module Erp::Contacts
             if cond[1]["name"] == 'show_archived'
               # show archived items
               show_archived = true
-            elsif cond[1]["name"] != 'in_period_active'
+            elsif (cond[1]["name"] != 'in_period_active') && (cond[1]["name"] != 'is_debt_active')
               or_conds << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
             end
           end
