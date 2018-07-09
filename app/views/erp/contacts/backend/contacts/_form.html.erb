@@ -399,22 +399,49 @@
                                 </div>
                                 <hr class="no-margin mb-10">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <%= erp_form_control("number", {
-                                            name: 'contact[init_debt_amount]',
-                                            value: contact.init_debt_amount ,
-                                            label: 'Tiền công nợ ban đầu',
-                                            min: 0,
-                                            max: 100
-                                        }) %>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("number", {
+                                                    name: 'contact[init_debt_amount]',
+                                                    value: contact.init_debt_amount ,
+                                                    label: 'Tiền công nợ bán hàng',
+                                                    help: 'Số tiền sẽ cấn trừ vào công nợ của Khách Hàng (áp dụng đối với các hóa đơn bán hàng)',
+                                                    min: 0,
+                                                    max: 100
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control('datetime', {
+                                                    label: 'Thời gian c.nợ bán hàng',
+                                                    name: 'contact[init_debt_date]',
+                                                    value: contact.init_debt_date ,
+                                                    placeholder: 'Chọn ngày đầu kỳ công nợ'
+                                                }) %>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <%= erp_form_control('datetime', {
-                                            label: 'Thời gian công nợ',
-                                            name: 'contact[init_debt_date]',
-                                            value: contact.init_debt_date ,
-                                            placeholder: 'Chọn ngày đầu kỳ công nợ'
-                                        }) %>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= erp_form_control("number", {
+                                                    name: 'contact[init_supplier_debt_amount]',
+                                                    value: contact.init_supplier_debt_amount ,
+                                                    label: 'Tiền công nợ mua hàng',
+                                                    help: 'Số tiền sẽ cấn trừ vào công nợ của Nhà Cung Cấp (áp dụng đối với các hóa đơn mua/đặt hàng)',
+                                                    min: 0,
+                                                    max: 100
+                                                }) %>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= erp_form_control('datetime', {
+                                                    label: 'Thời gian c.nợ mua hàng',
+                                                    name: 'contact[init_supplier_debt_date]',
+                                                    value: contact.init_supplier_debt_date ,
+                                                    placeholder: 'Chọn ngày đầu kỳ công nợ'
+                                                }) %>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

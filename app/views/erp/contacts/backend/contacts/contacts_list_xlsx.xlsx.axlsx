@@ -56,10 +56,16 @@ wb.styles do |s|
     header[:columns] << 'Hoa hồng NV (%)'
     header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
-    header[:columns] << 'Công nợ đầu kỳ'
+    header[:columns] << 'Công nợ đầu kỳ (KH)'
     header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
     
-    header[:columns] << 'Thời gian công nợ'
+    header[:columns] << 'Thời gian công nợ (KH)'
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
+
+    header[:columns] << 'Công nợ đầu kỳ (NCC)'
+    header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
+    
+    header[:columns] << 'Thời gian công nợ (NCC)'
     header[:styles] << (s.add_style bg_info.merge(bold).deep_merge(text_center))
 
     sheet.add_row header[:columns], style: header[:styles]
@@ -121,6 +127,12 @@ wb.styles do |s|
       row[:styles] << (s.add_style text_right.deep_merge(number))
   
       row[:columns] << (contact.init_debt_date.nil? ? nil : contact.init_debt_date.strftime('%d/%m/%Y'))
+      row[:styles] << (s.add_style text_center)
+  
+      row[:columns] << contact.init_supplier_debt_amount
+      row[:styles] << (s.add_style text_right.deep_merge(number))
+  
+      row[:columns] << (contact.init_supplier_debt_date.nil? ? nil : contact.init_supplier_debt_date.strftime('%d/%m/%Y'))
       row[:styles] << (s.add_style text_center)
       
       sheet.add_row row[:columns], style: row[:styles]
