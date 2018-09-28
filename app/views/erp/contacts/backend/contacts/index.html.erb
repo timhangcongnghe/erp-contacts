@@ -7,10 +7,17 @@
 <% end %>
 
 <% content_for :page_toolbar do %>
-    <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp_contacts.new_backend_contact_path
-    }) %>
+    <% if Erp::Core.available?("ortho_k") %>
+        <%= erp_component('button/create', {
+            text: t('.create'),
+            href: erp_contacts.new_backend_contact_path
+        }) if can? :contacts_contacts_create, nil %>
+    <% else %>
+        <%= erp_component('button/create', {
+            text: t('.create'),
+            href: erp_contacts.new_backend_contact_path
+        }) %>
+    <% end %>
 <% end %>
 
 <% content_for :global_filter do %>
@@ -37,23 +44,28 @@
     <% end %>
 <% end %>
 
+<%
+    actions = []
+    
+    actions << {
+        text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
+        url: erp_contacts.archive_all_backend_contacts_path,
+        data_method: 'PUT',
+        data_confirm: t('.archive_confirm')
+    } if !Erp::Core.available?("ortho_k")
+    
+    actions << {
+        text: '<i class="fa fa-eye"></i> '+t('unarchive'),
+        url: erp_contacts.unarchive_all_backend_contacts_path,
+        data_method: 'PUT',
+        data_confirm: t('.unarchive_confirm')
+    } if !Erp::Core.available?("ortho_k")
+%>
+
 <%= erp_datalist(
     url: erp_contacts.list_backend_contacts_path,
     keyword: true,
-    actions: [
-        {
-            text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
-            url: erp_contacts.archive_all_backend_contacts_path,
-            data_method: 'PUT',
-            data_confirm: t('.archive_confirm')
-        },
-        {
-            text: '<i class="fa fa-eye"></i> '+t('unarchive'),
-            url: erp_contacts.unarchive_all_backend_contacts_path,
-            data_method: 'PUT',
-            data_confirm: t('.unarchive_confirm')
-        }
-    ],
+    actions: actions,
     filters: [
         {
             text: t('.customers'), name: 'is_customer', value: true, checked: false

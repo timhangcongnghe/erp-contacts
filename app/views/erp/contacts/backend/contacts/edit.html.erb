@@ -10,9 +10,9 @@
 
 <% content_for :page_toolbar do %>
         <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp_contacts.new_backend_contact_path
-    }) %>
+            text: t('.create'),
+            href: erp_contacts.new_backend_contact_path
+        }) if can? :create, @contact %>
 <% end %>
 
 <% content_for :page_toolbar do %>

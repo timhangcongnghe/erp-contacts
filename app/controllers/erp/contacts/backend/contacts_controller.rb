@@ -2,12 +2,14 @@ module Erp
   module Contacts
     module Backend
       class ContactsController < Erp::Backend::BackendController
-        before_action :set_contact, only: [:contact_details, :archive, :unarchive, :show, :edit, :update, :destroy]
+        before_action :set_contact, only: [:contact_details, :archive, :unarchive, :show, :edit, :update]
         before_action :set_contacts, only: [:delete_all, :archive_all, :unarchive_all]
 
         # GET /contacts
         def index
-          authorize! :read, Erp::Contacts::Contact
+          if Erp::Core.available?("ortho_k")
+            authorize! :contacts_contacts_index, nil
+          end
         end
 
         # GET /contacts/1
@@ -17,6 +19,10 @@ module Erp
 
         # POST /contacts/list
         def list
+          if Erp::Core.available?("ortho_k")
+            authorize! :contacts_contacts_index, nil
+          end
+          
           @contacts = Contact.search(params).paginate(:page => params[:page], :per_page => 10)
 
           render layout: nil
@@ -62,6 +68,9 @@ module Erp
         # GET /contacts/new
         def new
           @contact = Contact.new
+          
+          authorize! :create, @contact
+          
           @contact.contact_type = params[:contact_type].present? ? params[:contact_type] : Contact::TYPE_PERSON
           @contact.country = Erp::Areas::Country.first # @todo re-update if the system has many countries
           @contact.parent_id = params.to_unsafe_hash[:parent_id]
@@ -78,6 +87,9 @@ module Erp
         # POST /contacts
         def create
           @contact = Contact.new(contact_params)
+          
+          authorize! :create, @contact
+          
           @contact.creator = current_user
 
           if @contact.save
@@ -98,6 +110,8 @@ module Erp
 
         # PATCH/PUT /contacts/1
         def update
+          authorize! :update, @contact
+          
           if @contact.update(contact_params)
             if request.xhr?
               render json: {
@@ -114,21 +128,23 @@ module Erp
         end
 
         # DELETE /contacts/1
-        def destroy
-          @contact.destroy
-
-          respond_to do |format|
-            format.html { redirect_to erp_contacts.backend_contacts_path, notice: t('.success') }
-            format.json {
-              render json: {
-                'message': t('.success'),
-                'type': 'success'
-              }
-            }
-          end
-        end
+        #def destroy
+        #  @contact.destroy
+        #
+        #  respond_to do |format|
+        #    format.html { redirect_to erp_contacts.backend_contacts_path, notice: t('.success') }
+        #    format.json {
+        #      render json: {
+        #        'message': t('.success'),
+        #        'type': 'success'
+        #      }
+        #    }
+        #  end
+        #end
 
         def archive
+          authorize! :archive, @contact
+          
           @contact.archive
           respond_to do |format|
             format.html { redirect_to erp_contacts.backend_contact_path(@contact), notice: t('.success') }
@@ -142,6 +158,8 @@ module Erp
         end
 
         def unarchive
+          authorize! :unarchive, @contact
+          
           @contact.unarchive
           respond_to do |format|
             format.html { redirect_to erp_contacts.backend_contact_path(@contact), notice: t('.success') }
@@ -154,20 +172,20 @@ module Erp
           end
         end
 
-        # DELETE /contacts/delete_all
-        def delete_all
-          @contacts = Contact.where(id: params[:ids])
-          @contacts.destroy_all
-
-          respond_to do |format|
-            format.json {
-              render json: {
-                'message': t('.success'),
-                'type': 'success'
-              }
-            }
-          end
-        end
+        ## DELETE /contacts/delete_all
+        #def delete_all
+        #  @contacts = Contact.where(id: params[:ids])
+        #  @contacts.destroy_all
+        #
+        #  respond_to do |format|
+        #    format.json {
+        #      render json: {
+        #        'message': t('.success'),
+        #        'type': 'success'
+        #      }
+        #    }
+        #  end
+        #end
 
         # Archive /contacts/archive_all?ids=1,2,3
         def archive_all
@@ -217,6 +235,8 @@ module Erp
         
         # export contacts list to xlsx
         def contacts_list_xlsx
+          authorize! :contacts_list_xlsx, nil
+          
           @contacts = Contact.search(params)
           
           respond_to do |format|

@@ -1,10 +1,12 @@
-<div class="text-right mb-10">
-    <a target="_blank"
-        href="<%= erp_contacts.contacts_list_xlsx_backend_contacts_path(params.to_unsafe_hash.merge({format: 'xlsx'})) %>"
-        target="_blank"
-        class="btn btn-primary"
-    >Xuất excel</a>
-</div>
+<% if can? :contacts_list_xlsx, nil %>
+    <div class="text-right mb-10">
+        <a target="_blank"
+            href="<%= erp_contacts.contacts_list_xlsx_backend_contacts_path(params.to_unsafe_hash.merge({format: 'xlsx'})) %>"
+            target="_blank"
+            class="btn btn-primary"
+        >Xuất excel</a>
+    </div>
+<% end %>
 
 <table class="table table-advance table-hover table-striped table-checkable order-column">
     <thead>
@@ -72,13 +74,19 @@
     </thead>
     <tbody>
         <% @contacts.each do |contact| %>
-            <tr class="odd gradeX <%= 'blurred' if contact.archived? %> has-child-table" data-url="<%= erp_contacts.contact_details_backend_contacts_path(id: contact.id) %>">
+            <tr class="odd gradeX <%= 'blurred' if contact.archived? %> has-child-table"
+                data-url="<%= erp_contacts.contact_details_backend_contacts_path(id: contact.id) %>">
                 <td>
                     <%= erp_datalist_check_row(id: contact.id) %>
                 </td>
                 <% if get_columns(params).include?("code") %>
                     <td class="text-nowrap">
-                        <i class="fa fa-plus expand tr-expand-button"></i>
+                        <% if ((can? :history_sales_export_list, contact) or
+                              (can? :history_sales_import_list, contact) or
+                              (can? :history_payment_records_list, contact))
+                        %>
+                            <i class="fa fa-plus expand tr-expand-button"></i>
+                        <% end %>
                         <%= link_to contact.code, erp_contacts.backend_contact_path(contact), class: 'title' %>
                     </td>
                 <% end %>
@@ -144,30 +152,28 @@
                     <td><%= contact.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
                 <td>
-                    <%= erp_datalist_row_actions(
-                        [
-                            {
-                                text: '<i class="fa fa-edit"></i> Sửa thông tin',
-                                url: erp_contacts.edit_backend_contact_path(contact)
-                            },
-                            {
-                                text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
-                                url: erp_contacts.archive_backend_contacts_path(id: contact.id),
-                                data_method: 'PUT',
-                                hide: contact.archived,
-                                class: 'ajax-link',
-                                data_confirm: t('.archive_confirm')
-                            },
-                            {
-                                text: '<i class="fa fa-eye"></i> '+t('unarchive'),
-                                url: erp_contacts.unarchive_backend_contacts_path(id: contact.id),
-                                data_method: 'PUT',
-                                hide: !contact.archived,
-                                class: 'ajax-link',
-                                data_confirm: t('.unarchive_confirm')
-                            }
-                        ]
-                    ) %>
+                    <%
+                        actions = []
+                        actions << {
+                            text: '<i class="fa fa-edit"></i> Sửa thông tin',
+                            url: erp_contacts.edit_backend_contact_path(contact)
+                        } if can? :update, contact
+                        actions << {
+                            text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
+                            url: erp_contacts.archive_backend_contacts_path(id: contact.id),
+                            data_method: 'PUT',
+                            class: 'ajax-link',
+                            data_confirm: t('.archive_confirm')
+                        } if can? :archive, contact
+                        actions << {
+                            text: '<i class="fa fa-eye"></i> '+t('unarchive'),
+                            url: erp_contacts.unarchive_backend_contacts_path(id: contact.id),
+                            data_method: 'PUT',
+                            class: 'ajax-link',
+                            data_confirm: t('.unarchive_confirm')
+                        } if can? :unarchive, contact
+                    %>
+                    <%= erp_datalist_row_actions(actions) %>
                 </td>
             </tr>
         <% end %>

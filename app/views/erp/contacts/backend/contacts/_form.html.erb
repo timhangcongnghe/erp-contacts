@@ -212,14 +212,23 @@
                                 }) %>
                             </div>
                             <div class="col-md-6">
-                                <%= erp_form_control("dataselect", {
-                                    name: 'contact[salesperson_id]',
-                                    value: contact.salesperson_id,
-                                    text: contact.salesperson_name,
-                                    placeholder: t('.choose_salesperson'),
-                                    label: t('.salesperson'),
-                                    url: erp.dataselect_backend_users_path(format: 'json')
-                                }) %>
+                                <% if can? :assign_salesperson, contact %>
+                                    <%= erp_form_control("dataselect", {
+                                        name: 'contact[salesperson_id]',
+                                        value: contact.salesperson_id,
+                                        text: contact.salesperson_name,
+                                        placeholder: t('.choose_salesperson'),
+                                        label: t('.salesperson'),
+                                        url: erp.dataselect_backend_users_path(format: 'json')
+                                    }) %>
+                                <% else %>
+                                    <div class="form-group">
+                                        <label><%= t('.salesperson') %>:</label>
+                                        <div class="form-control">
+                                            <span><%= contact.salesperson_name %></span>
+                                        </div>
+                                    </div>
+                                <% end %>
                             </div>
                         </div>
                         <%= erp_form_control("text", {
@@ -259,9 +268,11 @@
                                             <a href="#tab_5_5" tabindex="-1" data-toggle="tab"> <%= t('.purchase_prices') %> </a>
                                         </li>
                                     <% end %>
-                                    <li>
-                                        <a href="#tab_5_6" tabindex="-1" data-toggle="tab"> <%= 'Công nợ ban đầu' %> </a>
-                                    </li>
+                                    <% if can? :update_init_debt, contact %>
+                                        <li>
+                                            <a href="#tab_5_6" tabindex="-1" data-toggle="tab"> <%= 'Công nợ ban đầu' %> </a>
+                                        </li>
+                                    <% end %>
                                 </ul>
                             </li>
                         <% end %>
@@ -288,24 +299,43 @@
                         <div class="tab-pane" id="tab_5_2">
                             <h5 class="profile-desc-title bold font-blue-madison"><%= t('.commission_rate_for_salesperson') %></span></sup></h5>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <%= erp_form_control("number", {
-                                        name: 'contact[commission_percent]',
-                                        value: contact.commission_percent,
-                                        label: t('.commission_percent'),
-                                        min: 0,
-                                        max: 100
-                                    }) %>
-                                </div>
-                                <div class="col-md-4">
-                                    <%= erp_form_control("number", {
-                                        name: 'contact[new_account_commission_amount]',
-                                        value: contact.new_account_commission_amount,
-                                        label: t('.new_account_commission_amount'),
-                                        min: 0,
-                                        max: 100
-                                    }) %>
-                                </div>
+                                <% if can? :assign_salesperson, contact %>
+                                    <div class="col-md-4">
+                                        <%= erp_form_control("number", {
+                                            name: 'contact[commission_percent]',
+                                            value: contact.commission_percent,
+                                            label: t('.commission_percent'),
+                                            min: 0,
+                                            max: 100
+                                        }) %>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <%= erp_form_control("number", {
+                                            name: 'contact[new_account_commission_amount]',
+                                            value: contact.new_account_commission_amount,
+                                            label: t('.new_account_commission_amount'),
+                                            min: 0,
+                                            max: 100
+                                        }) %>
+                                    </div>
+                                <% else %>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label><%= t('.commission_percent') %>:</label>
+                                            <div class="form-control text-right">
+                                                <span><%= contact.commission_percent %></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label><%= t('.new_account_commission_amount') %>:</label>
+                                            <div class="form-control text-right">
+                                                <span><%= format_number(contact.new_account_commission_amount) %></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% end %>
                             </div>
                             <hr class="no-margin mb-10">
                             <h5 class="profile-desc-title bold font-blue-madison"><%= t('.commission_rate_for_contact') %></span></sup></h5>
@@ -389,62 +419,64 @@
                         </div>
                         <% end %>
                         <% if Erp::Core.available?("ortho_k") %>
-                            <div class="tab-pane" id="tab_5_6">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h4 class="profile-desc-title bold font-blue-madison">
-                                            <%= 'Cấu hình công nợ ban đầu' %>
-                                        </h4>
+                            <% if can? :update_init_debt, contact %>
+                                <div class="tab-pane" id="tab_5_6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 class="profile-desc-title bold font-blue-madison">
+                                                <%= 'Cấu hình công nợ ban đầu' %>
+                                            </h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr class="no-margin mb-10">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <%= erp_form_control("number", {
-                                                    name: 'contact[init_debt_amount]',
-                                                    value: contact.init_debt_amount ,
-                                                    label: 'Tiền công nợ bán hàng',
-                                                    help: 'Số tiền sẽ cấn trừ vào công nợ của Khách Hàng (áp dụng đối với các hóa đơn bán hàng)',
-                                                    min: 0,
-                                                    max: 100
-                                                }) %>
+                                    <hr class="no-margin mb-10">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <%= erp_form_control("number", {
+                                                        name: 'contact[init_debt_amount]',
+                                                        value: contact.init_debt_amount ,
+                                                        label: 'Tiền công nợ bán hàng',
+                                                        help: 'Số tiền sẽ cấn trừ vào công nợ của Khách Hàng (áp dụng đối với các hóa đơn bán hàng)',
+                                                        min: 0,
+                                                        max: 100
+                                                    }) %>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <%= erp_form_control('datetime', {
+                                                        label: 'Thời gian c.nợ bán hàng',
+                                                        name: 'contact[init_debt_date]',
+                                                        value: contact.init_debt_date ,
+                                                        placeholder: 'Chọn ngày đầu kỳ công nợ'
+                                                    }) %>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <%= erp_form_control('datetime', {
-                                                    label: 'Thời gian c.nợ bán hàng',
-                                                    name: 'contact[init_debt_date]',
-                                                    value: contact.init_debt_date ,
-                                                    placeholder: 'Chọn ngày đầu kỳ công nợ'
-                                                }) %>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <%= erp_form_control("number", {
+                                                        name: 'contact[init_supplier_debt_amount]',
+                                                        value: contact.init_supplier_debt_amount ,
+                                                        label: 'Tiền công nợ mua hàng',
+                                                        help: 'Số tiền sẽ cấn trừ vào công nợ của Nhà Cung Cấp (áp dụng đối với các hóa đơn mua/đặt hàng)',
+                                                        min: 0,
+                                                        max: 100
+                                                    }) %>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <%= erp_form_control('datetime', {
+                                                        label: 'Thời gian c.nợ mua hàng',
+                                                        name: 'contact[init_supplier_debt_date]',
+                                                        value: contact.init_supplier_debt_date ,
+                                                        placeholder: 'Chọn ngày đầu kỳ công nợ'
+                                                    }) %>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <%= erp_form_control("number", {
-                                                    name: 'contact[init_supplier_debt_amount]',
-                                                    value: contact.init_supplier_debt_amount ,
-                                                    label: 'Tiền công nợ mua hàng',
-                                                    help: 'Số tiền sẽ cấn trừ vào công nợ của Nhà Cung Cấp (áp dụng đối với các hóa đơn mua/đặt hàng)',
-                                                    min: 0,
-                                                    max: 100
-                                                }) %>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <%= erp_form_control('datetime', {
-                                                    label: 'Thời gian c.nợ mua hàng',
-                                                    name: 'contact[init_supplier_debt_date]',
-                                                    value: contact.init_supplier_debt_date ,
-                                                    placeholder: 'Chọn ngày đầu kỳ công nợ'
-                                                }) %>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
+                            <% end %>
                         <% end %>
                     </div>
                 </div>

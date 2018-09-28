@@ -4,47 +4,61 @@
 <% else %>
     <div class="tabbable-custom ">
         <ul class="nav nav-tabs ">
-            <li class="active">
-                <a href="#tab_<%= uid %>_1" data-toggle="tab">
-                    <i class="fa fa-pie-chart"></i>
-                    Lịch sử mua hàng
-                </a>
-            </li>
-            <li>
-                <a href="#tab_<%= uid %>_2" data-toggle="tab">
-                    <i class="icon-action-undo"></i>
-                    Lịch sử trả hàng
-                </a>
-            </li>
-            <li>
-                <a href="#tab_<%= uid %>_3" data-toggle="tab">
-                    <i class="fa fa-history"></i>
-                    Lịch sử thanh toán
-                </a>
-            </li>
+            <% if can? :history_sales_export_list, @contact %>
+                <li class="active">
+                    <a href="#tab_<%= uid %>_1" data-toggle="tab">
+                        <i class="fa fa-pie-chart"></i>
+                        Lịch sử mua hàng
+                    </a>
+                </li>
+            <% end %>
+            <% if can? :history_sales_import_list, @contact %>
+                <li class="<%= 'active' if cannot? :history_sales_export_list, @contact %>">
+                    <a href="#tab_<%= uid %>_2" data-toggle="tab">
+                        <i class="icon-action-undo"></i>
+                        Lịch sử trả hàng
+                    </a>
+                </li>
+            <% end %>
+            <% if can? :history_payment_records_list, @contact %>
+                <li class="<%= 'active' if (cannot? :history_sales_export_list, @contact) and (cannot? :history_sales_import_list, @contact) %>">
+                    <a href="#tab_<%= uid %>_3" data-toggle="tab">
+                        <i class="fa fa-history"></i>
+                        Lịch sử thanh toán
+                    </a>
+                </li>
+            <% end %>
         </ul>
         
         <div class="tab-content">
-            <div class="tab-pane active" id="tab_<%= uid %>_1">
-                <%= erp_datalist(url: erp_contacts.history_sales_export_list_backend_contacts_path(
-                        contact_id: @contact.id
-                    )
-                ) %>
-            </div>
+            <% if can? :history_sales_export_list, @contact %>
+                <div class="tab-pane active" id="tab_<%= uid %>_1">
+                    <%= erp_datalist(url: erp_contacts.history_sales_export_list_backend_contacts_path(
+                            contact_id: @contact.id
+                        )
+                    ) %>
+                </div>
+            <% end %>
             
-            <div class="tab-pane" id="tab_<%= uid %>_2">
-                <%= erp_datalist(url: erp_contacts.history_sales_import_list_backend_contacts_path(
-                        contact_id: @contact.id
-                    )
-                ) %>
-            </div>
+            <% if can? :history_sales_import_list, @contact %>
+                <div class="tab-pane <%= 'active' if cannot? :history_sales_export_list, @contact %>"
+                    id="tab_<%= uid %>_2">
+                    <%= erp_datalist(url: erp_contacts.history_sales_import_list_backend_contacts_path(
+                            contact_id: @contact.id
+                        )
+                    ) %>
+                </div>
+            <% end %>
             
-            <div class="tab-pane" id="tab_<%= uid %>_3">
-                <%= erp_datalist(url: erp_contacts.history_payment_records_list_backend_contacts_path(
-                        contact_id: @contact.id
-                    )
-                ) %>
-            </div>
+            <% if can? :history_payment_records_list, @contact %>
+                <div class="tab-pane <%= 'active' if (cannot? :history_sales_export_list, @contact) and (cannot? :history_sales_import_list, @contact) %>"
+                    id="tab_<%= uid %>_3">
+                    <%= erp_datalist(url: erp_contacts.history_payment_records_list_backend_contacts_path(
+                            contact_id: @contact.id
+                        )
+                    ) %>
+                </div>
+            <% end %>
         </div>
     </div
 <% end %>
