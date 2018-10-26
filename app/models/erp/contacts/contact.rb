@@ -162,7 +162,6 @@ module Erp::Contacts
         end
       end
 
-
       # global filter
       global_filter = params[:global_filter]
 
@@ -194,7 +193,7 @@ module Erp::Contacts
 				keyword = params[:keyword].strip.downcase
 				keyword.split(' ').each do |q|
 					q = q.strip
-					query = query.where('LOWER(erp_contacts_contacts.cache_search) LIKE ?', '%'+q+'%')
+					query = query.where('LOWER(erp_contacts_contacts.cache_search) LIKE ?', '%'+q.to_ascii.downcase+'%')
 				end
 			end
 
@@ -245,7 +244,7 @@ module Erp::Contacts
 				keyword = keyword.strip.downcase
 				keyword.split(' ').each do |q|
 					q = q.strip
-					query = query.where('LOWER(erp_contacts_contacts.cache_search) LIKE ?', '%'+q+'%')
+					query = query.where('LOWER(erp_contacts_contacts.cache_search) LIKE ?', '%'+q.to_ascii.downcase+'%')
 				end
 			end
 
